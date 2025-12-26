@@ -50,10 +50,22 @@ const ProfileBarComponent = {
         const styles = document.createElement('style');
         styles.id = 'profile-bar-styles';
         styles.textContent = `
+            /* Linha colorida fina no topo */
+            .profile-bar-line {
+                position: fixed;
+                top: 0;
+                left: var(--sidebar-width, 260px);
+                right: 0;
+                height: 4px;
+                z-index: 1040;
+            }
+            
+            /* Badge centralizado */
             .profile-bar-content {
                 position: fixed;
-                top: 12px;
-                right: 200px;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
                 display: flex;
                 align-items: center;
                 gap: 6px;
@@ -88,16 +100,21 @@ const ProfileBarComponent = {
             
             /* Mobile: ajustes */
             @media (max-width: 991.98px) {
+                .profile-bar-line {
+                    left: 0;
+                }
                 .profile-bar-content {
-                    right: 70px;
                     font-size: 0.7rem;
-                    top: 10px;
+                    padding: 4px 12px;
                 }
             }
             
             @media (max-width: 576px) {
-                .profile-bar-content {
+                .profile-bar-content span:not(.btn-change-profile) {
                     display: none;
+                }
+                .profile-bar-content {
+                    padding: 4px 10px;
                 }
             }
         `;
@@ -111,12 +128,17 @@ const ProfileBarComponent = {
         const profile = this.profiles[profileKey] || this.profiles.admin;
         
         // Remove elementos existentes se houver
-        const existingBar = document.querySelector('.profile-bar');
+        const existingLine = document.querySelector('.profile-bar-line');
         const existingContent = document.querySelector('.profile-bar-content');
-        if (existingBar) existingBar.remove();
+        if (existingLine) existingLine.remove();
         if (existingContent) existingContent.remove();
         
-        // Cria apenas o badge flutuante com info do perfil (sem barra no topo)
+        // Cria a linha colorida fina no topo
+        const line = document.createElement('div');
+        line.className = 'profile-bar-line';
+        line.style.background = profile.bgColor;
+        
+        // Cria o badge flutuante centralizado
         const content = document.createElement('div');
         content.className = 'profile-bar-content';
         content.style.background = profile.bgColor;
@@ -129,7 +151,8 @@ const ProfileBarComponent = {
             </button>
         `;
         
-        // Adiciona apenas o badge flutuante
+        // Adiciona a linha no topo e o badge
+        document.body.insertBefore(line, document.body.firstChild);
         document.body.appendChild(content);
     },
 

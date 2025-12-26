@@ -11,21 +11,21 @@ const SidebarComponent = {
      */
     permissions: {
         admin: {
-            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
+            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 
                    'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'comunicados', 'relatorios', 'configuracoes', 'administracao'],
             userName: 'Admin Master',
             userRole: 'Administrador',
             avatarBg: '7C3AED'
         },
         secretaria: {
-            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
+            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 
                    'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'comunicados', 'configuracoes'],
             userName: 'Maria Silva',
             userRole: 'Secretária Executiva',
             avatarBg: '059669'
         },
         conselheiro: {
-            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
+            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 
                    'obrigacoes', 'biblioteca', 'membros', 'mensagens'],
             userName: 'João Conselheiro',
             userRole: 'Conselheiro Deliberativo',
@@ -93,8 +93,7 @@ const SidebarComponent = {
                 { id: 'calendario-consolidado', href: 'calendario-consolidado.html', icon: 'bi-calendar3', label: 'Calendário' },
                 { id: 'reunioes', href: 'reunioes.html', icon: 'bi-people', label: 'Reuniões', badge: '3' },
                 { id: 'atas', href: 'atas.html', icon: 'bi-file-text', label: 'Atas' },
-                { id: 'acoes', href: 'acoes.html', icon: 'bi-check2-square', label: 'Ações', badge: '5', badgeType: 'warning' },
-                { id: 'documentos', href: 'documentos.html', icon: 'bi-folder2-open', label: 'Repositório' }
+                { id: 'acoes', href: 'acoes.html', icon: 'bi-check2-square', label: 'Ações', badge: '5', badgeType: 'warning' }
             ],
             compliance: [
                 { id: 'obrigacoes', href: 'obrigacoes.html', icon: 'bi-shield-check', label: 'Central de Conformidade', badge: '2', badgeType: 'danger' },

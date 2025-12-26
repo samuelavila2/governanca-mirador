@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositório Societário | MiraBoard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    
+    <style>
+        /* Estilos específicos do Repositório Societário */
+        .document-library {
+            min-height: calc(100vh - 200px);
+        }
+        
+        .library-sidebar {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            padding: var(--spacing-5);
+            position: sticky;
+            top: var(--spacing-5);
+        }
+        
+        .library-sidebar-title {
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-900);
+            margin-bottom: var(--spacing-4);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+        
+        .library-nav {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-1);
+        }
+        
+        .library-nav-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            padding: var(--spacing-3) var(--spacing-4);
+            border-radius: var(--radius-lg);
+            color: var(--color-gray-700);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .library-nav-item:hover {
+            background: var(--color-gray-100);
+            color: var(--color-gray-900);
+        }
+        
+        .library-nav-item.active {
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+            font-weight: var(--font-medium);
+        }
+        
+        .library-nav-item i {
+            font-size: var(--text-lg);
+        }
+        
+        .library-nav-item .badge {
+            margin-left: auto;
+        }
+        
+        .library-nav-divider {
+            height: 1px;
+            background: var(--color-gray-200);
+            margin: var(--spacing-3) 0;
+        }
+        
+        /* Document Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-5);
+        }
+        
+        .document-card {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            transition: all var(--transition-fast);
+            border: 1px solid var(--color-gray-200);
+        }
+        
+        .document-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+        
+        .document-card-header {
+            padding: var(--spacing-5);
+            background: linear-gradient(135deg, var(--color-gray-50), var(--color-white));
+            text-align: center;
+            border-bottom: 1px solid var(--color-gray-100);
+        }
+        
+        .document-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-lg);
+            font-size: 32px;
+        }
+        
+        .document-icon.pdf {
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--color-danger);
+        }
+        
+        .document-icon.word {
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--color-primary);
+        }
+        
+        .document-icon.excel {
+            background: rgba(25, 135, 84, 0.1);
+            color: var(--color-success);
+        }
+        
+        .document-icon.folder {
+            background: rgba(232, 104, 26, 0.1);
+            color: var(--color-primary);
+        }
+        
+        .document-card-body {
+            padding: var(--spacing-4);
+        }
+        
+        .document-title {
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-900);
+            margin-bottom: var(--spacing-2);
+            font-size: var(--text-sm);
+            line-height: 1.4;
+        }
+        
+        .document-meta {
+            font-size: var(--text-xs);
+            color: var(--color-gray-500);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-3);
+        }
+        
+        .document-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .document-card-footer {
+            padding: var(--spacing-3) var(--spacing-4);
+            background: var(--color-gray-50);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .document-version {
+            font-size: var(--text-xs);
+            color: var(--color-gray-500);
+        }
+        
+        .document-actions {
+            display: flex;
+            gap: var(--spacing-1);
+        }
+        
+        .document-action-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-gray-200);
+            background: var(--color-white);
+            color: var(--color-gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .document-action-btn:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        /* Folder Card Variant */
+        .document-card.folder .document-card-header {
+            background: linear-gradient(135deg, rgba(232, 104, 26, 0.05), var(--color-white));
+        }
+        
+        .document-card.folder:hover {
+            border-color: var(--color-primary);
+        }
+        
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-5);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+        
+        .section-title h4 {
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-900);
+            margin: 0;
+        }
+        
+        .section-title .badge {
+            font-weight: var(--font-medium);
+        }
+        
+        /* Breadcrumb */
+        .library-breadcrumb {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-3) var(--spacing-4);
+            margin-bottom: var(--spacing-5);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .library-breadcrumb .breadcrumb {
+            margin: 0;
+        }
+        
+        .library-breadcrumb .breadcrumb-item a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        
+        .library-breadcrumb .breadcrumb-item.active {
+            color: var(--color-gray-600);
+        }
+        
+        /* Status Badges */
+        .document-status {
+            position: absolute;
+            top: var(--spacing-3);
+            right: var(--spacing-3);
+        }
+        
+        .document-card-header {
+            position: relative;
+        }
+        
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed var(--color-gray-300);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-8);
+            text-align: center;
+            background: var(--color-gray-50);
+            transition: all var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--color-primary);
+            background: var(--color-primary-light);
+        }
+        
+        .upload-area i {
+            font-size: 48px;
+            color: var(--color-gray-400);
+            margin-bottom: var(--spacing-4);
+        }
+        
+        .upload-area:hover i {
+            color: var(--color-primary);
+        }
+        
+        /* Mandatory Badge */
+        .mandatory-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-medium);
+        }
+        
+        .mandatory-badge.required {
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--color-danger);
+        }
+        
+        .mandatory-badge.optional {
+            background: rgba(108, 117, 125, 0.1);
+            color: var(--color-gray-600);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </div>
+                    <span class="sidebar-logo-text">MiraBoard</span>
+                </a>
+                <button class="sidebar-close d-lg-none" id="sidebarClose">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menu-item">
+                        <a href="dashboard.html" class="sidebar-menu-link">
+                            <i class="bi bi-grid-1x2"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="reunioes.html" class="sidebar-menu-link">
+                            <i class="bi bi-calendar-event"></i>
+                            <span>Reuniões</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="atas.html" class="sidebar-menu-link">
+                            <i class="bi bi-file-earmark-text"></i>
+                            <span>Atas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="acoes.html" class="sidebar-menu-link">
+                            <i class="bi bi-check2-square"></i>
+                            <span>Ações</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="calendario.html" class="sidebar-menu-link">
+                            <i class="bi bi-calendar3"></i>
+                            <span>Calendário</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="documentos.html" class="sidebar-menu-link active">
+                            <i class="bi bi-folder"></i>
+                            <span>Documentos</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-section-title">Administração</div>
+                
+                <ul class="sidebar-menu">
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link">
+                            <i class="bi bi-people"></i>
+                            <span>Usuários</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link">
+                            <i class="bi bi-building"></i>
+                            <span>Empresas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a href="#" class="sidebar-menu-link">
+                            <i class="bi bi-gear"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar">
+                        <span>MS</span>
+                    </div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Maria Silva</span>
+                        <span class="sidebar-user-role">Administrador</span>
+                    </div>
+                    <button class="sidebar-user-menu" title="Opções">
+                        <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <!-- Top Navigation -->
+            <header class="topnav">
+                <div class="topnav-left">
+                    <button class="topnav-toggle d-lg-none" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <nav class="topnav-breadcrumb">
+                        <a href="dashboard.html">Dashboard</a>
+                        <i class="bi bi-chevron-right"></i>
+                        <span>Repositório Societário</span>
+                    </nav>
+                </div>
+                <div class="topnav-right">
+                    <button class="topnav-btn" title="Buscar">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <button class="topnav-btn" title="Notificações">
+                        <i class="bi bi-bell"></i>
+                        <span class="topnav-notification-badge">3</span>
+                    </button>
+                    <button class="topnav-btn" title="Ajuda">
+                        <i class="bi bi-question-circle"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="main-content">
+                <div class="container-fluid">
+                    <!-- Page Header -->
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+                        <div>
+                            <h1 class="page-title mb-1">Repositório Societário</h1>
+                            <p class="text-muted mb-0">Biblioteca de documentos permanentes da empresa</p>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                    <i class="bi bi-upload me-2"></i>Upload
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-file-earmark me-2"></i>Documento</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-folder-plus me-2"></i>Nova Pasta</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#"><i class="bi bi-cloud-upload me-2"></i>Upload em Lote</a></li>
+                                </ul>
+                            </div>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalUpload">
+                                <i class="bi bi-plus-lg me-2"></i>Novo Documento
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Library Sidebar -->
+                        <div class="col-lg-3 mb-4 mb-lg-0">
+                            <div class="library-sidebar">
+                                <div class="library-sidebar-title">
+                                    <i class="bi bi-folder-fill text-primary"></i>
+                                    Categorias
+                                </div>
+                                
+                                <nav class="library-nav">
+                                    <a href="#" class="library-nav-item active">
+                                        <i class="bi bi-grid"></i>
+                                        <span>Todos</span>
+                                        <span class="badge bg-secondary">24</span>
+                                    </a>
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-building"></i>
+                                        <span>Constituição</span>
+                                        <span class="badge bg-secondary">5</span>
+                                    </a>
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-file-text"></i>
+                                        <span>Contratos</span>
+                                        <span class="badge bg-secondary">8</span>
+                                    </a>
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-people"></i>
+                                        <span>Assembleias</span>
+                                        <span class="badge bg-secondary">12</span>
+                                    </a>
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-shield-check"></i>
+                                        <span>Compliance</span>
+                                        <span class="badge bg-secondary">6</span>
+                                    </a>
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-bank"></i>
+                                        <span>Regulatório</span>
+                                        <span class="badge bg-secondary">4</span>
+                                    </a>
+                                    
+                                    <div class="library-nav-divider"></div>
+                                    
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-star"></i>
+                                        <span>Favoritos</span>
+                                        <span class="badge bg-warning">3</span>
+                                    </a>
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-clock-history"></i>
+                                        <span>Recentes</span>
+                                    </a>
+                                    <a href="#" class="library-nav-item">
+                                        <i class="bi bi-trash3"></i>
+                                        <span>Lixeira</span>
+                                    </a>
+                                </nav>
+                                
+                                <!-- Storage Info -->
+                                <div class="mt-5 pt-4 border-top">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <small class="text-muted">Armazenamento</small>
+                                        <small class="fw-medium">2.4 GB / 10 GB</small>
+                                    </div>
+                                    <div class="progress" style="height: 6px;">
+                                        <div class="progress-bar bg-primary" style="width: 24%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Documents Content -->
+                        <div class="col-lg-9">
+                            <!-- Breadcrumb -->
+                            <div class="library-breadcrumb">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#"><i class="bi bi-house me-1"></i>Raiz</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Todos os Documentos</li>
+                                    </ol>
+                                </nav>
+                            </div>
+
+                            <!-- Filters -->
+                            <div class="card card-custom mb-4">
+                                <div class="card-body py-3">
+                                    <div class="row align-items-center g-3">
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-text bg-transparent border-end-0">
+                                                    <i class="bi bi-search text-muted"></i>
+                                                </span>
+                                                <input type="text" class="form-control border-start-0" placeholder="Buscar documentos...">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <select class="form-select">
+                                                <option value="">Tipo de Documento</option>
+                                                <option>Contrato Social</option>
+                                                <option>Ata de Assembleia</option>
+                                                <option>Estatuto</option>
+                                                <option>Procuração</option>
+                                                <option>Certidão</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <select class="form-select">
+                                                <option value="">Ordenar por</option>
+                                                <option>Nome (A-Z)</option>
+                                                <option>Data (Mais recente)</option>
+                                                <option>Data (Mais antigo)</option>
+                                                <option>Tamanho</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 text-end">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-outline-secondary active">
+                                                    <i class="bi bi-grid-3x3-gap"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-outline-secondary">
+                                                    <i class="bi bi-list-ul"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pastas Section -->
+                            <div class="section-header">
+                                <div class="section-title">
+                                    <h4><i class="bi bi-folder-fill text-primary me-2"></i>Pastas</h4>
+                                    <span class="badge bg-secondary">4</span>
+                                </div>
+                            </div>
+
+                            <div class="documents-grid mb-5">
+                                <!-- Pasta: Constituição -->
+                                <div class="document-card folder">
+                                    <div class="document-card-header">
+                                        <div class="document-icon folder">
+                                            <i class="bi bi-folder-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Constituição da Empresa</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-file-earmark"></i> 5 arquivos
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 12.4 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <i class="bi bi-clock"></i> Atualizado há 2 dias
+                                        </span>
+                                        <button class="document-action-btn">
+                                            <i class="bi bi-folder2-open"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Pasta: Contratos -->
+                                <div class="document-card folder">
+                                    <div class="document-card-header">
+                                        <div class="document-icon folder">
+                                            <i class="bi bi-folder-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Contratos Sociais</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-file-earmark"></i> 8 arquivos
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 28.7 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <i class="bi bi-clock"></i> Atualizado há 1 semana
+                                        </span>
+                                        <button class="document-action-btn">
+                                            <i class="bi bi-folder2-open"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Pasta: Assembleias -->
+                                <div class="document-card folder">
+                                    <div class="document-card-header">
+                                        <div class="document-icon folder">
+                                            <i class="bi bi-folder-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Atas de Assembleias</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-file-earmark"></i> 12 arquivos
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 45.2 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <i class="bi bi-clock"></i> Atualizado ontem
+                                        </span>
+                                        <button class="document-action-btn">
+                                            <i class="bi bi-folder2-open"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Pasta: Compliance -->
+                                <div class="document-card folder">
+                                    <div class="document-card-header">
+                                        <div class="document-icon folder">
+                                            <i class="bi bi-folder-fill"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Compliance e Políticas</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-file-earmark"></i> 6 arquivos
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 18.3 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <i class="bi bi-clock"></i> Atualizado há 3 dias
+                                        </span>
+                                        <button class="document-action-btn">
+                                            <i class="bi bi-folder2-open"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documentos Obrigatórios Section -->
+                            <div class="section-header">
+                                <div class="section-title">
+                                    <h4><i class="bi bi-shield-check text-danger me-2"></i>Documentos Obrigatórios</h4>
+                                    <span class="badge bg-danger">Atenção</span>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Todos</a>
+                            </div>
+
+                            <div class="documents-grid mb-5">
+                                <!-- Contrato Social -->
+                                <div class="document-card">
+                                    <div class="document-card-header">
+                                        <span class="document-status">
+                                            <span class="mandatory-badge required">
+                                                <i class="bi bi-exclamation-circle"></i> Obrigatório
+                                            </span>
+                                        </span>
+                                        <div class="document-icon pdf">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Contrato Social Consolidado</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 2.4 MB
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-calendar"></i> 15/01/2024
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <span class="badge bg-success-subtle text-success">v3.2</span>
+                                        </span>
+                                        <div class="document-actions">
+                                            <button class="document-action-btn" title="Visualizar">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Download">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Mais Opções">
+                                                <i class="bi bi-three-dots"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Estatuto Social -->
+                                <div class="document-card">
+                                    <div class="document-card-header">
+                                        <span class="document-status">
+                                            <span class="mandatory-badge required">
+                                                <i class="bi bi-exclamation-circle"></i> Obrigatório
+                                            </span>
+                                        </span>
+                                        <div class="document-icon pdf">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Estatuto Social</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 1.8 MB
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-calendar"></i> 10/12/2023
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <span class="badge bg-success-subtle text-success">v2.0</span>
+                                        </span>
+                                        <div class="document-actions">
+                                            <button class="document-action-btn" title="Visualizar">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Download">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Mais Opções">
+                                                <i class="bi bi-three-dots"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Acordo de Acionistas -->
+                                <div class="document-card">
+                                    <div class="document-card-header">
+                                        <span class="document-status">
+                                            <span class="mandatory-badge required">
+                                                <i class="bi bi-exclamation-circle"></i> Obrigatório
+                                            </span>
+                                        </span>
+                                        <div class="document-icon word">
+                                            <i class="bi bi-file-earmark-word"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Acordo de Acionistas</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 856 KB
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-calendar"></i> 22/08/2023
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <span class="badge bg-warning-subtle text-warning">Expira em 30 dias</span>
+                                        </span>
+                                        <div class="document-actions">
+                                            <button class="document-action-btn" title="Visualizar">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Download">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Mais Opções">
+                                                <i class="bi bi-three-dots"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documentos Recentes Section -->
+                            <div class="section-header">
+                                <div class="section-title">
+                                    <h4><i class="bi bi-clock-history text-info me-2"></i>Adicionados Recentemente</h4>
+                                </div>
+                                <a href="#" class="btn btn-sm btn-outline-primary">Ver Todos</a>
+                            </div>
+
+                            <div class="documents-grid">
+                                <!-- Ata AGO 2024 -->
+                                <div class="document-card">
+                                    <div class="document-card-header">
+                                        <span class="document-status">
+                                            <span class="badge bg-success-subtle text-success">
+                                                <i class="bi bi-check-circle me-1"></i>Assinado
+                                            </span>
+                                        </span>
+                                        <div class="document-icon pdf">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Ata AGO - Janeiro 2025</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 456 KB
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-calendar"></i> 28/01/2025
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version text-success">
+                                            <i class="bi bi-check2-all"></i> 4 assinaturas
+                                        </span>
+                                        <div class="document-actions">
+                                            <button class="document-action-btn" title="Visualizar">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Download">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Procuração -->
+                                <div class="document-card">
+                                    <div class="document-card-header">
+                                        <div class="document-icon pdf">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Procuração - Representante Legal</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 234 KB
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-calendar"></i> 25/01/2025
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <span class="badge bg-info-subtle text-info">Válido até 2026</span>
+                                        </span>
+                                        <div class="document-actions">
+                                            <button class="document-action-btn" title="Visualizar">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Download">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Relatório Financeiro -->
+                                <div class="document-card">
+                                    <div class="document-card-header">
+                                        <div class="document-icon excel">
+                                            <i class="bi bi-file-earmark-excel"></i>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-body">
+                                        <div class="document-title">Demonstrações Financeiras Q4-2024</div>
+                                        <div class="document-meta">
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-hdd"></i> 1.2 MB
+                                            </span>
+                                            <span class="document-meta-item">
+                                                <i class="bi bi-calendar"></i> 20/01/2025
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="document-card-footer">
+                                        <span class="document-version">
+                                            <span class="badge bg-secondary">Auditado</span>
+                                        </span>
+                                        <div class="document-actions">
+                                            <button class="document-action-btn" title="Visualizar">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="document-action-btn" title="Download">
+                                                <i class="bi bi-download"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Upload de Documento -->
+    <div class="modal fade" id="modalUpload" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-upload me-2"></i>Novo Documento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Upload Area -->
+                    <div class="upload-area mb-4" id="uploadArea">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        <h5>Arraste arquivos aqui</h5>
+                        <p class="text-muted mb-3">ou clique para selecionar</p>
+                        <button class="btn btn-primary">
+                            <i class="bi bi-folder2-open me-2"></i>Escolher Arquivos
+                        </button>
+                        <p class="text-muted mt-3 small">
+                            Formatos aceitos: PDF, DOC, DOCX, XLS, XLSX • Máximo 50MB por arquivo
+                        </p>
+                    </div>
+
+                    <form id="formUpload">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Nome do Documento *</label>
+                                <input type="text" class="form-control" placeholder="Ex: Contrato Social 2025" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Categoria *</label>
+                                <select class="form-select" required>
+                                    <option value="">Selecione...</option>
+                                    <option>Constituição</option>
+                                    <option>Contratos</option>
+                                    <option>Assembleias</option>
+                                    <option>Compliance</option>
+                                    <option>Regulatório</option>
+                                    <option>Outros</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de Documento</label>
+                                <select class="form-select">
+                                    <option value="">Selecione...</option>
+                                    <option>Contrato Social</option>
+                                    <option>Estatuto</option>
+                                    <option>Ata de Assembleia</option>
+                                    <option>Procuração</option>
+                                    <option>Certidão</option>
+                                    <option>Relatório</option>
+                                    <option>Outro</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Data de Validade</label>
+                                <input type="date" class="form-control">
+                                <small class="text-muted">Deixe em branco se não aplicável</small>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Descrição</label>
+                                <textarea class="form-control" rows="2" placeholder="Breve descrição do documento..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="docObrigatorio">
+                                    <label class="form-check-label" for="docObrigatorio">
+                                        <strong>Documento Obrigatório</strong> - Marque se este é um documento societário obrigatório
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-upload me-2"></i>Fazer Upload
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        // Sidebar Toggle
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('show');
+        });
+        
+        document.getElementById('sidebarClose')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('show');
+        });
+
+        // Upload Area Drag & Drop
+        const uploadArea = document.getElementById('uploadArea');
+        
+        uploadArea?.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.borderColor = 'var(--color-primary)';
+            this.style.background = 'var(--color-primary-light)';
+        });
+        
+        uploadArea?.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '';
+            this.style.background = '';
+        });
+        
+        uploadArea?.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.borderColor = '';
+            this.style.background = '';
+            
+            const files = e.dataTransfer.files;
+            console.log('Arquivos soltos:', files);
+            // Aqui o PHP faria o upload
+        });
+
+        // Library Navigation
+        document.querySelectorAll('.library-nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.library-nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

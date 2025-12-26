@@ -835,3 +835,756 @@
         height: 32px;
     }
 }
+
+/* ==============================================
+   Workflow Stepper da Ata
+   ============================================== */
+.ata-workflow-bar {
+    background: linear-gradient(135deg, var(--color-gray-50), var(--color-white));
+    padding: var(--spacing-4) var(--spacing-5);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-5);
+    border: 1px solid var(--color-gray-200);
+}
+
+.workflow-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-2);
+}
+
+.workflow-step {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-lg);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    color: var(--color-gray-500);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    transition: all var(--transition-fast);
+}
+
+.workflow-step i {
+    font-size: var(--text-base);
+}
+
+.workflow-step.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0 2px 8px rgba(232, 104, 26, 0.3);
+}
+
+.workflow-step.completed {
+    background: var(--color-success-light);
+    border-color: var(--color-success);
+    color: var(--color-success);
+}
+
+.workflow-connector {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 2px;
+    background: var(--color-gray-200);
+    position: relative;
+}
+
+.workflow-connector.completed {
+    background: var(--color-success);
+}
+
+.workflow-connector::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid var(--color-gray-200);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
+.workflow-connector.completed::after {
+    border-left-color: var(--color-success);
+}
+
+/* Botão de Ação na Toolbar */
+.ata-toolbar-btn.action-btn {
+    background: linear-gradient(135deg, var(--color-info), #0984e3);
+    color: var(--color-white);
+    border-color: var(--color-info);
+}
+
+.ata-toolbar-btn.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+}
+
+.ata-toolbar-btn.highlight-btn {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: var(--color-white);
+    border-color: #f39c12;
+}
+
+.ata-toolbar-btn.highlight-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+}
+
+/* ==============================================
+   Assinaturas Melhoradas
+   ============================================== */
+.assinaturas-progress {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.assinatura-card {
+    position: relative;
+}
+
+.assinatura-card.pendente-hover {
+    transition: all var(--transition-fast);
+}
+
+.assinatura-card.pendente-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.assinatura-cargo {
+    font-size: var(--text-xs);
+    color: var(--color-gray-500);
+    display: block;
+    margin-top: 2px;
+}
+
+.nudge-btn {
+    position: absolute;
+    right: var(--spacing-3);
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all var(--transition-fast);
+}
+
+.assinatura-card:hover .nudge-btn {
+    opacity: 1;
+}
+
+.nudge-btn:hover {
+    background: var(--color-warning) !important;
+    color: var(--color-white) !important;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ==============================================
+   Modal de Criar Ação
+   ============================================== */
+.modal-acao .modal-header {
+    background: linear-gradient(135deg, var(--color-info), #0984e3);
+    color: var(--color-white);
+}
+
+.modal-acao .modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+.texto-selecionado {
+    background: var(--color-warning-light);
+    border-left: 4px solid var(--color-warning);
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-md);
+    font-style: italic;
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-4);
+}
+
+.form-label-icon {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.form-label-icon i {
+    color: var(--color-primary);
+}
+
+/* ==============================================
+   Analytics de Leitura
+   ============================================== */
+.documento-anexo-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    text-decoration: none;
+    padding: var(--spacing-2);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.documento-anexo-item:hover {
+    background: var(--color-gray-50);
+}
+
+.leitura-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    border-radius: var(--radius-full);
+    font-size: 10px;
+    font-weight: var(--font-semibold);
+}
+
+.leitura-badge.lido-todos {
+    background: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.leitura-badge.lido-parcial {
+    background: var(--color-warning-light);
+    color: #B45309;
+}
+
+.leitura-badge.nao-lido {
+    background: var(--color-danger-light);
+    color: var(--color-danger);
+}
+
+.leitura-resumo {
+    background: var(--color-gray-50);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-md);
+}
+
+.analytics-participant-card {
+    background: var(--color-gray-50);
+    padding: var(--spacing-3);
+    border-radius: var(--radius-lg);
+}
+
+.analytics-participant-card .avatar-sm {
+    width: 28px;
+    height: 28px;
+    font-size: 11px;
+}
+
+/* ==============================================
+   Gestão de Mandatos
+   ============================================== */
+.mandato-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-4);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-gray-200);
+    transition: all var(--transition-fast);
+}
+
+.mandato-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.mandato-card.expirando {
+    border-left: 4px solid var(--color-warning);
+}
+
+.mandato-card.expirado {
+    border-left: 4px solid var(--color-danger);
+    background: var(--color-danger-light);
+}
+
+.mandato-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-semibold);
+    font-size: var(--text-lg);
+}
+
+.mandato-info h6 {
+    margin: 0;
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-900);
+}
+
+.mandato-cargo {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+}
+
+.mandato-periodo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin-top: var(--spacing-2);
+}
+
+.mandato-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+}
+
+.mandato-badge.ativo {
+    background: var(--color-success-light);
+    color: var(--color-success);
+}
+
+.mandato-badge.expirando {
+    background: var(--color-warning-light);
+    color: #B45309;
+}
+
+.mandato-badge.expirado {
+    background: var(--color-danger-light);
+    color: var(--color-danger);
+}
+
+/* Timeline de Mandato */
+.mandato-timeline {
+    position: relative;
+    margin-top: var(--spacing-4);
+}
+
+.mandato-progress {
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--color-gray-200);
+    overflow: hidden;
+}
+
+.mandato-progress-bar {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width var(--transition-base);
+}
+
+/* ==============================================
+   Modo Apresentação (Fullscreen)
+   ============================================== */
+body.modo-apresentacao {
+    overflow: hidden;
+}
+
+body.modo-apresentacao .sidebar,
+body.modo-apresentacao .app-header,
+body.modo-apresentacao .reuniao-sidebar {
+    display: none !important;
+}
+
+body.modo-apresentacao .main-wrapper {
+    margin-left: 0;
+    width: 100%;
+}
+
+body.modo-apresentacao .col-lg-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+body.modo-apresentacao .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-8);
+}
+
+body.modo-apresentacao .reuniao-header {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+}
+
+body.modo-apresentacao .reuniao-titulo {
+    font-size: var(--text-4xl);
+}
+
+body.modo-apresentacao .pauta-item {
+    font-size: 1.1em;
+    padding: var(--spacing-5);
+}
+
+body.modo-apresentacao .pauta-item-title {
+    font-size: var(--text-xl);
+}
+
+/* Barra flutuante do modo apresentação */
+.apresentacao-controls {
+    position: fixed;
+    bottom: var(--spacing-8);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-gray-900);
+    color: var(--color-white);
+    padding: var(--spacing-3) var(--spacing-6);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    box-shadow: var(--shadow-2xl);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+body.modo-apresentacao .apresentacao-controls {
+    opacity: 1;
+    visibility: visible;
+}
+
+.apresentacao-controls button {
+    background: transparent;
+    border: none;
+    color: var(--color-white);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.apresentacao-controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.apresentacao-controls .btn-sair-apresentacao {
+    background: var(--color-danger);
+}
+
+.apresentacao-controls .btn-sair-apresentacao:hover {
+    background: #dc2626;
+}
+
+/* ==============================================
+   Cronômetro de Tópicos
+   ============================================== */
+.cronometro-trigger {
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-cronometro {
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    padding: 2px;
+    margin-left: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all var(--transition-fast);
+}
+
+.cronometro-trigger:hover .btn-cronometro {
+    opacity: 1;
+}
+
+.cronometro-trigger.ativo {
+    background: var(--color-primary-light);
+    padding: 4px 8px;
+    border-radius: var(--radius-md);
+    color: var(--color-primary);
+    font-weight: var(--font-semibold);
+}
+
+.cronometro-trigger.ativo .btn-cronometro {
+    opacity: 1;
+}
+
+/* Modal Cronômetro */
+.cronometro-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    padding: var(--spacing-8);
+    z-index: 10000;
+    min-width: 400px;
+    text-align: center;
+    display: none;
+}
+
+.cronometro-modal.show {
+    display: block;
+}
+
+.cronometro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+}
+
+.cronometro-overlay.show {
+    display: block;
+}
+
+.cronometro-display {
+    font-size: 72px;
+    font-weight: var(--font-bold);
+    font-family: var(--font-secondary);
+    margin: var(--spacing-6) 0;
+    color: var(--color-gray-900);
+}
+
+.cronometro-display.warning {
+    color: var(--color-warning);
+}
+
+.cronometro-display.danger {
+    color: var(--color-danger);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.cronometro-titulo {
+    font-size: var(--text-lg);
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-2);
+}
+
+.cronometro-item {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-900);
+}
+
+.cronometro-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-6);
+}
+
+.cronometro-controls button {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-full);
+    border: none;
+    font-size: var(--text-xl);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.cronometro-controls .btn-play {
+    background: var(--color-success);
+    color: var(--color-white);
+}
+
+.cronometro-controls .btn-pause {
+    background: var(--color-warning);
+    color: var(--color-white);
+}
+
+.cronometro-controls .btn-stop {
+    background: var(--color-danger);
+    color: var(--color-white);
+}
+
+.cronometro-controls button:hover {
+    transform: scale(1.1);
+}
+
+/* Progress bar do cronômetro */
+.cronometro-progress {
+    height: 8px;
+    background: var(--color-gray-200);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-top: var(--spacing-4);
+}
+
+.cronometro-progress-bar {
+    height: 100%;
+    background: var(--color-success);
+    transition: width 1s linear, background-color var(--transition-fast);
+}
+
+.cronometro-progress-bar.warning {
+    background: var(--color-warning);
+}
+
+.cronometro-progress-bar.danger {
+    background: var(--color-danger);
+}
+
+/* ==============================================
+   Histórico de Versões
+   ============================================== */
+.versoes-timeline {
+    position: relative;
+    padding-left: var(--spacing-6);
+}
+
+.versoes-timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-gray-200);
+}
+
+.versao-item {
+    position: relative;
+    margin-bottom: var(--spacing-5);
+    padding: var(--spacing-4);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-gray-200);
+}
+
+.versao-item::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--spacing-6) - 5px);
+    top: var(--spacing-4);
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    border: 2px solid var(--color-white);
+}
+
+.versao-item.atual::before {
+    background: var(--color-success);
+    width: 16px;
+    height: 16px;
+    left: calc(-1 * var(--spacing-6) - 7px);
+}
+
+.versao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-2);
+}
+
+.versao-numero {
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-900);
+}
+
+.versao-data {
+    font-size: var(--text-xs);
+    color: var(--color-gray-500);
+}
+
+.versao-autor {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+}
+
+.versao-changes {
+    margin-top: var(--spacing-3);
+    padding-top: var(--spacing-3);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.versao-change {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-1);
+}
+
+.versao-change i {
+    font-size: var(--text-xs);
+}
+
+.versao-change.added i { color: var(--color-success); }
+.versao-change.removed i { color: var(--color-danger); }
+.versao-change.modified i { color: var(--color-info); }
+
+/* Diff Visual */
+.diff-container {
+    font-family: monospace;
+    font-size: var(--text-sm);
+    background: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.diff-line {
+    padding: var(--spacing-2) var(--spacing-4);
+    border-left: 4px solid transparent;
+}
+
+.diff-line.added {
+    background: rgba(16, 185, 129, 0.1);
+    border-left-color: var(--color-success);
+}
+
+.diff-line.removed {
+    background: rgba(239, 68, 68, 0.1);
+    border-left-color: var(--color-danger);
+}
+
+.diff-line.unchanged {
+    color: var(--color-gray-500);
+}
+
+/* Responsive para workflow stepper */
+@media (max-width: 992px) {
+    .workflow-stepper {
+        flex-wrap: wrap;
+        gap: var(--spacing-3);
+    }
+    
+    .workflow-connector {
+        display: none;
+    }
+    
+    .workflow-step {
+        flex: 1 0 45%;
+    }
+}
+
+@media (max-width: 576px) {
+    .workflow-step {
+        flex: 1 0 100%;
+        justify-content: center;
+    }
+    
+    .assinaturas-progress {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-2);
+    }
+}

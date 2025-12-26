@@ -2,6 +2,208 @@
  * MiraBoard - Estilos específicos do Dashboard
  */
 
+/* ========== APP HEADER ========== */
+.app-header {
+    background-color: var(--bg-header, #FFFFFF);
+    height: var(--header-height, 70px);
+    border-bottom: 1px solid var(--border-color, #E5E7EB);
+    padding: 0 var(--spacing-6, 1.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: var(--z-index-sticky, 1020);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4, 1rem);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3, 0.75rem);
+}
+
+/* Search Input */
+.header-search {
+    position: relative;
+}
+
+.search-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-group i {
+    position: absolute;
+    left: 12px;
+    color: var(--text-muted, #9CA3AF);
+    font-size: var(--font-size-sm, 0.875rem);
+}
+
+.search-input-group .form-control {
+    padding-left: 40px;
+    padding-right: 50px;
+    width: 320px;
+    background-color: var(--color-gray-100, #F3F4F6);
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-lg, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    transition: all var(--transition-fast, 150ms);
+}
+
+.search-input-group .form-control:focus {
+    background-color: var(--color-white, #FFFFFF);
+    border-color: var(--color-primary, #E8681A);
+    box-shadow: 0 0 0 3px rgba(232, 104, 26, 0.1);
+}
+
+.search-input-group kbd {
+    position: absolute;
+    right: 12px;
+    background: var(--color-gray-200, #E5E7EB);
+    color: var(--text-muted, #9CA3AF);
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* Header Action Buttons */
+.header-action-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-full, 9999px);
+    border: none;
+    background-color: var(--color-gray-100, #F3F4F6);
+    color: var(--text-secondary, #6B7280);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast, 150ms);
+}
+
+.header-action-btn:hover {
+    background-color: var(--color-gray-200, #E5E7EB);
+    color: var(--text-primary, #111827);
+}
+
+.notification-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 18px;
+    height: 18px;
+    background-color: var(--color-danger, #EF4444);
+    color: var(--color-white, #FFFFFF);
+    font-size: 10px;
+    font-weight: var(--font-weight-semibold, 600);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header User Button */
+.header-user-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2, 0.5rem);
+    padding: var(--spacing-2, 0.5rem) var(--spacing-3, 0.75rem);
+    border: none;
+    background-color: transparent;
+    border-radius: var(--border-radius-lg, 1rem);
+    cursor: pointer;
+    transition: all var(--transition-fast, 150ms);
+    color: var(--text-primary, #111827);
+    font-weight: var(--font-weight-medium, 500);
+    font-size: var(--font-size-sm, 0.875rem);
+}
+
+.header-user-btn:hover {
+    background-color: var(--color-gray-100, #F3F4F6);
+}
+
+.header-user-btn .avatar {
+    width: 32px;
+    height: 32px;
+}
+
+.header-user-btn .bi-chevron-down {
+    font-size: 12px;
+    color: var(--text-muted, #9CA3AF);
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+    width: 360px;
+    padding: 0;
+}
+
+.notification-dropdown .dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-4, 1rem);
+}
+
+.notification-dropdown .dropdown-header h6 {
+    margin: 0;
+    font-weight: var(--font-weight-semibold, 600);
+}
+
+.notification-dropdown .dropdown-header a {
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-primary, #E8681A);
+    text-decoration: none;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-3, 0.75rem);
+    padding: var(--spacing-3, 0.75rem) var(--spacing-4, 1rem);
+    border-left: 3px solid transparent;
+}
+
+.notification-item.unread {
+    background-color: var(--color-primary-lighter, #FFE5D9);
+    border-left-color: var(--color-primary, #E8681A);
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-full, 9999px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-content p {
+    margin: 0 0 4px 0;
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--text-primary, #111827);
+}
+
+.notification-time {
+    font-size: var(--font-size-xs, 0.75rem);
+    color: var(--text-muted, #9CA3AF);
+}
+
 /* ========== STATS CARDS ========== */
 .stats-grid {
     display: grid;

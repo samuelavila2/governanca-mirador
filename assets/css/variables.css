@@ -142,6 +142,13 @@
     --header-height: 70px;
     --container-max-width: 1440px;
     
+    /* ========== GRADIENTES ========== */
+    --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    --gradient-success: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
+    --gradient-info: linear-gradient(135deg, var(--color-info) 0%, #2563EB 100%);
+    --gradient-warning: linear-gradient(135deg, var(--color-warning) 0%, #D97706 100%);
+    --gradient-danger: linear-gradient(135deg, var(--color-danger) 0%, #DC2626 100%);
+    
     /* ========== BREAKPOINTS (para JS) ========== */
     --breakpoint-sm: 640px;
     --breakpoint-md: 768px;

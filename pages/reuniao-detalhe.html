@@ -205,6 +205,10 @@
                                     </div>
                                 </div>
                                 <div class="reuniao-header-actions">
+                                    <button class="btn btn-outline-primary" id="btnModoApresentacao" title="Modo Apresentação (Fullscreen)">
+                                        <i class="bi bi-easel"></i>
+                                        <span class="d-none d-md-inline ms-1">Apresentar</span>
+                                    </button>
                                     <button class="btn btn-outline-secondary">
                                         <i class="bi bi-pencil"></i>
                                     </button>
@@ -260,14 +264,19 @@
                                             
                                             <div class="pauta-list">
                                                 <!-- Item 1 -->
-                                                <div class="pauta-item" draggable="true">
+                                                <div class="pauta-item" draggable="true" data-tempo="10">
                                                     <div class="pauta-item-header">
                                                         <span class="pauta-item-number">1</span>
                                                         <div class="pauta-item-content">
                                                             <h5 class="pauta-item-title">Abertura e Verificação de Quórum</h5>
                                                             <p class="pauta-item-desc">Verificação da presença dos conselheiros e confirmação do quórum necessário para deliberação.</p>
                                                             <div class="pauta-item-meta">
-                                                                <span><i class="bi bi-clock"></i> 10 min</span>
+                                                                <span class="cronometro-trigger" data-tempo="10">
+                                                                    <i class="bi bi-clock"></i> 10 min
+                                                                    <button class="btn-cronometro" title="Iniciar cronômetro">
+                                                                        <i class="bi bi-play-circle"></i>
+                                                                    </button>
+                                                                </span>
                                                                 <span><i class="bi bi-person"></i> Presidente</span>
                                                                 <span><i class="bi bi-paperclip"></i> 0 anexos</span>
                                                             </div>
@@ -281,14 +290,19 @@
                                                 </div>
                                                 
                                                 <!-- Item 2 -->
-                                                <div class="pauta-item" draggable="true">
+                                                <div class="pauta-item" draggable="true" data-tempo="15">
                                                     <div class="pauta-item-header">
                                                         <span class="pauta-item-number">2</span>
                                                         <div class="pauta-item-content">
                                                             <h5 class="pauta-item-title">Aprovação da Ata da Reunião Anterior</h5>
                                                             <p class="pauta-item-desc">Leitura e aprovação da ata da reunião realizada em 15/01/2025.</p>
                                                             <div class="pauta-item-meta">
-                                                                <span><i class="bi bi-clock"></i> 15 min</span>
+                                                                <span class="cronometro-trigger" data-tempo="15">
+                                                                    <i class="bi bi-clock"></i> 15 min
+                                                                    <button class="btn-cronometro" title="Iniciar cronômetro">
+                                                                        <i class="bi bi-play-circle"></i>
+                                                                    </button>
+                                                                </span>
                                                                 <span><i class="bi bi-person"></i> Secretário</span>
                                                                 <span><i class="bi bi-paperclip"></i> 1 anexo</span>
                                                             </div>
@@ -302,14 +316,19 @@
                                                 </div>
                                                 
                                                 <!-- Item 3 -->
-                                                <div class="pauta-item" draggable="true">
+                                                <div class="pauta-item" draggable="true" data-tempo="30">
                                                     <div class="pauta-item-header">
                                                         <span class="pauta-item-number">3</span>
                                                         <div class="pauta-item-content">
                                                             <h5 class="pauta-item-title">Apresentação do Relatório Financeiro Q4/2024</h5>
                                                             <p class="pauta-item-desc">Análise detalhada dos resultados financeiros do último trimestre e projeções para 2025.</p>
                                                             <div class="pauta-item-meta">
-                                                                <span><i class="bi bi-clock"></i> 30 min</span>
+                                                                <span class="cronometro-trigger" data-tempo="30">
+                                                                    <i class="bi bi-clock"></i> 30 min
+                                                                    <button class="btn-cronometro" title="Iniciar cronômetro">
+                                                                        <i class="bi bi-play-circle"></i>
+                                                                    </button>
+                                                                </span>
                                                                 <span><i class="bi bi-person"></i> Diretor Financeiro</span>
                                                                 <span><i class="bi bi-paperclip"></i> 3 anexos</span>
                                                             </div>
@@ -323,14 +342,19 @@
                                                 </div>
                                                 
                                                 <!-- Item 4 -->
-                                                <div class="pauta-item" draggable="true">
+                                                <div class="pauta-item" draggable="true" data-tempo="20">
                                                     <div class="pauta-item-header">
                                                         <span class="pauta-item-number">4</span>
                                                         <div class="pauta-item-content">
                                                             <h5 class="pauta-item-title">Votação: Aprovação do Orçamento 2025</h5>
                                                             <p class="pauta-item-desc">Deliberação sobre a proposta orçamentária para o exercício de 2025.</p>
                                                             <div class="pauta-item-meta">
-                                                                <span><i class="bi bi-clock"></i> 20 min</span>
+                                                                <span class="cronometro-trigger" data-tempo="20">
+                                                                    <i class="bi bi-clock"></i> 20 min
+                                                                    <button class="btn-cronometro" title="Iniciar cronômetro">
+                                                                        <i class="bi bi-play-circle"></i>
+                                                                    </button>
+                                                                </span>
                                                                 <span><i class="bi bi-hand-thumbs-up"></i> Requer votação</span>
                                                                 <span><i class="bi bi-paperclip"></i> 2 anexos</span>
                                                             </div>
@@ -344,14 +368,19 @@
                                                 </div>
                                                 
                                                 <!-- Item 5 -->
-                                                <div class="pauta-item" draggable="true">
+                                                <div class="pauta-item" draggable="true" data-tempo="15">
                                                     <div class="pauta-item-header">
                                                         <span class="pauta-item-number">5</span>
                                                         <div class="pauta-item-content">
                                                             <h5 class="pauta-item-title">Informes Gerais e Encerramento</h5>
                                                             <p class="pauta-item-desc">Espaço para informes diversos e encerramento da reunião.</p>
                                                             <div class="pauta-item-meta">
-                                                                <span><i class="bi bi-clock"></i> 15 min</span>
+                                                                <span class="cronometro-trigger" data-tempo="15">
+                                                                    <i class="bi bi-clock"></i> 15 min
+                                                                    <button class="btn-cronometro" title="Iniciar cronômetro">
+                                                                        <i class="bi bi-play-circle"></i>
+                                                                    </button>
+                                                                </span>
                                                                 <span><i class="bi bi-person"></i> Todos</span>
                                                                 <span><i class="bi bi-paperclip"></i> 0 anexos</span>
                                                             </div>
@@ -588,6 +617,56 @@
                                                 </div>
                                             </div>
                                             
+                                            <!-- Status Workflow da Ata -->
+                                            <div class="ata-workflow mb-4">
+                                                <div class="workflow-stepper">
+                                                    <div class="workflow-step completed">
+                                                        <div class="workflow-step-icon">
+                                                            <i class="bi bi-check-lg"></i>
+                                                        </div>
+                                                        <div class="workflow-step-info">
+                                                            <span class="workflow-step-title">Rascunho</span>
+                                                            <span class="workflow-step-date">25/01/2025</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="workflow-connector completed"></div>
+                                                    <div class="workflow-step active">
+                                                        <div class="workflow-step-icon">
+                                                            <span>2</span>
+                                                        </div>
+                                                        <div class="workflow-step-info">
+                                                            <span class="workflow-step-title">Em Revisão</span>
+                                                            <span class="workflow-step-date">Em andamento</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="workflow-connector"></div>
+                                                    <div class="workflow-step">
+                                                        <div class="workflow-step-icon">
+                                                            <span>3</span>
+                                                        </div>
+                                                        <div class="workflow-step-info">
+                                                            <span class="workflow-step-title">Aguardando Assinaturas</span>
+                                                            <span class="workflow-step-date">Pendente</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="workflow-connector"></div>
+                                                    <div class="workflow-step">
+                                                        <div class="workflow-step-icon">
+                                                            <span>4</span>
+                                                        </div>
+                                                        <div class="workflow-step-info">
+                                                            <span class="workflow-step-title">Publicada</span>
+                                                            <span class="workflow-step-date">Pendente</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="workflow-actions mt-3">
+                                                    <button class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-arrow-right me-1"></i>Avançar para Assinaturas
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
                                             <div class="ata-editor">
                                                 <div class="ata-toolbar">
                                                     <button class="ata-toolbar-btn" title="Negrito"><i class="bi bi-type-bold"></i></button>
@@ -603,6 +682,14 @@
                                                     <button class="ata-toolbar-btn" title="Link"><i class="bi bi-link-45deg"></i></button>
                                                     <button class="ata-toolbar-btn" title="Imagem"><i class="bi bi-image"></i></button>
                                                     <button class="ata-toolbar-btn" title="Tabela"><i class="bi bi-table"></i></button>
+                                                    <span class="ata-toolbar-divider"></span>
+                                                    <!-- NOVO: Botão Criar Ação -->
+                                                    <button class="ata-toolbar-btn action-btn" id="btnCriarAcao" title="Criar Ação a partir do texto selecionado" data-bs-toggle="modal" data-bs-target="#criarAcaoModal">
+                                                        <i class="bi bi-lightning-charge-fill"></i>
+                                                    </button>
+                                                    <button class="ata-toolbar-btn" id="btnHistorico" title="Histórico de Versões" data-bs-toggle="modal" data-bs-target="#historicoModal">
+                                                        <i class="bi bi-clock-history"></i>
+                                                    </button>
                                                 </div>
                                                 
                                                 <div class="ata-content" contenteditable="true">
@@ -640,7 +727,15 @@
                                             
                                             <!-- Assinaturas -->
                                             <div class="assinaturas-section">
-                                                <h5 class="pauta-title mb-4">Assinaturas</h5>
+                                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                                    <h5 class="pauta-title mb-0">Assinaturas</h5>
+                                                    <div class="assinaturas-progress">
+                                                        <span class="fw-semibold text-primary">2 de 4</span>
+                                                        <div class="progress" style="width: 100px; height: 6px;">
+                                                            <div class="progress-bar bg-primary" style="width: 50%"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="assinaturas-grid">
                                                     <div class="assinatura-card">
                                                         <div class="assinatura-status assinado">
@@ -648,7 +743,11 @@
                                                         </div>
                                                         <div class="assinatura-info">
                                                             <span class="assinatura-nome">Maria Silva</span>
-                                                            <span class="assinatura-data">Assinado em 28/01/2025 16:45</span>
+                                                            <span class="assinatura-cargo">Presidente do Conselho</span>
+                                                            <span class="assinatura-data">
+                                                                <i class="bi bi-check-circle-fill text-success me-1"></i>
+                                                                Assinado em 28/01/2025 16:45
+                                                            </span>
                                                         </div>
                                                     </div>
                                                     <div class="assinatura-card">
@@ -657,32 +756,53 @@
                                                         </div>
                                                         <div class="assinatura-info">
                                                             <span class="assinatura-nome">João Santos</span>
-                                                            <span class="assinatura-data">Assinado em 28/01/2025 17:02</span>
+                                                            <span class="assinatura-cargo">Diretor Financeiro</span>
+                                                            <span class="assinatura-data">
+                                                                <i class="bi bi-check-circle-fill text-success me-1"></i>
+                                                                Assinado em 28/01/2025 17:02
+                                                            </span>
                                                         </div>
                                                     </div>
-                                                    <div class="assinatura-card">
+                                                    <div class="assinatura-card pendente-hover">
                                                         <div class="assinatura-status pendente">
                                                             <i class="bi bi-hourglass-split"></i>
                                                         </div>
                                                         <div class="assinatura-info">
                                                             <span class="assinatura-nome">Ana Costa</span>
-                                                            <span class="assinatura-data">Aguardando assinatura</span>
+                                                            <span class="assinatura-cargo">Secretária</span>
+                                                            <span class="assinatura-data">
+                                                                <i class="bi bi-clock text-warning me-1"></i>
+                                                                Aguardando há 2 dias
+                                                            </span>
                                                         </div>
+                                                        <button class="btn btn-sm btn-outline-warning nudge-btn" title="Enviar lembrete">
+                                                            <i class="bi bi-bell"></i>
+                                                        </button>
                                                     </div>
-                                                    <div class="assinatura-card">
+                                                    <div class="assinatura-card pendente-hover">
                                                         <div class="assinatura-status pendente">
                                                             <i class="bi bi-hourglass-split"></i>
                                                         </div>
                                                         <div class="assinatura-info">
                                                             <span class="assinatura-nome">Clara Mendes</span>
-                                                            <span class="assinatura-data">Aguardando assinatura</span>
+                                                            <span class="assinatura-cargo">Conselheira</span>
+                                                            <span class="assinatura-data">
+                                                                <i class="bi bi-clock text-warning me-1"></i>
+                                                                Aguardando há 2 dias
+                                                            </span>
                                                         </div>
+                                                        <button class="btn btn-sm btn-outline-warning nudge-btn" title="Enviar lembrete">
+                                                            <i class="bi bi-bell"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                                 
-                                                <div class="mt-4">
+                                                <div class="mt-4 d-flex gap-2">
                                                     <button class="btn btn-primary">
                                                         <i class="bi bi-send me-2"></i>Solicitar Assinaturas
+                                                    </button>
+                                                    <button class="btn btn-outline-warning">
+                                                        <i class="bi bi-bell-fill me-2"></i>Lembrar Pendentes
                                                     </button>
                                                 </div>
                                             </div>
@@ -784,35 +904,74 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Documentos -->
+                                <!-- Documentos com Analytics de Leitura -->
                                 <div class="sidebar-card">
-                                    <h6 class="sidebar-card-title">Documentos Anexos</h6>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h6 class="sidebar-card-title mb-0">Documentos Anexos</h6>
+                                        <button class="btn btn-sm btn-link p-0 text-primary" data-bs-toggle="modal" data-bs-target="#modalAnalyticsLeitura" title="Ver analytics de leitura">
+                                            <i class="bi bi-bar-chart-line"></i>
+                                        </button>
+                                    </div>
                                     <div class="d-flex flex-column gap-2">
-                                        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none p-2 rounded hover-bg">
+                                        <a href="#" class="documento-anexo-item">
                                             <i class="bi bi-file-earmark-pdf text-danger fs-5"></i>
                                             <div class="flex-grow-1">
                                                 <div class="fw-medium text-dark">Relatório Q4-2024.pdf</div>
-                                                <small class="text-muted">2.4 MB</small>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <small class="text-muted">2.4 MB</small>
+                                                    <span class="leitura-badge lido-todos">
+                                                        <i class="bi bi-eye-fill"></i> 4/4
+                                                    </span>
+                                                </div>
                                             </div>
                                             <i class="bi bi-download text-muted"></i>
                                         </a>
-                                        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none p-2 rounded hover-bg">
+                                        <a href="#" class="documento-anexo-item">
                                             <i class="bi bi-file-earmark-excel text-success fs-5"></i>
                                             <div class="flex-grow-1">
                                                 <div class="fw-medium text-dark">Orçamento 2025.xlsx</div>
-                                                <small class="text-muted">856 KB</small>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <small class="text-muted">856 KB</small>
+                                                    <span class="leitura-badge lido-parcial">
+                                                        <i class="bi bi-eye"></i> 2/4
+                                                    </span>
+                                                </div>
                                             </div>
                                             <i class="bi bi-download text-muted"></i>
                                         </a>
-                                        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none p-2 rounded hover-bg">
+                                        <a href="#" class="documento-anexo-item">
                                             <i class="bi bi-file-earmark-word text-primary fs-5"></i>
                                             <div class="flex-grow-1">
                                                 <div class="fw-medium text-dark">Ata Anterior.docx</div>
-                                                <small class="text-muted">124 KB</small>
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <small class="text-muted">124 KB</small>
+                                                    <span class="leitura-badge nao-lido">
+                                                        <i class="bi bi-eye-slash"></i> 0/4
+                                                    </span>
+                                                </div>
                                             </div>
                                             <i class="bi bi-download text-muted"></i>
                                         </a>
                                     </div>
+                                    
+                                    <!-- Resumo de leitura -->
+                                    <div class="leitura-resumo mt-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <small class="text-muted">Leitura geral dos anexos</small>
+                                            <small class="fw-semibold text-primary">50%</small>
+                                        </div>
+                                        <div class="progress" style="height: 6px;">
+                                            <div class="progress-bar bg-success" style="width: 33%" title="1 documento lido por todos"></div>
+                                            <div class="progress-bar bg-warning" style="width: 33%" title="1 documento lido parcialmente"></div>
+                                            <div class="progress-bar bg-danger" style="width: 34%" title="1 documento não lido"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-1">
+                                            <small class="text-success"><i class="bi bi-circle-fill" style="font-size: 6px;"></i> Completo</small>
+                                            <small class="text-warning"><i class="bi bi-circle-fill" style="font-size: 6px;"></i> Parcial</small>
+                                            <small class="text-danger"><i class="bi bi-circle-fill" style="font-size: 6px;"></i> Pendente</small>
+                                        </div>
+                                    </div>
+                                    
                                     <button class="btn btn-sm btn-outline-primary w-100 mt-3">
                                         <i class="bi bi-upload me-2"></i>Anexar Documento
                                     </button>
@@ -822,6 +981,456 @@
                     </div>
                 </div>
             </main>
+        </div>
+    </div>
+
+    <!-- Modal Analytics de Leitura -->
+    <div class="modal fade" id="modalAnalyticsLeitura" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-bar-chart-line me-2"></i>Analytics de Leitura
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Tabela de Analytics -->
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Documento</th>
+                                    <th>Maria Silva</th>
+                                    <th>João Santos</th>
+                                    <th>Ana Costa</th>
+                                    <th>Carlos Mendes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
+                                            <span>Relatório Q4-2024.pdf</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-success-subtle text-success" title="Lido em 27/12 às 10:30">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-success-subtle text-success" title="Lido em 27/12 às 11:45">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-success-subtle text-success" title="Lido em 27/12 às 14:20">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-success-subtle text-success" title="Lido em 27/12 às 16:00">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-file-earmark-excel text-success"></i>
+                                            <span>Orçamento 2025.xlsx</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-success-subtle text-success" title="Lido em 27/12 às 10:32">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-success-subtle text-success" title="Lido em 27/12 às 11:50">
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-warning-subtle text-warning" title="Não lido ainda">
+                                            <i class="bi bi-clock"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-warning-subtle text-warning" title="Não lido ainda">
+                                            <i class="bi bi-clock"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <i class="bi bi-file-earmark-word text-primary"></i>
+                                            <span>Ata Anterior.docx</span>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-warning-subtle text-warning" title="Não lido ainda">
+                                            <i class="bi bi-clock"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-warning-subtle text-warning" title="Não lido ainda">
+                                            <i class="bi bi-clock"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-warning-subtle text-warning" title="Não lido ainda">
+                                            <i class="bi bi-clock"></i>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-warning-subtle text-warning" title="Não lido ainda">
+                                            <i class="bi bi-clock"></i>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Resumo por participante -->
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="analytics-participant-card">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="avatar-sm bg-primary text-white rounded-circle d-flex align-items-center justify-content-center">MS</div>
+                                    <strong>Maria Silva</strong>
+                                </div>
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-success" style="width: 66%"></div>
+                                </div>
+                                <small class="text-muted">2 de 3 documentos lidos</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="analytics-participant-card">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="avatar-sm bg-info text-white rounded-circle d-flex align-items-center justify-content-center">JS</div>
+                                    <strong>João Santos</strong>
+                                </div>
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-success" style="width: 66%"></div>
+                                </div>
+                                <small class="text-muted">2 de 3 documentos lidos</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="analytics-participant-card">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="avatar-sm bg-success text-white rounded-circle d-flex align-items-center justify-content-center">AC</div>
+                                    <strong>Ana Costa</strong>
+                                </div>
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" style="width: 33%"></div>
+                                </div>
+                                <small class="text-muted">1 de 3 documentos lidos</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="analytics-participant-card">
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <div class="avatar-sm bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center">CM</div>
+                                    <strong>Carlos Mendes</strong>
+                                </div>
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar bg-warning" style="width: 33%"></div>
+                                </div>
+                                <small class="text-muted">1 de 3 documentos lidos</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary">
+                        <i class="bi bi-envelope me-2"></i>Lembrar Pendentes
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Criar Ação -->
+    <div class="modal fade modal-acao" id="modalCriarAcao" tabindex="-1" aria-labelledby="modalCriarAcaoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalCriarAcaoLabel">
+                        <i class="bi bi-clipboard-plus me-2"></i>Criar Ação
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Texto Selecionado -->
+                    <div class="texto-selecionado" id="textoSelecionadoPreview">
+                        <i class="bi bi-quote me-2"></i>
+                        <span id="textoSelecionadoConteudo">Selecione um trecho do texto da ata para criar uma ação.</span>
+                    </div>
+
+                    <form id="formCriarAcao">
+                        <!-- O que -->
+                        <div class="mb-4">
+                            <label class="form-label form-label-icon">
+                                <i class="bi bi-card-text"></i>
+                                O que? <span class="text-danger">*</span>
+                            </label>
+                            <textarea class="form-control" id="acaoDescricao" rows="3" 
+                                placeholder="Descreva a ação a ser realizada..." required></textarea>
+                        </div>
+
+                        <!-- Quem -->
+                        <div class="mb-4">
+                            <label class="form-label form-label-icon">
+                                <i class="bi bi-person"></i>
+                                Quem? <span class="text-danger">*</span>
+                            </label>
+                            <select class="form-select" id="acaoResponsavel" required>
+                                <option value="">Selecione o responsável...</option>
+                                <option value="maria">Maria Silva - Presidente do Conselho</option>
+                                <option value="joao">João Santos - Diretor Financeiro</option>
+                                <option value="ana">Ana Costa - Secretária</option>
+                                <option value="carlos">Carlos Mendes - Conselheiro</option>
+                                <option value="clara">Clara Mendes - Conselheira</option>
+                            </select>
+                        </div>
+
+                        <!-- Quando -->
+                        <div class="mb-4">
+                            <label class="form-label form-label-icon">
+                                <i class="bi bi-calendar-event"></i>
+                                Quando? <span class="text-danger">*</span>
+                            </label>
+                            <input type="date" class="form-control" id="acaoPrazo" required>
+                        </div>
+
+                        <!-- Prioridade -->
+                        <div class="mb-4">
+                            <label class="form-label form-label-icon">
+                                <i class="bi bi-flag"></i>
+                                Prioridade
+                            </label>
+                            <div class="d-flex gap-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prioridade" id="prioridadeBaixa" value="baixa">
+                                    <label class="form-check-label text-success" for="prioridadeBaixa">
+                                        <i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Baixa
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prioridade" id="prioridadeMedia" value="media" checked>
+                                    <label class="form-check-label text-warning" for="prioridadeMedia">
+                                        <i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Média
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="prioridade" id="prioridadeAlta" value="alta">
+                                    <label class="form-check-label text-danger" for="prioridadeAlta">
+                                        <i class="bi bi-circle-fill me-1" style="font-size: 8px;"></i> Alta
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg me-2"></i>Cancelar
+                    </button>
+                    <button type="button" class="btn btn-primary" id="btnSalvarAcao">
+                        <i class="bi bi-check-lg me-2"></i>Criar Ação
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nudge/Lembrete -->
+    <div class="modal fade" id="modalNudge" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning text-dark">
+                    <h5 class="modal-title">
+                        <i class="bi bi-bell-fill me-2"></i>Enviar Lembrete
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="mb-3">Enviar lembrete para:</p>
+                    <div class="d-flex align-items-center justify-content-center gap-2 mb-3">
+                        <div class="avatar-sm bg-primary text-white rounded-circle d-flex align-items-center justify-content-center">
+                            <span id="nudgeAvatarInicial">AC</span>
+                        </div>
+                        <strong id="nudgeNome">Ana Costa</strong>
+                    </div>
+                    <p class="text-muted small">Um e-mail de lembrete será enviado solicitando a assinatura da ata.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning">
+                        <i class="bi bi-send me-2"></i>Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Histórico de Versões -->
+    <div class="modal fade" id="historicoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-clock-history me-2"></i>Histórico de Versões
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Timeline de Versões -->
+                        <div class="col-md-5">
+                            <h6 class="mb-3">Versões Salvas</h6>
+                            <div class="versoes-timeline">
+                                <div class="versao-item atual">
+                                    <div class="versao-header">
+                                        <span class="versao-numero">
+                                            <span class="badge bg-success me-1">Atual</span> v3.2
+                                        </span>
+                                        <span class="versao-data">Hoje, 16:45</span>
+                                    </div>
+                                    <div class="versao-autor">
+                                        <i class="bi bi-person-circle"></i>
+                                        Maria Silva
+                                    </div>
+                                    <div class="versao-changes">
+                                        <div class="versao-change added">
+                                            <i class="bi bi-plus-circle-fill"></i>
+                                            Adicionado item sobre orçamento
+                                        </div>
+                                        <div class="versao-change modified">
+                                            <i class="bi bi-pencil-fill"></i>
+                                            Corrigido texto do quórum
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="versao-item">
+                                    <div class="versao-header">
+                                        <span class="versao-numero">v3.1</span>
+                                        <span class="versao-data">Hoje, 15:30</span>
+                                    </div>
+                                    <div class="versao-autor">
+                                        <i class="bi bi-person-circle"></i>
+                                        João Santos
+                                    </div>
+                                    <div class="versao-changes">
+                                        <div class="versao-change modified">
+                                            <i class="bi bi-pencil-fill"></i>
+                                            Alteração na conclusão
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="versao-item">
+                                    <div class="versao-header">
+                                        <span class="versao-numero">v3.0</span>
+                                        <span class="versao-data">Hoje, 14:20</span>
+                                    </div>
+                                    <div class="versao-autor">
+                                        <i class="bi bi-person-circle"></i>
+                                        Maria Silva
+                                    </div>
+                                    <div class="versao-changes">
+                                        <div class="versao-change added">
+                                            <i class="bi bi-plus-circle-fill"></i>
+                                            Criação inicial da ata
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="versao-item">
+                                    <div class="versao-header">
+                                        <span class="versao-numero">v2.0</span>
+                                        <span class="versao-data">27/01/2025, 10:15</span>
+                                    </div>
+                                    <div class="versao-autor">
+                                        <i class="bi bi-person-circle"></i>
+                                        Ana Costa
+                                    </div>
+                                    <div class="versao-changes">
+                                        <div class="versao-change removed">
+                                            <i class="bi bi-dash-circle-fill"></i>
+                                            Removido parágrafo duplicado
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Diff Visual -->
+                        <div class="col-md-7">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="mb-0">Comparação de Versões</h6>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-secondary active">v3.1 → v3.2</button>
+                                    <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#">v3.0 → v3.1</a></li>
+                                        <li><a class="dropdown-item" href="#">v2.0 → v3.0</a></li>
+                                        <li><a class="dropdown-item" href="#">v1.0 → v2.0</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="diff-container">
+                                <div class="diff-line unchanged">Aos vinte e oito dias do mês de janeiro de 2025,</div>
+                                <div class="diff-line unchanged">às 14h00min, reuniram-se os membros do Conselho de</div>
+                                <div class="diff-line unchanged">Administração da Empresa Mirador S.A., na Sala de</div>
+                                <div class="diff-line unchanged">Reuniões Principal.</div>
+                                <div class="diff-line unchanged">&nbsp;</div>
+                                <div class="diff-line removed">- Verificou-se o quorum necessário para deliberação.</div>
+                                <div class="diff-line added">+ Verificou-se o quórum mínimo necessário para</div>
+                                <div class="diff-line added">+ deliberação, conforme estatuto social.</div>
+                                <div class="diff-line unchanged">&nbsp;</div>
+                                <div class="diff-line unchanged">Foram apresentados os seguintes pontos:</div>
+                                <div class="diff-line unchanged">&nbsp;</div>
+                                <div class="diff-line added">+ 4. APROVAÇÃO DO ORÇAMENTO PARA 2025</div>
+                                <div class="diff-line added">+ Foi apresentada a proposta orçamentária para o</div>
+                                <div class="diff-line added">+ exercício de 2025, totalizando R$ 15.000.000,00.</div>
+                            </div>
+                            
+                            <div class="d-flex gap-3 mt-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-success-subtle text-success">+ Adicionado</span>
+                                    <small class="text-muted">3 linhas</small>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge bg-danger-subtle text-danger">- Removido</span>
+                                    <small class="text-muted">1 linha</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-outline-primary">
+                        <i class="bi bi-arrow-counterclockwise me-2"></i>Restaurar v3.1
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-download me-2"></i>Exportar Versão
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -878,6 +1487,355 @@
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
             return new bootstrap.Tooltip(tooltipTriggerEl);
         });
+        
+        // =============================================
+        // Criar Ação a partir do texto selecionado
+        // =============================================
+        const btnCriarAcao = document.getElementById('btnCriarAcao');
+        const modalCriarAcao = new bootstrap.Modal(document.getElementById('modalCriarAcao'));
+        const textoSelecionadoConteudo = document.getElementById('textoSelecionadoConteudo');
+        const acaoDescricao = document.getElementById('acaoDescricao');
+        
+        // Captura texto selecionado no editor
+        let textoSelecionado = '';
+        
+        document.querySelector('.ata-content')?.addEventListener('mouseup', function() {
+            const selection = window.getSelection();
+            if (selection.toString().trim().length > 0) {
+                textoSelecionado = selection.toString().trim();
+            }
+        });
+        
+        btnCriarAcao?.addEventListener('click', function() {
+            if (textoSelecionado) {
+                textoSelecionadoConteudo.textContent = '"' + textoSelecionado + '"';
+                acaoDescricao.value = textoSelecionado;
+            } else {
+                textoSelecionadoConteudo.textContent = 'Nenhum texto selecionado. Você pode descrever a ação manualmente.';
+                acaoDescricao.value = '';
+            }
+            
+            // Define prazo padrão para 7 dias
+            const hoje = new Date();
+            hoje.setDate(hoje.getDate() + 7);
+            document.getElementById('acaoPrazo').value = hoje.toISOString().split('T')[0];
+            
+            modalCriarAcao.show();
+        });
+        
+        // Salvar ação
+        document.getElementById('btnSalvarAcao')?.addEventListener('click', function() {
+            const descricao = document.getElementById('acaoDescricao').value;
+            const responsavel = document.getElementById('acaoResponsavel').value;
+            const prazo = document.getElementById('acaoPrazo').value;
+            const prioridade = document.querySelector('input[name="prioridade"]:checked')?.value;
+            
+            if (!descricao || !responsavel || !prazo) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            // Aqui o PHP faria o salvamento - por enquanto só mostra feedback
+            console.log('Ação criada:', { descricao, responsavel, prazo, prioridade, textoOrigem: textoSelecionado });
+            
+            // Feedback visual
+            modalCriarAcao.hide();
+            
+            // Reset form
+            document.getElementById('formCriarAcao').reset();
+            textoSelecionado = '';
+            
+            // Mostrar toast de sucesso
+            showToast('Ação criada com sucesso!', 'success');
+        });
+        
+        // =============================================
+        // Botões de Nudge (Lembrete)
+        // =============================================
+        const modalNudge = new bootstrap.Modal(document.getElementById('modalNudge'));
+        
+        document.querySelectorAll('.nudge-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.assinatura-card');
+                const nome = card.querySelector('.assinatura-nome').textContent;
+                const iniciais = nome.split(' ').map(n => n[0]).join('').substring(0, 2);
+                
+                document.getElementById('nudgeNome').textContent = nome;
+                document.getElementById('nudgeAvatarInicial').textContent = iniciais;
+                
+                modalNudge.show();
+            });
+        });
+        
+        // Botão "Lembrar Pendentes" - envia para todos pendentes
+        document.querySelector('.btn-outline-warning:not(.nudge-btn)')?.addEventListener('click', function() {
+            const pendentes = document.querySelectorAll('.assinatura-card.pendente-hover .assinatura-nome');
+            if (pendentes.length > 0) {
+                const nomes = Array.from(pendentes).map(p => p.textContent).join(', ');
+                if (confirm(`Enviar lembrete para: ${nomes}?`)) {
+                    showToast(`Lembretes enviados para ${pendentes.length} participante(s)!`, 'success');
+                }
+            }
+        });
+        
+        // =============================================
+        // Workflow Stepper - Avançar Status
+        // =============================================
+        document.querySelectorAll('.workflow-step').forEach(step => {
+            step.addEventListener('click', function() {
+                if (this.classList.contains('active') || this.classList.contains('completed')) {
+                    return;
+                }
+                
+                // Encontra o step ativo atual
+                const currentActive = document.querySelector('.workflow-step.active');
+                const allSteps = Array.from(document.querySelectorAll('.workflow-step'));
+                const currentIndex = allSteps.indexOf(currentActive);
+                const clickedIndex = allSteps.indexOf(this);
+                
+                // Só permite avançar para o próximo step
+                if (clickedIndex === currentIndex + 1) {
+                    currentActive.classList.remove('active');
+                    currentActive.classList.add('completed');
+                    
+                    // Atualiza connector anterior
+                    const connectors = document.querySelectorAll('.workflow-connector');
+                    if (connectors[currentIndex]) {
+                        connectors[currentIndex].classList.add('completed');
+                    }
+                    
+                    this.classList.add('active');
+                    
+                    showToast('Status da ata atualizado!', 'info');
+                }
+            });
+        });
+        
+        // =============================================
+        // Toast Helper
+        // =============================================
+        function showToast(message, type = 'success') {
+            // Cria container de toasts se não existir
+            let toastContainer = document.getElementById('toastContainer');
+            if (!toastContainer) {
+                toastContainer = document.createElement('div');
+                toastContainer.id = 'toastContainer';
+                toastContainer.className = 'toast-container position-fixed bottom-0 end-0 p-3';
+                toastContainer.style.zIndex = '9999';
+                document.body.appendChild(toastContainer);
+            }
+            
+            const bgClass = type === 'success' ? 'bg-success' : type === 'info' ? 'bg-info' : 'bg-warning';
+            const icon = type === 'success' ? 'check-circle-fill' : type === 'info' ? 'info-circle-fill' : 'exclamation-circle-fill';
+            
+            const toastHTML = `
+                <div class="toast align-items-center text-white ${bgClass} border-0" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            <i class="bi bi-${icon} me-2"></i>${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+            const toastEl = toastContainer.lastElementChild;
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+            
+            // Remove após esconder
+            toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+        }
+        
+        // =============================================
+        // Modo Apresentação (Fullscreen)
+        // =============================================
+        const btnModoApresentacao = document.getElementById('btnModoApresentacao');
+        
+        // Criar controles de apresentação
+        const apresentacaoControls = document.createElement('div');
+        apresentacaoControls.className = 'apresentacao-controls';
+        apresentacaoControls.innerHTML = `
+            <button class="btn-nav-prev" title="Item anterior">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <span class="apresentacao-page">Item 1 de 5</span>
+            <button class="btn-nav-next" title="Próximo item">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.2);"></div>
+            <button class="btn-sair-apresentacao">
+                <i class="bi bi-x-lg me-1"></i>Sair
+            </button>
+        `;
+        document.body.appendChild(apresentacaoControls);
+        
+        btnModoApresentacao?.addEventListener('click', function() {
+            document.body.classList.add('modo-apresentacao');
+            
+            // Entrar em fullscreen
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            }
+            
+            showToast('Modo Apresentação ativado. Pressione ESC para sair.', 'info');
+        });
+        
+        // Sair do modo apresentação
+        document.querySelector('.btn-sair-apresentacao')?.addEventListener('click', function() {
+            document.body.classList.remove('modo-apresentacao');
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        });
+        
+        // Sair com ESC
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement) {
+                document.body.classList.remove('modo-apresentacao');
+            }
+        });
+        
+        // =============================================
+        // Cronômetro de Tópicos
+        // =============================================
+        let cronometroInterval = null;
+        let tempoRestante = 0;
+        let tempoTotal = 0;
+        let cronometroAtivo = null;
+        
+        // Criar overlay e modal do cronômetro
+        const cronometroOverlay = document.createElement('div');
+        cronometroOverlay.className = 'cronometro-overlay';
+        document.body.appendChild(cronometroOverlay);
+        
+        const cronometroModal = document.createElement('div');
+        cronometroModal.className = 'cronometro-modal';
+        cronometroModal.innerHTML = `
+            <div class="cronometro-titulo">Tempo restante para</div>
+            <div class="cronometro-item" id="cronometroItem">Item da Pauta</div>
+            <div class="cronometro-display" id="cronometroDisplay">00:00</div>
+            <div class="cronometro-progress">
+                <div class="cronometro-progress-bar" id="cronometroProgressBar"></div>
+            </div>
+            <div class="cronometro-controls">
+                <button class="btn-play" id="cronometroPlay" title="Iniciar">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+                <button class="btn-pause" id="cronometroPause" title="Pausar" style="display: none;">
+                    <i class="bi bi-pause-fill"></i>
+                </button>
+                <button class="btn-stop" id="cronometroStop" title="Parar">
+                    <i class="bi bi-stop-fill"></i>
+                </button>
+            </div>
+            <button class="btn btn-link mt-4" id="cronometroFechar">Fechar</button>
+        `;
+        document.body.appendChild(cronometroModal);
+        
+        // Event listeners para cronômetro
+        document.querySelectorAll('.btn-cronometro').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const trigger = this.closest('.cronometro-trigger');
+                const tempo = parseInt(trigger.dataset.tempo) || 10;
+                const itemTitle = this.closest('.pauta-item-content').querySelector('.pauta-item-title').textContent;
+                
+                tempoTotal = tempo * 60; // Converter para segundos
+                tempoRestante = tempoTotal;
+                cronometroAtivo = trigger;
+                
+                document.getElementById('cronometroItem').textContent = itemTitle;
+                atualizarDisplayCronometro();
+                
+                cronometroOverlay.classList.add('show');
+                cronometroModal.classList.add('show');
+            });
+        });
+        
+        document.getElementById('cronometroPlay')?.addEventListener('click', function() {
+            this.style.display = 'none';
+            document.getElementById('cronometroPause').style.display = 'flex';
+            iniciarCronometro();
+        });
+        
+        document.getElementById('cronometroPause')?.addEventListener('click', function() {
+            this.style.display = 'none';
+            document.getElementById('cronometroPlay').style.display = 'flex';
+            pausarCronometro();
+        });
+        
+        document.getElementById('cronometroStop')?.addEventListener('click', fecharCronometro);
+        document.getElementById('cronometroFechar')?.addEventListener('click', fecharCronometro);
+        cronometroOverlay.addEventListener('click', fecharCronometro);
+        
+        function iniciarCronometro() {
+            if (cronometroAtivo) {
+                cronometroAtivo.classList.add('ativo');
+            }
+            
+            cronometroInterval = setInterval(function() {
+                tempoRestante--;
+                atualizarDisplayCronometro();
+                
+                if (tempoRestante <= 0) {
+                    pausarCronometro();
+                    showToast('Tempo esgotado para este item!', 'warning');
+                    // Som de alerta (opcional)
+                    try {
+                        const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleQU0jNnj...');
+                        audio.play();
+                    } catch(e) {}
+                }
+            }, 1000);
+        }
+        
+        function pausarCronometro() {
+            if (cronometroInterval) {
+                clearInterval(cronometroInterval);
+                cronometroInterval = null;
+            }
+        }
+        
+        function fecharCronometro() {
+            pausarCronometro();
+            cronometroOverlay.classList.remove('show');
+            cronometroModal.classList.remove('show');
+            
+            if (cronometroAtivo) {
+                cronometroAtivo.classList.remove('ativo');
+                cronometroAtivo = null;
+            }
+            
+            document.getElementById('cronometroPlay').style.display = 'flex';
+            document.getElementById('cronometroPause').style.display = 'none';
+        }
+        
+        function atualizarDisplayCronometro() {
+            const minutos = Math.floor(tempoRestante / 60);
+            const segundos = tempoRestante % 60;
+            const display = document.getElementById('cronometroDisplay');
+            const progressBar = document.getElementById('cronometroProgressBar');
+            
+            display.textContent = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+            
+            const percentual = (tempoRestante / tempoTotal) * 100;
+            progressBar.style.width = percentual + '%';
+            
+            // Cores de alerta
+            display.classList.remove('warning', 'danger');
+            progressBar.classList.remove('warning', 'danger');
+            
+            if (percentual <= 10) {
+                display.classList.add('danger');
+                progressBar.classList.add('danger');
+            } else if (percentual <= 25) {
+                display.classList.add('warning');
+                progressBar.classList.add('warning');
+            }
+        }
     </script>
 </body>
 </html>

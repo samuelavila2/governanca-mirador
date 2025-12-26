@@ -2,9 +2,47 @@
  * MiraBoard - Sidebar Component
  * Componente reutilizável do menu lateral
  * Injeta o mesmo sidebar em todas as páginas
+ * Suporta diferentes perfis: admin, secretaria, conselheiro
  */
 
 const SidebarComponent = {
+    /**
+     * Configuração de permissões por perfil
+     */
+    permissions: {
+        admin: {
+            // Admin tem acesso a tudo
+            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
+                   'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'relatorios', 'configuracoes'],
+            userName: 'Admin Master',
+            userRole: 'Administrador',
+            avatarBg: '7C3AED' // Roxo
+        },
+        secretaria: {
+            // Secretária: sem Relatórios avançados, Configurações limitadas
+            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
+                   'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'configuracoes'],
+            userName: 'Maria Silva',
+            userRole: 'Secretária Executiva',
+            avatarBg: '059669' // Verde
+        },
+        conselheiro: {
+            // Conselheiro: acesso consultivo, sem Relatórios e Configurações
+            menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
+                   'obrigacoes', 'biblioteca', 'membros', 'mensagens'],
+            userName: 'João Conselheiro',
+            userRole: 'Conselheiro Deliberativo',
+            avatarBg: '2563EB' // Azul
+        }
+    },
+
+    /**
+     * Retorna o perfil atual
+     */
+    getCurrentProfile: function() {
+        return localStorage.getItem('miraboard_user_profile') || 'admin';
+    },
+
     /**
      * Inicializa o sidebar na página
      * @param {string} activePage - Nome da página ativa (ex: 'dashboard', 'reunioes')
@@ -18,6 +56,7 @@ const SidebarComponent = {
         
         sidebarContainer.innerHTML = this.render(activePage);
         this.bindEvents();
+        this.applyPermissions();
     },
     
     /**
@@ -26,9 +65,11 @@ const SidebarComponent = {
      * @returns {string} HTML do sidebar
      */
     render: function(activePage) {
-        const menuItems = this.getMenuItems();
+        const profile = this.getCurrentProfile();
+        const permissions = this.permissions[profile] || this.permissions.admin;
+        const menuItems = this.getMenuItems(profile);
         
-        return `
+        return \`
             <div class="sidebar-header">
                 <a href="dashboard.html" class="sidebar-brand">
                     <img src="../assets/img/logo-miraboard.png" alt="MiraBoard" class="sidebar-logo-img">
@@ -39,38 +80,40 @@ const SidebarComponent = {
             </div>
             
             <nav class="sidebar-menu">
-                ${this.renderMenuSection(menuItems.main, activePage)}
+                \${this.renderMenuSection(menuItems.main, activePage)}
                 
                 <div class="sidebar-divider"></div>
                 
                 <div class="sidebar-section-title" style="color: #9ca3af; font-size: 0.7rem; text-transform: uppercase; padding: 0 16px; margin-bottom: 8px;">Compliance EFPC</div>
                 
-                ${this.renderMenuSection(menuItems.compliance, activePage)}
+                \${this.renderMenuSection(menuItems.compliance, activePage)}
                 
                 <div class="sidebar-divider"></div>
                 
-                ${this.renderMenuSection(menuItems.settings, activePage)}
+                \${this.renderMenuSection(menuItems.settings, activePage)}
             </nav>
             
             <div class="sidebar-footer">
                 <div class="sidebar-user">
                     <div class="avatar avatar-md">
-                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                        <img src="https://ui-avatars.com/api/?name=\${encodeURIComponent(permissions.userName)}&background=\${permissions.avatarBg}&color=fff" alt="\${permissions.userName}">
                     </div>
                     <div class="sidebar-user-info">
-                        <span class="sidebar-user-name">Admin User</span>
-                        <span class="sidebar-user-role">Administrador</span>
+                        <span class="sidebar-user-name">\${permissions.userName}</span>
+                        <span class="sidebar-user-role">\${permissions.userRole}</span>
                     </div>
                 </div>
             </div>
-        `;
+        \`;
     },
     
     /**
-     * Retorna a estrutura do menu
+     * Retorna a estrutura do menu baseado no perfil
      */
-    getMenuItems: function() {
-        return {
+    getMenuItems: function(profile) {
+        const allowedMenus = this.permissions[profile]?.menu || this.permissions.admin.menu;
+        
+        const allItems = {
             main: [
                 { id: 'dashboard', href: 'dashboard.html', icon: 'bi-speedometer2', label: 'Dashboard' },
                 { id: 'calendario-consolidado', href: 'calendario-consolidado.html', icon: 'bi-calendar3', label: 'Calendário' },
@@ -90,12 +133,21 @@ const SidebarComponent = {
                 { id: 'configuracoes', href: 'configuracoes.html', icon: 'bi-gear', label: 'Configurações' }
             ]
         };
+        
+        // Filtrar itens baseado nas permissões
+        return {
+            main: allItems.main.filter(item => allowedMenus.includes(item.id)),
+            compliance: allItems.compliance.filter(item => allowedMenus.includes(item.id)),
+            settings: allItems.settings.filter(item => allowedMenus.includes(item.id))
+        };
     },
     
     /**
      * Renderiza uma seção do menu
      */
     renderMenuSection: function(items, activePage) {
+        if (items.length === 0) return '';
+        
         let html = '<ul class="sidebar-nav">';
         
         items.forEach(item => {
@@ -107,27 +159,66 @@ const SidebarComponent = {
                 const badgeStyle = item.badgeType === 'danger' ? 'style="background: #dc3545;"' : 
                                    item.badgeType === 'warning' ? 'class="sidebar-badge warning"' : 
                                    'class="sidebar-badge"';
-                badgeHtml = `<span ${badgeStyle}>${item.badge}</span>`;
+                badgeHtml = \`<span \${badgeStyle}>\${item.badge}</span>\`;
                 
                 // Corrigir para badges com style
                 if (item.badgeType === 'danger') {
-                    badgeHtml = `<span class="sidebar-badge" style="background: #dc3545;">${item.badge}</span>`;
+                    badgeHtml = \`<span class="sidebar-badge" style="background: #dc3545;">\${item.badge}</span>\`;
                 }
             }
             
-            html += `
+            html += \`
                 <li class="sidebar-nav-item">
-                    <a href="${item.href}" class="sidebar-nav-link${activeClass}">
-                        <i class="bi ${item.icon}"></i>
-                        <span>${item.label}</span>
-                        ${badgeHtml}
+                    <a href="\${item.href}" class="sidebar-nav-link\${activeClass}">
+                        <i class="bi \${item.icon}"></i>
+                        <span>\${item.label}</span>
+                        \${badgeHtml}
                     </a>
                 </li>
-            `;
+            \`;
         });
         
         html += '</ul>';
         return html;
+    },
+    
+    /**
+     * Aplica permissões de visibilidade de elementos na página
+     */
+    applyPermissions: function() {
+        const profile = this.getCurrentProfile();
+        
+        // Elementos que devem ser ocultados por perfil
+        // Usa atributos data-permission="admin" ou data-permission="admin,secretaria"
+        document.querySelectorAll('[data-permission]').forEach(el => {
+            const allowedProfiles = el.dataset.permission.split(',').map(p => p.trim());
+            if (!allowedProfiles.includes(profile)) {
+                el.style.display = 'none';
+            }
+        });
+        
+        // Elementos que devem ser ocultados para perfil específico
+        // Usa atributo data-hide-for="conselheiro" ou data-hide-for="conselheiro,secretaria"
+        document.querySelectorAll('[data-hide-for]').forEach(el => {
+            const hiddenProfiles = el.dataset.hideFor.split(',').map(p => p.trim());
+            if (hiddenProfiles.includes(profile)) {
+                el.style.display = 'none';
+            }
+        });
+
+        // Elementos read-only para conselheiro
+        if (profile === 'conselheiro') {
+            document.querySelectorAll('[data-readonly-for="conselheiro"]').forEach(el => {
+                if (el.tagName === 'BUTTON' || el.tagName === 'A') {
+                    el.classList.add('disabled');
+                    el.style.pointerEvents = 'none';
+                    el.style.opacity = '0.5';
+                }
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+                    el.disabled = true;
+                }
+            });
+        }
     },
     
     /**
@@ -159,6 +250,21 @@ const SidebarComponent = {
                 }
             }
         });
+    },
+
+    /**
+     * Helpers de verificação de perfil
+     */
+    isAdmin: function() {
+        return this.getCurrentProfile() === 'admin';
+    },
+    
+    isSecretaria: function() {
+        return this.getCurrentProfile() === 'secretaria';
+    },
+    
+    isConselheiro: function() {
+        return this.getCurrentProfile() === 'conselheiro';
     }
 };
 

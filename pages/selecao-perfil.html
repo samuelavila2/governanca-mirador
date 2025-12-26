@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Perfil - MiraBoard</title>
+    <link rel="icon" type="image/png" href="../assets/img/ico-miraboard.png">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #F5F7FA 0%, #E5E7EB 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: var(--spacing-4);
+        }
+
+        .profile-container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .profile-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-2xl);
+            padding: var(--spacing-10) var(--spacing-8);
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: var(--spacing-6);
+        }
+
+        .profile-logo-img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .profile-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .profile-subtitle {
+            font-size: var(--font-size-base);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-5);
+            margin-bottom: var(--spacing-6);
+        }
+
+        @media (max-width: 768px) {
+            .profiles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-option {
+            background: var(--color-white);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .profile-option:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .profile-option.admin:hover {
+            border-color: #8B5CF6;
+        }
+
+        .profile-option.secretaria:hover {
+            border-color: #10B981;
+        }
+
+        .profile-option.conselheiro:hover {
+            border-color: #3B82F6;
+        }
+
+        .profile-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-4);
+            font-size: 2rem;
+        }
+
+        .profile-option.admin .profile-icon {
+            background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+            color: white;
+        }
+
+        .profile-option.secretaria .profile-icon {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: white;
+        }
+
+        .profile-option.conselheiro .profile-icon {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: white;
+        }
+
+        .profile-name {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .profile-description {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .profile-badge {
+            display: inline-block;
+            padding: var(--spacing-1) var(--spacing-3);
+            border-radius: var(--border-radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            margin-top: var(--spacing-3);
+        }
+
+        .profile-option.admin .profile-badge {
+            background: #EDE9FE;
+            color: #7C3AED;
+        }
+
+        .profile-option.secretaria .profile-badge {
+            background: #D1FAE5;
+            color: #059669;
+        }
+
+        .profile-option.conselheiro .profile-badge {
+            background: #DBEAFE;
+            color: #2563EB;
+        }
+
+        .logout-link {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            margin-top: var(--spacing-4);
+        }
+
+        .logout-link:hover {
+            color: var(--color-primary);
+        }
+
+        .user-welcome {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-3);
+            margin-bottom: var(--spacing-6);
+            padding: var(--spacing-3) var(--spacing-4);
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            display: inline-flex;
+        }
+
+        .user-welcome .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .user-welcome-text {
+            text-align: left;
+        }
+
+        .user-welcome-text .name {
+            font-weight: var(--font-weight-semibold);
+            color: var(--text-primary);
+            font-size: var(--font-size-sm);
+        }
+
+        .user-welcome-text .email {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+
+        /* Background decoration */
+        .bg-decoration {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: var(--border-radius-full);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .bg-decoration-1 {
+            background: var(--color-primary);
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-decoration-2 {
+            background: var(--color-primary-dark);
+            bottom: -150px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Decorations -->
+    <div class="bg-decoration bg-decoration-1"></div>
+    <div class="bg-decoration bg-decoration-2"></div>
+
+    <div class="profile-container">
+        <div class="profile-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="../assets/img/preto_logo-miraboard.png" alt="MiraBoard" class="profile-logo-img">
+            </div>
+
+            <!-- User Welcome -->
+            <div class="user-welcome">
+                <img src="https://ui-avatars.com/api/?name=Usuario+Demo&background=E8681A&color=fff" alt="Usuário" class="avatar">
+                <div class="user-welcome-text">
+                    <div class="name">Olá, Usuário Demo</div>
+                    <div class="email">usuario@mirador.com.br</div>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h1 class="profile-title">Qual cenário deseja visualizar?</h1>
+            <p class="profile-subtitle">Selecione um perfil para navegar pela interface correspondente</p>
+
+            <!-- Profile Options -->
+            <div class="profiles-grid">
+                <!-- Admin Master -->
+                <a href="dashboard.html" class="profile-option admin" onclick="setUserProfile('admin')">
+                    <div class="profile-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <div class="profile-name">Admin Master</div>
+                    <div class="profile-description">
+                        Acesso total ao sistema. Gerencia usuários, permissões e todas as configurações.
+                    </div>
+                    <span class="profile-badge">Acesso Completo</span>
+                </a>
+
+                <!-- Secretária -->
+                <a href="dashboard.html" class="profile-option secretaria" onclick="setUserProfile('secretaria')">
+                    <div class="profile-icon">
+                        <i class="bi bi-person-workspace"></i>
+                    </div>
+                    <div class="profile-name">Secretária</div>
+                    <div class="profile-description">
+                        Gerencia reuniões, atas, documentos e organiza a agenda dos conselhos.
+                    </div>
+                    <span class="profile-badge">Operacional</span>
+                </a>
+
+                <!-- Conselheiro -->
+                <a href="dashboard.html" class="profile-option conselheiro" onclick="setUserProfile('conselheiro')">
+                    <div class="profile-icon">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+                    <div class="profile-name">Conselheiro</div>
+                    <div class="profile-description">
+                        Visualiza reuniões, assina atas, acompanha obrigações e documentos.
+                    </div>
+                    <span class="profile-badge">Consultivo</span>
+                </a>
+            </div>
+
+            <!-- Logout -->
+            <a href="../index.html" class="logout-link">
+                <i class="bi bi-box-arrow-left"></i>
+                Sair e voltar ao login
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function setUserProfile(profile) {
+            localStorage.setItem('miraboard_user_profile', profile);
+            
+            // Define nome do perfil para exibição
+            const profileNames = {
+                'admin': 'Admin Master',
+                'secretaria': 'Secretária',
+                'conselheiro': 'Conselheiro'
+            };
+            localStorage.setItem('miraboard_user_profile_name', profileNames[profile]);
+        }
+    </script>
+</body>
+</html>

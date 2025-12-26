@@ -411,6 +411,26 @@
                         </div>
                     </div>
                     
+                    <!-- Filtro Rápido por Perfil -->
+                    <div class="card mb-4" data-permission="admin,secretaria">
+                        <div class="card-body py-2">
+                            <div class="d-flex align-items-center gap-3">
+                                <span class="text-muted small">Filtrar por:</span>
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-secondary active">Todas</button>
+                                    <button class="btn btn-outline-secondary">Conselheiros</button>
+                                    <button class="btn btn-outline-secondary">Secretarias</button>
+                                    <button class="btn btn-outline-secondary">Sistema</button>
+                                </div>
+                                <div class="ms-auto" data-permission="admin">
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-megaphone me-1"></i>Comunicado Geral
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Tabs -->
                     <ul class="nav nav-tabs mb-4" id="mensagensTab" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -735,6 +755,7 @@
     <!-- Custom JS -->
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/sidebar.js"></script>
+    <script src="../assets/js/profile-bar.js"></script>
     <!-- Fake Actions -->
     <script src="../assets/js/fake-actions.js"></script>
     <script src="../assets/js/global-search.js"></script>

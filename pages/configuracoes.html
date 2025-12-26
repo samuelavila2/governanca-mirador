@@ -307,25 +307,25 @@
                 <div class="col-lg-3 mb-4">
                     <div class="config-nav">
                         <nav class="nav flex-column" id="configTabs" role="tablist">
-                            <a class="nav-link active" id="geral-tab" data-bs-toggle="tab" href="#geral" role="tab">
+                            <a class="nav-link active" id="geral-tab" data-bs-toggle="tab" href="#geral" role="tab" data-permission="admin">
                                 <i class="bi bi-sliders"></i> Geral
                             </a>
                             <a class="nav-link" id="perfil-tab" data-bs-toggle="tab" href="#perfil" role="tab">
                                 <i class="bi bi-person-circle"></i> Meu Perfil
                             </a>
-                            <a class="nav-link" id="usuarios-tab" data-bs-toggle="tab" href="#usuarios" role="tab">
+                            <a class="nav-link" id="usuarios-tab" data-bs-toggle="tab" href="#usuarios" role="tab" data-permission="admin">
                                 <i class="bi bi-people"></i> Usuários
                             </a>
                             <a class="nav-link" id="notificacoes-tab" data-bs-toggle="tab" href="#notificacoes" role="tab">
                                 <i class="bi bi-bell"></i> Notificações
                             </a>
-                            <a class="nav-link" id="seguranca-tab" data-bs-toggle="tab" href="#seguranca" role="tab">
+                            <a class="nav-link" id="seguranca-tab" data-bs-toggle="tab" href="#seguranca" role="tab" data-permission="admin">
                                 <i class="bi bi-shield-lock"></i> Segurança
                             </a>
-                            <a class="nav-link" id="integracao-tab" data-bs-toggle="tab" href="#integracao" role="tab">
+                            <a class="nav-link" id="integracao-tab" data-bs-toggle="tab" href="#integracao" role="tab" data-permission="admin">
                                 <i class="bi bi-plug"></i> Integrações
                             </a>
-                            <a class="nav-link" id="sistema-tab" data-bs-toggle="tab" href="#sistema" role="tab">
+                            <a class="nav-link" id="sistema-tab" data-bs-toggle="tab" href="#sistema" role="tab" data-permission="admin">
                                 <i class="bi bi-cpu"></i> Sistema
                             </a>
                         </nav>
@@ -1020,11 +1020,24 @@
     
     <!-- Sidebar Component -->
     <script src="../assets/js/sidebar.js"></script>
+    <script src="../assets/js/profile-bar.js"></script>
     
     <script>
         // Inicializar Sidebar
         document.addEventListener('DOMContentLoaded', function() {
             SidebarComponent.init('configuracoes');
+            
+            // Para não-admins, ativar "Meu Perfil" como padrão
+            const profile = localStorage.getItem('miraboard_user_profile') || 'admin';
+            if (profile !== 'admin') {
+                // Remover active da aba Geral
+                document.getElementById('geral-tab')?.classList.remove('active');
+                document.getElementById('geral')?.classList.remove('show', 'active');
+                
+                // Ativar aba Meu Perfil
+                document.getElementById('perfil-tab')?.classList.add('active');
+                document.getElementById('perfil')?.classList.add('show', 'active');
+            }
             
             // Toggle sidebar mobile
             const sidebarToggle = document.getElementById('sidebarToggle');

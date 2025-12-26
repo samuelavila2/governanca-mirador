@@ -56,7 +56,7 @@
                     <div class="dropdown">
                         <button class="header-action-btn position-relative" data-bs-toggle="dropdown" id="notificacoesSino">
                             <i class="bi bi-bell"></i>
-                            <span class="notification-badge">5</span>
+                            <span class="notification-badge" id="notificationCount">5</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end notification-dropdown" style="width: 380px;">
                             <div class="dropdown-header d-flex justify-content-between align-items-center py-3 px-3">
@@ -65,8 +65,9 @@
                             </div>
                             <div class="dropdown-divider m-0"></div>
                             
-                            <!-- Notificação Urgente - Obrigação -->
-                            <a class="dropdown-item notification-item unread py-3" href="obrigacoes.html">
+                            <!-- NOTIFICAÇÕES ADMIN/SECRETÁRIA - Operacionais -->
+                            <!-- Obrigação Vencendo (admin/secretaria) -->
+                            <a class="dropdown-item notification-item unread py-3" href="obrigacoes.html" data-permission="admin secretaria">
                                 <div class="notification-icon bg-danger-subtle">
                                     <i class="bi bi-exclamation-triangle-fill text-danger"></i>
                                 </div>
@@ -76,30 +77,8 @@
                                 </div>
                             </a>
                             
-                            <!-- Notificação Assinatura -->
-                            <a class="dropdown-item notification-item unread py-3" href="ata-detalhe.html">
-                                <div class="notification-icon bg-warning-subtle">
-                                    <i class="bi bi-pen text-warning"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <p class="mb-1">Sua assinatura é necessária na <strong>Ata do CD</strong></p>
-                                    <span class="notification-time">Há 2 horas</span>
-                                </div>
-                            </a>
-                            
-                            <!-- Notificação Reunião -->
-                            <a class="dropdown-item notification-item unread py-3" href="reuniao-detalhe.html">
-                                <div class="notification-icon bg-primary-subtle">
-                                    <i class="bi bi-calendar-event text-primary"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <p class="mb-1">Reunião do Conselho Deliberativo amanhã às 14h</p>
-                                    <span class="notification-time">Há 3 horas</span>
-                                </div>
-                            </a>
-                            
-                            <!-- Notificação Sucesso -->
-                            <a class="dropdown-item notification-item py-3" href="#">
+                            <!-- Documento Enviado (admin/secretaria) -->
+                            <a class="dropdown-item notification-item py-3" href="#" data-permission="admin secretaria">
                                 <div class="notification-icon bg-success-subtle">
                                     <i class="bi bi-check-circle-fill text-success"></i>
                                 </div>
@@ -109,14 +88,60 @@
                                 </div>
                             </a>
                             
-                            <!-- Notificação Normativa -->
-                            <a class="dropdown-item notification-item py-3" href="#">
+                            <!-- Nova Normativa (admin/secretaria) -->
+                            <a class="dropdown-item notification-item py-3" href="#" data-permission="admin secretaria">
                                 <div class="notification-icon bg-info-subtle">
                                     <i class="bi bi-journal-text text-info"></i>
                                 </div>
                                 <div class="notification-content">
                                     <p class="mb-1">Nova Instrução Normativa PREVIC nº 45/2025</p>
                                     <span class="notification-time">22/12/2025</span>
+                                </div>
+                            </a>
+                            
+                            <!-- NOTIFICAÇÕES CONSELHEIRO - Participação -->
+                            <!-- Assinatura Pendente (conselheiro) -->
+                            <a class="dropdown-item notification-item unread py-3" href="ata-detalhe.html" data-permission="conselheiro">
+                                <div class="notification-icon bg-warning-subtle">
+                                    <i class="bi bi-pen text-warning"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1"><strong>Sua assinatura é necessária</strong> na Ata do CD</p>
+                                    <span class="notification-time text-warning">Ação Requerida</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Lembrete de Reunião (conselheiro) -->
+                            <a class="dropdown-item notification-item unread py-3" href="reuniao-detalhe.html" data-permission="conselheiro">
+                                <div class="notification-icon bg-primary-subtle">
+                                    <i class="bi bi-calendar-event text-primary"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1"><strong>Reunião amanhã às 14h</strong> - Conselho Deliberativo</p>
+                                    <span class="notification-time">Confirme sua presença</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Novo Documento para Análise (conselheiro) -->
+                            <a class="dropdown-item notification-item py-3" href="biblioteca.html" data-permission="conselheiro">
+                                <div class="notification-icon bg-secondary-subtle">
+                                    <i class="bi bi-file-earmark-pdf text-secondary"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1">Novo documento disponível: <strong>Relatório Atuarial 2025</strong></p>
+                                    <span class="notification-time">Há 1 dia</span>
+                                </div>
+                            </a>
+                            
+                            <!-- NOTIFICAÇÕES GERAIS - Todos os perfis -->
+                            <!-- Reunião Agendada (todos) -->
+                            <a class="dropdown-item notification-item unread py-3" href="reuniao-detalhe.html">
+                                <div class="notification-icon bg-primary-subtle">
+                                    <i class="bi bi-calendar-event text-primary"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1">Reunião do Conselho Deliberativo amanhã às 14h</p>
+                                    <span class="notification-time">Há 3 horas</span>
                                 </div>
                             </a>
                             
@@ -152,15 +177,64 @@
                     <div class="page-header">
                         <div>
                             <h1 class="page-title">Dashboard</h1>
-                            <p class="page-subtitle">Bem-vindo de volta! Aqui está um resumo das suas atividades.</p>
+                            <p class="page-subtitle" id="dashboardSubtitle">Bem-vindo de volta! Aqui está um resumo das suas atividades.</p>
                         </div>
                         <div class="page-actions">
-                            <button class="btn btn-outline-secondary">
+                            <button class="btn btn-outline-secondary" data-permission="admin,secretaria">
                                 <i class="bi bi-download me-2"></i>Exportar
                             </button>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novaReuniaoModal">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novaReuniaoModal" data-hide-for="conselheiro">
                                 <i class="bi bi-plus-lg me-2"></i>Nova Reunião
                             </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Painel Conselheiro: Ações Rápidas -->
+                    <div class="card mb-4" data-permission="conselheiro" id="painelConselheiroAcoes">
+                        <div class="card-header" style="background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: white;">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-lightning-charge me-2"></i>Suas Pendências
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center p-3 bg-warning-subtle rounded-3">
+                                        <div class="me-3">
+                                            <i class="bi bi-pen-fill text-warning fs-3"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-warning">2 Atas</div>
+                                            <small class="text-muted">Aguardando sua assinatura</small>
+                                        </div>
+                                        <a href="atas.html" class="btn btn-warning btn-sm ms-auto">Assinar</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center p-3 bg-danger-subtle rounded-3">
+                                        <div class="me-3">
+                                            <i class="bi bi-check2-square text-danger fs-3"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-danger">3 Ações</div>
+                                            <small class="text-muted">Atribuídas a você</small>
+                                        </div>
+                                        <a href="acoes.html" class="btn btn-danger btn-sm ms-auto">Ver</a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="d-flex align-items-center p-3 bg-info-subtle rounded-3">
+                                        <div class="me-3">
+                                            <i class="bi bi-calendar-event text-info fs-3"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-info">1 Reunião</div>
+                                            <small class="text-muted">Próxima: 28/01</small>
+                                        </div>
+                                        <a href="reunioes.html" class="btn btn-info btn-sm ms-auto">Detalhes</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -713,8 +787,25 @@
     <!-- Custom JS -->
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/sidebar.js"></script>
+    <script src="../assets/js/profile-bar.js"></script>
     
     <script>
+        // Personalizar Dashboard por perfil
+        document.addEventListener('DOMContentLoaded', function() {
+            const profile = localStorage.getItem('miraboard_user_profile') || 'admin';
+            const subtitleEl = document.getElementById('dashboardSubtitle');
+            
+            const subtitles = {
+                admin: 'Visão geral do sistema. Gerencie usuários, configurações e monitore todas as atividades.',
+                secretaria: 'Bem-vinda! Gerencie reuniões, atas e mantenha o calendário organizado.',
+                conselheiro: 'Olá! Veja suas pendências, próximas reuniões e atas para assinar.'
+            };
+            
+            if (subtitleEl) {
+                subtitleEl.textContent = subtitles[profile] || subtitles.admin;
+            }
+        });
+        
         // Mural Collapse Toggle
         document.querySelector('[data-bs-target="#muralContent"]')?.addEventListener('click', function() {
             const chevron = document.getElementById('muralChevron');

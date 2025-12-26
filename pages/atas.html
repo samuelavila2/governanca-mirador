@@ -24,99 +24,8 @@
 </head>
 <body>
     <div class="app-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <a href="dashboard.html" class="sidebar-brand">
-                    <div class="sidebar-logo">
-                        <i class="bi bi-grid-3x3-gap-fill"></i>
-                    </div>
-                    <span class="sidebar-brand-text">MiraBoard</span>
-                </a>
-                <button class="sidebar-toggle d-lg-none" id="sidebarClose">
-                    <i class="bi bi-x-lg"></i>
-                </button>
-            </div>
-            
-            <nav class="sidebar-menu">
-                <ul class="sidebar-nav">
-                    <li class="sidebar-nav-item">
-                        <a href="dashboard.html" class="sidebar-nav-link">
-                            <i class="bi bi-speedometer2"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="calendario.html" class="sidebar-nav-link">
-                            <i class="bi bi-calendar3"></i>
-                            <span>Calendário</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="reunioes.html" class="sidebar-nav-link">
-                            <i class="bi bi-people"></i>
-                            <span>Reuniões</span>
-                            <span class="sidebar-badge">3</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="atas.html" class="sidebar-nav-link active">
-                            <i class="bi bi-file-text"></i>
-                            <span>Atas</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="acoes.html" class="sidebar-nav-link">
-                            <i class="bi bi-check2-square"></i>
-                            <span>Ações</span>
-                            <span class="sidebar-badge warning">5</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="documentos.html" class="sidebar-nav-link">
-                            <i class="bi bi-folder2-open"></i>
-                            <span>Documentos</span>
-                        </a>
-                    </li>
-                </ul>
-                
-                <div class="sidebar-divider"></div>
-                
-                <ul class="sidebar-nav">
-                    <li class="sidebar-nav-item">
-                        <a href="mensagens.html" class="sidebar-nav-link">
-                            <i class="bi bi-chat-dots"></i>
-                            <span>Mensagens</span>
-                            <span class="sidebar-badge">12</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="relatorios.html" class="sidebar-nav-link">
-                            <i class="bi bi-graph-up"></i>
-                            <span>Relatórios</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-nav-item">
-                        <a href="configuracoes.html" class="sidebar-nav-link">
-                            <i class="bi bi-gear"></i>
-                            <span>Configurações</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            
-            <div class="sidebar-footer">
-                <div class="sidebar-user">
-                    <div class="avatar avatar-md">
-                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
-                    </div>
-                    <div class="sidebar-user-info">
-                        <span class="sidebar-user-name">Admin User</span>
-                        <span class="sidebar-user-role">Administrador</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        <!-- Sidebar (injected via sidebar.js) -->
+        <aside class="sidebar" id="sidebar"></aside>
         
         <!-- Main Content Area -->
         <div class="main-wrapper">
@@ -553,16 +462,6 @@
     
     <!-- Custom JS -->
     <script src="../assets/js/main.js"></script>
-    
-    <script>
-        // Sidebar Toggle
-        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
-            document.querySelector('.sidebar').classList.toggle('show');
-        });
-        
-        document.getElementById('sidebarClose')?.addEventListener('click', function() {
-            document.querySelector('.sidebar').classList.remove('show');
-        });
-    </script>
+    <script src="../assets/js/sidebar.js"></script>
 </body>
 </html>

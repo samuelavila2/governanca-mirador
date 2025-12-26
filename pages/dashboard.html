@@ -1073,65 +1073,450 @@
         </main>
     </div>
     
-    <!-- Modal Nova Reunião -->
+    <!-- Modal Nova Reunião - Aprimorada -->
     <div class="modal fade" id="novaReuniaoModal" tabindex="-1" aria-labelledby="novaReuniaoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="novaReuniaoModalLabel">
-                        <i class="bi bi-plus-circle me-2"></i>Nova Reunião
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="border-radius: 16px; overflow: hidden;">
+                <!-- Header com gradiente -->
+                <div class="modal-header border-0" style="background: linear-gradient(135deg, #F97316 0%, #E8681A 100%); padding: 20px 24px;">
+                    <h5 class="modal-title text-white d-flex align-items-center gap-2" id="novaReuniaoModalLabel">
+                        <i class="bi bi-calendar-plus"></i>
+                        <span>Nova Reunião</span>
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <label for="tipoReuniao" class="form-label">Tipo de Reunião</label>
-                                <select class="form-select" id="tipoReuniao">
-                                    <option selected>Selecione o tipo...</option>
-                                    <option value="ordinaria">Reunião Ordinária</option>
-                                    <option value="extraordinaria">Reunião Extraordinária</option>
-                                    <option value="comite">Comitê</option>
-                                    <option value="assembleia">Assembleia</option>
-                                </select>
+                
+                <div class="modal-body p-4">
+                    <form id="formNovaReuniao">
+                        <!-- Seção: Informações Básicas -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small fw-semibold mb-3">
+                                <i class="bi bi-info-circle me-1"></i> Informações Básicas
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="tipoReuniao" class="form-label fw-medium">Tipo de Reunião <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="tipoReuniao" required>
+                                        <option value="" selected disabled>Selecione o tipo...</option>
+                                        <option value="ordinaria">📋 Reunião Ordinária</option>
+                                        <option value="extraordinaria">⚡ Reunião Extraordinária</option>
+                                        <option value="comite">👥 Comitê</option>
+                                        <option value="assembleia">🏛️ Assembleia Geral</option>
+                                        <option value="diretoria">💼 Reunião de Diretoria</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="orgaoReuniao" class="form-label fw-medium">Órgão <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="orgaoReuniao" required>
+                                        <option value="" selected disabled>Selecione o órgão...</option>
+                                        <option value="deliberativo">Conselho Deliberativo</option>
+                                        <option value="fiscal">Conselho Fiscal</option>
+                                        <option value="diretoria">Diretoria Executiva</option>
+                                        <option value="investimentos">Comitê de Investimentos</option>
+                                        <option value="auditoria">Comitê de Auditoria</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="tituloReuniao" class="form-label fw-medium">Título da Reunião <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="tituloReuniao" placeholder="Ex: 15ª Reunião Ordinária do Conselho Deliberativo" required>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <label for="tituloReuniao" class="form-label">Título da Reunião</label>
-                                <input type="text" class="form-control" id="tituloReuniao" placeholder="Ex: Reunião Ordinária do Conselho">
+                        </div>
+                        
+                        <!-- Seção: Data e Horário -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small fw-semibold mb-3">
+                                <i class="bi bi-clock me-1"></i> Data e Horário
+                            </h6>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="dataReuniao" class="form-label fw-medium">Data <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="dataReuniao" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="horaInicio" class="form-label fw-medium">Hora Início <span class="text-danger">*</span></label>
+                                    <input type="time" class="form-control" id="horaInicio" value="14:00" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="horaFim" class="form-label fw-medium">Hora Fim</label>
+                                    <input type="time" class="form-control" id="horaFim" value="16:00">
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <label for="dataReuniao" class="form-label">Data</label>
-                                <input type="date" class="form-control" id="dataReuniao">
+                        </div>
+                        
+                        <!-- Seção: Local / Videoconferência -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small fw-semibold mb-3">
+                                <i class="bi bi-geo-alt me-1"></i> Local da Reunião
+                            </h6>
+                            
+                            <!-- Toggle: Presencial ou Online -->
+                            <div class="btn-group w-100 mb-3" role="group" aria-label="Tipo de local">
+                                <input type="radio" class="btn-check" name="tipoLocal" id="localPresencial" value="presencial" checked>
+                                <label class="btn btn-outline-secondary" for="localPresencial">
+                                    <i class="bi bi-building me-1"></i> Presencial
+                                </label>
+                                <input type="radio" class="btn-check" name="tipoLocal" id="localOnline" value="online">
+                                <label class="btn btn-outline-secondary" for="localOnline">
+                                    <i class="bi bi-camera-video me-1"></i> Online
+                                </label>
+                                <input type="radio" class="btn-check" name="tipoLocal" id="localHibrido" value="hibrido">
+                                <label class="btn btn-outline-secondary" for="localHibrido">
+                                    <i class="bi bi-diagram-2 me-1"></i> Híbrido
+                                </label>
                             </div>
-                            <div class="col-md-3">
-                                <label for="horaInicio" class="form-label">Hora Início</label>
-                                <input type="time" class="form-control" id="horaInicio">
+                            
+                            <!-- Campo: Local Presencial -->
+                            <div id="campoPresencial">
+                                <label for="localFisico" class="form-label fw-medium">Endereço / Sala</label>
+                                <input type="text" class="form-control" id="localFisico" placeholder="Ex: Sala de Reuniões 3º andar - Sede">
                             </div>
-                            <div class="col-md-3">
-                                <label for="horaFim" class="form-label">Hora Fim</label>
-                                <input type="time" class="form-control" id="horaFim">
+                            
+                            <!-- Campo: Videoconferência (hidden by default) -->
+                            <div id="campoVideoconferencia" style="display: none;">
+                                <label class="form-label fw-medium">Plataforma de Videoconferência</label>
+                                <div class="video-platform-grid">
+                                    <div class="video-platform-option" data-platform="teams">
+                                        <div class="platform-icon" style="background: #5059C9;">
+                                            <i class="bi bi-microsoft-teams"></i>
+                                        </div>
+                                        <span>Microsoft Teams</span>
+                                        <div class="platform-check"><i class="bi bi-check-lg"></i></div>
+                                    </div>
+                                    <div class="video-platform-option" data-platform="meet">
+                                        <div class="platform-icon" style="background: #00897B;">
+                                            <i class="bi bi-google"></i>
+                                        </div>
+                                        <span>Google Meet</span>
+                                        <div class="platform-check"><i class="bi bi-check-lg"></i></div>
+                                    </div>
+                                    <div class="video-platform-option" data-platform="zoom">
+                                        <div class="platform-icon" style="background: #2D8CFF;">
+                                            <i class="bi bi-camera-video-fill"></i>
+                                        </div>
+                                        <span>Zoom</span>
+                                        <div class="platform-check"><i class="bi bi-check-lg"></i></div>
+                                    </div>
+                                    <div class="video-platform-option" data-platform="manual">
+                                        <div class="platform-icon" style="background: #6B7280;">
+                                            <i class="bi bi-link-45deg"></i>
+                                        </div>
+                                        <span>Outro / Manual</span>
+                                        <div class="platform-check"><i class="bi bi-check-lg"></i></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Link gerado automaticamente -->
+                                <div id="linkGerado" class="mt-3" style="display: none;">
+                                    <label class="form-label fw-medium">Link da Reunião</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success text-white"><i class="bi bi-check-circle"></i></span>
+                                        <input type="text" class="form-control bg-light" id="linkVideoconferencia" readonly>
+                                        <button class="btn btn-outline-secondary" type="button" onclick="copiarLink()">
+                                            <i class="bi bi-clipboard"></i>
+                                        </button>
+                                    </div>
+                                    <small class="text-success"><i class="bi bi-shield-check me-1"></i>Link gerado automaticamente e pronto para uso</small>
+                                </div>
+                                
+                                <!-- Link manual -->
+                                <div id="linkManual" class="mt-3" style="display: none;">
+                                    <label for="linkManualInput" class="form-label fw-medium">Cole o link da videoconferência</label>
+                                    <input type="url" class="form-control" id="linkManualInput" placeholder="https://...">
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <label for="localReuniao" class="form-label">Local / Link</label>
-                                <input type="text" class="form-control" id="localReuniao" placeholder="Sala de reuniões ou link de videoconferência">
+                        </div>
+                        
+                        <!-- Seção: Participantes -->
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-muted small fw-semibold mb-3">
+                                <i class="bi bi-people me-1"></i> Participantes
+                            </h6>
+                            <div class="participantes-selector">
+                                <div class="participante-chip selected">
+                                    <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=6366F1&color=fff&size=24" alt="">
+                                    <span>Maria Silva</span>
+                                    <i class="bi bi-x-lg remove-participante"></i>
+                                </div>
+                                <div class="participante-chip selected">
+                                    <img src="https://ui-avatars.com/api/?name=João+Santos&background=10B981&color=fff&size=24" alt="">
+                                    <span>João Santos</span>
+                                    <i class="bi bi-x-lg remove-participante"></i>
+                                </div>
+                                <div class="participante-chip selected">
+                                    <img src="https://ui-avatars.com/api/?name=Ana+Costa&background=F59E0B&color=fff&size=24" alt="">
+                                    <span>Ana Costa</span>
+                                    <i class="bi bi-x-lg remove-participante"></i>
+                                </div>
+                                <button type="button" class="btn btn-sm btn-outline-primary rounded-pill" data-bs-toggle="dropdown">
+                                    <i class="bi bi-plus me-1"></i>Adicionar
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#"><img src="https://ui-avatars.com/api/?name=Pedro+Lima&background=EF4444&color=fff&size=20" class="me-2 rounded-circle" style="width:20px;height:20px;">Pedro Lima</a></li>
+                                    <li><a class="dropdown-item" href="#"><img src="https://ui-avatars.com/api/?name=Clara+Mendes&background=8B5CF6&color=fff&size=20" class="me-2 rounded-circle" style="width:20px;height:20px;">Clara Mendes</a></li>
+                                    <li><a class="dropdown-item" href="#"><img src="https://ui-avatars.com/api/?name=Roberto+Alves&background=EC4899&color=fff&size=20" class="me-2 rounded-circle" style="width:20px;height:20px;">Roberto Alves</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-primary" href="#"><i class="bi bi-people me-2"></i>Selecionar órgão completo</a></li>
+                                </ul>
                             </div>
-                            <div class="col-12">
-                                <label for="descricaoReuniao" class="form-label">Descrição (opcional)</label>
-                                <textarea class="form-control" id="descricaoReuniao" rows="3" placeholder="Adicione uma descrição ou observações..."></textarea>
+                        </div>
+                        
+                        <!-- Seção: Pauta (Accordion) -->
+                        <div class="mb-4">
+                            <div class="accordion" id="accordionPauta">
+                                <div class="accordion-item border rounded">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePauta">
+                                            <i class="bi bi-list-check me-2"></i> Pauta Prévia (opcional)
+                                        </button>
+                                    </h2>
+                                    <div id="collapsePauta" class="accordion-collapse collapse" data-bs-parent="#accordionPauta">
+                                        <div class="accordion-body">
+                                            <div id="itensPauta">
+                                                <div class="input-group mb-2">
+                                                    <span class="input-group-text">1.</span>
+                                                    <input type="text" class="form-control" placeholder="Item da pauta...">
+                                                    <button class="btn btn-outline-danger" type="button"><i class="bi bi-trash"></i></button>
+                                                </div>
+                                            </div>
+                                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="adicionarItemPauta()">
+                                                <i class="bi bi-plus me-1"></i>Adicionar item
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Seção: Observações -->
+                        <div class="mb-3">
+                            <label for="descricaoReuniao" class="form-label fw-medium">Observações (opcional)</label>
+                            <textarea class="form-control" id="descricaoReuniao" rows="2" placeholder="Adicione observações ou instruções especiais..."></textarea>
+                        </div>
+                        
+                        <!-- Opções extras -->
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="enviarConvite" checked>
+                                <label class="form-check-label small" for="enviarConvite">
+                                    <i class="bi bi-envelope me-1"></i>Enviar convite por email
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="adicionarCalendario" checked>
+                                <label class="form-check-label small" for="adicionarCalendario">
+                                    <i class="bi bi-calendar-plus me-1"></i>Adicionar ao calendário
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="lembrete24h" checked>
+                                <label class="form-check-label small" for="lembrete24h">
+                                    <i class="bi bi-bell me-1"></i>Lembrete 24h antes
+                                </label>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">
+                
+                <div class="modal-footer bg-light border-0 p-3">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg me-1"></i>Cancelar
+                    </button>
+                    <button type="button" class="btn btn-success px-4" onclick="criarReuniao()">
                         <i class="bi bi-check-lg me-2"></i>Criar Reunião
                     </button>
                 </div>
             </div>
         </div>
     </div>
+    
+    <style>
+        /* Video Platform Grid */
+        .video-platform-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .video-platform-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 10px;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .video-platform-option:hover {
+            border-color: #F97316;
+            background: #FFF7ED;
+        }
+        
+        .video-platform-option.selected {
+            border-color: #F97316;
+            background: #FFF7ED;
+        }
+        
+        .video-platform-option .platform-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .video-platform-option span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #374151;
+            text-align: center;
+        }
+        
+        .video-platform-option .platform-check {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background: #F97316;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .video-platform-option.selected .platform-check {
+            display: flex;
+        }
+        
+        /* Participantes */
+        .participantes-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            background: #F9FAFB;
+            border-radius: 10px;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .participante-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .participante-chip.selected {
+            background: #EFF6FF;
+            border-color: #3B82F6;
+        }
+        
+        .participante-chip img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+        
+        .participante-chip .remove-participante {
+            cursor: pointer;
+            color: #9CA3AF;
+            font-size: 10px;
+            padding: 2px;
+        }
+        
+        .participante-chip .remove-participante:hover {
+            color: #EF4444;
+        }
+        
+        @media (max-width: 768px) {
+            .video-platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+    
+    <script>
+        // Toggle tipo de local
+        document.querySelectorAll('input[name="tipoLocal"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const isOnline = this.value === 'online' || this.value === 'hibrido';
+                document.getElementById('campoPresencial').style.display = this.value === 'presencial' ? 'block' : (this.value === 'hibrido' ? 'block' : 'none');
+                document.getElementById('campoVideoconferencia').style.display = isOnline ? 'block' : 'none';
+            });
+        });
+        
+        // Seleção de plataforma
+        document.querySelectorAll('.video-platform-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.video-platform-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const platform = this.dataset.platform;
+                const linkGerado = document.getElementById('linkGerado');
+                const linkManual = document.getElementById('linkManual');
+                const linkInput = document.getElementById('linkVideoconferencia');
+                
+                if (platform === 'manual') {
+                    linkGerado.style.display = 'none';
+                    linkManual.style.display = 'block';
+                } else {
+                    linkManual.style.display = 'none';
+                    linkGerado.style.display = 'block';
+                    
+                    // Gerar link fake
+                    const links = {
+                        'teams': 'https://teams.microsoft.com/l/meetup-join/19%3ameeting_' + Math.random().toString(36).substr(2, 9),
+                        'meet': 'https://meet.google.com/' + Math.random().toString(36).substr(2, 3) + '-' + Math.random().toString(36).substr(2, 4) + '-' + Math.random().toString(36).substr(2, 3),
+                        'zoom': 'https://zoom.us/j/' + Math.floor(Math.random() * 9000000000 + 1000000000)
+                    };
+                    linkInput.value = links[platform];
+                }
+            });
+        });
+        
+        function copiarLink() {
+            const input = document.getElementById('linkVideoconferencia');
+            input.select();
+            document.execCommand('copy');
+            FakeActions.showToast('Link copiado para a área de transferência!', 'success');
+        }
+        
+        let itemPautaCount = 1;
+        function adicionarItemPauta() {
+            itemPautaCount++;
+            const container = document.getElementById('itensPauta');
+            const div = document.createElement('div');
+            div.className = 'input-group mb-2';
+            div.innerHTML = `
+                <span class="input-group-text">${itemPautaCount}.</span>
+                <input type="text" class="form-control" placeholder="Item da pauta...">
+                <button class="btn btn-outline-danger" type="button" onclick="this.parentElement.remove()"><i class="bi bi-trash"></i></button>
+            `;
+            container.appendChild(div);
+        }
+        
+        function criarReuniao() {
+            // Simular criação
+            const modal = bootstrap.Modal.getInstance(document.getElementById('novaReuniaoModal'));
+            modal.hide();
+            FakeActions.showToast('Reunião criada com sucesso! Convites enviados.', 'success');
+        }
+    </script>
+
 
     <!-- Bootstrap JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

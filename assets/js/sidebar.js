@@ -76,16 +76,15 @@ const SidebarComponent = {
         return {
             main: [
                 { id: 'dashboard', href: 'dashboard.html', icon: 'bi-speedometer2', label: 'Dashboard' },
-                { id: 'calendario', href: 'calendario.html', icon: 'bi-calendar3', label: 'Calendário' },
+                { id: 'calendario-consolidado', href: 'calendario-consolidado.html', icon: 'bi-calendar3', label: 'Calendário' },
                 { id: 'reunioes', href: 'reunioes.html', icon: 'bi-people', label: 'Reuniões', badge: '3' },
                 { id: 'atas', href: 'atas.html', icon: 'bi-file-text', label: 'Atas' },
                 { id: 'acoes', href: 'acoes.html', icon: 'bi-check2-square', label: 'Ações', badge: '5', badgeType: 'warning' },
-                { id: 'documentos', href: 'documentos.html', icon: 'bi-folder2-open', label: 'Documentos' }
+                { id: 'documentos', href: 'documentos.html', icon: 'bi-folder2-open', label: 'Repositório Societário' }
             ],
             compliance: [
                 { id: 'obrigacoes', href: 'obrigacoes.html', icon: 'bi-shield-check', label: 'Central de Conformidade', badge: '2', badgeType: 'danger' },
-                { id: 'biblioteca', href: 'biblioteca.html', icon: 'bi-archive', label: 'Biblioteca Estruturada' },
-                { id: 'calendario-consolidado', href: 'calendario-consolidado.html', icon: 'bi-calendar-range', label: 'Calendário Consolidado' },
+                { id: 'biblioteca', href: 'biblioteca.html', icon: 'bi-archive', label: 'Gestão Documental' },
                 { id: 'membros', href: 'membros.html', icon: 'bi-person-badge', label: 'Certificações' }
             ],
             settings: [

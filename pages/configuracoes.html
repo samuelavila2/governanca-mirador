@@ -314,16 +314,13 @@
                             <a class="nav-link" id="perfil-tab" data-bs-toggle="tab" href="#perfil" role="tab">
                                 <i class="bi bi-person-circle"></i> Meu Perfil
                             </a>
-                            <a class="nav-link" id="usuarios-tab" data-bs-toggle="tab" href="#usuarios" role="tab" data-permission="admin">
-                                <i class="bi bi-people"></i> Usuários
-                            </a>
                             <a class="nav-link" id="notificacoes-tab" data-bs-toggle="tab" href="#notificacoes" role="tab">
                                 <i class="bi bi-bell"></i> Notificações
                             </a>
                             <a class="nav-link" id="reunioes-config-tab" data-bs-toggle="tab" href="#reunioes-config" role="tab" data-permission="admin secretaria">
                                 <i class="bi bi-calendar-event"></i> Reuniões
                             </a>
-                            <a class="nav-link" id="seguranca-tab" data-bs-toggle="tab" href="#seguranca" role="tab" data-permission="admin">
+                            <a class="nav-link" id="seguranca-tab" data-bs-toggle="tab" href="#seguranca" role="tab">
                                 <i class="bi bi-shield-lock"></i> Segurança
                             </a>
                             <a class="nav-link" id="integracao-tab" data-bs-toggle="tab" href="#integracao" role="tab" data-permission="admin">
@@ -497,128 +494,6 @@
                                             <i class="bi bi-check-circle me-2"></i>Atualizar Perfil
                                         </button>
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Usuários -->
-                        <div class="tab-pane fade" id="usuarios" role="tabpanel">
-                            <div class="config-card card">
-                                <div class="card-header text-white d-flex justify-content-between align-items-center">
-                                    <h5 class="mb-0"><i class="bi bi-people me-2"></i>Gerenciar Usuários</h5>
-                                    <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modalNovoUsuario">
-                                        <i class="bi bi-person-plus me-1"></i> Novo Usuário
-                                    </button>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="table-responsive">
-                                        <table class="table mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Usuário</th>
-                                                    <th>Cargo</th>
-                                                    <th>Perfil</th>
-                                                    <th>Status</th>
-                                                    <th>Último Acesso</th>
-                                                    <th class="text-end">Ações</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="user-avatar">JD</div>
-                                                            <div>
-                                                                <div class="fw-medium text-white">José da Silva</div>
-                                                                <small class="text-muted">jose.silva@fundoprev.com.br</small>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Diretor de Compliance</td>
-                                                    <td><span class="badge bg-danger">Super Admin</span></td>
-                                                    <td><span class="badge bg-success">Ativo</span></td>
-                                                    <td>Hoje, 10:30</td>
-                                                    <td class="text-end">
-                                                        <button class="btn btn-sm btn-outline-warning me-1" title="Editar">
-                                                            <i class="bi bi-pencil"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-outline-danger" title="Remover" disabled>
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="user-avatar">MS</div>
-                                                            <div>
-                                                                <div class="fw-medium text-white">Maria Santos</div>
-                                                                <small class="text-muted">maria.santos@fundoprev.com.br</small>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Analista de Governança</td>
-                                                    <td><span class="badge bg-primary">Administrador</span></td>
-                                                    <td><span class="badge bg-success">Ativo</span></td>
-                                                    <td>Ontem, 17:45</td>
-                                                    <td class="text-end">
-                                                        <button class="btn btn-sm btn-outline-warning me-1" title="Editar">
-                                                            <i class="bi bi-pencil"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-outline-danger" title="Remover">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="user-avatar">PO</div>
-                                                            <div>
-                                                                <div class="fw-medium text-white">Pedro Oliveira</div>
-                                                                <small class="text-muted">pedro.oliveira@fundoprev.com.br</small>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Conselheiro Fiscal</td>
-                                                    <td><span class="badge bg-info">Membro</span></td>
-                                                    <td><span class="badge bg-success">Ativo</span></td>
-                                                    <td>23/12/2025</td>
-                                                    <td class="text-end">
-                                                        <button class="btn btn-sm btn-outline-warning me-1" title="Editar">
-                                                            <i class="bi bi-pencil"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-outline-danger" title="Remover">
-                                                            <i class="bi bi-trash"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex align-items-center gap-2">
-                                                            <div class="user-avatar">AF</div>
-                                                            <div>
-                                                                <div class="fw-medium text-white">Ana Ferreira</div>
-                                                                <small class="text-muted">ana.ferreira@fundoprev.com.br</small>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Secretária</td>
-                                                    <td><span class="badge bg-secondary">Visualizador</span></td>
-                                                    <td><span class="badge bg-warning text-dark">Pendente</span></td>
-                                                    <td>-</td>
-                                                    <td class="text-end">
-                                                        <button class="btn btn-sm btn-outline-success me-1" title="Reenviar convite">
-                                                            <i class="bi bi-envelope"></i>
-                                                        </button>
-                                                        <button class="btn btn-sm btn-outline-danger" title="Cancelar convite">
-                                                            <i class="bi bi-x-lg"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
                             </div>
                         </div>

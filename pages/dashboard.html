@@ -80,6 +80,26 @@
                 
                 <div class="sidebar-divider"></div>
                 
+                <div class="sidebar-section-title" style="padding: 0 16px; font-size: 0.7rem; text-transform: uppercase; color: #9ca3af; margin-bottom: 8px;">Compliance EFPC</div>
+                
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="obrigacoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-shield-check"></i>
+                            <span>Central de Conformidade</span>
+                            <span class="sidebar-badge" style="background: #dc3545;">2</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="membros.html" class="sidebar-nav-link">
+                            <i class="bi bi-person-badge"></i>
+                            <span>Certificações</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-divider"></div>
+                
                 <ul class="sidebar-nav">
                     <li class="sidebar-nav-item">
                         <a href="mensagens.html" class="sidebar-nav-link">
@@ -138,46 +158,78 @@
                         <i class="bi bi-search"></i>
                     </button>
                     
+                    <!-- Sino de Notificações Aprimorado -->
                     <div class="dropdown">
-                        <button class="header-action-btn" data-bs-toggle="dropdown">
+                        <button class="header-action-btn position-relative" data-bs-toggle="dropdown" id="notificacoesSino">
                             <i class="bi bi-bell"></i>
-                            <span class="notification-badge">3</span>
+                            <span class="notification-badge">5</span>
                         </button>
-                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
-                            <div class="dropdown-header">
-                                <h6>Notificações</h6>
-                                <a href="#">Marcar todas como lidas</a>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown" style="width: 380px;">
+                            <div class="dropdown-header d-flex justify-content-between align-items-center py-3 px-3">
+                                <h6 class="mb-0 fw-semibold">Notificações</h6>
+                                <a href="#" class="text-decoration-none small">Marcar todas como lidas</a>
                             </div>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item notification-item unread" href="#">
+                            <div class="dropdown-divider m-0"></div>
+                            
+                            <!-- Notificação Urgente - Obrigação -->
+                            <a class="dropdown-item notification-item unread py-3" href="obrigacoes.html">
+                                <div class="notification-icon bg-danger-subtle">
+                                    <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1"><strong>ARPB vence em 3 dias!</strong></p>
+                                    <span class="notification-time text-danger">Prazo: 29/12/2025</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Notificação Assinatura -->
+                            <a class="dropdown-item notification-item unread py-3" href="ata-detalhe.html">
+                                <div class="notification-icon bg-warning-subtle">
+                                    <i class="bi bi-pen text-warning"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1">Sua assinatura é necessária na <strong>Ata do CD</strong></p>
+                                    <span class="notification-time">Há 2 horas</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Notificação Reunião -->
+                            <a class="dropdown-item notification-item unread py-3" href="reuniao-detalhe.html">
                                 <div class="notification-icon bg-primary-subtle">
                                     <i class="bi bi-calendar-event text-primary"></i>
                                 </div>
                                 <div class="notification-content">
-                                    <p>Reunião do Conselho em 2 horas</p>
-                                    <span class="notification-time">Há 30 minutos</span>
-                                </div>
-                            </a>
-                            <a class="dropdown-item notification-item unread" href="#">
-                                <div class="notification-icon bg-success-subtle">
-                                    <i class="bi bi-check-circle text-success"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <p>Ata aprovada por todos os membros</p>
-                                    <span class="notification-time">Há 1 hora</span>
-                                </div>
-                            </a>
-                            <a class="dropdown-item notification-item" href="#">
-                                <div class="notification-icon bg-warning-subtle">
-                                    <i class="bi bi-exclamation-triangle text-warning"></i>
-                                </div>
-                                <div class="notification-content">
-                                    <p>Ação pendente vence amanhã</p>
+                                    <p class="mb-1">Reunião do Conselho Deliberativo amanhã às 14h</p>
                                     <span class="notification-time">Há 3 horas</span>
                                 </div>
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-center" href="#">Ver todas as notificações</a>
+                            
+                            <!-- Notificação Sucesso -->
+                            <a class="dropdown-item notification-item py-3" href="#">
+                                <div class="notification-icon bg-success-subtle">
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1">AEQT 3º Tri enviado com sucesso à PREVIC</p>
+                                    <span class="notification-time">Ontem às 16:45</span>
+                                </div>
+                            </a>
+                            
+                            <!-- Notificação Normativa -->
+                            <a class="dropdown-item notification-item py-3" href="#">
+                                <div class="notification-icon bg-info-subtle">
+                                    <i class="bi bi-journal-text text-info"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1">Nova Instrução Normativa PREVIC nº 45/2025</p>
+                                    <span class="notification-time">22/12/2025</span>
+                                </div>
+                            </a>
+                            
+                            <div class="dropdown-divider m-0"></div>
+                            <a class="dropdown-item text-center py-3" href="#">
+                                <i class="bi bi-arrow-right me-1"></i>Ver todas as notificações
+                            </a>
                         </div>
                     </div>
                     
@@ -215,6 +267,42 @@
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novaReuniaoModal">
                                 <i class="bi bi-plus-lg me-2"></i>Nova Reunião
                             </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mural de Avisos Importantes -->
+                    <div class="mural-avisos mb-4">
+                        <div class="mural-header">
+                            <i class="bi bi-megaphone-fill"></i>
+                            <span>Comunicados Importantes</span>
+                            <button class="btn btn-sm btn-link text-white ms-auto" data-bs-toggle="collapse" data-bs-target="#muralContent">
+                                <i class="bi bi-chevron-up" id="muralChevron"></i>
+                            </button>
+                        </div>
+                        <div class="collapse show" id="muralContent">
+                            <div class="mural-body">
+                                <div class="mural-item">
+                                    <div class="mural-item-badge urgente">URGENTE</div>
+                                    <div class="mural-item-content">
+                                        <strong>ARPB vence em 3 dias!</strong> - Prazo final para envio: 29/12/2025. <a href="obrigacoes.html" class="text-decoration-underline">Acessar Central de Conformidade</a>
+                                    </div>
+                                    <span class="mural-item-date">Hoje</span>
+                                </div>
+                                <div class="mural-item">
+                                    <div class="mural-item-badge novo">NOVO</div>
+                                    <div class="mural-item-content">
+                                        <strong>Instrução Normativa PREVIC nº 45/2025</strong> - Altera critérios para envio do ARPB. Vigência a partir de 01/01/2026.
+                                    </div>
+                                    <span class="mural-item-date">22/12/2025</span>
+                                </div>
+                                <div class="mural-item">
+                                    <div class="mural-item-badge alerta">ALERTA</div>
+                                    <div class="mural-item-content">
+                                        <strong>Certificação ICSS vencendo</strong> - A certificação de João Silva vence em 25 dias. <a href="membros.html" class="text-decoration-underline">Ver certificações</a>
+                                    </div>
+                                    <span class="mural-item-date">20/12/2025</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -739,6 +827,13 @@
         
         document.getElementById('sidebarClose')?.addEventListener('click', function() {
             document.querySelector('.sidebar').classList.remove('show');
+        });
+        
+        // Mural Collapse Toggle
+        document.querySelector('[data-bs-target="#muralContent"]')?.addEventListener('click', function() {
+            const chevron = document.getElementById('muralChevron');
+            chevron.classList.toggle('bi-chevron-up');
+            chevron.classList.toggle('bi-chevron-down');
         });
         
         // Initialize tooltips

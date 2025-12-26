@@ -1,0 +1,621 @@
+/* ============================================
+   WORKFLOW DE ATA - CSS
+   MiraBoard - Sistema de Assinatura Coletiva
+   ============================================ */
+
+/* ============================================
+   HEADER DA ATA
+   ============================================ */
+.ata-header-card {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+}
+
+.ata-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.ata-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 8px 0 16px 0;
+    line-height: 1.3;
+}
+
+.ata-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ata-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.ata-meta i {
+    font-size: 1rem;
+}
+
+/* ============================================
+   PAINEL DE ASSINATURA COLETIVA
+   ============================================ */
+.assinatura-coletiva-panel {
+    background: white;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.assinatura-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-bottom: 1px solid #fcd34d;
+}
+
+.assinatura-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #92400e;
+}
+
+.assinatura-title i {
+    font-size: 1.2rem;
+}
+
+.assinatura-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.assinatura-count {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #92400e;
+}
+
+.assinatura-body {
+    padding: 0;
+}
+
+.assinatura-lista {
+    display: flex;
+    flex-direction: column;
+}
+
+.assinatura-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s ease;
+}
+
+.assinatura-item:last-child {
+    border-bottom: none;
+}
+
+.assinatura-item:hover {
+    background: #f8fafc;
+}
+
+.assinatura-item.minha-assinatura {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border-left: 4px solid #E8681A;
+}
+
+.assinatura-item.minha-assinatura:hover {
+    background: linear-gradient(135deg, #fde68a 0%, #fef3c7 100%);
+}
+
+.assinatura-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.assinatura-avatar img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid #e5e7eb;
+}
+
+.assinatura-item.assinado .assinatura-avatar img {
+    border-color: #22c55e;
+}
+
+.assinatura-check {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 20px;
+    height: 20px;
+    background: #22c55e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.7rem;
+    border: 2px solid white;
+}
+
+.assinatura-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.assinatura-info strong {
+    display: block;
+    color: #1f2937;
+    font-size: 0.95rem;
+}
+
+.assinatura-info small {
+    color: #6b7280;
+    font-size: 0.8rem;
+}
+
+.assinatura-status {
+    text-align: right;
+}
+
+/* ============================================
+   VISUALIZADOR DE DOCUMENTO
+   ============================================ */
+.documento-viewer {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.documento-viewer .card-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.viewer-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.zoom-level {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    min-width: 50px;
+    text-align: center;
+}
+
+.pdf-container {
+    background: #64748b;
+    padding: 20px;
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+}
+
+.ata-documento {
+    background: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 60px 80px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Times New Roman', serif;
+    line-height: 1.8;
+    color: #1f2937;
+}
+
+.ata-documento-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1f2937;
+}
+
+.ata-logo-placeholder {
+    width: 80px;
+    height: 80px;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: #64748b;
+}
+
+.ata-documento-titulo h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ata-documento-titulo h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+}
+
+.ata-documento-titulo p {
+    margin: 0;
+    color: #64748b;
+}
+
+.ata-documento-content {
+    text-align: justify;
+}
+
+.ata-documento-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 30px 0 15px 0;
+    text-transform: uppercase;
+}
+
+.ata-documento-content h5 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+}
+
+.ata-documento-content p {
+    margin: 0 0 15px 0;
+    text-indent: 40px;
+}
+
+.ata-documento-content ul,
+.ata-documento-content ol {
+    margin: 15px 0 15px 40px;
+}
+
+.ata-documento-content li {
+    margin-bottom: 8px;
+}
+
+.ata-documento-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.ata-assinaturas-doc {
+    margin-top: 60px;
+}
+
+/* ============================================
+   INFORMAÇÕES LATERAIS
+   ============================================ */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.info-label {
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+.info-value {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.9rem;
+}
+
+/* Card Reunião Link */
+.reuniao-link-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.reuniao-link-card:hover {
+    background: #f1f5f9;
+    transform: translateX(4px);
+}
+
+.reuniao-link-date {
+    width: 50px;
+    height: 55px;
+    background: #E8681A;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.reuniao-link-date .dia {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.reuniao-link-date .mes {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.reuniao-link-info {
+    flex: 1;
+}
+
+.reuniao-link-info h6 {
+    margin: 0 0 4px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.reuniao-link-info small {
+    color: #6b7280;
+}
+
+.reuniao-link-card i {
+    color: #9ca3af;
+}
+
+/* Anexos */
+.anexo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.anexo-item:last-child {
+    margin-bottom: 0;
+}
+
+.anexo-item > i {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.anexo-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.anexo-info span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1f2937;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anexo-info small {
+    color: #6b7280;
+}
+
+/* ============================================
+   TRILHA DE AUDITORIA (OFFCANVAS)
+   ============================================ */
+.timeline-auditoria {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline-auditoria::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -26px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #e5e7eb;
+}
+
+.timeline-content {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.timeline-header strong {
+    font-size: 0.9rem;
+    color: #1f2937;
+}
+
+.timeline-header .badge {
+    font-size: 0.7rem;
+}
+
+.timeline-content > p {
+    margin: 0 0 8px 0;
+    font-size: 0.85rem;
+    color: #4b5563;
+}
+
+.timeline-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.timeline-meta span {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ============================================
+   MODAL DE ASSINATURA
+   ============================================ */
+.assinatura-preview {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.assinatura-preview-header {
+    background: #f1f5f9;
+    padding: 10px 16px;
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.assinatura-preview-body {
+    padding: 24px;
+    text-align: center;
+    background: white;
+}
+
+.assinatura-nome-completo {
+    font-family: 'Dancing Script', cursive, 'Georgia', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: #1e40af;
+    margin-bottom: 8px;
+}
+
+.assinatura-cargo {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 4px;
+}
+
+.assinatura-data {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.registro-info {
+    border: 1px solid #e5e7eb;
+}
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
+@media (max-width: 992px) {
+    .ata-header-content {
+        flex-direction: column;
+    }
+    
+    .ata-header-actions {
+        width: 100%;
+    }
+    
+    .ata-header-actions .btn {
+        width: 100%;
+    }
+    
+    .ata-documento {
+        padding: 30px 40px;
+    }
+    
+    .assinatura-item {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .assinatura-status {
+        width: 100%;
+        text-align: left;
+        padding-left: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .ata-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .ata-documento {
+        padding: 20px;
+    }
+    
+    .pdf-container {
+        padding: 10px;
+    }
+    
+    .assinatura-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .viewer-controls {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

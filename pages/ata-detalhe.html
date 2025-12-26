@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ata - Reunião Ordinária do Conselho Deliberativo - MiraBoard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/ata-workflow.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-brand">
+                    <div class="sidebar-logo">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </div>
+                    <span class="sidebar-brand-text">MiraBoard</span>
+                </a>
+                <button class="sidebar-toggle d-lg-none" id="sidebarClose">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="dashboard.html" class="sidebar-nav-link">
+                            <i class="bi bi-speedometer2"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="calendario.html" class="sidebar-nav-link">
+                            <i class="bi bi-calendar3"></i>
+                            <span>Calendário</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="reunioes.html" class="sidebar-nav-link">
+                            <i class="bi bi-people"></i>
+                            <span>Reuniões</span>
+                            <span class="sidebar-badge">3</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="atas.html" class="sidebar-nav-link active">
+                            <i class="bi bi-file-text"></i>
+                            <span>Atas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="acoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-check2-square"></i>
+                            <span>Ações</span>
+                            <span class="sidebar-badge warning">5</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="documentos.html" class="sidebar-nav-link">
+                            <i class="bi bi-folder2-open"></i>
+                            <span>Documentos</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-divider"></div>
+                
+                <div class="sidebar-section-title">Compliance EFPC</div>
+                
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="obrigacoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-shield-check"></i>
+                            <span>Central de Conformidade</span>
+                            <span class="sidebar-badge danger">2</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-divider"></div>
+                
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="relatorios.html" class="sidebar-nav-link">
+                            <i class="bi bi-graph-up"></i>
+                            <span>Relatórios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="configuracoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-gear"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-md">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                    </div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Admin User</span>
+                        <span class="sidebar-user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="atas.html">Atas</a></li>
+                            <li class="breadcrumb-item active">Ata #2025-001</li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <div class="header-right">
+                    <!-- Sino de Notificações -->
+                    <div class="dropdown">
+                        <button class="header-action-btn position-relative" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown" style="width: 350px;">
+                            <div class="dropdown-header d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0 fw-semibold">Notificações</h6>
+                                <a href="#" class="text-decoration-none small">Marcar como lidas</a>
+                            </div>
+                            <div class="dropdown-divider m-0"></div>
+                            <a class="dropdown-item notification-item unread" href="#">
+                                <div class="notification-icon bg-warning-subtle">
+                                    <i class="bi bi-pen text-warning"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p class="mb-1">Sua assinatura é necessária nesta ata</p>
+                                    <span class="notification-time">Agora</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider m-0"></div>
+                            <a class="dropdown-item text-center py-2" href="#">Ver todas</a>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="header-user-btn" data-bs-toggle="dropdown">
+                            <div class="avatar avatar-sm">
+                                <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                            </div>
+                            <span class="d-none d-md-inline">Admin</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="../index.html"><i class="bi bi-box-arrow-right me-2"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <div class="row g-4">
+                        <!-- Coluna Principal - Visualizador de Documento -->
+                        <div class="col-lg-8">
+                            <!-- Header da Ata -->
+                            <div class="ata-header-card mb-4">
+                                <div class="ata-header-content">
+                                    <div class="ata-header-info">
+                                        <span class="badge badge-warning mb-2">Aguardando Assinaturas</span>
+                                        <h1 class="ata-title">Ata da Reunião Ordinária do Conselho Deliberativo</h1>
+                                        <div class="ata-meta">
+                                            <span><i class="bi bi-calendar3"></i> 20 de Janeiro de 2025</span>
+                                            <span><i class="bi bi-clock"></i> 14:00 - 16:30</span>
+                                            <span><i class="bi bi-geo-alt"></i> Sala de Reuniões Virtual</span>
+                                        </div>
+                                    </div>
+                                    <div class="ata-header-actions">
+                                        <button class="btn btn-outline-secondary btn-sm" id="btnHistorico" data-bs-toggle="offcanvas" data-bs-target="#trilhaAuditoria">
+                                            <i class="bi bi-clock-history me-1"></i>Histórico
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Painel de Assinatura Coletiva -->
+                            <div class="assinatura-coletiva-panel mb-4">
+                                <div class="assinatura-header">
+                                    <div class="assinatura-title">
+                                        <i class="bi bi-pen"></i>
+                                        <span>Assinatura Coletiva</span>
+                                    </div>
+                                    <div class="assinatura-progress">
+                                        <span class="assinatura-count">2 de 5 assinaturas</span>
+                                        <div class="progress" style="width: 120px; height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 40%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="assinatura-body">
+                                    <div class="assinatura-lista">
+                                        <!-- Assinatura Confirmada -->
+                                        <div class="assinatura-item assinado">
+                                            <div class="assinatura-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Maria+Oliveira&size=40&background=198754&color=fff" alt="">
+                                                <span class="assinatura-check"><i class="bi bi-check"></i></span>
+                                            </div>
+                                            <div class="assinatura-info">
+                                                <strong>Maria Oliveira</strong>
+                                                <small>Presidente do Conselho</small>
+                                            </div>
+                                            <div class="assinatura-status">
+                                                <span class="badge bg-success-subtle text-success">
+                                                    <i class="bi bi-check-circle me-1"></i>Assinado
+                                                </span>
+                                                <small class="d-block text-muted mt-1">21/01/2025 às 09:15</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Assinatura Confirmada -->
+                                        <div class="assinatura-item assinado">
+                                            <div class="assinatura-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Joao+Silva&size=40&background=198754&color=fff" alt="">
+                                                <span class="assinatura-check"><i class="bi bi-check"></i></span>
+                                            </div>
+                                            <div class="assinatura-info">
+                                                <strong>João Silva</strong>
+                                                <small>Conselheiro</small>
+                                            </div>
+                                            <div class="assinatura-status">
+                                                <span class="badge bg-success-subtle text-success">
+                                                    <i class="bi bi-check-circle me-1"></i>Assinado
+                                                </span>
+                                                <small class="d-block text-muted mt-1">21/01/2025 às 10:30</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Aguardando - Usuário Atual -->
+                                        <div class="assinatura-item pendente minha-assinatura">
+                                            <div class="assinatura-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Admin+User&size=40&background=E8681A&color=fff" alt="">
+                                            </div>
+                                            <div class="assinatura-info">
+                                                <strong>Admin User</strong>
+                                                <small>Conselheiro</small>
+                                                <span class="badge bg-warning text-dark ms-2">Sua vez!</span>
+                                            </div>
+                                            <div class="assinatura-status">
+                                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalAssinar">
+                                                    <i class="bi bi-pen me-1"></i>Assinar Agora
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Aguardando -->
+                                        <div class="assinatura-item pendente">
+                                            <div class="assinatura-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Ana+Santos&size=40&background=6c757d&color=fff" alt="">
+                                            </div>
+                                            <div class="assinatura-info">
+                                                <strong>Ana Santos</strong>
+                                                <small>Conselheira</small>
+                                            </div>
+                                            <div class="assinatura-status">
+                                                <span class="badge bg-secondary-subtle text-secondary">
+                                                    <i class="bi bi-hourglass-split me-1"></i>Aguardando
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Aguardando -->
+                                        <div class="assinatura-item pendente">
+                                            <div class="assinatura-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Carlos+Lima&size=40&background=6c757d&color=fff" alt="">
+                                            </div>
+                                            <div class="assinatura-info">
+                                                <strong>Carlos Lima</strong>
+                                                <small>Conselheiro Fiscal</small>
+                                            </div>
+                                            <div class="assinatura-status">
+                                                <span class="badge bg-secondary-subtle text-secondary">
+                                                    <i class="bi bi-hourglass-split me-1"></i>Aguardando
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Visualizador de Documento -->
+                            <div class="card documento-viewer">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">
+                                        <i class="bi bi-file-earmark-text me-2"></i>Documento da Ata
+                                    </h5>
+                                    <div class="viewer-controls">
+                                        <button class="btn btn-sm btn-outline-secondary" title="Zoom Out">
+                                            <i class="bi bi-zoom-out"></i>
+                                        </button>
+                                        <span class="zoom-level">100%</span>
+                                        <button class="btn btn-sm btn-outline-secondary" title="Zoom In">
+                                            <i class="bi bi-zoom-in"></i>
+                                        </button>
+                                        <div class="vr mx-2"></div>
+                                        <button class="btn btn-sm btn-outline-secondary" title="Tela Cheia">
+                                            <i class="bi bi-arrows-fullscreen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <!-- Visualizador de PDF Nativo -->
+                                    <div class="pdf-container">
+                                        <!-- Simulação do conteúdo da ata -->
+                                        <div class="ata-documento">
+                                            <div class="ata-documento-header">
+                                                <div class="ata-logo-placeholder">
+                                                    <i class="bi bi-building"></i>
+                                                </div>
+                                                <div class="ata-documento-titulo">
+                                                    <h2>FUNDAÇÃO EXEMPLO DE PREVIDÊNCIA</h2>
+                                                    <h3>ATA DA REUNIÃO ORDINÁRIA DO CONSELHO DELIBERATIVO</h3>
+                                                    <p>Ata nº 001/2025</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="ata-documento-content">
+                                                <p>Aos <strong>vinte dias do mês de janeiro de dois mil e vinte e cinco</strong>, às quatorze horas, reuniram-se, por videoconferência, os membros do Conselho Deliberativo da Fundação Exemplo de Previdência, sob a presidência da Sra. <strong>Maria Oliveira</strong>, com a presença dos seguintes conselheiros:</p>
+                                                
+                                                <ul>
+                                                    <li>Maria Oliveira - Presidente</li>
+                                                    <li>João Silva - Conselheiro</li>
+                                                    <li>Admin User - Conselheiro</li>
+                                                    <li>Ana Santos - Conselheira</li>
+                                                    <li>Carlos Lima - Conselheiro Fiscal</li>
+                                                </ul>
+                                                
+                                                <h4>1. ABERTURA</h4>
+                                                <p>A Presidente declarou aberta a reunião, verificando a existência de quórum para deliberação. Atuou como secretária a Sra. Ana Santos.</p>
+                                                
+                                                <h4>2. APROVAÇÃO DA PAUTA</h4>
+                                                <p>Foi apresentada a pauta da reunião, que foi aprovada por unanimidade:</p>
+                                                <ol>
+                                                    <li>Aprovação da ata da reunião anterior</li>
+                                                    <li>Análise do Relatório de Investimentos - 4º Trimestre/2024</li>
+                                                    <li>Deliberação sobre Política de Investimentos 2025</li>
+                                                    <li>Assuntos Gerais</li>
+                                                </ol>
+                                                
+                                                <h4>3. DELIBERAÇÕES</h4>
+                                                
+                                                <h5>3.1 Aprovação da Ata Anterior</h5>
+                                                <p>Foi lida e aprovada, por unanimidade, a ata da reunião ordinária realizada em 15 de dezembro de 2024.</p>
+                                                
+                                                <h5>3.2 Relatório de Investimentos</h5>
+                                                <p>O Diretor Financeiro apresentou o relatório de investimentos referente ao 4º trimestre de 2024, destacando:</p>
+                                                <ul>
+                                                    <li>Rentabilidade do período: 3,45%</li>
+                                                    <li>Rentabilidade acumulada no ano: 12,8%</li>
+                                                    <li>Meta atuarial: INPC + 4,5% a.a.</li>
+                                                </ul>
+                                                <p><strong>DELIBERAÇÃO:</strong> O Conselho deliberou, por unanimidade, aprovar o Relatório de Investimentos do 4º Trimestre de 2024.</p>
+                                                
+                                                <h5>3.3 Política de Investimentos 2025</h5>
+                                                <p>Foi apresentada a proposta de Política de Investimentos para o exercício de 2025, elaborada pelo Comitê de Investimentos...</p>
+                                                
+                                                <p class="text-muted fst-italic">[Documento continua...]</p>
+                                            </div>
+                                            
+                                            <div class="ata-documento-footer">
+                                                <p>Nada mais havendo a tratar, a Presidente encerrou a reunião às dezesseis horas e trinta minutos, da qual eu, Ana Santos, lavrei a presente ata que, após lida e aprovada, será assinada por todos os presentes.</p>
+                                                
+                                                <div class="ata-assinaturas-doc">
+                                                    <p class="text-center text-muted mb-4">[Assinaturas Digitais]</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-muted small">
+                                            <i class="bi bi-lock me-1"></i>Documento protegido - Download com marca d'água
+                                        </span>
+                                        <div class="d-flex gap-2">
+                                            <button class="btn btn-outline-secondary btn-sm">
+                                                <i class="bi bi-printer me-1"></i>Imprimir
+                                            </button>
+                                            <button class="btn btn-outline-primary btn-sm">
+                                                <i class="bi bi-download me-1"></i>Baixar PDF
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Coluna Lateral -->
+                        <div class="col-lg-4">
+                            <!-- Card Informações -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <i class="bi bi-info-circle me-2"></i>Informações da Ata
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-list">
+                                        <div class="info-item">
+                                            <span class="info-label">Número da Ata</span>
+                                            <span class="info-value">#2025-001</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Tipo de Reunião</span>
+                                            <span class="info-value">Reunião Ordinária</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Órgão</span>
+                                            <span class="info-value">Conselho Deliberativo</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Data da Reunião</span>
+                                            <span class="info-value">20/01/2025</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Redator(a)</span>
+                                            <span class="info-value">Ana Santos</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Criada em</span>
+                                            <span class="info-value">20/01/2025 às 16:45</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <span class="info-label">Última Atualização</span>
+                                            <span class="info-value">21/01/2025 às 10:30</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Reunião Relacionada -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <i class="bi bi-link-45deg me-2"></i>Reunião Relacionada
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <a href="reuniao-detalhe.html" class="reuniao-link-card">
+                                        <div class="reuniao-link-date">
+                                            <span class="dia">20</span>
+                                            <span class="mes">JAN</span>
+                                        </div>
+                                        <div class="reuniao-link-info">
+                                            <h6>Reunião Ordinária do CD</h6>
+                                            <small>14:00 - 16:30</small>
+                                        </div>
+                                        <i class="bi bi-chevron-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Ações Extraídas -->
+                            <div class="card mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">
+                                        <i class="bi bi-check2-square me-2"></i>Ações Extraídas
+                                    </h5>
+                                    <span class="badge bg-primary">3</span>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="list-group list-group-flush">
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex align-items-start gap-2">
+                                                <span class="badge bg-warning-subtle text-warning rounded-circle p-2">
+                                                    <i class="bi bi-clock"></i>
+                                                </span>
+                                                <div>
+                                                    <p class="mb-1 small">Revisar Política de Investimentos</p>
+                                                    <small class="text-muted">Resp: Carlos Lima • Prazo: 30/01</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex align-items-start gap-2">
+                                                <span class="badge bg-warning-subtle text-warning rounded-circle p-2">
+                                                    <i class="bi bi-clock"></i>
+                                                </span>
+                                                <div>
+                                                    <p class="mb-1 small">Preparar relatório PREVIC</p>
+                                                    <small class="text-muted">Resp: Ana Santos • Prazo: 15/02</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex align-items-start gap-2">
+                                                <span class="badge bg-success-subtle text-success rounded-circle p-2">
+                                                    <i class="bi bi-check"></i>
+                                                </span>
+                                                <div>
+                                                    <p class="mb-1 small">Enviar convocação próxima reunião</p>
+                                                    <small class="text-muted">Resp: Maria Oliveira • Concluído</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <a href="acoes.html" class="btn btn-sm btn-link w-100">Ver todas as ações</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Card Documentos Anexos -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <i class="bi bi-paperclip me-2"></i>Documentos Anexos
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="anexo-item">
+                                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                                        <div class="anexo-info">
+                                            <span>Relatório de Investimentos Q4.pdf</span>
+                                            <small>2.4 MB</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <i class="bi bi-download"></i>
+                                        </button>
+                                    </div>
+                                    <div class="anexo-item">
+                                        <i class="bi bi-file-earmark-excel text-success"></i>
+                                        <div class="anexo-info">
+                                            <span>Análise_Atuarial_2024.xlsx</span>
+                                            <small>890 KB</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <i class="bi bi-download"></i>
+                                        </button>
+                                    </div>
+                                    <div class="anexo-item">
+                                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                                        <div class="anexo-info">
+                                            <span>Lista de Presença.pdf</span>
+                                            <small>156 KB</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <i class="bi bi-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Offcanvas: Trilha de Auditoria -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="trilhaAuditoria">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">
+                <i class="bi bi-clock-history me-2"></i>Trilha de Auditoria
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p class="text-muted small mb-4">Histórico completo de ações neste documento</p>
+            
+            <div class="timeline-auditoria">
+                <!-- Evento -->
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-success"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <strong>João Silva</strong>
+                            <span class="badge bg-success-subtle text-success">Assinou</span>
+                        </div>
+                        <p>Documento assinado digitalmente</p>
+                        <div class="timeline-meta">
+                            <span><i class="bi bi-calendar"></i> 21/01/2025 às 10:30</span>
+                            <span><i class="bi bi-geo-alt"></i> IP: 187.xxx.xxx.xxx</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Evento -->
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-primary"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <strong>João Silva</strong>
+                            <span class="badge bg-primary-subtle text-primary">Visualizou</span>
+                        </div>
+                        <p>Abriu o documento para leitura</p>
+                        <div class="timeline-meta">
+                            <span><i class="bi bi-calendar"></i> 21/01/2025 às 10:25</span>
+                            <span><i class="bi bi-clock"></i> Tempo de leitura: 5 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Evento -->
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-success"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <strong>Maria Oliveira</strong>
+                            <span class="badge bg-success-subtle text-success">Assinou</span>
+                        </div>
+                        <p>Documento assinado digitalmente</p>
+                        <div class="timeline-meta">
+                            <span><i class="bi bi-calendar"></i> 21/01/2025 às 09:15</span>
+                            <span><i class="bi bi-geo-alt"></i> IP: 189.xxx.xxx.xxx</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Evento -->
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-primary"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <strong>Maria Oliveira</strong>
+                            <span class="badge bg-primary-subtle text-primary">Visualizou</span>
+                        </div>
+                        <p>Abriu o documento para leitura</p>
+                        <div class="timeline-meta">
+                            <span><i class="bi bi-calendar"></i> 21/01/2025 às 09:00</span>
+                            <span><i class="bi bi-clock"></i> Tempo de leitura: 15 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Evento -->
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-warning"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <strong>Sistema</strong>
+                            <span class="badge bg-warning-subtle text-warning">Notificação</span>
+                        </div>
+                        <p>E-mail de solicitação de assinatura enviado para todos os membros</p>
+                        <div class="timeline-meta">
+                            <span><i class="bi bi-calendar"></i> 20/01/2025 às 17:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Evento -->
+                <div class="timeline-item">
+                    <div class="timeline-marker bg-info"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <strong>Ana Santos</strong>
+                            <span class="badge bg-info-subtle text-info">Criou</span>
+                        </div>
+                        <p>Ata criada e enviada para assinatura</p>
+                        <div class="timeline-meta">
+                            <span><i class="bi bi-calendar"></i> 20/01/2025 às 16:45</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal: Assinar Documento -->
+    <div class="modal fade" id="modalAssinar" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title">
+                        <i class="bi bi-pen me-2 text-primary"></i>Assinar Documento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-info d-flex align-items-start gap-3 mb-4">
+                        <i class="bi bi-info-circle fs-5"></i>
+                        <div>
+                            <strong>Atenção:</strong> Ao assinar, você declara que leu e aprova integralmente o conteúdo desta ata.
+                        </div>
+                    </div>
+                    
+                    <div class="assinatura-preview mb-4">
+                        <div class="assinatura-preview-header">
+                            <span>Sua Assinatura Digital</span>
+                        </div>
+                        <div class="assinatura-preview-body">
+                            <div class="assinatura-nome-completo">Admin User</div>
+                            <div class="assinatura-cargo">Conselheiro - Conselho Deliberativo</div>
+                            <div class="assinatura-data">26 de Dezembro de 2025</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmLeitura">
+                        <label class="form-check-label" for="confirmLeitura">
+                            Declaro que li integralmente o documento e estou de acordo com seu conteúdo.
+                        </label>
+                    </div>
+                    
+                    <div class="registro-info bg-light rounded p-3">
+                        <h6 class="small fw-bold mb-2">Informações de Registro:</h6>
+                        <div class="small text-muted">
+                            <div><i class="bi bi-calendar me-2"></i>Data: 26/12/2025 às 14:32:15</div>
+                            <div><i class="bi bi-geo-alt me-2"></i>IP: 187.45.xxx.xxx</div>
+                            <div><i class="bi bi-display me-2"></i>Navegador: Chrome 120 / macOS</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnConfirmarAssinatura" disabled>
+                        <i class="bi bi-check-lg me-1"></i>Confirmar Assinatura
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <script>
+        // Sidebar Toggle
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('show');
+        });
+        
+        document.getElementById('sidebarClose')?.addEventListener('click', function() {
+            document.getElementById('sidebar').classList.remove('show');
+        });
+        
+        // Habilitar botão de assinatura quando checkbox marcado
+        document.getElementById('confirmLeitura')?.addEventListener('change', function() {
+            document.getElementById('btnConfirmarAssinatura').disabled = !this.checked;
+        });
+        
+        // Simular assinatura
+        document.getElementById('btnConfirmarAssinatura')?.addEventListener('click', function() {
+            // Fechar modal
+            bootstrap.Modal.getInstance(document.getElementById('modalAssinar')).hide();
+            
+            // Mostrar toast de sucesso
+            showToast('Documento assinado com sucesso!', 'success');
+            
+            // Atualizar UI (simulação)
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        });
+        
+        // Toast helper
+        function showToast(message, type = 'success') {
+            const toastHtml = `
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div class="toast show align-items-center text-bg-${type} border-0">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                <i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+                                ${message}
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', toastHtml);
+            
+            setTimeout(() => {
+                document.querySelector('.toast-container')?.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

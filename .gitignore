@@ -1,0 +1,55 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Dependencies
+node_modules/
+vendor/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# PHP
+composer.phar
+composer.lock
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database
+*.sql
+*.sqlite
+*.db
+
+# Uploads and user generated content
+uploads/
+temp/
+tmp/
+cache/
+
+# Backups
+*.bak
+*.backup
+backup/
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Build files
+dist/
+build/

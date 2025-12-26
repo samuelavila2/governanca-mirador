@@ -31,10 +31,7 @@ const SidebarComponent = {
         return `
             <div class="sidebar-header">
                 <a href="dashboard.html" class="sidebar-brand">
-                    <div class="sidebar-logo">
-                        <i class="bi bi-grid-3x3-gap-fill"></i>
-                    </div>
-                    <span class="sidebar-brand-text">MiraBoard</span>
+                    <img src="../assets/img/logo-miraboard.png" alt="MiraBoard" class="sidebar-logo-img">
                 </a>
                 <button class="sidebar-toggle d-lg-none" id="sidebarClose">
                     <i class="bi bi-x-lg"></i>

@@ -37,8 +37,23 @@
 }
 
 .sidebar-header {
-    padding: var(--spacing-6);
+    padding: var(--spacing-4) var(--spacing-5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.sidebar-logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
 }
 
 .sidebar-logo {

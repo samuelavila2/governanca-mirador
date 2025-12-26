@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assinar Documento - MiraBoard</title>
+    <link rel="icon" type="image/png" href="../assets/img/ico-miraboard.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/ux-enhancements.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css">
+    
+    <style>
+        .signature-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .signature-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .signature-header .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #F97316 0%, #E8681A 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+        
+        .signature-header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+        
+        .signature-header p {
+            color: #6B7280;
+            font-size: 1rem;
+        }
+        
+        .document-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        
+        .document-header {
+            background: linear-gradient(135deg, #F97316 0%, #E8681A 100%);
+            color: white;
+            padding: 20px 24px;
+        }
+        
+        .document-header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+        
+        .document-header span {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        .document-body {
+            padding: 24px;
+        }
+        
+        .document-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .info-item label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .info-item span {
+            font-size: 0.95rem;
+            color: #1F2937;
+            font-weight: 500;
+        }
+        
+        .document-preview {
+            background: #F9FAFB;
+            border: 1px solid #E5E7EB;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .document-preview h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 16px;
+        }
+        
+        .document-preview p {
+            font-size: 0.9rem;
+            color: #4B5563;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .signers-list {
+            margin-bottom: 24px;
+        }
+        
+        .signers-list h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 12px;
+        }
+        
+        .signer-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #F9FAFB;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .signer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .signer-info {
+            flex: 1;
+        }
+        
+        .signer-info .name {
+            font-weight: 600;
+            color: #1F2937;
+            font-size: 0.9rem;
+        }
+        
+        .signer-info .role {
+            font-size: 0.8rem;
+            color: #6B7280;
+        }
+        
+        .signer-status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .signer-status.signed {
+            color: #059669;
+        }
+        
+        .signer-status.pending {
+            color: #F59E0B;
+        }
+        
+        .signer-status.current {
+            color: #3B82F6;
+        }
+        
+        .signature-area {
+            background: #FFF7ED;
+            border: 2px dashed #F97316;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        
+        .signature-area h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+        
+        .signature-area p {
+            color: #6B7280;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .signature-pad {
+            background: #fff;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            height: 120px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9CA3AF;
+            font-style: italic;
+            cursor: crosshair;
+            position: relative;
+        }
+        
+        .signature-pad.has-signature {
+            background: #fff;
+        }
+        
+        .signature-pad .signature-preview {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2rem;
+            color: #1F2937;
+        }
+        
+        .signature-options {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        
+        .signature-options .btn {
+            font-size: 0.85rem;
+        }
+        
+        .terms-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px;
+            background: #F3F4F6;
+            border-radius: 10px;
+            margin-bottom: 24px;
+        }
+        
+        .terms-checkbox input {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            accent-color: #F97316;
+        }
+        
+        .terms-checkbox label {
+            font-size: 0.9rem;
+            color: #4B5563;
+            line-height: 1.5;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        
+        .action-buttons .btn {
+            padding: 12px 24px;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+        }
+        
+        .success-message .icon {
+            width: 80px;
+            height: 80px;
+            background: #D1FAE5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: #059669;
+            font-size: 36px;
+        }
+        
+        .success-message h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 8px;
+        }
+        
+        .success-message p {
+            color: #6B7280;
+            margin-bottom: 24px;
+        }
+        
+        @media (max-width: 768px) {
+            .signature-container {
+                padding: 20px 16px;
+            }
+            
+            .document-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .action-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="signature-container">
+        <!-- Header -->
+        <div class="signature-header">
+            <div class="logo">
+                <i class="bi bi-pen"></i>
+            </div>
+            <h1>Assinatura Digital</h1>
+            <p>Você foi solicitado a assinar um documento</p>
+        </div>
+        
+        <!-- Document Card -->
+        <div class="document-card" id="documentCard">
+            <div class="document-header">
+                <h2><i class="bi bi-file-text me-2"></i>Ata da Reunião Ordinária do Conselho Deliberativo</h2>
+                <span>Reunião realizada em 28 de Janeiro de 2025</span>
+            </div>
+            
+            <div class="document-body">
+                <!-- Document Info -->
+                <div class="document-info">
+                    <div class="info-item">
+                        <label>Tipo de Documento</label>
+                        <span>Ata de Reunião</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Órgão</label>
+                        <span>Conselho Deliberativo</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Data da Reunião</label>
+                        <span>28/01/2025</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Prazo para Assinatura</label>
+                        <span class="text-warning fw-semibold">30/01/2025</span>
+                    </div>
+                </div>
+                
+                <!-- Document Preview -->
+                <div class="document-preview">
+                    <h3><i class="bi bi-eye me-2"></i>Prévia do Documento</h3>
+                    <p><strong>ATA DA REUNIÃO ORDINÁRIA DO CONSELHO DELIBERATIVO</strong></p>
+                    <p>Aos vinte e oito dias do mês de janeiro de dois mil e vinte e cinco, às 14 horas, reuniu-se o Conselho Deliberativo da Entidade, em sua sede social, para deliberar sobre os seguintes assuntos:</p>
+                    <p><strong>1. Aprovação da ata anterior</strong> - A ata da reunião anterior foi aprovada por unanimidade.</p>
+                    <p><strong>2. Relatório Financeiro Q4-2024</strong> - Foi apresentado e aprovado o relatório financeiro do quarto trimestre de 2024, demonstrando resultado positivo de R$ 2.450.000,00.</p>
+                    <p><strong>3. Orçamento 2025</strong> - Aprovado o orçamento para o exercício de 2025, com previsão de investimentos em infraestrutura tecnológica.</p>
+                    <p>Nada mais havendo a tratar, foi encerrada a reunião, da qual eu, secretário, lavrei a presente ata.</p>
+                </div>
+                
+                <!-- Signers List -->
+                <div class="signers-list">
+                    <h4><i class="bi bi-people me-2"></i>Signatários</h4>
+                    <div class="signer-item">
+                        <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=6366F1&color=fff" alt="Maria Silva" class="signer-avatar">
+                        <div class="signer-info">
+                            <div class="name">Maria Silva</div>
+                            <div class="role">Presidente do Conselho</div>
+                        </div>
+                        <div class="signer-status signed">
+                            <i class="bi bi-check-circle-fill"></i> Assinado
+                        </div>
+                    </div>
+                    <div class="signer-item">
+                        <img src="https://ui-avatars.com/api/?name=João+Santos&background=10B981&color=fff" alt="João Santos" class="signer-avatar">
+                        <div class="signer-info">
+                            <div class="name">João Santos</div>
+                            <div class="role">Diretor Financeiro</div>
+                        </div>
+                        <div class="signer-status signed">
+                            <i class="bi bi-check-circle-fill"></i> Assinado
+                        </div>
+                    </div>
+                    <div class="signer-item" style="background: #FEF3C7; border: 1px solid #F59E0B;">
+                        <img src="https://ui-avatars.com/api/?name=Ana+Costa&background=F59E0B&color=fff" alt="Ana Costa" class="signer-avatar">
+                        <div class="signer-info">
+                            <div class="name">Ana Costa (Você)</div>
+                            <div class="role">Secretária</div>
+                        </div>
+                        <div class="signer-status current">
+                            <i class="bi bi-arrow-right-circle-fill"></i> Sua vez
+                        </div>
+                    </div>
+                    <div class="signer-item">
+                        <img src="https://ui-avatars.com/api/?name=Clara+Mendes&background=EF4444&color=fff" alt="Clara Mendes" class="signer-avatar">
+                        <div class="signer-info">
+                            <div class="name">Clara Mendes</div>
+                            <div class="role">Conselheira</div>
+                        </div>
+                        <div class="signer-status pending">
+                            <i class="bi bi-hourglass-split"></i> Aguardando
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Signature Area -->
+                <div class="signature-area">
+                    <h4><i class="bi bi-pen me-2"></i>Sua Assinatura</h4>
+                    <p>Desenhe sua assinatura abaixo ou use a assinatura digital</p>
+                    
+                    <div class="signature-pad" id="signaturePad">
+                        <span id="signaturePlaceholder">Clique para assinar</span>
+                        <span class="signature-preview" id="signaturePreview" style="display: none;">Ana Costa</span>
+                    </div>
+                    
+                    <div class="signature-options">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="clearSignature()">
+                            <i class="bi bi-eraser me-1"></i>Limpar
+                        </button>
+                        <button class="btn btn-outline-primary btn-sm" onclick="useDigitalSignature()">
+                            <i class="bi bi-shield-check me-1"></i>Usar Assinatura Digital
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Terms -->
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="termsAccept">
+                    <label for="termsAccept">
+                        Declaro que li e concordo com o conteúdo deste documento. Reconheço que esta assinatura digital tem validade jurídica conforme a Medida Provisória nº 2.200-2/2001 e legislação vigente.
+                    </label>
+                </div>
+                
+                <!-- Actions -->
+                <div class="action-buttons">
+                    <a href="reuniao-detalhe.html" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-2"></i>Voltar
+                    </a>
+                    <button class="btn btn-success" id="btnSign" onclick="signDocument()" disabled>
+                        <i class="bi bi-check-lg me-2"></i>Assinar Documento
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Success Message (hidden by default) -->
+        <div class="document-card success-message" id="successMessage">
+            <div class="icon">
+                <i class="bi bi-check-lg"></i>
+            </div>
+            <h2>Documento Assinado com Sucesso!</h2>
+            <p>Sua assinatura foi registrada em 26/12/2025 às 15:30.<br>Um comprovante foi enviado para seu email.</p>
+            <a href="reuniao-detalhe.html" class="btn btn-primary">
+                <i class="bi bi-arrow-left me-2"></i>Voltar para a Reunião
+            </a>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        let hasSignature = false;
+        
+        // Signature pad click
+        document.getElementById('signaturePad').addEventListener('click', function() {
+            useDigitalSignature();
+        });
+        
+        // Terms checkbox
+        document.getElementById('termsAccept').addEventListener('change', function() {
+            document.getElementById('btnSign').disabled = !(this.checked && hasSignature);
+        });
+        
+        function useDigitalSignature() {
+            hasSignature = true;
+            document.getElementById('signaturePlaceholder').style.display = 'none';
+            document.getElementById('signaturePreview').style.display = 'block';
+            document.getElementById('signaturePad').classList.add('has-signature');
+            
+            // Enable button if terms accepted
+            if (document.getElementById('termsAccept').checked) {
+                document.getElementById('btnSign').disabled = false;
+            }
+        }
+        
+        function clearSignature() {
+            hasSignature = false;
+            document.getElementById('signaturePlaceholder').style.display = 'block';
+            document.getElementById('signaturePreview').style.display = 'none';
+            document.getElementById('signaturePad').classList.remove('has-signature');
+            document.getElementById('btnSign').disabled = true;
+        }
+        
+        function signDocument() {
+            // Hide document card, show success
+            document.getElementById('documentCard').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

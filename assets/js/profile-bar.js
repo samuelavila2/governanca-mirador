@@ -128,7 +128,7 @@ const ProfileBarComponent = {
                 z-index: 1040;
             }
             
-            .quick-action-btn {
+            .fab-action-btn {
                 width: 56px;
                 height: 56px;
                 border-radius: 50%;
@@ -143,24 +143,24 @@ const ProfileBarComponent = {
                 transition: all 0.2s;
             }
             
-            .quick-action-btn:hover {
+            .fab-action-btn:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 6px 16px rgba(0,0,0,0.25);
             }
             
-            .quick-action-btn.btn-reuniao {
+            .fab-action-btn.btn-reuniao {
                 background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             }
             
-            .quick-action-btn.btn-ata {
+            .fab-action-btn.btn-ata {
                 background: linear-gradient(135deg, #10B981 0%, #059669 100%);
             }
             
-            .quick-action-btn.btn-documento {
+            .fab-action-btn.btn-documento {
                 background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
             }
             
-            .quick-action-btn .btn-tooltip {
+            .fab-action-btn .btn-tooltip {
                 position: absolute;
                 bottom: 100%;
                 left: 50%;
@@ -177,7 +177,7 @@ const ProfileBarComponent = {
                 margin-bottom: 8px;
             }
             
-            .quick-action-btn:hover .btn-tooltip {
+            .fab-action-btn:hover .btn-tooltip {
                 opacity: 1;
             }
             
@@ -186,7 +186,7 @@ const ProfileBarComponent = {
                     bottom: 16px;
                     right: 16px;
                 }
-                .quick-action-btn {
+                .fab-action-btn {
                     width: 48px;
                     height: 48px;
                     font-size: 1.1rem;
@@ -248,15 +248,15 @@ const ProfileBarComponent = {
         bar.className = 'quick-actions-bar';
         
         bar.innerHTML = 
-            '<button class="quick-action-btn btn-reuniao" onclick="window.location.href=\'reunioes.html\'" title="Nova Reunião">' +
+            '<button class="fab-action-btn btn-reuniao" onclick="window.location.href=\'reunioes.html\'" title="Nova Reunião">' +
                 '<span class="btn-tooltip">Nova Reunião</span>' +
                 '<i class="bi bi-calendar-plus"></i>' +
             '</button>' +
-            '<button class="quick-action-btn btn-ata" onclick="window.location.href=\'atas.html\'" title="Nova Ata">' +
+            '<button class="fab-action-btn btn-ata" onclick="window.location.href=\'atas.html\'" title="Nova Ata">' +
                 '<span class="btn-tooltip">Nova Ata</span>' +
                 '<i class="bi bi-file-earmark-plus"></i>' +
             '</button>' +
-            '<button class="quick-action-btn btn-documento" onclick="window.location.href=\'documentos.html\'" title="Novo Documento">' +
+            '<button class="fab-action-btn btn-documento" onclick="window.location.href=\'biblioteca.html\'" title="Novo Documento">' +
                 '<span class="btn-tooltip">Upload Documento</span>' +
                 '<i class="bi bi-upload"></i>' +
             '</button>';

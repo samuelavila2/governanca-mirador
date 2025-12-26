@@ -24,6 +24,156 @@
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/ux-enhancements.css">
     <link rel="stylesheet" href="../assets/css/accessibility.css">
+    
+    <style>
+        /* Administração - Estilos Específicos (Mesmo estilo de Configurações) */
+        .admin-nav {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .admin-nav .nav-link {
+            color: #6b7280;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        
+        .admin-nav .nav-link:hover {
+            color: #111827;
+            background: #f9fafb;
+        }
+        
+        .admin-nav .nav-link.active {
+            color: #E8681A;
+            background: rgba(232, 104, 26, 0.05);
+            border-left-color: #E8681A;
+        }
+        
+        .admin-nav .nav-link i {
+            font-size: 1.1rem;
+            width: 24px;
+        }
+        
+        .admin-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .admin-card .card-header {
+            background: linear-gradient(135deg, #E8681A 0%, #c45516 100%);
+            border-bottom: none;
+            padding: 1rem 1.5rem;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .admin-card .card-header h5 {
+            margin: 0;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .admin-card .card-header .btn {
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+        }
+        
+        .admin-card .card-header .btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .admin-card .card-body {
+            padding: 1.5rem;
+        }
+        
+        .form-label {
+            color: #374151;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control, .form-select {
+            background: #fff;
+            border: 1px solid #d1d5db;
+            color: #111827;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background: #fff;
+            border-color: #E8681A;
+            color: #111827;
+            box-shadow: 0 0 0 0.25rem rgba(232, 104, 26, 0.25);
+        }
+        
+        .form-control::placeholder {
+            color: #9ca3af;
+        }
+        
+        .table {
+            color: #374151;
+        }
+        
+        .table thead th {
+            background: #f9fafb;
+            color: #6b7280;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem;
+        }
+        
+        .table tbody td {
+            border-color: #e5e7eb;
+            padding: 1rem;
+            vertical-align: middle;
+        }
+        
+        .table tbody tr:hover {
+            background: #f9fafb;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .section-title {
+            color: #111827;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-title i {
+            color: #E8681A;
+        }
+    </style>
 </head>
 <body>
     <div class="app-layout">
@@ -90,39 +240,35 @@
                     <!-- Menu de Navegação por Abas -->
                     <div class="row">
                         <div class="col-lg-2 col-md-3 mb-4">
-                            <div class="card">
-                                <div class="card-body p-0">
-                                    <nav class="nav flex-column nav-pills" id="adminTabs" role="tablist">
-                                        <a class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" href="#usuarios" role="tab">
-                                            <i class="bi bi-people me-2"></i>Usuários
-                                        </a>
-                                        <a class="nav-link" id="perfis-tab" data-bs-toggle="tab" href="#perfis" role="tab">
-                                            <i class="bi bi-shield-lock me-2"></i>Perfis de Acesso
-                                        </a>
-                                        <a class="nav-link" id="cargos-tab" data-bs-toggle="tab" href="#cargos" role="tab">
-                                            <i class="bi bi-briefcase me-2"></i>Cargos
-                                        </a>
-                                        <a class="nav-link" id="grupos-tab" data-bs-toggle="tab" href="#grupos" role="tab">
-                                            <i class="bi bi-diagram-3 me-2"></i>Grupos
-                                        </a>
-                                        <a class="nav-link" id="auditoria-tab" data-bs-toggle="tab" href="#auditoria" role="tab">
-                                            <i class="bi bi-clock-history me-2"></i>Auditoria
-                                        </a>
-                                    </nav>
-                                </div>
-                            </div>
+                            <nav class="admin-nav nav flex-column" id="adminTabs" role="tablist">
+                                <a class="nav-link active" id="usuarios-tab" data-bs-toggle="tab" href="#usuarios" role="tab">
+                                    <i class="bi bi-people"></i>Usuários
+                                </a>
+                                <a class="nav-link" id="perfis-tab" data-bs-toggle="tab" href="#perfis" role="tab">
+                                    <i class="bi bi-shield-lock"></i>Perfis de Acesso
+                                </a>
+                                <a class="nav-link" id="cargos-tab" data-bs-toggle="tab" href="#cargos" role="tab">
+                                    <i class="bi bi-briefcase"></i>Cargos
+                                </a>
+                                <a class="nav-link" id="grupos-tab" data-bs-toggle="tab" href="#grupos" role="tab">
+                                    <i class="bi bi-diagram-3"></i>Grupos
+                                </a>
+                                <a class="nav-link" id="auditoria-tab" data-bs-toggle="tab" href="#auditoria" role="tab">
+                                    <i class="bi bi-clock-history"></i>Auditoria
+                                </a>
+                            </nav>
                         </div>
 
                         <div class="col-lg-10 col-md-9">
                             <div class="tab-content">
                                 <!-- TAB 1: USUÁRIOS -->
                                 <div class="tab-pane fade show active" id="usuarios" role="tabpanel">
-                                    <div class="card">
+                                    <div class="admin-card card">
                                         <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title mb-0">
+                                            <h5 class="mb-0">
                                                 <i class="bi bi-people me-2"></i>Gerenciar Usuários
                                             </h5>
-                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoUsuarioModal">
+                                            <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#novoUsuarioModal">
                                                 <i class="bi bi-plus-lg me-2"></i>Novo Usuário
                                             </button>
                                         </div>
@@ -261,12 +407,12 @@
 
                                 <!-- TAB 2: PERFIS DE ACESSO -->
                                 <div class="tab-pane fade" id="perfis" role="tabpanel">
-                                    <div class="card">
+                                    <div class="admin-card card">
                                         <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title mb-0">
+                                            <h5 class="mb-0">
                                                 <i class="bi bi-shield-lock me-2"></i>Perfis de Acesso
                                             </h5>
-                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoPerfilModal">
+                                            <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#novoPerfilModal">
                                                 <i class="bi bi-plus-lg me-2"></i>Novo Perfil
                                             </button>
                                         </div>
@@ -359,12 +505,12 @@
 
                                 <!-- TAB 3: CARGOS -->
                                 <div class="tab-pane fade" id="cargos" role="tabpanel">
-                                    <div class="card">
+                                    <div class="admin-card card">
                                         <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title mb-0">
+                                            <h5 class="mb-0">
                                                 <i class="bi bi-briefcase me-2"></i>Cargos
                                             </h5>
-                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoCargoModal">
+                                            <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#novoCargoModal">
                                                 <i class="bi bi-plus-lg me-2"></i>Novo Cargo
                                             </button>
                                         </div>
@@ -517,12 +663,12 @@
 
                                 <!-- TAB 4: GRUPOS -->
                                 <div class="tab-pane fade" id="grupos" role="tabpanel">
-                                    <div class="card">
+                                    <div class="admin-card card">
                                         <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title mb-0">
+                                            <h5 class="mb-0">
                                                 <i class="bi bi-diagram-3 me-2"></i>Grupos
                                             </h5>
-                                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoGrupoModal">
+                                            <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#novoGrupoModal">
                                                 <i class="bi bi-plus-lg me-2"></i>Novo Grupo
                                             </button>
                                         </div>
@@ -663,12 +809,12 @@
 
                                 <!-- TAB 5: AUDITORIA -->
                                 <div class="tab-pane fade" id="auditoria" role="tabpanel">
-                                    <div class="card">
+                                    <div class="admin-card card">
                                         <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title mb-0">
+                                            <h5 class="mb-0">
                                                 <i class="bi bi-clock-history me-2"></i>Auditoria do Sistema
                                             </h5>
-                                            <button class="btn btn-outline-secondary">
+                                            <button class="btn btn-sm">
                                                 <i class="bi bi-download me-2"></i>Exportar Logs
                                             </button>
                                         </div>

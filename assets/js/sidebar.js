@@ -80,7 +80,7 @@ const SidebarComponent = {
                 { id: 'reunioes', href: 'reunioes.html', icon: 'bi-people', label: 'Reuniões', badge: '3' },
                 { id: 'atas', href: 'atas.html', icon: 'bi-file-text', label: 'Atas' },
                 { id: 'acoes', href: 'acoes.html', icon: 'bi-check2-square', label: 'Ações', badge: '5', badgeType: 'warning' },
-                { id: 'documentos', href: 'documentos.html', icon: 'bi-folder2-open', label: 'Repositório Societário' }
+                { id: 'documentos', href: 'documentos.html', icon: 'bi-folder2-open', label: 'Repositório' }
             ],
             compliance: [
                 { id: 'obrigacoes', href: 'obrigacoes.html', icon: 'bi-shield-check', label: 'Central de Conformidade', badge: '2', badgeType: 'danger' },

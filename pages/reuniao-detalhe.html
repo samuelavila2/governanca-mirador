@@ -341,7 +341,7 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <!-- Item 4 -->
+                                                <!-- Item 4: Votação com Impedimento -->
                                                 <div class="pauta-item" draggable="true" data-tempo="20">
                                                     <div class="pauta-item-header">
                                                         <span class="pauta-item-number">4</span>
@@ -357,6 +357,115 @@
                                                                 </span>
                                                                 <span><i class="bi bi-hand-thumbs-up"></i> Requer votação</span>
                                                                 <span><i class="bi bi-paperclip"></i> 2 anexos</span>
+                                                                <!-- EFPC: Botão Declarar Impedimento -->
+                                                                <button class="btn-declarar-impedimento" data-bs-toggle="modal" data-bs-target="#modalImpedimento" data-item="4">
+                                                                    <i class="bi bi-shield-exclamation"></i>
+                                                                    Declarar Impedimento
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pauta-item-actions">
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-trash"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-grip-vertical"></i></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Card de Impedidos (se houver) -->
+                                                    <div class="impedimento-card">
+                                                        <div class="impedimento-card-header">
+                                                            <i class="bi bi-shield-x"></i>
+                                                            Conselheiros Impedidos neste Item
+                                                        </div>
+                                                        <div class="impedimento-lista">
+                                                            <div class="impedimento-item">
+                                                                <div class="avatar-xs bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center">RL</div>
+                                                                <span><strong>Roberto Lima</strong> - Participação societária em empresa beneficiada</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Item 5: Deliberação de Investimento com Matriz -->
+                                                <div class="pauta-item pauta-investimento" draggable="true" data-tempo="45" data-tipo="investimento">
+                                                    <div class="pauta-item-header">
+                                                        <span class="pauta-item-number">5</span>
+                                                        <div class="pauta-item-content">
+                                                            <h5 class="pauta-item-title">
+                                                                <i class="bi bi-graph-up-arrow text-success me-2"></i>
+                                                                Deliberação: Alocação em Fundo de Infraestrutura
+                                                            </h5>
+                                                            <p class="pauta-item-desc">Análise e deliberação sobre alocação de R$ 50.000.000,00 no FIP Infraestrutura Brasil III, conforme Política de Investimentos vigente.</p>
+                                                            <div class="pauta-item-meta">
+                                                                <span class="cronometro-trigger" data-tempo="45">
+                                                                    <i class="bi bi-clock"></i> 45 min
+                                                                    <button class="btn-cronometro" title="Iniciar cronômetro">
+                                                                        <i class="bi bi-play-circle"></i>
+                                                                    </button>
+                                                                </span>
+                                                                <span><i class="bi bi-cash-stack"></i> R$ 50 milhões</span>
+                                                                <span><i class="bi bi-hand-thumbs-up"></i> Requer votação</span>
+                                                                <button class="btn-declarar-impedimento" data-bs-toggle="modal" data-bs-target="#modalImpedimento" data-item="5">
+                                                                    <i class="bi bi-shield-exclamation"></i>
+                                                                    Declarar Impedimento
+                                                                </button>
+                                                            </div>
+                                                            
+                                                            <!-- EFPC: Matriz de Rastreabilidade de Investimentos -->
+                                                            <div class="matriz-investimento incompleta">
+                                                                <div class="matriz-header">
+                                                                    <div class="matriz-titulo">
+                                                                        <i class="bi bi-diagram-3"></i>
+                                                                        Matriz de Rastreabilidade (Res. CNPC 23)
+                                                                    </div>
+                                                                    <div class="selo-conformidade amarelo">
+                                                                        <i class="bi bi-exclamation-triangle"></i>
+                                                                        2/3 Pilares
+                                                                    </div>
+                                                                </div>
+                                                                <div class="matriz-pilares">
+                                                                    <div class="pilar-item pilar-tecnico anexado">
+                                                                        <span class="pilar-check"><i class="bi bi-check"></i></span>
+                                                                        <div class="pilar-icon">
+                                                                            <i class="bi bi-graph-up"></i>
+                                                                        </div>
+                                                                        <div class="pilar-nome">Parecer Técnico</div>
+                                                                        <div class="pilar-status">Anexado</div>
+                                                                        <div class="pilar-arquivo">
+                                                                            <i class="bi bi-file-pdf"></i>
+                                                                            parecer_tecnico.pdf
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="pilar-item pilar-juridico anexado">
+                                                                        <span class="pilar-check"><i class="bi bi-check"></i></span>
+                                                                        <div class="pilar-icon">
+                                                                            <i class="bi bi-briefcase"></i>
+                                                                        </div>
+                                                                        <div class="pilar-nome">Parecer Jurídico</div>
+                                                                        <div class="pilar-status">Anexado</div>
+                                                                        <div class="pilar-arquivo">
+                                                                            <i class="bi bi-file-pdf"></i>
+                                                                            parecer_juridico.pdf
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="pilar-item pilar-risco pendente">
+                                                                        <div class="pilar-icon">
+                                                                            <i class="bi bi-shield-exclamation"></i>
+                                                                        </div>
+                                                                        <div class="pilar-nome">Análise de Risco</div>
+                                                                        <div class="pilar-status">Pendente</div>
+                                                                        <button class="btn btn-sm btn-outline-danger mt-2">
+                                                                            <i class="bi bi-upload me-1"></i>Anexar
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                <div class="matriz-alerta">
+                                                                    <i class="bi bi-lock-fill"></i>
+                                                                    <span>Votação bloqueada até que todos os 3 pilares estejam anexados.</span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="pauta-item-actions">
@@ -367,10 +476,10 @@
                                                     </div>
                                                 </div>
                                                 
-                                                <!-- Item 5 -->
+                                                <!-- Item 6: Informes -->
                                                 <div class="pauta-item" draggable="true" data-tempo="15">
                                                     <div class="pauta-item-header">
-                                                        <span class="pauta-item-number">5</span>
+                                                        <span class="pauta-item-number">6</span>
                                                         <div class="pauta-item-content">
                                                             <h5 class="pauta-item-title">Informes Gerais e Encerramento</h5>
                                                             <p class="pauta-item-desc">Espaço para informes diversos e encerramento da reunião.</p>
@@ -515,7 +624,7 @@
                                             </button>
                                         </div>
                                         
-                                        <!-- Votação 1 - Em aberto -->
+                                        <!-- Votação 1 - Em aberto com Ressalva -->
                                         <div class="votacao-card">
                                             <div class="votacao-header">
                                                 <div>
@@ -529,10 +638,33 @@
                                                     Deliberar sobre a aprovação da proposta orçamentária para o exercício de 2025, 
                                                     conforme apresentação do Diretor Financeiro e documentação anexa.
                                                 </p>
+                                                
+                                                <!-- Conselheiros Impedidos -->
+                                                <div class="impedimento-card mb-3">
+                                                    <div class="impedimento-card-header">
+                                                        <i class="bi bi-shield-x"></i>
+                                                        Conselheiro Impedido
+                                                    </div>
+                                                    <div class="impedimento-lista">
+                                                        <div class="impedimento-item">
+                                                            <div class="avatar-xs bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 10px;">RL</div>
+                                                            <span><strong>Roberto Lima</strong> - Participação societária</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
                                                 <div class="votacao-opcoes">
                                                     <label class="votacao-opcao">
                                                         <span class="votacao-opcao-radio"></span>
                                                         <span class="votacao-opcao-label">A Favor</span>
+                                                    </label>
+                                                    <!-- EFPC: Voto com Ressalva -->
+                                                    <label class="votacao-opcao ressalva" data-toggle-ressalva="true">
+                                                        <span class="votacao-opcao-radio"></span>
+                                                        <span class="votacao-opcao-label">
+                                                            <i class="bi bi-chat-square-text me-1"></i>
+                                                            A Favor com Ressalva
+                                                        </span>
                                                     </label>
                                                     <label class="votacao-opcao">
                                                         <span class="votacao-opcao-radio"></span>
@@ -542,6 +674,19 @@
                                                         <span class="votacao-opcao-radio"></span>
                                                         <span class="votacao-opcao-label">Abstenção</span>
                                                     </label>
+                                                </div>
+                                                
+                                                <!-- Campo de Ressalva -->
+                                                <div class="ressalva-campo" id="campoRessalva">
+                                                    <label>
+                                                        <i class="bi bi-chat-square-text"></i>
+                                                        Justificativa da Ressalva
+                                                    </label>
+                                                    <textarea placeholder="Descreva sua ressalva técnica que será registrada na ata..."></textarea>
+                                                    <div class="ressalva-aviso">
+                                                        <i class="bi bi-info-circle"></i>
+                                                        Esta ressalva será anexada automaticamente ao corpo da ata final.
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="d-flex gap-2">
@@ -554,7 +699,7 @@
                                             </div>
                                         </div>
                                         
-                                        <!-- Votação 2 - Encerrada -->
+                                        <!-- Votação 2 - Encerrada com votos com ressalva -->
                                         <div class="votacao-card">
                                             <div class="votacao-header">
                                                 <div>
@@ -569,7 +714,12 @@
                                                 </p>
                                                 <div class="votacao-resultado">
                                                     <div class="resultado-bar">
-                                                        <span class="resultado-label">A Favor</span>
+                                                        <span class="resultado-label">
+                                                            A Favor
+                                                            <span class="voto-ressalva-badge ms-2">
+                                                                <i class="bi bi-chat-square-text"></i> 1 com ressalva
+                                                            </span>
+                                                        </span>
                                                         <div class="resultado-progress">
                                                             <div class="resultado-progress-bar favor" style="width: 83%"></div>
                                                         </div>
@@ -588,6 +738,24 @@
                                                             <div class="resultado-progress-bar abstencao" style="width: 17%"></div>
                                                         </div>
                                                         <span class="resultado-value">1 (17%)</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Ressalvas Registradas -->
+                                                <div class="mt-3 p-3 bg-light rounded">
+                                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                                        <i class="bi bi-chat-square-text text-info"></i>
+                                                        <strong class="text-info">Ressalva Registrada:</strong>
+                                                    </div>
+                                                    <div class="ps-4">
+                                                        <div class="d-flex align-items-center gap-2 mb-1">
+                                                            <div class="avatar-xs bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 20px; height: 20px; font-size: 9px;">AC</div>
+                                                            <strong>Ana Costa:</strong>
+                                                        </div>
+                                                        <p class="text-muted small mb-0 fst-italic">
+                                                            "Aprovo o orçamento, porém registro minha ressalva quanto ao item 4.2, 
+                                                            sugerindo revisão das projeções de despesas administrativas para o segundo semestre."
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -877,6 +1045,131 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="text-muted">Ata</span>
                                             <span class="badge badge-info">Rascunho</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- EFPC: Checklist Normativo PREVIC -->
+                                <div class="checklist-normativo">
+                                    <div class="checklist-header">
+                                        <h6>
+                                            <i class="bi bi-shield-check"></i>
+                                            Checklist PREVIC
+                                        </h6>
+                                        <span class="checklist-badge incompleto">4/6</span>
+                                    </div>
+                                    <div class="checklist-body">
+                                        <!-- Documentos Obrigatórios -->
+                                        <div class="checklist-section">
+                                            <div class="checklist-section-title">Documentos Obrigatórios</div>
+                                            
+                                            <div class="checklist-item anexado">
+                                                <div class="checklist-icon">
+                                                    <i class="bi bi-check-lg"></i>
+                                                </div>
+                                                <div class="checklist-info">
+                                                    <div class="checklist-nome">
+                                                        Convocação Formal
+                                                        <span class="obrigatorio-tag">OBR</span>
+                                                    </div>
+                                                    <div class="checklist-descricao">Art. 15 do Estatuto</div>
+                                                </div>
+                                                <span class="checklist-action">
+                                                    <i class="bi bi-eye"></i>
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="checklist-item anexado">
+                                                <div class="checklist-icon">
+                                                    <i class="bi bi-check-lg"></i>
+                                                </div>
+                                                <div class="checklist-info">
+                                                    <div class="checklist-nome">
+                                                        Ata Reunião Anterior
+                                                        <span class="obrigatorio-tag">OBR</span>
+                                                    </div>
+                                                    <div class="checklist-descricao">Res. CNPC nº 23</div>
+                                                </div>
+                                                <span class="checklist-action">
+                                                    <i class="bi bi-eye"></i>
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="checklist-item obrigatorio-faltando">
+                                                <div class="checklist-icon">
+                                                    <i class="bi bi-exclamation-lg"></i>
+                                                </div>
+                                                <div class="checklist-info">
+                                                    <div class="checklist-nome">
+                                                        Relatório do Administrador
+                                                        <span class="obrigatorio-tag">OBR</span>
+                                                    </div>
+                                                    <div class="checklist-descricao">Art. 22 da LC 109/2001</div>
+                                                </div>
+                                                <span class="checklist-action">
+                                                    <i class="bi bi-upload"></i> Anexar
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="checklist-item anexado">
+                                                <div class="checklist-icon">
+                                                    <i class="bi bi-check-lg"></i>
+                                                </div>
+                                                <div class="checklist-info">
+                                                    <div class="checklist-nome">
+                                                        Demonstrativo de Investimentos
+                                                        <span class="obrigatorio-tag">OBR</span>
+                                                    </div>
+                                                    <div class="checklist-descricao">Res. CMN 4.994</div>
+                                                </div>
+                                                <span class="checklist-action">
+                                                    <i class="bi bi-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Documentos Recomendados -->
+                                        <div class="checklist-section">
+                                            <div class="checklist-section-title">Recomendados</div>
+                                            
+                                            <div class="checklist-item anexado">
+                                                <div class="checklist-icon">
+                                                    <i class="bi bi-check-lg"></i>
+                                                </div>
+                                                <div class="checklist-info">
+                                                    <div class="checklist-nome">Parecer Atuarial</div>
+                                                    <div class="checklist-descricao">Análise técnica anual</div>
+                                                </div>
+                                                <span class="checklist-action">
+                                                    <i class="bi bi-eye"></i>
+                                                </span>
+                                            </div>
+                                            
+                                            <div class="checklist-item pendente">
+                                                <div class="checklist-icon">
+                                                    <i class="bi bi-clock"></i>
+                                                </div>
+                                                <div class="checklist-info">
+                                                    <div class="checklist-nome">Política de Investimentos</div>
+                                                    <div class="checklist-descricao">Versão vigente</div>
+                                                </div>
+                                                <span class="checklist-action">
+                                                    <i class="bi bi-upload"></i> Anexar
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="checklist-footer">
+                                        <div class="checklist-progress">
+                                            <div class="checklist-progress-bar">
+                                                <div class="checklist-progress-fill parcial" style="width: 66%"></div>
+                                            </div>
+                                            <span class="checklist-progress-text">4/6</span>
+                                        </div>
+                                        
+                                        <div class="checklist-alerta-bloqueio">
+                                            <i class="bi bi-exclamation-triangle-fill"></i>
+                                            <span>Documentos obrigatórios pendentes. Não é possível encerrar a reunião.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1254,6 +1547,87 @@
         </div>
     </div>
 
+    <!-- EFPC: Modal Declarar Impedimento -->
+    <div class="modal fade modal-impedimento" id="modalImpedimento" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-shield-exclamation me-2"></i>Declarar Impedimento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning d-flex gap-3 mb-4">
+                        <i class="bi bi-info-circle-fill fs-5"></i>
+                        <div>
+                            <strong>Conflito de Interesses</strong>
+                            <p class="mb-0 small">Ao declarar impedimento, seu voto será bloqueado para este item e a declaração será registrada automaticamente na ata da reunião.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-medium">Item da Pauta</label>
+                        <div class="p-3 bg-light rounded">
+                            <strong>Item 4:</strong> Votação: Aprovação do Orçamento 2025
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-medium">Motivo do Impedimento *</label>
+                        <div class="impedimento-motivos">
+                            <label class="impedimento-motivo-option">
+                                <input type="radio" name="motivoImpedimento" value="societaria">
+                                <div>
+                                    <strong>Participação Societária</strong>
+                                    <div class="text-muted small">Possuo participação em empresa que será beneficiada pela deliberação</div>
+                                </div>
+                            </label>
+                            <label class="impedimento-motivo-option">
+                                <input type="radio" name="motivoImpedimento" value="familiar">
+                                <div>
+                                    <strong>Vínculo Familiar</strong>
+                                    <div class="text-muted small">Tenho parentesco com pessoa que será beneficiada</div>
+                                </div>
+                            </label>
+                            <label class="impedimento-motivo-option">
+                                <input type="radio" name="motivoImpedimento" value="profissional">
+                                <div>
+                                    <strong>Vínculo Profissional</strong>
+                                    <div class="text-muted small">Possuo vínculo profissional com entidade envolvida</div>
+                                </div>
+                            </label>
+                            <label class="impedimento-motivo-option">
+                                <input type="radio" name="motivoImpedimento" value="outro">
+                                <div>
+                                    <strong>Outro Motivo</strong>
+                                    <div class="text-muted small">Informar detalhes no campo abaixo</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label fw-medium">Detalhamento (opcional)</label>
+                        <textarea class="form-control" rows="2" placeholder="Descreva detalhes adicionais sobre o impedimento..."></textarea>
+                    </div>
+                    
+                    <div class="alert alert-secondary small">
+                        <i class="bi bi-file-text me-2"></i>
+                        <strong>Texto que será inserido na ata:</strong><br>
+                        <em>"O Conselheiro [Seu Nome] declarou-se impedido de deliberar sobre este item, nos termos do art. 15 do Estatuto, por motivo de [motivo selecionado]."</em>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning" id="btnConfirmarImpedimento">
+                        <i class="bi bi-shield-check me-2"></i>Confirmar Impedimento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal Nudge/Lembrete -->
     <div class="modal fade" id="modalNudge" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -1433,6 +1807,95 @@
             </div>
         </div>
     </div>
+
+    <!-- EFPC: Biblioteca de Consulta Rápida (Widget Flutuante) -->
+    <div class="biblioteca-flutuante" id="bibliotecaFlutuante" style="display: none;">
+        <div class="biblioteca-header" id="bibliotecaHeader">
+            <h6>
+                <i class="bi bi-book"></i>
+                Consulta Rápida
+            </h6>
+            <div class="biblioteca-controles">
+                <button id="btnMinimizarBiblioteca" title="Minimizar">
+                    <i class="bi bi-dash"></i>
+                </button>
+                <button id="btnFecharBiblioteca" title="Fechar">
+                    <i class="bi bi-x"></i>
+                </button>
+            </div>
+        </div>
+        <div class="biblioteca-body">
+            <div class="biblioteca-busca">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Buscar nos documentos..." id="buscaBiblioteca">
+            </div>
+            
+            <!-- Documento Fixado: Política de Investimentos -->
+            <div class="documento-fixado">
+                <div class="documento-fixado-header">
+                    <div class="documento-fixado-titulo">
+                        <i class="bi bi-file-earmark-text"></i>
+                        Política de Investimentos 2025
+                    </div>
+                    <div class="documento-fixado-acoes">
+                        <button title="Expandir"><i class="bi bi-arrows-fullscreen"></i></button>
+                        <button title="Remover"><i class="bi bi-x"></i></button>
+                    </div>
+                </div>
+                <div class="documento-fixado-conteudo">
+                    <div class="trecho-destaque">
+                        <strong>Art. 12 - Limites de Alocação</strong><br>
+                        O limite máximo por emissor é de <mark>10% do patrimônio líquido</mark> do plano.
+                    </div>
+                    <p><strong>Art. 15 - Fundos de Investimento em Participações (FIP)</strong></p>
+                    <p>A alocação em FIPs de Infraestrutura está limitada a <mark>15% do patrimônio</mark>, observando-se os requisitos de governança do gestor.</p>
+                    <div class="trecho-destaque">
+                        <strong>Art. 18 - Alçadas de Aprovação</strong><br>
+                        Investimentos acima de <mark>R$ 30 milhões</mark> requerem aprovação do Conselho Deliberativo.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Documento Fixado: Estatuto -->
+            <div class="documento-fixado">
+                <div class="documento-fixado-header">
+                    <div class="documento-fixado-titulo">
+                        <i class="bi bi-file-earmark-ruled"></i>
+                        Estatuto Social
+                    </div>
+                    <div class="documento-fixado-acoes">
+                        <button title="Expandir"><i class="bi bi-arrows-fullscreen"></i></button>
+                        <button title="Remover"><i class="bi bi-x"></i></button>
+                    </div>
+                </div>
+                <div class="documento-fixado-conteudo">
+                    <p><strong>Art. 28 - Competências do Conselho Deliberativo</strong></p>
+                    <p>Compete ao Conselho Deliberativo:</p>
+                    <p>I - Aprovar a <mark>Política de Investimentos</mark> anual;</p>
+                    <p>II - Deliberar sobre aplicações que excedam as alçadas da Diretoria;</p>
+                    <p>III - Autorizar a contratação de gestores externos.</p>
+                </div>
+            </div>
+        </div>
+        <div class="biblioteca-footer">
+            <div class="biblioteca-docs-lista">
+                <span class="biblioteca-doc-chip ativo">
+                    <i class="bi bi-file-text"></i> Política de Invest.
+                </span>
+                <span class="biblioteca-doc-chip ativo">
+                    <i class="bi bi-file-text"></i> Estatuto
+                </span>
+                <span class="biblioteca-doc-chip">
+                    <i class="bi bi-plus"></i> Adicionar
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Toggle Biblioteca -->
+    <button class="btn-biblioteca-toggle" id="btnToggleBiblioteca" title="Consulta Rápida de Políticas">
+        <i class="bi bi-book"></i>
+    </button>
 
     <!-- Bootstrap JS Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -1836,6 +2299,115 @@
                 progressBar.classList.add('warning');
             }
         }
+        
+        // =============================================
+        // EFPC: Voto com Ressalva
+        // =============================================
+        document.querySelectorAll('.votacao-opcao.ressalva').forEach(opcao => {
+            opcao.addEventListener('click', function() {
+                const campoRessalva = this.closest('.votacao-body').querySelector('.ressalva-campo');
+                if (campoRessalva) {
+                    campoRessalva.classList.add('show');
+                }
+            });
+        });
+        
+        document.querySelectorAll('.votacao-opcao:not(.ressalva)').forEach(opcao => {
+            opcao.addEventListener('click', function() {
+                const campoRessalva = this.closest('.votacao-body')?.querySelector('.ressalva-campo');
+                if (campoRessalva) {
+                    campoRessalva.classList.remove('show');
+                }
+            });
+        });
+        
+        // =============================================
+        // EFPC: Biblioteca de Consulta Rápida
+        // =============================================
+        const biblioteca = document.getElementById('bibliotecaFlutuante');
+        const btnToggle = document.getElementById('btnToggleBiblioteca');
+        const btnMinimizar = document.getElementById('btnMinimizarBiblioteca');
+        const btnFechar = document.getElementById('btnFecharBiblioteca');
+        
+        btnToggle?.addEventListener('click', function() {
+            biblioteca.style.display = 'flex';
+            this.style.display = 'none';
+        });
+        
+        btnFechar?.addEventListener('click', function() {
+            biblioteca.style.display = 'none';
+            btnToggle.style.display = 'flex';
+        });
+        
+        btnMinimizar?.addEventListener('click', function() {
+            biblioteca.classList.toggle('minimizada');
+        });
+        
+        document.getElementById('bibliotecaHeader')?.addEventListener('click', function(e) {
+            if (e.target.closest('.biblioteca-controles')) return;
+            if (biblioteca.classList.contains('minimizada')) {
+                biblioteca.classList.remove('minimizada');
+            }
+        });
+        
+        // Busca na biblioteca
+        document.getElementById('buscaBiblioteca')?.addEventListener('input', function() {
+            const termo = this.value.toLowerCase();
+            document.querySelectorAll('.documento-fixado-conteudo').forEach(conteudo => {
+                const texto = conteudo.textContent.toLowerCase();
+                const highlights = conteudo.querySelectorAll('mark');
+                highlights.forEach(h => {
+                    h.outerHTML = h.textContent;
+                });
+                
+                if (termo.length > 2 && texto.includes(termo)) {
+                    // Highlight simples
+                    conteudo.closest('.documento-fixado').style.borderColor = '#8B5CF6';
+                } else {
+                    conteudo.closest('.documento-fixado').style.borderColor = '';
+                }
+            });
+        });
+        
+        // =============================================
+        // EFPC: Declarar Impedimento
+        // =============================================
+        document.querySelectorAll('.impedimento-motivo-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.impedimento-motivo-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input[type="radio"]').checked = true;
+            });
+        });
+        
+        document.getElementById('btnConfirmarImpedimento')?.addEventListener('click', function() {
+            const motivoSelecionado = document.querySelector('input[name="motivoImpedimento"]:checked');
+            if (!motivoSelecionado) {
+                alert('Selecione um motivo para o impedimento.');
+                return;
+            }
+            
+            // Fechar modal
+            bootstrap.Modal.getInstance(document.getElementById('modalImpedimento')).hide();
+            
+            // Mostrar feedback
+            showToast('Impedimento registrado com sucesso. Seu voto foi bloqueado para este item.', 'info');
+            
+            // Marcar botão como impedido
+            const btnAtivo = document.querySelector('.btn-declarar-impedimento[data-item="' + document.querySelector('#modalImpedimento').dataset.item + '"]');
+            if (btnAtivo) {
+                btnAtivo.classList.add('impedido');
+                btnAtivo.innerHTML = '<i class="bi bi-shield-x"></i> Impedido';
+            }
+        });
+        
+        // Atualizar item ao abrir modal de impedimento
+        document.querySelectorAll('.btn-declarar-impedimento').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const item = this.dataset.item;
+                document.getElementById('modalImpedimento').dataset.item = item;
+            });
+        });
     </script>
 </body>
 </html>

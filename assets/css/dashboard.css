@@ -1383,6 +1383,260 @@
     color: #4b5563 !important;
 }
 
+/* ========== MEMBERS LIST (Dashboard) ========== */
+.members-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.member-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.member-item:last-child {
+    border-bottom: none;
+}
+
+.member-item:hover {
+    background-color: var(--bg-hover, #F9FAFB);
+}
+
+.member-avatar-wrapper {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.member-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.member-status-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.member-status-indicator.online {
+    background-color: var(--color-success, #10B981);
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+.member-status-indicator.offline {
+    background-color: var(--color-gray-400, #9CA3AF);
+}
+
+.member-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.member-details .member-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 2px 0;
+}
+
+.member-details .member-role {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-primary, #F97316);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.member-mandate {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: var(--text-muted, #9CA3AF);
+}
+
+.member-mandate i {
+    font-size: 0.7rem;
+}
+
+.member-actions {
+    color: var(--text-muted);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.member-item:hover .member-actions {
+    opacity: 1;
+}
+
+/* ========== CALENDAR TOOLTIP ========== */
+.calendar-day {
+    position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    border-radius: var(--border-radius-base, 6px);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.calendar-day:hover {
+    background-color: var(--bg-hover, #F3F4F6);
+}
+
+.calendar-day.other-month {
+    color: var(--text-muted, #9CA3AF);
+}
+
+.calendar-day.today {
+    background-color: var(--color-primary, #F97316);
+    color: #fff;
+    font-weight: 600;
+}
+
+.calendar-day.has-event {
+    font-weight: 600;
+    color: var(--color-primary, #F97316);
+}
+
+.calendar-day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    background-color: var(--color-primary, #F97316);
+    border-radius: 50%;
+}
+
+.calendar-day.today.has-event::after {
+    background-color: #fff;
+}
+
+.calendar-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    background: #fff;
+    border: 1px solid var(--border-color, #E5E7EB);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.15);
+    padding: 12px;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+    text-align: left;
+    pointer-events: none;
+}
+
+.calendar-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #fff;
+}
+
+.calendar-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid var(--border-color, #E5E7EB);
+    z-index: -1;
+}
+
+.calendar-day.has-event:hover .calendar-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+.tooltip-header {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary, #6B7280);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color, #E5E7EB);
+}
+
+.tooltip-header i {
+    margin-right: 4px;
+    color: var(--color-primary, #F97316);
+}
+
+.tooltip-event {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.tooltip-event:last-child {
+    margin-bottom: 0;
+}
+
+.event-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.event-dot.reuniao {
+    background-color: var(--color-info, #3B82F6);
+}
+
+.event-dot.prazo {
+    background-color: var(--color-danger, #EF4444);
+}
+
+/* Calendar Legend */
+.calendar-legend {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color, #E5E7EB);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-secondary, #6B7280);
+}
+
 /* ============================================
    RESPONSIVE - REUNIÕES E CALENDÁRIO
    ============================================ */
@@ -1414,6 +1668,26 @@
     .reuniao-participants,
     .reuniao-arrow {
         display: none;
+    }
+    
+    /* Members list mobile */
+    .member-item {
+        padding: 12px 16px;
+    }
+    
+    .member-avatar {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .member-mandate {
+        display: none;
+    }
+    
+    /* Calendar tooltip mobile */
+    .calendar-tooltip {
+        min-width: 180px;
+        font-size: 0.75rem;
     }
 }
 

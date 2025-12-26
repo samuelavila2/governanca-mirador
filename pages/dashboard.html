@@ -832,8 +832,8 @@
                                         <i class="bi bi-calendar3 me-2"></i>Janeiro 2025
                                     </h5>
                                     <div class="calendar-nav">
-                                        <button class="btn btn-sm btn-icon"><i class="bi bi-chevron-left"></i></button>
-                                        <button class="btn btn-sm btn-icon"><i class="bi bi-chevron-right"></i></button>
+                                        <button class="btn btn-sm btn-icon" aria-label="Mês anterior"><i class="bi bi-chevron-left"></i></button>
+                                        <button class="btn btn-sm btn-icon" aria-label="Próximo mês"><i class="bi bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -849,51 +849,87 @@
                                         </div>
                                         <div class="calendar-body">
                                             <div class="calendar-row">
-                                                <span class="other-month">29</span>
-                                                <span class="other-month">30</span>
-                                                <span class="other-month">31</span>
-                                                <span>1</span>
-                                                <span>2</span>
-                                                <span>3</span>
-                                                <span>4</span>
+                                                <span class="calendar-day other-month">29</span>
+                                                <span class="calendar-day other-month">30</span>
+                                                <span class="calendar-day other-month">31</span>
+                                                <span class="calendar-day">1</span>
+                                                <span class="calendar-day">2</span>
+                                                <span class="calendar-day">3</span>
+                                                <span class="calendar-day">4</span>
                                             </div>
                                             <div class="calendar-row">
-                                                <span>5</span>
-                                                <span>6</span>
-                                                <span>7</span>
-                                                <span>8</span>
-                                                <span>9</span>
-                                                <span>10</span>
-                                                <span>11</span>
+                                                <span class="calendar-day">5</span>
+                                                <span class="calendar-day">6</span>
+                                                <span class="calendar-day">7</span>
+                                                <span class="calendar-day">8</span>
+                                                <span class="calendar-day">9</span>
+                                                <span class="calendar-day">10</span>
+                                                <span class="calendar-day">11</span>
                                             </div>
                                             <div class="calendar-row">
-                                                <span>12</span>
-                                                <span>13</span>
-                                                <span>14</span>
-                                                <span class="has-event">15</span>
-                                                <span>16</span>
-                                                <span>17</span>
-                                                <span>18</span>
+                                                <span class="calendar-day">12</span>
+                                                <span class="calendar-day">13</span>
+                                                <span class="calendar-day">14</span>
+                                                <span class="calendar-day has-event" data-event-title="Reunião Conselho Deliberativo" data-event-time="14:00" data-event-type="reuniao">
+                                                    15
+                                                    <div class="calendar-tooltip">
+                                                        <div class="tooltip-header"><i class="bi bi-calendar-event"></i> 15 de Janeiro</div>
+                                                        <div class="tooltip-event">
+                                                            <span class="event-dot reuniao"></span>
+                                                            <span>14:00 - Reunião Conselho Deliberativo</span>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                                <span class="calendar-day">16</span>
+                                                <span class="calendar-day">17</span>
+                                                <span class="calendar-day">18</span>
                                             </div>
                                             <div class="calendar-row">
-                                                <span>19</span>
-                                                <span>20</span>
-                                                <span>21</span>
-                                                <span>22</span>
-                                                <span>23</span>
-                                                <span>24</span>
-                                                <span>25</span>
+                                                <span class="calendar-day">19</span>
+                                                <span class="calendar-day">20</span>
+                                                <span class="calendar-day">21</span>
+                                                <span class="calendar-day">22</span>
+                                                <span class="calendar-day">23</span>
+                                                <span class="calendar-day">24</span>
+                                                <span class="calendar-day">25</span>
                                             </div>
                                             <div class="calendar-row">
-                                                <span>26</span>
-                                                <span class="today">27</span>
-                                                <span class="has-event">28</span>
-                                                <span>29</span>
-                                                <span class="has-event">30</span>
-                                                <span>31</span>
-                                                <span class="other-month">1</span>
+                                                <span class="calendar-day">26</span>
+                                                <span class="calendar-day today">27</span>
+                                                <span class="calendar-day has-event" data-event-type="prazo">
+                                                    28
+                                                    <div class="calendar-tooltip">
+                                                        <div class="tooltip-header"><i class="bi bi-calendar-event"></i> 28 de Janeiro</div>
+                                                        <div class="tooltip-event">
+                                                            <span class="event-dot prazo"></span>
+                                                            <span>Prazo: Revisar estatuto social</span>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                                <span class="calendar-day">29</span>
+                                                <span class="calendar-day has-event" data-event-type="reuniao">
+                                                    30
+                                                    <div class="calendar-tooltip">
+                                                        <div class="tooltip-header"><i class="bi bi-calendar-event"></i> 30 de Janeiro</div>
+                                                        <div class="tooltip-event">
+                                                            <span class="event-dot reuniao"></span>
+                                                            <span>10:00 - Reunião Conselho Fiscal</span>
+                                                        </div>
+                                                        <div class="tooltip-event">
+                                                            <span class="event-dot prazo"></span>
+                                                            <span>Prazo: Preparar relatório financeiro</span>
+                                                        </div>
+                                                    </div>
+                                                </span>
+                                                <span class="calendar-day">31</span>
+                                                <span class="calendar-day other-month">1</span>
                                             </div>
                                         </div>
+                                    </div>
+                                    <!-- Legenda -->
+                                    <div class="calendar-legend">
+                                        <div class="legend-item"><span class="event-dot reuniao"></span> Reunião</div>
+                                        <div class="legend-item"><span class="event-dot prazo"></span> Prazo</div>
                                     </div>
                                 </div>
                             </div>
@@ -984,68 +1020,80 @@
                                     </h5>
                                     <a href="membros.html" class="btn btn-sm btn-link">Ver Todos</a>
                                 </div>
-                                <div class="card-body">
-                                    <div class="row g-3">
-                                        <div class="col-6">
-                                            <div class="member-card">
-                                                <div class="avatar avatar-lg">
-                                                    <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=6366F1&color=fff&size=64" alt="Maria Silva">
-                                                </div>
-                                                <div class="member-info">
-                                                    <h6 class="member-name">Maria Silva</h6>
-                                                    <span class="member-role">Presidente</span>
-                                                </div>
-                                                <div class="member-status online">
-                                                    <span class="status-dot"></span>
-                                                    Online
+                                <div class="card-body p-0">
+                                    <div class="members-list">
+                                        <!-- Maria Silva -->
+                                        <a href="membros.html" class="member-item">
+                                            <div class="member-avatar-wrapper">
+                                                <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=6366F1&color=fff&size=80" alt="Maria Silva" class="member-avatar">
+                                                <span class="member-status-indicator online" title="Online"></span>
+                                            </div>
+                                            <div class="member-details">
+                                                <h6 class="member-name">Maria Silva</h6>
+                                                <span class="member-role">Presidente</span>
+                                                <div class="member-mandate">
+                                                    <i class="bi bi-calendar2-check"></i>
+                                                    <span>Mandato até Dez/2026</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="member-card">
-                                                <div class="avatar avatar-lg">
-                                                    <img src="https://ui-avatars.com/api/?name=João+Santos&background=10B981&color=fff&size=64" alt="João Santos">
-                                                </div>
-                                                <div class="member-info">
-                                                    <h6 class="member-name">João Santos</h6>
-                                                    <span class="member-role">Vice-Presidente</span>
-                                                </div>
-                                                <div class="member-status online">
-                                                    <span class="status-dot"></span>
-                                                    Online
+                                            <div class="member-actions">
+                                                <i class="bi bi-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                        <!-- João Santos -->
+                                        <a href="membros.html" class="member-item">
+                                            <div class="member-avatar-wrapper">
+                                                <img src="https://ui-avatars.com/api/?name=João+Santos&background=10B981&color=fff&size=80" alt="João Santos" class="member-avatar">
+                                                <span class="member-status-indicator online" title="Online"></span>
+                                            </div>
+                                            <div class="member-details">
+                                                <h6 class="member-name">João Santos</h6>
+                                                <span class="member-role">Vice-Presidente</span>
+                                                <div class="member-mandate">
+                                                    <i class="bi bi-calendar2-check"></i>
+                                                    <span>Mandato até Dez/2026</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="member-card">
-                                                <div class="avatar avatar-lg">
-                                                    <img src="https://ui-avatars.com/api/?name=Ana+Costa&background=F59E0B&color=fff&size=64" alt="Ana Costa">
-                                                </div>
-                                                <div class="member-info">
-                                                    <h6 class="member-name">Ana Costa</h6>
-                                                    <span class="member-role">Secretária</span>
-                                                </div>
-                                                <div class="member-status offline">
-                                                    <span class="status-dot"></span>
-                                                    Offline
+                                            <div class="member-actions">
+                                                <i class="bi bi-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                        <!-- Ana Costa -->
+                                        <a href="membros.html" class="member-item">
+                                            <div class="member-avatar-wrapper">
+                                                <img src="https://ui-avatars.com/api/?name=Ana+Costa&background=F59E0B&color=fff&size=80" alt="Ana Costa" class="member-avatar">
+                                                <span class="member-status-indicator offline" title="Offline"></span>
+                                            </div>
+                                            <div class="member-details">
+                                                <h6 class="member-name">Ana Costa</h6>
+                                                <span class="member-role">Secretária</span>
+                                                <div class="member-mandate">
+                                                    <i class="bi bi-calendar2-check"></i>
+                                                    <span>Mandato até Jun/2025</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="member-card">
-                                                <div class="avatar avatar-lg">
-                                                    <img src="https://ui-avatars.com/api/?name=Pedro+Lima&background=EF4444&color=fff&size=64" alt="Pedro Lima">
-                                                </div>
-                                                <div class="member-info">
-                                                    <h6 class="member-name">Pedro Lima</h6>
-                                                    <span class="member-role">Conselheiro</span>
-                                                </div>
-                                                <div class="member-status online">
-                                                    <span class="status-dot"></span>
-                                                    Online
+                                            <div class="member-actions">
+                                                <i class="bi bi-chevron-right"></i>
+                                            </div>
+                                        </a>
+                                        <!-- Pedro Lima -->
+                                        <a href="membros.html" class="member-item">
+                                            <div class="member-avatar-wrapper">
+                                                <img src="https://ui-avatars.com/api/?name=Pedro+Lima&background=EF4444&color=fff&size=80" alt="Pedro Lima" class="member-avatar">
+                                                <span class="member-status-indicator online" title="Online"></span>
+                                            </div>
+                                            <div class="member-details">
+                                                <h6 class="member-name">Pedro Lima</h6>
+                                                <span class="member-role">Conselheiro</span>
+                                                <div class="member-mandate">
+                                                    <i class="bi bi-calendar2-check"></i>
+                                                    <span>Mandato até Dez/2027</span>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="member-actions">
+                                                <i class="bi bi-chevron-right"></i>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

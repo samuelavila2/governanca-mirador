@@ -133,41 +133,139 @@
                                 </div>
                             </div>
                             
-                            <!-- Wizard Navigation -->
+                            <!-- Wizard Navigation (7 tabs como sistema atual) -->
                             <div class="reuniao-wizard">
-                                <div class="wizard-header">
+                                <div class="wizard-header" style="flex-wrap: wrap; gap: 0.5rem;">
+                                    <a href="#informacoes" class="wizard-step completed" data-bs-toggle="tab">
+                                        <span class="wizard-step-number"><i class="bi bi-check-lg"></i></span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Informações</span>
+                                            <span class="wizard-step-subtitle">Dados gerais</span>
+                                        </div>
+                                    </a>
                                     <a href="#pauta" class="wizard-step active" data-bs-toggle="tab">
-                                        <span class="wizard-step-number">1</span>
+                                        <span class="wizard-step-number">2</span>
                                         <div class="wizard-step-info">
                                             <span class="wizard-step-title">Pauta</span>
                                             <span class="wizard-step-subtitle">Itens da reunião</span>
                                         </div>
                                     </a>
                                     <a href="#convocacao" class="wizard-step completed" data-bs-toggle="tab">
-                                        <span class="wizard-step-number"></span>
+                                        <span class="wizard-step-number"><i class="bi bi-check-lg"></i></span>
                                         <div class="wizard-step-info">
-                                            <span class="wizard-step-title">Convocação</span>
-                                            <span class="wizard-step-subtitle">Participantes</span>
+                                            <span class="wizard-step-title">Membros</span>
+                                            <span class="wizard-step-subtitle">Convidados</span>
                                         </div>
                                     </a>
+                                    <a href="#mesa" class="wizard-step" data-bs-toggle="tab">
+                                        <span class="wizard-step-number">4</span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Mesa</span>
+                                            <span class="wizard-step-subtitle">Composição</span>
+                                        </div>
+                                    </a>
+                                    <a href="#convite" class="wizard-step" data-bs-toggle="tab">
+                                        <span class="wizard-step-number">5</span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Convite</span>
+                                            <span class="wizard-step-subtitle">Template e-mail</span>
+                                        </div>
+                                    </a>
+                                    <a href="#videoconferencia" class="wizard-step" data-bs-toggle="tab">
+                                        <span class="wizard-step-number">6</span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Vídeo</span>
+                                            <span class="wizard-step-subtitle">Conferência</span>
+                                        </div>
+                                    </a>
+                                    <a href="#revisao" class="wizard-step" data-bs-toggle="tab">
+                                        <span class="wizard-step-number">7</span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Revisão</span>
+                                            <span class="wizard-step-subtitle">Finalizar</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                <!-- Tabs secundárias (exibidas após agendamento) -->
+                                <div class="wizard-header mt-2 border-top pt-3" style="flex-wrap: wrap; gap: 0.5rem;">
                                     <a href="#votacoes" class="wizard-step" data-bs-toggle="tab">
-                                        <span class="wizard-step-number">3</span>
+                                        <span class="wizard-step-number"><i class="bi bi-hand-thumbs-up"></i></span>
                                         <div class="wizard-step-info">
                                             <span class="wizard-step-title">Votações</span>
                                             <span class="wizard-step-subtitle">Deliberações</span>
                                         </div>
                                     </a>
                                     <a href="#ata" class="wizard-step" data-bs-toggle="tab">
-                                        <span class="wizard-step-number">4</span>
+                                        <span class="wizard-step-number"><i class="bi bi-file-text"></i></span>
                                         <div class="wizard-step-info">
                                             <span class="wizard-step-title">Ata</span>
-                                            <span class="wizard-step-subtitle">Documento final</span>
+                                            <span class="wizard-step-subtitle">Documento</span>
                                         </div>
                                     </a>
                                 </div>
                                 
                                 <div class="wizard-content tab-content">
-                                    <!-- Tab 1: Pauta -->
+                                    <!-- Tab 1: Informações -->
+                                    <div class="tab-pane fade" id="informacoes">
+                                        <div class="pauta-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Informações da Reunião</h4>
+                                                <span class="badge bg-warning text-dark">Em rascunho</span>
+                                            </div>
+                                            
+                                            <div class="row g-4">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Local</label>
+                                                    <input type="text" class="form-control" value="Sala de Reuniões Principal" placeholder="Local da reunião">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Data</label>
+                                                    <input type="date" class="form-control" value="2025-01-28">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="form-label">Horário Início</label>
+                                                    <input type="time" class="form-control" value="14:00">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="form-label">Horário Término</label>
+                                                    <input type="time" class="form-control" value="16:00">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="form-label">Categoria da Reunião</label>
+                                                    <select class="form-select">
+                                                        <option>Ordinária</option>
+                                                        <option>Extraordinária</option>
+                                                        <option>Gestão</option>
+                                                        <option>Treinamento</option>
+                                                        <option value="">Outro...</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="form-label">Tipo de Reunião</label>
+                                                    <select class="form-select">
+                                                        <option>Conselho Deliberativo</option>
+                                                        <option>Conselho Fiscal</option>
+                                                        <option>Diretoria</option>
+                                                        <option>Comitê de Investimentos</option>
+                                                        <option>Equipe</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="form-label">Numeração da Reunião</label>
+                                                    <input type="number" class="form-control" value="143" min="1">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-4">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-check-lg me-1"></i>Salvar e Avançar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab 2: Pauta -->
                                     <div class="tab-pane fade show active" id="pauta">
                                         <div class="pauta-section">
                                             <div class="pauta-header">
@@ -530,7 +628,248 @@
                                         </div>
                                     </div>
                                     
-                                    <!-- Tab 3: Votações -->
+                                    <!-- Tab 4: Mesa -->
+                                    <div class="tab-pane fade" id="mesa">
+                                        <div class="pauta-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Composição da Mesa</h4>
+                                                <button class="btn btn-sm btn-primary">
+                                                    <i class="bi bi-plus-lg me-1"></i>Adicionar Membro
+                                                </button>
+                                            </div>
+                                            
+                                            <p class="text-muted mb-4">Defina quem irá compor a mesa diretora desta reunião</p>
+                                            
+                                            <div class="row g-4">
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="d-flex align-items-center gap-3">
+                                                                <div class="avatar avatar-lg bg-primary text-white rounded-circle d-flex align-items-center justify-content-center">
+                                                                    <i class="bi bi-star-fill"></i>
+                                                                </div>
+                                                                <div class="flex-grow-1">
+                                                                    <h6 class="mb-0">Presidente da Mesa</h6>
+                                                                    <select class="form-select form-select-sm mt-2">
+                                                                        <option value="">Selecione...</option>
+                                                                        <option selected>João Silva - Presidente do CD</option>
+                                                                        <option>Maria Santos - Diretora</option>
+                                                                        <option>Pedro Oliveira - Conselheiro</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="d-flex align-items-center gap-3">
+                                                                <div class="avatar avatar-lg bg-success text-white rounded-circle d-flex align-items-center justify-content-center">
+                                                                    <i class="bi bi-pencil-square"></i>
+                                                                </div>
+                                                                <div class="flex-grow-1">
+                                                                    <h6 class="mb-0">Secretário(a) da Mesa</h6>
+                                                                    <select class="form-select form-select-sm mt-2">
+                                                                        <option value="">Selecione...</option>
+                                                                        <option>João Silva</option>
+                                                                        <option selected>Maria Santos - Secretária</option>
+                                                                        <option>Ana Ferreira</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-4">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-check-lg me-1"></i>Salvar Mesa
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab 5: Convite -->
+                                    <div class="tab-pane fade" id="convite">
+                                        <div class="pauta-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Template do Convite</h4>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="bi bi-eye me-1"></i>Pré-visualizar
+                                                </button>
+                                            </div>
+                                            
+                                            <p class="text-muted mb-4">Personalize o e-mail de convocação que será enviado aos participantes</p>
+                                            
+                                            <div class="row g-4">
+                                                <div class="col-md-12">
+                                                    <label class="form-label">Assunto do E-mail</label>
+                                                    <input type="text" class="form-control" value="Convocação: 143ª Reunião Ordinária do Conselho Deliberativo - 28/01/2025">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label class="form-label">Corpo do E-mail</label>
+                                                    <textarea class="form-control" rows="10" style="font-family: monospace;">Prezado(a) Conselheiro(a),
+
+Convidamos Vossa Senhoria para participar da 143ª Reunião Ordinária do Conselho Deliberativo, conforme informações abaixo:
+
+📅 Data: 28 de Janeiro de 2025
+🕐 Horário: 14:00 às 16:00
+📍 Local: Sala de Reuniões Principal
+
+PAUTA:
+1. Abertura e Verificação de Quórum
+2. Aprovação da Ata da Reunião Anterior
+3. Apresentação do Relatório Financeiro Q4/2024
+4. Votação: Aprovação do Orçamento 2025
+5. Informes Gerais e Encerramento
+
+Solicitamos a gentileza de confirmar sua presença.
+
+Atenciosamente,
+Secretaria do Conselho</textarea>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-4 d-flex gap-2">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-send me-1"></i>Enviar Convites
+                                                </button>
+                                                <button class="btn btn-outline-secondary">
+                                                    <i class="bi bi-save me-1"></i>Salvar Rascunho
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab 6: Vídeo Conferência -->
+                                    <div class="tab-pane fade" id="videoconferencia">
+                                        <div class="pauta-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Vídeo Conferência</h4>
+                                            </div>
+                                            
+                                            <p class="text-muted mb-4">Configure o link da reunião virtual para participação remota</p>
+                                            
+                                            <div class="row g-4">
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Plataforma</label>
+                                                    <select class="form-select">
+                                                        <option value="">Sem vídeo conferência</option>
+                                                        <option selected>Microsoft Teams</option>
+                                                        <option>Google Meet</option>
+                                                        <option>Zoom</option>
+                                                        <option>Outro (inserir link)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Link da Reunião</label>
+                                                    <div class="input-group">
+                                                        <input type="url" class="form-control" value="https://teams.microsoft.com/l/meetup-join/..." placeholder="Cole o link aqui">
+                                                        <button class="btn btn-outline-secondary" type="button" title="Copiar">
+                                                            <i class="bi bi-clipboard"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">ID da Reunião (opcional)</label>
+                                                    <input type="text" class="form-control" placeholder="Ex: 123-456-789">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Senha (opcional)</label>
+                                                    <input type="text" class="form-control" placeholder="Se houver">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="alert alert-info mt-4">
+                                                <i class="bi bi-info-circle me-2"></i>
+                                                O link será incluído automaticamente no e-mail de convite e estará disponível na página da reunião.
+                                            </div>
+                                            
+                                            <div class="mt-4">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-check-lg me-1"></i>Salvar Configuração
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab 7: Revisão -->
+                                    <div class="tab-pane fade" id="revisao">
+                                        <div class="pauta-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Revisão Final</h4>
+                                                <span class="badge bg-warning text-dark">Rascunho</span>
+                                            </div>
+                                            
+                                            <p class="text-muted mb-4">Revise todas as informações antes de agendar a reunião</p>
+                                            
+                                            <!-- Checklist de revisão -->
+                                            <div class="card mb-4">
+                                                <div class="card-body">
+                                                    <h6 class="mb-3"><i class="bi bi-list-check me-2"></i>Checklist</h6>
+                                                    <div class="list-group list-group-flush">
+                                                        <div class="list-group-item d-flex align-items-center px-0">
+                                                            <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                                            <span>Informações básicas preenchidas</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex align-items-center px-0">
+                                                            <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                                            <span>Pauta com 6 itens definidos</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex align-items-center px-0">
+                                                            <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                                            <span>8 membros convidados</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex align-items-center px-0">
+                                                            <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                                            <span>Mesa diretora definida</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex align-items-center px-0">
+                                                            <i class="bi bi-circle text-muted me-3 fs-5"></i>
+                                                            <span class="text-muted">Convite ainda não enviado</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex align-items-center px-0">
+                                                            <i class="bi bi-check-circle-fill text-success me-3 fs-5"></i>
+                                                            <span>Vídeo conferência configurada (Teams)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Resumo -->
+                                            <div class="card bg-light">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <strong>Data:</strong> 28/01/2025<br>
+                                                            <strong>Horário:</strong> 14:00 - 16:00
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <strong>Categoria:</strong> Ordinária<br>
+                                                            <strong>Tipo:</strong> Conselho Deliberativo
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <strong>Participantes:</strong> 8 membros<br>
+                                                            <strong>Itens de pauta:</strong> 6
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-4 d-flex gap-2">
+                                                <button class="btn btn-success btn-lg">
+                                                    <i class="bi bi-calendar-check me-2"></i>Agendar Reunião
+                                                </button>
+                                                <button class="btn btn-outline-secondary">
+                                                    <i class="bi bi-save me-1"></i>Salvar como Rascunho
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab Votações -->
                                     <div class="tab-pane fade" id="votacoes">
                                         <div class="pauta-header">
                                             <h4 class="pauta-title">Votações da Reunião</h4>

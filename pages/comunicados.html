@@ -376,6 +376,146 @@
             </main>
         </div>
     </div>
+    
+    <!-- Modal: Novo Comunicado (completo como sistema atual) -->
+    <div class="modal fade" id="novoComunicadoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title"><i class="bi bi-megaphone me-2"></i>Nova Mensagem</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formNovoComunicado">
+                        <!-- Seção: Mensagem -->
+                        <h6 class="text-muted mb-3 border-bottom pb-2"><i class="bi bi-chat-left-text me-2"></i>Mensagem</h6>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Assunto <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" required placeholder="Assunto da mensagem">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Mensagem <span class="text-danger">*</span></label>
+                            <!-- Toolbar do Editor WYSIWYG -->
+                            <div class="btn-toolbar mb-2 p-2 bg-light rounded border" role="toolbar">
+                                <div class="btn-group btn-group-sm me-2">
+                                    <select class="form-select form-select-sm" style="width: auto;">
+                                        <option>Parágrafo</option>
+                                        <option>Título 1</option>
+                                        <option>Título 2</option>
+                                        <option>Título 3</option>
+                                    </select>
+                                </div>
+                                <div class="btn-group btn-group-sm me-2">
+                                    <select class="form-select form-select-sm" style="width: auto;">
+                                        <option>Arial</option>
+                                        <option>Times New Roman</option>
+                                        <option>Courier</option>
+                                    </select>
+                                </div>
+                                <div class="btn-group btn-group-sm me-2">
+                                    <button type="button" class="btn btn-outline-secondary" title="Negrito"><i class="bi bi-type-bold"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Itálico"><i class="bi bi-type-italic"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Sublinhado"><i class="bi bi-type-underline"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Tachado"><i class="bi bi-type-strikethrough"></i></button>
+                                </div>
+                                <div class="btn-group btn-group-sm me-2">
+                                    <button type="button" class="btn btn-outline-secondary" title="Link"><i class="bi bi-link-45deg"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Lista"><i class="bi bi-list-ul"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Alinhamento"><i class="bi bi-text-left"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Tabela"><i class="bi bi-table"></i></button>
+                                </div>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-outline-secondary" title="Imagem"><i class="bi bi-image"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Citação"><i class="bi bi-quote"></i></button>
+                                    <button type="button" class="btn btn-outline-secondary" title="Mais opções"><i class="bi bi-three-dots"></i></button>
+                                </div>
+                            </div>
+                            <textarea class="form-control" rows="8" required placeholder="Digite sua mensagem aqui..."></textarea>
+                        </div>
+                        
+                        <!-- Seção: Enviar para quem -->
+                        <h6 class="text-muted mb-3 border-bottom pb-2 mt-4"><i class="bi bi-people me-2"></i>Enviar para quem</h6>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Destinatários <span class="text-danger">*</span></label>
+                            <select class="form-select" required>
+                                <option value="">Selecione para quem enviar</option>
+                                <optgroup label="Grupos">
+                                    <option value="todos">Todos os usuários</option>
+                                    <option value="conselho-deliberativo">Conselho Deliberativo</option>
+                                    <option value="conselho-fiscal">Conselho Fiscal</option>
+                                    <option value="diretoria">Diretoria Executiva</option>
+                                    <option value="comite-investimentos">Comitê de Investimentos</option>
+                                    <option value="gerentes">Gerentes</option>
+                                </optgroup>
+                                <optgroup label="Pessoas específicas">
+                                    <option value="individual">Selecionar individualmente...</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3" id="seletorIndividual" style="display: none;">
+                            <label class="form-label">Selecione os destinatários</label>
+                            <div class="border rounded p-3" style="max-height: 150px; overflow-y: auto;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dest1">
+                                    <label class="form-check-label" for="dest1">João Silva - Presidente</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dest2">
+                                    <label class="form-check-label" for="dest2">Maria Santos - Diretora</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dest3">
+                                    <label class="form-check-label" for="dest3">Pedro Oliveira - Conselheiro</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dest4">
+                                    <label class="form-check-label" for="dest4">Ana Ferreira - Secretária</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="dest5">
+                                    <label class="form-check-label" for="dest5">Carlos Lima - Conselheiro Fiscal</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Seção: Enviar quando -->
+                        <h6 class="text-muted mb-3 border-bottom pb-2 mt-4"><i class="bi bi-clock me-2"></i>Enviar quando</h6>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Momento do envio <span class="text-danger">*</span></label>
+                            <select class="form-select" id="momentoEnvio" required>
+                                <option value="">Selecione quando enviar</option>
+                                <option value="agora">Enviar imediatamente</option>
+                                <option value="agendar">Agendar para data/hora específica</option>
+                                <option value="rascunho">Salvar como rascunho</option>
+                            </select>
+                        </div>
+                        
+                        <div class="row mb-3" id="agendamentoFields" style="display: none;">
+                            <div class="col-md-6">
+                                <label class="form-label">Data de envio</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Hora de envio</label>
+                                <input type="time" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-check-lg me-1"></i>Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -385,5 +525,27 @@
     <script src="../assets/js/breadcrumbs.js"></script>
     <script src="../assets/js/profile-bar.js"></script>
     <script src="../assets/js/miraboard-utils.js"></script>
+    
+    <script>
+        // Toggle exibir seletor individual
+        document.querySelector('select[required]').addEventListener('change', function() {
+            const seletor = document.getElementById('seletorIndividual');
+            if (this.value === 'individual') {
+                seletor.style.display = 'block';
+            } else {
+                seletor.style.display = 'none';
+            }
+        });
+        
+        // Toggle exibir campos de agendamento
+        document.getElementById('momentoEnvio').addEventListener('change', function() {
+            const campos = document.getElementById('agendamentoFields');
+            if (this.value === 'agendar') {
+                campos.style.display = 'flex';
+            } else {
+                campos.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -55,70 +55,53 @@ const ProfileBarComponent = {
                 top: 0;
                 left: var(--sidebar-width, 260px);
                 right: 0;
-                height: 36px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                font-size: 0.8rem;
-                font-weight: 500;
-                color: white;
-                z-index: 1050;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                height: 4px;
+                z-index: 1051;
             }
             
-            .profile-bar i {
-                font-size: 0.9rem;
-            }
-            
-            .profile-bar .profile-bar-text {
+            .profile-bar-content {
+                position: fixed;
+                top: 8px;
+                right: 180px;
                 display: flex;
                 align-items: center;
                 gap: 6px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                color: white;
+                z-index: 1051;
+                padding: 4px 12px;
+                border-radius: 20px;
             }
             
-            .profile-bar .profile-bar-desc {
-                opacity: 0.85;
-                font-weight: 400;
-                display: none;
+            .profile-bar-content i {
+                font-size: 0.8rem;
             }
             
-            @media (min-width: 768px) {
-                .profile-bar .profile-bar-desc {
-                    display: inline;
-                }
-            }
-            
-            .profile-bar .btn-change-profile {
-                background: rgba(255,255,255,0.2);
+            .profile-bar-content .btn-change-profile {
+                background: rgba(255,255,255,0.25);
                 border: none;
                 color: white;
-                font-size: 0.7rem;
-                padding: 2px 10px;
-                border-radius: 12px;
+                font-size: 0.65rem;
+                padding: 2px 8px;
+                border-radius: 10px;
                 cursor: pointer;
-                margin-left: 8px;
+                margin-left: 4px;
                 transition: all 0.2s;
             }
             
-            .profile-bar .btn-change-profile:hover {
-                background: rgba(255,255,255,0.3);
+            .profile-bar-content .btn-change-profile:hover {
+                background: rgba(255,255,255,0.4);
             }
             
-            /* Ajusta o header para ficar abaixo da barra */
-            .app-header {
-                top: 36px !important;
-            }
-            
-            /* Ajusta o conteúdo principal */
-            .main-content {
-                padding-top: calc(80px + 36px) !important;
-            }
-            
-            /* Mobile: barra ocupa toda largura */
+            /* Mobile: ajustes */
             @media (max-width: 991.98px) {
                 .profile-bar {
                     left: 0;
+                }
+                .profile-bar-content {
+                    right: 70px;
+                    font-size: 0.7rem;
                 }
             }
         `;
@@ -131,28 +114,33 @@ const ProfileBarComponent = {
     render: function(profileKey) {
         const profile = this.profiles[profileKey] || this.profiles.admin;
         
-        // Remove barra existente se houver
-        const existing = document.querySelector('.profile-bar');
-        if (existing) existing.remove();
+        // Remove elementos existentes se houver
+        const existingBar = document.querySelector('.profile-bar');
+        const existingContent = document.querySelector('.profile-bar-content');
+        if (existingBar) existingBar.remove();
+        if (existingContent) existingContent.remove();
         
-        // Cria a barra
+        // Cria a linha fina colorida no topo
         const bar = document.createElement('div');
         bar.className = 'profile-bar';
         bar.style.background = profile.bgColor;
         
-        bar.innerHTML = `
-            <div class="profile-bar-text">
-                <i class="bi ${profile.icon}"></i>
-                <span>Navegando como <strong>${profile.name}</strong></span>
-                <span class="profile-bar-desc">• ${profile.description}</span>
-            </div>
+        // Cria o badge flutuante com info do perfil
+        const content = document.createElement('div');
+        content.className = 'profile-bar-content';
+        content.style.background = profile.bgColor;
+        
+        content.innerHTML = `
+            <i class="bi ${profile.icon}"></i>
+            <span>${profile.name}</span>
             <button class="btn-change-profile" onclick="window.location.href='selecao-perfil.html'">
-                <i class="bi bi-arrow-repeat"></i> Trocar perfil
+                <i class="bi bi-arrow-repeat"></i> Trocar
             </button>
         `;
         
         // Insere no início do body
         document.body.insertBefore(bar, document.body.firstChild);
+        document.body.appendChild(content);
     },
 
     /**

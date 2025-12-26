@@ -46,7 +46,7 @@ const SidebarComponent = {
                 
                 <div class="sidebar-divider"></div>
                 
-                <div class="sidebar-section-title">Compliance EFPC</div>
+                <div class="sidebar-section-title" style="color: #9ca3af; font-size: 0.7rem; text-transform: uppercase; padding: 0 16px; margin-bottom: 8px;">Compliance EFPC</div>
                 
                 ${this.renderMenuSection(menuItems.compliance, activePage)}
                 

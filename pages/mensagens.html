@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens - MiraBoard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    
+    <style>
+        /* Mensagens Styles */
+        .mensagens-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: var(--spacing-5);
+            height: calc(100vh - 200px);
+            min-height: 500px;
+        }
+        
+        @media (max-width: 991px) {
+            .mensagens-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            .mensagens-sidebar {
+                max-height: 300px;
+            }
+        }
+        
+        .mensagens-sidebar {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mensagens-sidebar-header {
+            padding: var(--spacing-4);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .mensagens-search {
+            position: relative;
+        }
+        
+        .mensagens-search i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray-400);
+        }
+        
+        .mensagens-search input {
+            padding-left: 40px;
+            border-radius: var(--radius-lg);
+        }
+        
+        .mensagens-list {
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .mensagem-item {
+            display: flex;
+            gap: var(--spacing-3);
+            padding: var(--spacing-4);
+            border-bottom: 1px solid var(--color-gray-100);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .mensagem-item:hover {
+            background: var(--color-gray-50);
+        }
+        
+        .mensagem-item.active {
+            background: var(--color-primary-light);
+            border-left: 3px solid var(--color-primary);
+        }
+        
+        .mensagem-item.unread {
+            background: rgba(232, 104, 26, 0.05);
+        }
+        
+        .mensagem-item.unread .mensagem-title {
+            font-weight: var(--font-semibold);
+        }
+        
+        .mensagem-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .mensagem-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .mensagem-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .mensagem-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .mensagem-title {
+            font-size: var(--text-sm);
+            color: var(--color-gray-900);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .mensagem-time {
+            font-size: var(--text-xs);
+            color: var(--color-gray-500);
+            flex-shrink: 0;
+        }
+        
+        .mensagem-preview {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .mensagem-badge {
+            width: 8px;
+            height: 8px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+        
+        /* Main Content */
+        .mensagens-main {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mensagens-main-header {
+            padding: var(--spacing-4) var(--spacing-5);
+            border-bottom: 1px solid var(--color-gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mensagem-info {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+        
+        .mensagem-info h5 {
+            margin: 0;
+            font-size: var(--text-base);
+            font-weight: var(--font-semibold);
+        }
+        
+        .mensagem-info span {
+            font-size: var(--text-sm);
+            color: var(--color-gray-500);
+        }
+        
+        .mensagens-body {
+            flex: 1;
+            padding: var(--spacing-5);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+        }
+        
+        .mensagem-bubble {
+            max-width: 70%;
+            padding: var(--spacing-3) var(--spacing-4);
+            border-radius: var(--radius-lg);
+        }
+        
+        .mensagem-bubble.received {
+            background: var(--color-gray-100);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        
+        .mensagem-bubble.sent {
+            background: var(--color-primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        
+        .mensagem-bubble-time {
+            font-size: var(--text-xs);
+            margin-top: var(--spacing-1);
+            opacity: 0.7;
+        }
+        
+        .mensagem-bubble.sent .mensagem-bubble-time {
+            text-align: right;
+        }
+        
+        .mensagens-footer {
+            padding: var(--spacing-4) var(--spacing-5);
+            border-top: 1px solid var(--color-gray-200);
+        }
+        
+        .mensagem-input-group {
+            display: flex;
+            gap: var(--spacing-3);
+        }
+        
+        .mensagem-input-group input {
+            flex: 1;
+            border-radius: var(--radius-full);
+            padding-left: var(--spacing-5);
+        }
+        
+        .mensagem-input-group .btn {
+            border-radius: var(--radius-full);
+            padding: 0 var(--spacing-5);
+        }
+        
+        /* Notificações Tab */
+        .notificacao-item {
+            display: flex;
+            gap: var(--spacing-3);
+            padding: var(--spacing-4);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-3);
+            background: var(--color-gray-50);
+            transition: all var(--transition-fast);
+        }
+        
+        .notificacao-item:hover {
+            background: var(--color-gray-100);
+        }
+        
+        .notificacao-item.unread {
+            background: rgba(232, 104, 26, 0.08);
+            border-left: 3px solid var(--color-primary);
+        }
+        
+        .notificacao-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--text-lg);
+            flex-shrink: 0;
+        }
+        
+        .notificacao-icon.info {
+            background: var(--color-info-light);
+            color: var(--color-info);
+        }
+        
+        .notificacao-icon.warning {
+            background: var(--color-warning-light);
+            color: var(--color-warning);
+        }
+        
+        .notificacao-icon.success {
+            background: var(--color-success-light);
+            color: var(--color-success);
+        }
+        
+        .notificacao-icon.danger {
+            background: var(--color-danger-light);
+            color: var(--color-danger);
+        }
+        
+        .notificacao-content {
+            flex: 1;
+        }
+        
+        .notificacao-title {
+            font-weight: var(--font-medium);
+            color: var(--color-gray-900);
+            margin-bottom: 2px;
+        }
+        
+        .notificacao-text {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+            margin-bottom: 4px;
+        }
+        
+        .notificacao-time {
+            font-size: var(--text-xs);
+            color: var(--color-gray-500);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: var(--spacing-10);
+            color: var(--color-gray-500);
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: var(--spacing-4);
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar (injected via sidebar.js) -->
+        <aside class="sidebar" id="sidebar"></aside>
+        
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="header-search d-none d-md-block">
+                        <div class="search-input-group">
+                            <i class="bi bi-search"></i>
+                            <input type="text" class="form-control" placeholder="Buscar mensagens...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="dropdown">
+                        <button class="header-action-btn" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                            <div class="dropdown-header">
+                                <h6>Notificações</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="header-user-btn" data-bs-toggle="dropdown">
+                            <div class="avatar avatar-sm">
+                                <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                            </div>
+                            <span class="d-none d-md-inline">Admin</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="configuracoes.html"><i class="bi bi-gear me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="../index.html"><i class="bi bi-box-arrow-right me-2"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div>
+                            <h1 class="page-title">Mensagens</h1>
+                            <p class="page-subtitle">Central de comunicação e notificações</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novaMensagemModal">
+                                <i class="bi bi-plus-lg me-2"></i>Nova Mensagem
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs mb-4" id="mensagensTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="conversas-tab" data-bs-toggle="tab" data-bs-target="#conversas" type="button" role="tab">
+                                <i class="bi bi-chat-dots me-2"></i>Conversas
+                                <span class="badge bg-primary ms-2">12</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="notificacoes-tab" data-bs-toggle="tab" data-bs-target="#notificacoes" type="button" role="tab">
+                                <i class="bi bi-bell me-2"></i>Notificações
+                                <span class="badge bg-danger ms-2">5</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="alertas-tab" data-bs-toggle="tab" data-bs-target="#alertas" type="button" role="tab">
+                                <i class="bi bi-exclamation-triangle me-2"></i>Alertas do Sistema
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="mensagensTabContent">
+                        <!-- Tab Conversas -->
+                        <div class="tab-pane fade show active" id="conversas" role="tabpanel">
+                            <div class="mensagens-container">
+                                <!-- Sidebar de Conversas -->
+                                <div class="mensagens-sidebar">
+                                    <div class="mensagens-sidebar-header">
+                                        <div class="mensagens-search">
+                                            <i class="bi bi-search"></i>
+                                            <input type="text" class="form-control" placeholder="Buscar conversas...">
+                                        </div>
+                                    </div>
+                                    <div class="mensagens-list">
+                                        <div class="mensagem-item active unread">
+                                            <div class="mensagem-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=4F46E5&color=fff" alt="Maria">
+                                            </div>
+                                            <div class="mensagem-content">
+                                                <div class="mensagem-header">
+                                                    <span class="mensagem-title">Maria Silva</span>
+                                                    <span class="mensagem-time">10:45</span>
+                                                </div>
+                                                <p class="mensagem-preview">Olá, a ata da reunião de ontem já está disponível?</p>
+                                            </div>
+                                            <div class="mensagem-badge"></div>
+                                        </div>
+                                        
+                                        <div class="mensagem-item unread">
+                                            <div class="mensagem-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Carlos+Mendes&background=059669&color=fff" alt="Carlos">
+                                            </div>
+                                            <div class="mensagem-content">
+                                                <div class="mensagem-header">
+                                                    <span class="mensagem-title">Carlos Mendes</span>
+                                                    <span class="mensagem-time">09:30</span>
+                                                </div>
+                                                <p class="mensagem-preview">Precisamos revisar as pendências do conselho...</p>
+                                            </div>
+                                            <div class="mensagem-badge"></div>
+                                        </div>
+                                        
+                                        <div class="mensagem-item">
+                                            <div class="mensagem-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Ana+Costa&background=DC2626&color=fff" alt="Ana">
+                                            </div>
+                                            <div class="mensagem-content">
+                                                <div class="mensagem-header">
+                                                    <span class="mensagem-title">Ana Costa</span>
+                                                    <span class="mensagem-time">Ontem</span>
+                                                </div>
+                                                <p class="mensagem-preview">Documento enviado para assinatura.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mensagem-item">
+                                            <div class="mensagem-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Pedro+Oliveira&background=7C3AED&color=fff" alt="Pedro">
+                                            </div>
+                                            <div class="mensagem-content">
+                                                <div class="mensagem-header">
+                                                    <span class="mensagem-title">Pedro Oliveira</span>
+                                                    <span class="mensagem-time">Ontem</span>
+                                                </div>
+                                                <p class="mensagem-preview">Ok, obrigado pela confirmação!</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mensagem-item">
+                                            <div class="mensagem-avatar">
+                                                <img src="https://ui-avatars.com/api/?name=Conselho+Fiscal&background=0891B2&color=fff" alt="CF">
+                                            </div>
+                                            <div class="mensagem-content">
+                                                <div class="mensagem-header">
+                                                    <span class="mensagem-title">Conselho Fiscal</span>
+                                                    <span class="mensagem-time">23/12</span>
+                                                </div>
+                                                <p class="mensagem-preview">Lembrete: Reunião extraordinária dia 28/12</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Área Principal de Mensagens -->
+                                <div class="mensagens-main">
+                                    <div class="mensagens-main-header">
+                                        <div class="mensagem-info">
+                                            <div class="mensagem-avatar" style="width: 40px; height: 40px;">
+                                                <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=4F46E5&color=fff" alt="Maria">
+                                            </div>
+                                            <div>
+                                                <h5>Maria Silva</h5>
+                                                <span>Conselheira - Online</span>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-icon" data-bs-toggle="dropdown">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Ver Perfil</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="bi bi-archive me-2"></i>Arquivar</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Excluir</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mensagens-body">
+                                        <div class="mensagem-bubble received">
+                                            <p>Olá! Boa tarde.</p>
+                                            <div class="mensagem-bubble-time">10:30</div>
+                                        </div>
+                                        
+                                        <div class="mensagem-bubble sent">
+                                            <p>Boa tarde, Maria! Como posso ajudar?</p>
+                                            <div class="mensagem-bubble-time">10:32</div>
+                                        </div>
+                                        
+                                        <div class="mensagem-bubble received">
+                                            <p>A ata da reunião de ontem já está disponível para revisão?</p>
+                                            <div class="mensagem-bubble-time">10:45</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mensagens-footer">
+                                        <div class="mensagem-input-group">
+                                            <button class="btn btn-icon btn-light">
+                                                <i class="bi bi-paperclip"></i>
+                                            </button>
+                                            <input type="text" class="form-control" placeholder="Digite sua mensagem...">
+                                            <button class="btn btn-primary">
+                                                <i class="bi bi-send"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Notificações -->
+                        <div class="tab-pane fade" id="notificacoes" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Todas as Notificações</h5>
+                                    <button class="btn btn-sm btn-outline-primary">Marcar todas como lidas</button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="notificacao-item unread">
+                                        <div class="notificacao-icon warning">
+                                            <i class="bi bi-calendar-event"></i>
+                                        </div>
+                                        <div class="notificacao-content">
+                                            <div class="notificacao-title">Reunião em 2 horas</div>
+                                            <div class="notificacao-text">Reunião Ordinária do Conselho Deliberativo às 14:00</div>
+                                            <div class="notificacao-time"><i class="bi bi-clock me-1"></i>Há 30 minutos</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="notificacao-item unread">
+                                        <div class="notificacao-icon success">
+                                            <i class="bi bi-check-circle"></i>
+                                        </div>
+                                        <div class="notificacao-content">
+                                            <div class="notificacao-title">Ata Aprovada</div>
+                                            <div class="notificacao-text">A ata da reunião de 20/12 foi aprovada por todos os conselheiros.</div>
+                                            <div class="notificacao-time"><i class="bi bi-clock me-1"></i>Há 2 horas</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="notificacao-item unread">
+                                        <div class="notificacao-icon danger">
+                                            <i class="bi bi-exclamation-circle"></i>
+                                        </div>
+                                        <div class="notificacao-content">
+                                            <div class="notificacao-title">Prazo Próximo</div>
+                                            <div class="notificacao-text">Envio do DAIR vence em 3 dias (29/12/2025)</div>
+                                            <div class="notificacao-time"><i class="bi bi-clock me-1"></i>Há 3 horas</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="notificacao-item">
+                                        <div class="notificacao-icon info">
+                                            <i class="bi bi-file-text"></i>
+                                        </div>
+                                        <div class="notificacao-content">
+                                            <div class="notificacao-title">Documento Disponível</div>
+                                            <div class="notificacao-text">Relatório Trimestral Q4/2025 foi adicionado à biblioteca.</div>
+                                            <div class="notificacao-time"><i class="bi bi-clock me-1"></i>Ontem às 16:45</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="notificacao-item">
+                                        <div class="notificacao-icon info">
+                                            <i class="bi bi-person-plus"></i>
+                                        </div>
+                                        <div class="notificacao-content">
+                                            <div class="notificacao-title">Nova Ação Atribuída</div>
+                                            <div class="notificacao-text">Carlos Mendes atribuiu uma nova ação para você: "Revisar política de investimentos"</div>
+                                            <div class="notificacao-time"><i class="bi bi-clock me-1"></i>23/12 às 10:20</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Alertas do Sistema -->
+                        <div class="tab-pane fade" id="alertas" role="tabpanel">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Alertas do Sistema</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                        <i class="bi bi-exclamation-triangle-fill me-3 fs-4"></i>
+                                        <div>
+                                            <strong>Certificação expirando</strong><br>
+                                            <small>A certificação CPA-20 de João Santos expira em 15 dias.</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                        <i class="bi bi-shield-exclamation me-3 fs-4"></i>
+                                        <div>
+                                            <strong>Obrigação Vencida</strong><br>
+                                            <small>O envio do Demonstrativo Mensal está atrasado em 2 dias.</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                                        <i class="bi bi-info-circle-fill me-3 fs-4"></i>
+                                        <div>
+                                            <strong>Atualização do Sistema</strong><br>
+                                            <small>Nova versão 2.5.0 disponível. Novos recursos de exportação adicionados.</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                                        <i class="bi bi-check-circle-fill me-3 fs-4"></i>
+                                        <div>
+                                            <strong>Backup Concluído</strong><br>
+                                            <small>Backup automático realizado com sucesso às 03:00 de hoje.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modal Nova Mensagem -->
+    <div class="modal fade" id="novaMensagemModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-envelope me-2"></i>Nova Mensagem</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="destinatario" class="form-label">Para</label>
+                            <select class="form-select" id="destinatario" required>
+                                <option value="">Selecione o destinatário...</option>
+                                <option value="maria">Maria Silva</option>
+                                <option value="carlos">Carlos Mendes</option>
+                                <option value="ana">Ana Costa</option>
+                                <option value="pedro">Pedro Oliveira</option>
+                                <option value="todos">Todos os Conselheiros</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="assunto" class="form-label">Assunto</label>
+                            <input type="text" class="form-control" id="assunto" placeholder="Assunto da mensagem">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagemTexto" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="mensagemTexto" rows="5" placeholder="Digite sua mensagem..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Anexos</label>
+                            <input type="file" class="form-control" multiple>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-send me-2"></i>Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/sidebar.js"></script>
+</body>
+</html>

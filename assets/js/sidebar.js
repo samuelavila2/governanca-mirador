@@ -99,7 +99,7 @@ const SidebarComponent = {
             compliance: [
                 { id: 'obrigacoes', href: 'obrigacoes.html', icon: 'bi-shield-check', label: 'Central de Conformidade', badge: '2', badgeType: 'danger' },
                 { id: 'biblioteca', href: 'biblioteca.html', icon: 'bi-archive', label: 'Gestão Documental' },
-                { id: 'membros', href: 'membros.html', icon: 'bi-person-badge', label: 'Certificações' }
+                { id: 'membros', href: 'membros.html', icon: 'bi-person-badge', label: 'Mandatos e Certificações' }
             ],
             settings: [
                 { id: 'mensagens', href: 'mensagens.html', icon: 'bi-chat-dots', label: 'Mensagens', badge: '12' },

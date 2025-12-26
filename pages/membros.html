@@ -103,8 +103,8 @@
                     <!-- Page Header -->
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
-                            <h1 class="page-title mb-1">Gestão de Mandatos</h1>
-                            <p class="text-muted mb-0">Gerencie os membros e seus mandatos nos órgãos de governança</p>
+                            <h1 class="page-title mb-1">Mandatos e Certificações</h1>
+                            <p class="text-muted mb-0">Gerencie mandatos dos conselheiros e suas certificações obrigatórias</p>
                         </div>
                         <div class="d-flex gap-3">
                             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalExportarMandatos">
@@ -115,6 +115,25 @@
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- Abas: Mandatos / Certificações -->
+                    <ul class="nav nav-tabs mb-4" id="membrosTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="mandatos-tab" data-bs-toggle="tab" data-bs-target="#mandatos" type="button" role="tab">
+                                <i class="bi bi-calendar-range me-2"></i>Mandatos
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="certificacoes-tab" data-bs-toggle="tab" data-bs-target="#certificacoes" type="button" role="tab">
+                                <i class="bi bi-award me-2"></i>Certificações
+                                <span class="badge bg-warning text-dark ms-2">2 vencendo</span>
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content" id="membrosTabContent">
+                        <!-- TAB MANDATOS -->
+                        <div class="tab-pane fade show active" id="mandatos" role="tabpanel">
 
                     <!-- Alertas de Mandatos -->
                     <div class="row g-4 mb-5">
@@ -571,6 +590,200 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
+                        </div>
+                        <!-- FIM TAB MANDATOS -->
+                        
+                        <!-- TAB CERTIFICAÇÕES -->
+                        <div class="tab-pane fade" id="certificacoes" role="tabpanel">
+                            <!-- Alertas de Certificações -->
+                            <div class="row g-4 mb-4">
+                                <div class="col-md-6">
+                                    <div class="alert alert-warning d-flex align-items-center mb-0" role="alert">
+                                        <i class="bi bi-exclamation-triangle-fill fs-4 me-3"></i>
+                                        <div class="flex-grow-1">
+                                            <strong>2 certificações vencendo em 60 dias</strong>
+                                            <p class="mb-0 small">ICSS: João Santos, Maria Oliveira</p>
+                                        </div>
+                                        <button class="btn btn-sm btn-warning">Ver</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alert alert-danger d-flex align-items-center mb-0" role="alert">
+                                        <i class="bi bi-x-circle-fill fs-4 me-3"></i>
+                                        <div class="flex-grow-1">
+                                            <strong>1 certificação vencida</strong>
+                                            <p class="mb-0 small">Roberto Lima - ICSS vencido há 30 dias</p>
+                                        </div>
+                                        <button class="btn btn-sm btn-danger">Regularizar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tabela de Certificações -->
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0"><i class="bi bi-award me-2"></i>Certificações dos Conselheiros</h5>
+                                    <button class="btn btn-primary btn-sm" data-permission="admin secretaria">
+                                        <i class="bi bi-plus-lg me-1"></i>Registrar Certificação
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle">
+                                            <thead>
+                                                <tr>
+                                                    <th>Membro</th>
+                                                    <th>Certificação</th>
+                                                    <th>Instituição</th>
+                                                    <th>Validade</th>
+                                                    <th>Status</th>
+                                                    <th class="text-end">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <div class="avatar-sm bg-primary text-white rounded-circle d-flex align-items-center justify-content-center">MS</div>
+                                                            <span>Maria Silva</span>
+                                                        </div>
+                                                    </td>
+                                                    <td><strong>ICSS</strong></td>
+                                                    <td>ICSS Brasil</td>
+                                                    <td>15/02/2026</td>
+                                                    <td><span class="badge bg-warning text-dark">Vence em 52 dias</span></td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1" title="Ver certificado">
+                                                            <i class="bi bi-file-earmark-pdf"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-secondary" title="Editar">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <div class="avatar-sm bg-info text-white rounded-circle d-flex align-items-center justify-content-center">JS</div>
+                                                            <span>João Santos</span>
+                                                        </div>
+                                                    </td>
+                                                    <td><strong>ICSS</strong></td>
+                                                    <td>ICSS Brasil</td>
+                                                    <td>28/02/2026</td>
+                                                    <td><span class="badge bg-warning text-dark">Vence em 65 dias</span></td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-file-earmark-pdf"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-secondary">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <div class="avatar-sm bg-info text-white rounded-circle d-flex align-items-center justify-content-center">JS</div>
+                                                            <span>João Santos</span>
+                                                        </div>
+                                                    </td>
+                                                    <td><strong>CGA</strong></td>
+                                                    <td>IBGC</td>
+                                                    <td>10/08/2027</td>
+                                                    <td><span class="badge bg-success">Válido - 593 dias</span></td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-file-earmark-pdf"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-secondary">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="table-danger">
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <div class="avatar-sm bg-danger text-white rounded-circle d-flex align-items-center justify-content-center">RL</div>
+                                                            <span>Roberto Lima</span>
+                                                        </div>
+                                                    </td>
+                                                    <td><strong>ICSS</strong></td>
+                                                    <td>ICSS Brasil</td>
+                                                    <td>26/11/2025</td>
+                                                    <td><span class="badge bg-danger">Vencido há 30 dias</span></td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-danger">
+                                                            <i class="bi bi-arrow-repeat me-1"></i>Renovar
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <div class="avatar-sm bg-success text-white rounded-circle d-flex align-items-center justify-content-center">AC</div>
+                                                            <span>Ana Costa</span>
+                                                        </div>
+                                                    </td>
+                                                    <td><strong>ICSS</strong></td>
+                                                    <td>ICSS Brasil</td>
+                                                    <td>22/09/2027</td>
+                                                    <td><span class="badge bg-success">Válido - 636 dias</span></td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-file-earmark-pdf"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-secondary">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tipos de Certificação aceitos -->
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <h6 class="card-title mb-0"><i class="bi bi-info-circle me-2"></i>Certificações Aceitas (Resolução PREVIC)</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center p-3 bg-light rounded">
+                                                <i class="bi bi-award text-primary fs-3 me-3"></i>
+                                                <div>
+                                                    <strong>ICSS</strong>
+                                                    <p class="mb-0 small text-muted">Instituto de Certificação Institucional e Formação de Conselheiros</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center p-3 bg-light rounded">
+                                                <i class="bi bi-award text-success fs-3 me-3"></i>
+                                                <div>
+                                                    <strong>CGA / IBGC</strong>
+                                                    <p class="mb-0 small text-muted">Conselho de Governança e Administração</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="d-flex align-items-center p-3 bg-light rounded">
+                                                <i class="bi bi-award text-info fs-3 me-3"></i>
+                                                <div>
+                                                    <strong>ENS / ABRAPP</strong>
+                                                    <p class="mb-0 small text-muted">Escola Nacional de Seguros</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FIM TAB CERTIFICAÇÕES -->
                     </div>
                 </div>
             </main>

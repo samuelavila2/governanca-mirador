@@ -157,13 +157,20 @@
 }
 
 /* ========== MAIN CONTENT ========== */
-.main-content {
+/* Quando main-content é filho direto de app-layout (sem main-wrapper) */
+.app-layout > .main-content {
     margin-left: var(--sidebar-width);
     width: calc(100% - var(--sidebar-width));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     transition: all var(--transition-base);
+}
+
+/* Quando main-content está dentro de main-wrapper */
+.main-wrapper .main-content {
+    margin-left: 0;
+    width: 100%;
 }
 
 /* ========== HEADER ========== */

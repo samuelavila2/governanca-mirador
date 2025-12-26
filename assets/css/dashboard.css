@@ -996,3 +996,357 @@
     color: #9ca3af;
 }
 
+/* ============================================
+   LISTA DE REUNIÕES - Dashboard e Página
+   ============================================ */
+.reunioes-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.reuniao-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+    transition: all 0.2s ease;
+}
+
+.reuniao-item:hover {
+    background-color: var(--bg-hover, #f9fafb);
+}
+
+.reuniao-item:last-child {
+    border-bottom: none;
+}
+
+.reuniao-date {
+    width: 56px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary, #E8681A) 0%, var(--color-primary-dark, #D35710) 100%);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+}
+
+.reuniao-day {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.reuniao-month {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.reuniao-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.reuniao-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary, #111827);
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.reuniao-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+.reuniao-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.reuniao-meta i {
+    font-size: 0.85rem;
+}
+
+.reuniao-status {
+    flex-shrink: 0;
+}
+
+.reuniao-participants {
+    flex-shrink: 0;
+}
+
+.reuniao-arrow {
+    color: var(--text-muted, #9ca3af);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+/* Avatar Group */
+.avatar-group {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-group .avatar {
+    margin-left: -8px;
+    border: 2px solid white;
+}
+
+.avatar-group .avatar:first-child {
+    margin-left: 0;
+}
+
+.avatar-more {
+    background: var(--color-gray-200, #e5e7eb);
+    color: var(--text-secondary, #6b7280);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* ============================================
+   MINI CALENDÁRIO WIDGET
+   ============================================ */
+.calendar-widget .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-nav {
+    display: flex;
+    gap: 4px;
+}
+
+.calendar-nav .btn-icon {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 6px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    background: white;
+    color: var(--text-secondary, #6b7280);
+}
+
+.calendar-nav .btn-icon:hover {
+    background: var(--bg-hover, #f9fafb);
+    color: var(--text-primary, #111827);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.calendar-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+.calendar-weekday {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary, #6b7280);
+    padding: 8px 0;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--text-primary, #111827);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.calendar-day:hover {
+    background: var(--bg-hover, #f9fafb);
+}
+
+.calendar-day.other-month {
+    color: var(--text-muted, #9ca3af);
+}
+
+.calendar-day.today {
+    background: var(--color-primary, #E8681A);
+    color: white;
+    font-weight: 600;
+}
+
+.calendar-day.has-event {
+    position: relative;
+}
+
+.calendar-day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    background: var(--color-primary, #E8681A);
+    border-radius: 50%;
+}
+
+.calendar-day.today.has-event::after {
+    background: white;
+}
+
+/* ============================================
+   CARD HEADER MELHORADO
+   ============================================ */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: white;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+}
+
+.card-header .card-title {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary, #111827);
+    margin: 0;
+}
+
+.card-header .card-title i {
+    color: var(--color-primary, #E8681A);
+}
+
+.card-header .btn-link {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--color-primary, #E8681A);
+}
+
+.card-header .btn-link:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   MAIN CONTENT SPACING FIX
+   ============================================ */
+.main-content {
+    padding: 24px;
+    flex: 1;
+    background-color: var(--bg-body, #f5f7fa);
+}
+
+.content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Page Header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary, #111827);
+    margin: 0 0 4px 0;
+}
+
+.page-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    margin: 0;
+}
+
+.page-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   BADGES MELHORADOS
+   ============================================ */
+.badge-warning {
+    background-color: rgba(245, 158, 11, 0.15) !important;
+    color: #b45309 !important;
+}
+
+.badge-success {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+    color: #059669 !important;
+}
+
+.badge-info {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: #1d4ed8 !important;
+}
+
+.badge-danger {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    color: #dc2626 !important;
+}
+
+.badge-secondary {
+    background-color: rgba(107, 114, 128, 0.15) !important;
+    color: #4b5563 !important;
+}
+
+/* ============================================
+   RESPONSIVE - REUNIÕES E CALENDÁRIO
+   ============================================ */
+@media (max-width: 768px) {
+    .reuniao-item {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+    
+    .reuniao-date {
+        width: 50px;
+        height: 54px;
+    }
+    
+    .reuniao-day {
+        font-size: 1.25rem;
+    }
+    
+    .reuniao-info {
+        flex: 1 1 100%;
+        order: 2;
+    }
+    
+    .reuniao-status {
+        order: 3;
+    }
+    
+    .reuniao-participants,
+    .reuniao-arrow {
+        display: none;
+    }
+}
+

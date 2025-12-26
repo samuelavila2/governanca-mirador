@@ -2472,35 +2472,83 @@ body:not(.has-quick-actions) .biblioteca-flutuante {
     color: var(--color-white);
 }
 
-/* Toggle button para abrir biblioteca */
+/* Toggle button para abrir biblioteca - Formato de Tab Lateral */
 .btn-biblioteca-toggle {
     position: fixed;
-    right: var(--spacing-4);
-    bottom: 100px; /* Acima dos FABs da secretária */
-    width: 56px;
-    height: 56px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    padding: 12px 16px 12px 14px;
     background: linear-gradient(135deg, #7C3AED, #8B5CF6);
     color: var(--color-white);
     border: none;
-    border-radius: var(--radius-full);
+    border-radius: 12px 0 0 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: var(--text-xl);
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: var(--shadow-lg);
+    box-shadow: -4px 0 20px rgba(124, 58, 237, 0.3);
     transition: all var(--transition-fast);
     z-index: 1040;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
 }
 
-/* Quando não há FABs (conselheiro), botão fica embaixo */
-body:not(.has-quick-actions) .btn-biblioteca-toggle {
-    bottom: var(--spacing-4);
+.btn-biblioteca-toggle i {
+    font-size: 1.1rem;
+    transform: rotate(90deg);
 }
 
 .btn-biblioteca-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-xl);
+    padding-right: 24px;
+    box-shadow: -6px 0 30px rgba(124, 58, 237, 0.4);
+}
+
+/* Versão expandida horizontal quando há espaço */
+@media (min-width: 1200px) {
+    .btn-biblioteca-toggle {
+        top: 45%;
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+        padding: 14px 20px;
+        border-radius: 12px 0 0 12px;
+    }
+    
+    .btn-biblioteca-toggle i {
+        transform: none;
+    }
+    
+    .btn-biblioteca-toggle:hover {
+        padding-right: 28px;
+    }
+}
+
+/* Mobile: botão menor, só ícone */
+@media (max-width: 768px) {
+    .btn-biblioteca-toggle {
+        top: auto;
+        bottom: 100px;
+        right: var(--spacing-4);
+        transform: none;
+        writing-mode: horizontal-tb;
+        padding: 12px;
+        border-radius: var(--radius-lg);
+        font-size: 0;
+        gap: 0;
+    }
+    
+    .btn-biblioteca-toggle i {
+        font-size: 1.25rem;
+        transform: none;
+    }
+    
+    body:not(.has-quick-actions) .btn-biblioteca-toggle {
+        bottom: var(--spacing-4);
+    }
 }
 
 /* Responsive */

@@ -58,6 +58,9 @@ const SidebarComponent = {
             '<a href="dashboard.html" class="sidebar-brand">' +
                 '<img src="../assets/img/logo-miraboard.png" alt="MiraBoard" class="sidebar-logo-img">' +
             '</a>' +
+            '<button class="sidebar-collapse-btn" id="sidebarCollapseBtn" title="Recolher menu">' +
+                '<i class="bi bi-chevron-left"></i>' +
+            '</button>' +
             '<button class="sidebar-toggle d-lg-none" id="sidebarClose">' +
                 '<i class="bi bi-x-lg"></i>' +
             '</button>' +
@@ -141,7 +144,7 @@ const SidebarComponent = {
             }
             
             html += '<li class="sidebar-nav-item">' +
-                '<a href="' + item.href + '" class="sidebar-nav-link' + activeClass + '">' +
+                '<a href="' + item.href + '" class="sidebar-nav-link' + activeClass + '" data-tooltip="' + item.label + '">' +
                     '<i class="bi ' + item.icon + '"></i>' +
                     '<span>' + item.label + '</span>' +
                     badgeHtml +
@@ -198,6 +201,38 @@ const SidebarComponent = {
                 document.querySelector('.sidebar').classList.toggle('active');
                 document.body.classList.toggle('sidebar-open');
             });
+        }
+        
+        // Botão de colapsar sidebar
+        var collapseBtn = document.getElementById('sidebarCollapseBtn');
+        if (collapseBtn) {
+            // Verifica estado salvo
+            var isCollapsed = localStorage.getItem('miraboard_sidebar_collapsed') === 'true';
+            if (isCollapsed) {
+                document.body.classList.add('sidebar-collapsed');
+            }
+            
+            collapseBtn.addEventListener('click', function() {
+                document.body.classList.toggle('sidebar-collapsed');
+                var collapsed = document.body.classList.contains('sidebar-collapsed');
+                localStorage.setItem('miraboard_sidebar_collapsed', collapsed);
+                
+                // Rotaciona o ícone
+                var icon = this.querySelector('i');
+                if (collapsed) {
+                    icon.className = 'bi bi-chevron-right';
+                    this.title = 'Expandir menu';
+                } else {
+                    icon.className = 'bi bi-chevron-left';
+                    this.title = 'Recolher menu';
+                }
+            });
+            
+            // Define ícone inicial baseado no estado
+            if (isCollapsed) {
+                collapseBtn.querySelector('i').className = 'bi bi-chevron-right';
+                collapseBtn.title = 'Expandir menu';
+            }
         }
     }
 };

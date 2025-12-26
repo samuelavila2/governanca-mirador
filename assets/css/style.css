@@ -1,20 +1,21 @@
-/* 
- * Governança Mirador - Custom Styles
- * Bootstrap 5.3.2
+/**
+ * MiraBoard - Layout Principal
+ * Estilos globais e layout do sistema
  */
 
-:root {
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
-    --success-color: #198754;
-    --info-color: #0dcaf0;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
-}
+/* Importar variáveis e componentes */
+@import url('variables.css');
+@import url('components.css');
+
+/* Importar Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* Global Styles */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;

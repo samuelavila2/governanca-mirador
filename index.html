@@ -3,112 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Governança Mirador</title>
-    
-    <!-- Bootstrap CSS 5.3.2 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Login - MiraBoard</title>
     
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #F5F7FA 0%, #E5E7EB 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: var(--spacing-4);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-2xl);
+            padding: var(--spacing-12) var(--spacing-8);
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: var(--spacing-8);
+        }
+
+        .logo {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-3);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: var(--font-size-2xl);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-mirador {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-extrabold);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-primary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .login-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .login-subtitle {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-label {
+            color: var(--color-primary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .form-control {
+            padding: var(--spacing-4);
+            font-size: var(--font-size-base);
+            border: 2px solid var(--border-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-6);
+        }
+
+        .form-check {
+            margin-bottom: 0;
+        }
+
+        .forgot-password {
+            color: var(--color-primary);
+            font-size: var(--font-size-sm);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            background: var(--gradient-primary);
+            color: var(--color-white);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            padding: var(--spacing-4) var(--spacing-6);
+            width: 100%;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-login:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .login-footer {
+            margin-top: var(--spacing-6);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .login-footer a {
+            color: var(--color-primary);
+            font-weight: var(--font-weight-semibold);
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Background decoration */
+        .bg-decoration {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: var(--border-radius-full);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .bg-decoration-1 {
+            background: var(--color-primary);
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-decoration-2 {
+            background: var(--color-primary-dark);
+            bottom: -150px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header/Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <i class="bi bi-shield-check"></i> Governança Mirador
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/dashboard.html">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/relatorios.html">Relatórios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/configuracoes.html">Configurações</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Background Decorations -->
+    <div class="bg-decoration bg-decoration-1"></div>
+    <div class="bg-decoration bg-decoration-2"></div>
 
-    <!-- Main Content -->
-    <main class="container my-5">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="mb-4">Bem-vindo ao Sistema de Governança Mirador</h1>
-                <p class="lead">Sistema de gestão e governança corporativa.</p>
-            </div>
-        </div>
-
-        <!-- Cards de exemplo -->
-        <div class="row g-4 mt-3">
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="bi bi-graph-up text-success"></i> Dashboard
-                        </h5>
-                        <p class="card-text">Visualize indicadores e métricas importantes.</p>
-                        <a href="pages/dashboard.html" class="btn btn-primary">Acessar</a>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-mirador">MIRADOR</span>
+                        <span class="logo-subtitle">MIRABOARD</span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="bi bi-file-text text-info"></i> Relatórios
-                        </h5>
-                        <p class="card-text">Gere e consulte relatórios detalhados.</p>
-                        <a href="pages/relatorios.html" class="btn btn-primary">Acessar</a>
-                    </div>
+
+            <!-- Login Title -->
+            <h1 class="login-title">LOGIN</h1>
+            <p class="login-subtitle">Informe abaixo suas credenciais</p>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email / usuário</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="email" 
+                        placeholder="Digite seu email ou usuário"
+                        required
+                    >
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <i class="bi bi-gear text-warning"></i> Configurações
-                        </h5>
-                        <p class="card-text">Configure o sistema conforme suas necessidades.</p>
-                        <a href="pages/configuracoes.html" class="btn btn-primary">Acessar</a>
-                    </div>
+
+                <div class="form-group">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="senha" 
+                        placeholder="Digite sua senha"
+                        required
+                    >
                 </div>
+
+                <div class="form-footer">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="lembrar">
+                        <label class="form-check-label" for="lembrar">
+                            Lembrar
+                        </label>
+                    </div>
+                    <a href="#" class="forgot-password">Recuperar senha</a>
+                </div>
+
+                <button type="submit" class="btn btn-login">
+                    Login
+                </button>
+            </form>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                Ainda não possui login? <a href="#">Entre em contato</a>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white mt-5 py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5>Governança Mirador</h5>
-                    <p>Sistema de gestão e governança corporativa.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <p>&copy; 2025 Governança Mirador. Todos os direitos reservados.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS Bundle (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
-    <!-- Custom JS -->
-    <script src="assets/js/main.js"></script>
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui o PHP irá fazer a validação
+            // Por enquanto, redireciona direto para o dashboard
+            window.location.href = 'pages/dashboard.html';
+        });
+    </script>
 </body>
 </html>

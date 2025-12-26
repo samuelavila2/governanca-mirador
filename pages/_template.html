@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MiraBoard</title>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Logo -->
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="sidebar-logo-text">
+                        <span>MIRADOR</span>
+                        <span>MiraBoard</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <!-- Menu Principal -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Menu Principal</div>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link active">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                                    </svg>
+                                </span>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="calendario.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" stroke-width="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6" stroke-width="2"/>
+                                        <line x1="8" y1="2" x2="8" y2="6" stroke-width="2"/>
+                                        <line x1="3" y1="10" x2="21" y2="10" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Calendário</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="reunioes.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-width="2"/>
+                                        <circle cx="9" cy="7" r="4" stroke-width="2"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-width="2"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Minhas Reuniões</span>
+                                <span class="nav-badge">3</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Gestão -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Gestão</div>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="atas.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="2"/>
+                                        <polyline points="14 2 14 8 20 8" stroke-width="2"/>
+                                        <line x1="16" y1="13" x2="8" y2="13" stroke-width="2"/>
+                                        <line x1="16" y1="17" x2="8" y2="17" stroke-width="2"/>
+                                        <polyline points="10 9 9 9 8 9" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Atas</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="acoes.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <polyline points="9 11 12 14 22 4" stroke-width="2"/>
+                                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Ações/Decisões</span>
+                                <span class="nav-badge">5</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="documentos.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" stroke-width="2"/>
+                                        <polyline points="13 2 13 9 20 9" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Documentos</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Comunicação -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Comunicação</div>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="mensagens.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Mensagens</span>
+                                <span class="nav-badge">12</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="relatorios.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <line x1="12" y1="20" x2="12" y2="10" stroke-width="2"/>
+                                        <line x1="18" y1="20" x2="18" y2="4" stroke-width="2"/>
+                                        <line x1="6" y1="20" x2="6" y2="16" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Relatórios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Configurações -->
+                <div class="nav-section">
+                    <div class="nav-section-title">Sistema</div>
+                    <ul class="nav-menu">
+                        <li class="nav-item">
+                            <a href="configuracoes.html" class="nav-link">
+                                <span class="nav-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="3" stroke-width="2"/>
+                                        <path d="M12 1v6m0 6v6m0-6h6m-6 0H6" stroke-width="2"/>
+                                        <path d="M12 1v6m0 6v6m0-6h6m-6 0H6" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <span>Configurações</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="header-title">Dashboard</h1>
+                </div>
+
+                <div class="header-right">
+                    <!-- Search -->
+                    <div class="header-search">
+                        <span class="header-search-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                                <path d="m21 21-4.35-4.35" stroke-width="2"/>
+                            </svg>
+                        </span>
+                        <input type="search" placeholder="Buscar...">
+                    </div>
+
+                    <!-- Notifications -->
+                    <button class="header-icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke-width="2"/>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" stroke-width="2"/>
+                        </svg>
+                        <span class="badge-notification">3</span>
+                    </button>
+
+                    <!-- Messages -->
+                    <button class="header-icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke-width="2"/>
+                        </svg>
+                        <span class="badge-notification">5</span>
+                    </button>
+
+                    <!-- User Menu -->
+                    <div class="header-user">
+                        <div class="avatar header-user-avatar">
+                            <img src="https://ui-avatars.com/api/?name=Jonathan+Becker&background=E8681A&color=fff" alt="User">
+                        </div>
+                        <div class="header-user-info">
+                            <div class="header-user-name">Jonathan Becker</div>
+                            <div class="header-user-role">Administrador</div>
+                        </div>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="6 9 12 15 18 9" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <main class="page-content">
+                <!-- O conteúdo de cada página virá aqui -->
+                
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

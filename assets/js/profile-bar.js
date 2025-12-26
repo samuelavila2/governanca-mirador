@@ -50,28 +50,20 @@ const ProfileBarComponent = {
         const styles = document.createElement('style');
         styles.id = 'profile-bar-styles';
         styles.textContent = `
-            .profile-bar {
-                position: fixed;
-                top: 0;
-                left: var(--sidebar-width, 260px);
-                right: 0;
-                height: 4px;
-                z-index: 1051;
-            }
-            
             .profile-bar-content {
                 position: fixed;
-                top: 8px;
-                right: 180px;
+                top: 12px;
+                right: 200px;
                 display: flex;
                 align-items: center;
                 gap: 6px;
                 font-size: 0.75rem;
                 font-weight: 500;
                 color: white;
-                z-index: 1051;
-                padding: 4px 12px;
+                z-index: 1060;
+                padding: 5px 14px;
                 border-radius: 20px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             }
             
             .profile-bar-content i {
@@ -96,12 +88,16 @@ const ProfileBarComponent = {
             
             /* Mobile: ajustes */
             @media (max-width: 991.98px) {
-                .profile-bar {
-                    left: 0;
-                }
                 .profile-bar-content {
                     right: 70px;
                     font-size: 0.7rem;
+                    top: 10px;
+                }
+            }
+            
+            @media (max-width: 576px) {
+                .profile-bar-content {
+                    display: none;
                 }
             }
         `;
@@ -120,12 +116,7 @@ const ProfileBarComponent = {
         if (existingBar) existingBar.remove();
         if (existingContent) existingContent.remove();
         
-        // Cria a linha fina colorida no topo
-        const bar = document.createElement('div');
-        bar.className = 'profile-bar';
-        bar.style.background = profile.bgColor;
-        
-        // Cria o badge flutuante com info do perfil
+        // Cria apenas o badge flutuante com info do perfil (sem barra no topo)
         const content = document.createElement('div');
         content.className = 'profile-bar-content';
         content.style.background = profile.bgColor;
@@ -138,8 +129,7 @@ const ProfileBarComponent = {
             </button>
         `;
         
-        // Insere no início do body
-        document.body.insertBefore(bar, document.body.firstChild);
+        // Adiciona apenas o badge flutuante
         document.body.appendChild(content);
     },
 

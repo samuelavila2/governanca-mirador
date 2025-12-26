@@ -207,24 +207,7 @@ const FakeActions = {
             }
         });
 
-        // Botões de ação (editar, excluir, etc.)
-        document.querySelectorAll('.btn-icon, .btn-action').forEach(btn => {
-            if (!btn.hasAttribute('data-bs-toggle') && !btn.onclick) {
-                btn.addEventListener('click', function(e) {
-                    const icon = this.querySelector('i');
-                    if (icon) {
-                        if (icon.classList.contains('bi-pencil')) {
-                            self.showToast('Abrindo modo de edição...', 'info');
-                        } else if (icon.classList.contains('bi-trash')) {
-                            e.preventDefault();
-                            self.showConfirm('Confirmar Exclusão', 'Tem certeza que deseja excluir?', () => {
-                                self.showToast('Excluído com sucesso!', 'success');
-                            });
-                        }
-                    }
-                });
-            }
-        });
+        // Botões de ação são tratados em bindIconButtons para evitar duplicação
     },
 
     // ========== NOTIFICAÇÕES ==========
@@ -547,6 +530,9 @@ const FakeActions = {
             const icon = btn.querySelector('i');
             if (!icon) return;
             if (btn.onclick || btn.hasAttribute('data-bs-toggle')) return;
+            // Evitar duplicação de eventos
+            if (btn.hasAttribute('data-action-bound')) return;
+            btn.setAttribute('data-action-bound', 'true');
 
             // Botões de EDITAR (lápis)
             if (icon.classList.contains('bi-pencil') || icon.classList.contains('bi-pencil-fill') || icon.classList.contains('bi-pencil-square')) {
@@ -739,7 +725,8 @@ const FakeActions = {
 
         // Botões btn-warning (geralmente ações secundárias)
         document.querySelectorAll('.btn-warning, .btn-outline-warning').forEach(btn => {
-            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle') && !btn.hasAttribute('data-action-bound')) {
+                btn.setAttribute('data-action-bound', 'true');
                 const text = btn.textContent.trim().toLowerCase();
                 
                 btn.addEventListener('click', function(e) {
@@ -769,7 +756,8 @@ const FakeActions = {
 
         // Botões btn-danger (ações críticas)
         document.querySelectorAll('.btn-danger, .btn-outline-danger').forEach(btn => {
-            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle') && !btn.hasAttribute('data-action-bound')) {
+                btn.setAttribute('data-action-bound', 'true');
                 const text = btn.textContent.trim().toLowerCase();
                 const icon = btn.querySelector('i');
                 
@@ -803,7 +791,8 @@ const FakeActions = {
 
         // Botões btn-info
         document.querySelectorAll('.btn-info, .btn-outline-info').forEach(btn => {
-            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle') && !btn.hasAttribute('data-action-bound')) {
+                btn.setAttribute('data-action-bound', 'true');
                 const text = btn.textContent.trim().toLowerCase();
                 
                 btn.addEventListener('click', function(e) {
@@ -824,7 +813,8 @@ const FakeActions = {
 
         // Botões btn-success
         document.querySelectorAll('.btn-success, .btn-outline-success').forEach(btn => {
-            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle') && !btn.hasAttribute('data-action-bound')) {
+                btn.setAttribute('data-action-bound', 'true');
                 const text = btn.textContent.trim().toLowerCase();
                 const icon = btn.querySelector('i');
                 
@@ -845,7 +835,8 @@ const FakeActions = {
 
         // Botões com classe específica para ações
         document.querySelectorAll('.btn-ghost').forEach(btn => {
-            if (!btn.onclick) {
+            if (!btn.onclick && !btn.hasAttribute('data-action-bound')) {
+                btn.setAttribute('data-action-bound', 'true');
                 const icon = btn.querySelector('i');
                 if (icon) {
                     btn.addEventListener('click', function(e) {

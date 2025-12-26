@@ -12,14 +12,14 @@ const SidebarComponent = {
     permissions: {
         admin: {
             menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
-                   'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'relatorios', 'configuracoes'],
+                   'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'comunicados', 'relatorios', 'configuracoes', 'administracao'],
             userName: 'Admin Master',
             userRole: 'Administrador',
             avatarBg: '7C3AED'
         },
         secretaria: {
             menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
-                   'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'configuracoes'],
+                   'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'comunicados', 'configuracoes'],
             userName: 'Maria Silva',
             userRole: 'Secretária Executiva',
             avatarBg: '059669'
@@ -69,6 +69,7 @@ const SidebarComponent = {
             this.renderMenuSection(menuItems.compliance, activePage) +
             '<div class="sidebar-divider"></div>' +
             this.renderMenuSection(menuItems.settings, activePage) +
+            (profile === 'admin' ? '<div class="sidebar-divider"></div>' + this.renderMenuSection(menuItems.admin, activePage) : '') +
         '</nav>' +
         '<div class="sidebar-footer">' +
             '<div class="sidebar-user">' +
@@ -102,15 +103,20 @@ const SidebarComponent = {
             ],
             settings: [
                 { id: 'mensagens', href: 'mensagens.html', icon: 'bi-chat-dots', label: 'Mensagens', badge: '12' },
+                { id: 'comunicados', href: 'comunicados.html', icon: 'bi-megaphone', label: 'Comunicados', badge: '2', badgeType: 'warning' },
                 { id: 'relatorios', href: 'relatorios.html', icon: 'bi-graph-up', label: 'Relatórios' },
                 { id: 'configuracoes', href: 'configuracoes.html', icon: 'bi-gear', label: 'Configurações' }
+            ],
+            admin: [
+                { id: 'administracao', href: 'administracao.html', icon: 'bi-sliders', label: 'Administração' }
             ]
         };
         
         return {
             main: allItems.main.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
             compliance: allItems.compliance.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
-            settings: allItems.settings.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; })
+            settings: allItems.settings.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
+            admin: allItems.admin.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; })
         };
     },
     
@@ -215,8 +221,10 @@ function getActivePageFromURL() {
         'calendario-consolidado.html': 'calendario-consolidado',
         'membros.html': 'membros',
         'mensagens.html': 'mensagens',
+        'comunicados.html': 'comunicados',
         'relatorios.html': 'relatorios',
-        'configuracoes.html': 'configuracoes'
+        'configuracoes.html': 'configuracoes',
+        'administracao.html': 'administracao'
     };
     
     return pageMap[filename] || 'dashboard';

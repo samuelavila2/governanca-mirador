@@ -320,6 +320,9 @@
                             <a class="nav-link" id="notificacoes-tab" data-bs-toggle="tab" href="#notificacoes" role="tab">
                                 <i class="bi bi-bell"></i> Notificações
                             </a>
+                            <a class="nav-link" id="reunioes-config-tab" data-bs-toggle="tab" href="#reunioes-config" role="tab" data-permission="admin secretaria">
+                                <i class="bi bi-calendar-event"></i> Reuniões
+                            </a>
                             <a class="nav-link" id="seguranca-tab" data-bs-toggle="tab" href="#seguranca" role="tab" data-permission="admin">
                                 <i class="bi bi-shield-lock"></i> Segurança
                             </a>
@@ -687,6 +690,222 @@
                                             <i class="bi bi-check-circle me-2"></i>Salvar Preferências
                                         </button>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Configurações de Reuniões -->
+                        <div class="tab-pane fade" id="reunioes-config" role="tabpanel">
+                            <!-- Categorias de Reunião -->
+                            <div class="config-card card mb-4">
+                                <div class="card-header text-white d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0"><i class="bi bi-tag me-2"></i>Categoria da Reunião</h5>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#novaCategoriaModal">
+                                        <i class="bi bi-plus-lg me-1"></i>Nova Categoria
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Gerencie as categorias das reuniões (Ordinária, Extraordinária, etc)</p>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="badge bg-primary me-2">OR</span>
+                                                <strong>Ordinária</strong>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-primary me-1" title="Editar">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger" title="Remover">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="badge bg-danger me-2">EX</span>
+                                                <strong>Extraordinária</strong>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-primary me-1">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="badge bg-success me-2">GE</span>
+                                                <strong>Gestão</strong>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-primary me-1">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="badge bg-info me-2">TR</span>
+                                                <strong>Treinamento</strong>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-primary me-1">
+                                                    <i class="bi bi-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <!-- Tipos de Reunião -->
+                            <div class="config-card card mb-4">
+                                <div class="card-header text-white d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0"><i class="bi bi-diagram-3 me-2"></i>Tipo da Reunião</h5>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#novoTipoReuniaoModal">
+                                        <i class="bi bi-plus-lg me-1"></i>Novo Tipo
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Defina os órgãos/tipos de reunião (Diretoria, Conselhos, Comitês)</p>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tipo de Reunião</th>
+                                                    <th>Descrição</th>
+                                                    <th class="text-end">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>Diretoria</strong></td>
+                                                    <td>Reuniões da Diretoria Executiva</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Conselho Fiscal</strong></td>
+                                                    <td>Reuniões do Conselho Fiscal</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Conselho Deliberativo</strong></td>
+                                                    <td>Reuniões do Conselho Deliberativo</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Comitê de Investimentos</strong></td>
+                                                    <td>Reuniões do Comitê de Investimentos</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Equipe</strong></td>
+                                                    <td>Reuniões internas de equipe</td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-danger">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Modelos de Ata -->
+                            <div class="config-card card">
+                                <div class="card-header text-white d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0"><i class="bi bi-file-earmark-text me-2"></i>Modelos de Ata</h5>
+                                    <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#novoModeloAtaModal">
+                                        <i class="bi bi-plus-lg me-1"></i>Novo Modelo
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Gerencie templates de ata e extrato</p>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle">
+                                            <thead>
+                                                <tr>
+                                                    <th>Modelo</th>
+                                                    <th>Tipo</th>
+                                                    <th>Tipo de Reunião</th>
+                                                    <th>Padrão</th>
+                                                    <th class="text-end">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><strong>ATA Padrão</strong></td>
+                                                    <td><span class="badge bg-primary">ATA de reunião</span></td>
+                                                    <td>Todos</td>
+                                                    <td><span class="badge bg-success">Sim</span></td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Extrato de ATA Padrão</strong></td>
+                                                    <td><span class="badge bg-info">Extrato ATA</span></td>
+                                                    <td>Todos</td>
+                                                    <td><span class="badge bg-success">Sim</span></td>
+                                                    <td class="text-end">
+                                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                                            <i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

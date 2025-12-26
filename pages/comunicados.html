@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicados - MiraBoard</title>
+    <link rel="icon" type="image/png" href="../assets/img/ico-miraboard.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/layout.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/ux-enhancements.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar (injected via sidebar.js) -->
+        <aside class="sidebar" id="sidebar"></aside>
+        
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="header-search d-none d-md-block">
+                        <div class="search-input-group">
+                            <i class="bi bi-search"></i>
+                            <input type="text" class="form-control" placeholder="Buscar comunicados...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="dropdown">
+                        <button class="header-action-btn" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                            <div class="dropdown-header">
+                                <h6>Notificações</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="header-user-btn" data-bs-toggle="dropdown">
+                            <div class="avatar avatar-sm">
+                                <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                            </div>
+                            <span class="d-none d-md-inline">Admin</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="configuracoes.html"><i class="bi bi-person me-2"></i>Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="configuracoes.html"><i class="bi bi-gear me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="../index.html"><i class="bi bi-box-arrow-right me-2"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div>
+                            <h1 class="page-title">
+                                <i class="bi bi-megaphone me-2 text-primary"></i>Comunicados
+                            </h1>
+                            <p class="page-subtitle">Envie comunicações oficiais em massa para grupos e conselheiros</p>
+                        </div>
+                        <div class="page-actions">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoComunicadoModal" data-hide-for="conselheiro">
+                                <i class="bi bi-plus-lg me-2"></i>Novo Comunicado
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Cards -->
+                    <div class="stats-grid mb-4">
+                        <div class="stat-card">
+                            <div class="stat-icon primary">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-label">Total de Comunicados</span>
+                                <div class="stat-value">18</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon success">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-label">Enviados</span>
+                                <div class="stat-value">16</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon warning">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-label">Agendados</span>
+                                <div class="stat-value">2</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon info">
+                                <i class="bi bi-eye"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-label">Taxa de Leitura</span>
+                                <div class="stat-value">87%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Filtros -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-4">
+                                    <label class="form-label">Buscar por assunto</label>
+                                    <input type="text" class="form-control" placeholder="Digite o assunto...">
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-select">
+                                        <option value="">Todos</option>
+                                        <option>Enviado</option>
+                                        <option>Agendado</option>
+                                        <option>Rascunho</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label class="form-label">Período</label>
+                                    <select class="form-select">
+                                        <option value="">Todos</option>
+                                        <option>Última semana</option>
+                                        <option>Último mês</option>
+                                        <option>Último trimestre</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <button class="btn btn-outline-secondary">
+                                        <i class="bi bi-funnel me-2"></i>Filtrar
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tabela de Comunicados -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 40%;">Assunto</th>
+                                            <th style="width: 15%;">Status</th>
+                                            <th style="width: 15%;">Destinatários</th>
+                                            <th style="width: 15%;">Data e Hora</th>
+                                            <th style="width: 10%;">Leitura</th>
+                                            <th class="text-end" style="width: 5%;">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-start">
+                                                    <i class="bi bi-megaphone text-primary me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>Apresentação de governança</strong>
+                                                        <p class="text-muted small mb-0">Informações sobre o novo sistema de governança...</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-success">Enviado</span></td>
+                                            <td>
+                                                <small class="text-muted">Conselho Deliberativo<br>8 membros</small>
+                                            </td>
+                                            <td><small>28/05/2024 15:37</small></td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-success" style="width: 100%"></div>
+                                                </div>
+                                                <small class="text-muted">8/8 (100%)</small>
+                                            </td>
+                                            <td class="text-end">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-ghost" data-bs-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>Visualizar</a></li>
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-people me-2"></i>Ver Leituras</a></li>
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat me-2"></i>Reenviar</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Excluir</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-start">
+                                                    <i class="bi bi-info-circle text-info me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>SOS Rio Grande do sul</strong>
+                                                        <p class="text-muted small mb-0">Campanha de apoio às vítimas das enchentes...</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-success">Enviado</span></td>
+                                            <td>
+                                                <small class="text-muted">Todos os Usuários<br>47 membros</small>
+                                            </td>
+                                            <td><small>04/06/2024 14:00</small></td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-success" style="width: 95%"></div>
+                                                </div>
+                                                <small class="text-muted">45/47 (95%)</small>
+                                            </td>
+                                            <td class="text-end">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-ghost" data-bs-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>Visualizar</a></li>
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-people me-2"></i>Ver Leituras</a></li>
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat me-2"></i>Reenviar</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Excluir</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-start">
+                                                    <i class="bi bi-person-plus text-success me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>Cadastro de usuário</strong>
+                                                        <p class="text-muted small mb-0">Instruções para completar o cadastro no sistema...</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-success">Enviado</span></td>
+                                            <td>
+                                                <small class="text-muted">Novos Usuários<br>3 membros</small>
+                                            </td>
+                                            <td><small>30/08/2024 11:37</small></td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar bg-warning" style="width: 66%"></div>
+                                                </div>
+                                                <small class="text-muted">2/3 (66%)</small>
+                                            </td>
+                                            <td class="text-end">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-ghost" data-bs-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-eye me-2"></i>Visualizar</a></li>
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-people me-2"></i>Ver Leituras</a></li>
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-arrow-repeat me-2"></i>Reenviar</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Excluir</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-start">
+                                                    <i class="bi bi-clock text-warning me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>Reunião Extraordinária - 15/01/2026</strong>
+                                                        <p class="text-muted small mb-0">Convocação para reunião extraordinária...</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-warning text-dark">Agendado</span></td>
+                                            <td>
+                                                <small class="text-muted">Conselho Fiscal<br>6 membros</small>
+                                            </td>
+                                            <td><small>10/01/2026 09:00</small></td>
+                                            <td>
+                                                <span class="badge bg-secondary">Pendente</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-ghost" data-bs-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-send me-2"></i>Enviar Agora</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Cancelar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-start">
+                                                    <i class="bi bi-file-earmark-text text-secondary me-2 mt-1"></i>
+                                                    <div>
+                                                        <strong>Atualização de Políticas</strong>
+                                                        <p class="text-muted small mb-0">Novas políticas de compliance e governança...</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge bg-secondary">Rascunho</span></td>
+                                            <td>
+                                                <small class="text-muted">Não definido</small>
+                                            </td>
+                                            <td><small>-</small></td>
+                                            <td>
+                                                <span class="badge bg-secondary">Rascunho</span>
+                                            </td>
+                                            <td class="text-end">
+                                                <div class="dropdown">
+                                                    <button class="btn btn-sm btn-ghost" data-bs-toggle="dropdown">
+                                                        <i class="bi bi-three-dots-vertical"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Continuar Edição</a></li>
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Excluir</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/sidebar.js"></script>
+    <script src="../assets/js/breadcrumbs.js"></script>
+    <script src="../assets/js/profile-bar.js"></script>
+    <script src="../assets/js/miraboard-utils.js"></script>
+</body>
+</html>

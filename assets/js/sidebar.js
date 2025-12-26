@@ -56,7 +56,8 @@ const SidebarComponent = {
         
         return '<div class="sidebar-header">' +
             '<a href="dashboard.html" class="sidebar-brand">' +
-                '<img src="../assets/img/logo-miraboard.png" alt="MiraBoard" class="sidebar-logo-img">' +
+                '<img src="../assets/img/logo-miraboard.png" alt="MiraBoard" class="sidebar-logo-img sidebar-logo-full">' +
+                '<img src="../assets/img/ico-miraboard.png" alt="MiraBoard" class="sidebar-logo-img sidebar-logo-icon">' +
             '</a>' +
             '<button class="sidebar-collapse-btn" id="sidebarCollapseBtn" title="Recolher menu">' +
                 '<i class="bi bi-chevron-left"></i>' +

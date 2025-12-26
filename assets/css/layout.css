@@ -631,10 +631,29 @@
     width: 72px;
 }
 
-.sidebar-collapsed .sidebar-logo-img {
-    height: 32px;
-    width: 32px;
+/* Logos - alterna entre full e icon */
+.sidebar-logo-full {
+    display: block;
+}
+
+.sidebar-logo-icon {
+    display: none;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
+}
+
+.sidebar-collapsed .sidebar-logo-full {
+    display: none;
+}
+
+.sidebar-collapsed .sidebar-logo-icon {
+    display: block;
+}
+
+.sidebar-collapsed .sidebar-logo-img {
+    height: auto;
+    width: 40px;
 }
 
 .sidebar-collapsed .sidebar-brand {

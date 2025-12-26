@@ -22,7 +22,6 @@
             --secondary: #1E3A5F;
             --accent: #10B981;
             --gradient-hero: linear-gradient(135deg, #F97316 0%, #FBBF24 50%, #F59E0B 100%);
-            --gradient-dark: linear-gradient(135deg, #1E3A5F 0%, #0F172A 100%);
             --text-dark: #1F2937;
             --text-muted: #6B7280;
             --bg-light: #F9FAFB;
@@ -95,33 +94,6 @@
             color: var(--primary);
         }
 
-        .navbar-nav {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .navbar-nav a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .navbar.scrolled .navbar-nav a {
-            color: var(--text-dark);
-        }
-
-        .navbar-nav a:hover {
-            color: var(--white);
-        }
-
-        .navbar.scrolled .navbar-nav a:hover {
-            color: var(--primary);
-        }
-
         .btn-demo {
             background: var(--white);
             color: var(--primary);
@@ -131,6 +103,9 @@
             text-decoration: none;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-demo:hover {
@@ -248,11 +223,6 @@
             position: relative;
         }
 
-        .hero-mockup img {
-            width: 100%;
-            border-radius: 0 0 16px 16px;
-        }
-
         .browser-mockup {
             background: #1E3A5F;
             border-radius: 16px;
@@ -289,6 +259,11 @@
             font-size: 0.85rem;
         }
 
+        .hero-mockup img {
+            width: 100%;
+            border-radius: 0 0 16px 16px;
+        }
+
         .hero-badge {
             position: absolute;
             top: -20px;
@@ -308,45 +283,9 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* ============ TRUST BAR ============ */
-        .trust-bar {
-            background: var(--white);
-            padding: 40px 24px;
-            border-bottom: 1px solid #E5E7EB;
-        }
-
-        .trust-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .trust-container p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .trust-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            opacity: 0.6;
-        }
-
-        .trust-logos span {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-muted);
-        }
-
         /* ============ FEATURES ============ */
         .features {
-            padding: 120px 24px;
+            padding: 100px 24px;
             background: var(--bg-light);
         }
 
@@ -358,7 +297,7 @@
         .section-header {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 80px;
+            margin: 0 auto 60px;
         }
 
         .section-badge {
@@ -373,7 +312,7 @@
         }
 
         .section-title {
-            font-size: 2.75rem;
+            font-size: 2.5rem;
             font-weight: 800;
             color: var(--text-dark);
             margin-bottom: 20px;
@@ -432,7 +371,7 @@
 
         /* ============ SHOWCASE ============ */
         .showcase {
-            padding: 120px 24px;
+            padding: 100px 24px;
             background: var(--white);
         }
 
@@ -443,27 +382,15 @@
             align-items: center;
         }
 
-        .showcase-grid.reverse {
-            grid-template-columns: 1fr 1.2fr;
-        }
-
-        .showcase-grid.reverse .showcase-content {
-            order: -1;
-        }
-
-        .showcase-mockup {
-            position: relative;
-        }
-
-        .showcase-mockup img {
-            width: 100%;
-            border-radius: 0 0 12px 12px;
-        }
-
         .showcase-browser {
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .showcase-browser img {
+            width: 100%;
+            display: block;
         }
 
         .showcase-content h2 {
@@ -481,6 +408,7 @@
 
         .check-list {
             list-style: none;
+            margin-bottom: 32px;
         }
 
         .check-list li {
@@ -498,215 +426,21 @@
             margin-top: 2px;
         }
 
-        /* ============ STATS ============ */
-        .stats {
-            padding: 100px 24px;
-            background: var(--gradient-dark);
-        }
-
-        .stats-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .stat-item p {
-            color: rgba(255,255,255,0.7);
-            font-size: 1rem;
-        }
-
-        /* ============ TESTIMONIALS ============ */
-        .testimonials {
-            padding: 120px 24px;
-            background: var(--bg-light);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .testimonial-stars {
-            color: #FBBF24;
-            font-size: 1.25rem;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-card blockquote {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            font-style: italic;
-            margin-bottom: 24px;
-            line-height: 1.7;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .testimonial-author img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .testimonial-author-info h4 {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text-dark);
-        }
-
-        .testimonial-author-info p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ============ CTA ============ */
-        .cta {
-            padding: 120px 24px;
-            background: var(--gradient-hero);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 1.25rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         /* ============ FOOTER ============ */
         .footer {
             background: var(--secondary);
-            padding: 80px 24px 40px;
+            padding: 40px 24px;
+            text-align: center;
         }
 
-        .footer-container {
-            max-width: 1280px;
-            margin: 0 auto;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,0.7);
-            margin-top: 20px;
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .footer-col h4 {
-            color: var(--white);
-            font-weight: 700;
-            margin-bottom: 24px;
-            font-size: 1.1rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-bottom p {
-            color: rgba(255,255,255,0.5);
+        .footer p {
+            color: rgba(255,255,255,0.6);
             font-size: 0.9rem;
         }
 
-        .footer-social {
-            display: flex;
-            gap: 16px;
-        }
-
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
+        .footer a {
+            color: var(--primary);
             text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .footer-social a:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
         }
 
         /* ============ RESPONSIVE ============ */
@@ -725,42 +459,21 @@
                 justify-content: center;
             }
 
-            .hero-mockup img {
+            .browser-mockup {
                 transform: none;
-                max-width: 100%;
             }
 
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .showcase-grid,
-            .showcase-grid.reverse {
+            .showcase-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .showcase-grid.reverse .showcase-content {
-                order: 0;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
             }
         }
 
         @media (max-width: 768px) {
-            .navbar-nav {
-                display: none;
-            }
-
             .hero-content h1 {
                 font-size: 2.5rem;
             }
@@ -769,33 +482,12 @@
                 font-size: 2rem;
             }
 
-            .features-grid,
-            .testimonials-grid {
+            .features-grid {
                 grid-template-columns: 1fr;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-
-            .stat-item h3 {
-                font-size: 2.5rem;
-            }
-
-            .cta h2 {
-                font-size: 2rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
+            .showcase-content h2 {
+                font-size: 1.75rem;
             }
         }
 
@@ -821,14 +513,8 @@
                 <img src="assets/img/ico-miraboard.png" alt="MiraBoard" onerror="this.style.display='none'">
                 <span class="navbar-logo-text">MiraBoard</span>
             </a>
-            <ul class="navbar-nav">
-                <li><a href="#features">Funcionalidades</a></li>
-                <li><a href="#como-funciona">Como Funciona</a></li>
-                <li><a href="#depoimentos">Depoimentos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
             <a href="login.html" class="btn-demo">
-                <i class="bi bi-play-circle"></i> Demonstração
+                <i class="bi bi-play-circle"></i> Ver Demonstração
             </a>
         </div>
     </nav>
@@ -850,7 +536,7 @@
                     <a href="login.html" class="btn-primary-lg">
                         <i class="bi bi-play-fill"></i> Ver Demonstração
                     </a>
-                    <a href="#features" class="btn-secondary-lg">
+                    <a href="#funcionalidades" class="btn-secondary-lg">
                         <i class="bi bi-arrow-down"></i> Saiba Mais
                     </a>
                 </div>
@@ -866,28 +552,14 @@
                         </div>
                         <div class="browser-address">miraboard.mirador360.com.br</div>
                     </div>
-                    <img src="https://placehold.co/800x480/F9FAFB/1E3A5F?text=📊+Dashboard+MiraBoard%0A%0A✓+Planos+de+Ação%0A✓+Próximas+Reuniões%0A✓+Métricas+de+Governança" alt="Dashboard MiraBoard" id="heroImage">
+                    <img src="assets/img/lp/screenshot-reunioes.png" alt="Tela de Reuniões MiraBoard">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Bar -->
-    <section class="trust-bar">
-        <div class="trust-container">
-            <p>Utilizado por empresas que valorizam governança</p>
-            <div class="trust-logos">
-                <span>EFPC 1</span>
-                <span>EFPC 2</span>
-                <span>EFPC 3</span>
-                <span>EFPC 4</span>
-                <span>EFPC 5</span>
-            </div>
-        </div>
-    </section>
-
     <!-- Features -->
-    <section class="features" id="features">
+    <section class="features" id="funcionalidades">
         <div class="section-container">
             <div class="section-header fade-up">
                 <span class="section-badge">Funcionalidades</span>
@@ -943,22 +615,20 @@
         </div>
     </section>
 
-    <!-- Showcase 1 -->
-    <section class="showcase" id="como-funciona">
+    <!-- Showcase -->
+    <section class="showcase">
         <div class="section-container">
             <div class="showcase-grid">
-                <div class="showcase-mockup fade-up">
-                    <div class="showcase-browser">
-                        <div class="browser-header" style="background: #E5E7EB;">
-                            <div class="browser-dots">
-                                <span style="background:#FF5F56"></span>
-                                <span style="background:#FFBD2E"></span>
-                                <span style="background:#27CA40"></span>
-                            </div>
-                            <div class="browser-address" style="background: #fff; color: #6B7280;">miraboard.mirador360.com.br/reunioes</div>
+                <div class="showcase-browser fade-up">
+                    <div class="browser-header" style="background: #E5E7EB;">
+                        <div class="browser-dots">
+                            <span style="background:#FF5F56"></span>
+                            <span style="background:#FFBD2E"></span>
+                            <span style="background:#27CA40"></span>
                         </div>
-                        <img src="https://placehold.co/700x400/FFFFFF/1E3A5F?text=📅+Gestão+de+Reuniões%0A%0A•+Próximas+Reuniões%0A•+Convocações%0A•+Atas+Pendentes" alt="Tela de Reuniões">
+                        <div class="browser-address" style="background: #fff; color: #6B7280;">miraboard.mirador360.com.br/atas</div>
                     </div>
+                    <img src="assets/img/lp/screenshot-atas.png" alt="Tela de Atas MiraBoard">
                 </div>
                 <div class="showcase-content fade-up">
                     <h2>Reuniões organizadas do início ao fim</h2>
@@ -972,207 +642,17 @@
                         <li><i class="bi bi-check-circle-fill"></i> Registro de presença automático</li>
                         <li><i class="bi bi-check-circle-fill"></i> Ata digital com assinatura eletrônica</li>
                     </ul>
+                    <a href="login.html" class="btn-primary-lg">
+                        <i class="bi bi-play-fill"></i> Ver Demonstração
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Showcase 2 -->
-    <section class="showcase" style="background: var(--bg-light);">
-        <div class="section-container">
-            <div class="showcase-grid reverse">
-                <div class="showcase-mockup fade-up">
-                    <div class="showcase-browser">
-                        <div class="browser-header" style="background: #1E3A5F;">
-                            <div class="browser-dots">
-                                <span style="background:#FF5F56"></span>
-                                <span style="background:#FFBD2E"></span>
-                                <span style="background:#27CA40"></span>
-                            </div>
-                            <div class="browser-address">miraboard.mirador360.com.br/dashboard</div>
-                        </div>
-                        <img src="https://placehold.co/700x400/1E3A5F/FFFFFF?text=📊+Dashboard+Analytics%0A%0A•+Gráficos+de+Presença%0A•+Métricas+de+Governança%0A•+Planos+de+Ação" alt="Dashboard Analytics">
-                    </div>
-                </div>
-                <div class="showcase-content fade-up">
-                    <h2>Visão completa com dashboards inteligentes</h2>
-                    <p>
-                        Acompanhe indicadores de governança, presença em reuniões, 
-                        cumprimento de prazos e planos de ação em tempo real.
-                    </p>
-                    <ul class="check-list">
-                        <li><i class="bi bi-check-circle-fill"></i> Métricas de participação por membro</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Acompanhamento de obrigações legais</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Status de planos de ação</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Calendário consolidado de eventos</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item fade-up">
-                <h3>50+</h3>
-                <p>Empresas Atendidas</p>
-            </div>
-            <div class="stat-item fade-up">
-                <h3>5.000+</h3>
-                <p>Reuniões Realizadas</p>
-            </div>
-            <div class="stat-item fade-up">
-                <h3>99.9%</h3>
-                <p>Uptime Garantido</p>
-            </div>
-            <div class="stat-item fade-up">
-                <h3>24/7</h3>
-                <p>Suporte Dedicado</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials" id="depoimentos">
-        <div class="section-container">
-            <div class="section-header fade-up">
-                <span class="section-badge">Depoimentos</span>
-                <h2 class="section-title">O que nossos clientes dizem</h2>
-                <p class="section-subtitle">
-                    Empresas que transformaram sua governança com o MiraBoard.
-                </p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-up">
-                    <div class="testimonial-stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <blockquote>
-                        "O MiraBoard revolucionou a forma como gerenciamos nossas reuniões de conselho. 
-                        A organização e segurança são impecáveis."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <img src="https://ui-avatars.com/api/?name=Carlos+Mendes&background=6366F1&color=fff&size=50" alt="Carlos Mendes">
-                        <div class="testimonial-author-info">
-                            <h4>Carlos Mendes</h4>
-                            <p>Diretor de Governança - EFPC Alpha</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-up">
-                    <div class="testimonial-stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <blockquote>
-                        "A integração com videoconferência e a gestão de documentos facilitou 
-                        muito nosso trabalho remoto. Recomendo fortemente!"
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <img src="https://ui-avatars.com/api/?name=Ana+Paula&background=10B981&color=fff&size=50" alt="Ana Paula">
-                        <div class="testimonial-author-info">
-                            <h4>Ana Paula Costa</h4>
-                            <p>Secretária Executiva - FundoPrev</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-up">
-                    <div class="testimonial-stars">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                    </div>
-                    <blockquote>
-                        "O controle de obrigações legais e o acompanhamento de prazos nos ajudou 
-                        a manter total conformidade com a PREVIC."
-                    </blockquote>
-                    <div class="testimonial-author">
-                        <img src="https://ui-avatars.com/api/?name=Roberto+Silva&background=F59E0B&color=fff&size=50" alt="Roberto Silva">
-                        <div class="testimonial-author-info">
-                            <h4>Roberto Silva</h4>
-                            <p>Presidente do Conselho - PrevidCorp</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta" id="contato">
-        <div class="cta-content fade-up">
-            <h2>Pronto para transformar sua governança?</h2>
-            <p>
-                Agende uma demonstração gratuita e descubra como o MiraBoard pode 
-                simplificar a gestão da sua empresa.
-            </p>
-            <a href="login.html" class="btn-primary-lg">
-                <i class="bi bi-rocket-takeoff"></i> Acessar Demonstração
-            </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="navbar-logo">
-                        <img src="assets/img/ico-miraboard.png" alt="MiraBoard" style="height: 40px;" onerror="this.style.display='none'">
-                        <span style="color: white; font-size: 1.5rem; font-weight: 800;">MiraBoard</span>
-                    </a>
-                    <p>
-                        Plataforma completa de governança corporativa para entidades 
-                        de previdência, fundos de pensão e órgãos colegiados.
-                    </p>
-                </div>
-                <div class="footer-col">
-                    <h4>Produto</h4>
-                    <ul>
-                        <li><a href="#features">Funcionalidades</a></li>
-                        <li><a href="#">Preços</a></li>
-                        <li><a href="#">Integrações</a></li>
-                        <li><a href="#">Segurança</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Empresa</h4>
-                    <ul>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Carreiras</a></li>
-                        <li><a href="#">Contato</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Suporte</h4>
-                    <ul>
-                        <li><a href="#">Central de Ajuda</a></li>
-                        <li><a href="#">Documentação</a></li>
-                        <li><a href="#">Status do Sistema</a></li>
-                        <li><a href="#">Termos de Uso</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025 MiraBoard by Mirador. Todos os direitos reservados.</p>
-                <div class="footer-social">
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-youtube"></i></a>
-                </div>
-            </div>
-        </div>
+        <p>© 2025 MiraBoard by <a href="https://mirador360.com.br" target="_blank">Mirador</a>. Todos os direitos reservados.</p>
     </footer>
 
     <script>
@@ -1201,13 +681,6 @@
         });
 
         fadeElements.forEach(el => observer.observe(el));
-
-        // Load real mockup images from the system
-        document.addEventListener('DOMContentLoaded', function() {
-            // Try to capture screenshots or use placeholder
-            const heroImg = document.getElementById('heroImage');
-            // In production, these would be real screenshots
-        });
     </script>
 
 </body>

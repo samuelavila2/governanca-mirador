@@ -135,7 +135,13 @@
                             
                             <!-- Wizard Navigation (7 tabs como sistema atual) -->
                             <div class="reuniao-wizard">
-                                <div class="wizard-header" style="flex-wrap: wrap; gap: 0.5rem;">
+                                <!-- Barra de Progresso Visual -->
+                                <div class="progress mb-3" style="height: 4px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 28%;" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                
+                                <!-- Tabs de Configuração (scroll horizontal em mobile) -->
+                                <div class="wizard-header" style="overflow-x: auto; white-space: nowrap; gap: 0.5rem; padding-bottom: 0.5rem;">
                                     <a href="#informacoes" class="wizard-step completed" data-bs-toggle="tab">
                                         <span class="wizard-step-number"><i class="bi bi-check-lg"></i></span>
                                         <div class="wizard-step-info">
@@ -168,14 +174,14 @@
                                         <span class="wizard-step-number">5</span>
                                         <div class="wizard-step-info">
                                             <span class="wizard-step-title">Convite</span>
-                                            <span class="wizard-step-subtitle">Template e-mail</span>
+                                            <span class="wizard-step-subtitle">Template</span>
                                         </div>
                                     </a>
                                     <a href="#videoconferencia" class="wizard-step" data-bs-toggle="tab">
                                         <span class="wizard-step-number">6</span>
                                         <div class="wizard-step-info">
                                             <span class="wizard-step-title">Vídeo</span>
-                                            <span class="wizard-step-subtitle">Conferência</span>
+                                            <span class="wizard-step-subtitle">Online</span>
                                         </div>
                                     </a>
                                     <a href="#revisao" class="wizard-step" data-bs-toggle="tab">
@@ -187,22 +193,25 @@
                                     </a>
                                 </div>
                                 
-                                <!-- Tabs secundárias (exibidas após agendamento) -->
-                                <div class="wizard-header mt-2 border-top pt-3" style="flex-wrap: wrap; gap: 0.5rem;">
-                                    <a href="#votacoes" class="wizard-step" data-bs-toggle="tab">
-                                        <span class="wizard-step-number"><i class="bi bi-hand-thumbs-up"></i></span>
-                                        <div class="wizard-step-info">
-                                            <span class="wizard-step-title">Votações</span>
-                                            <span class="wizard-step-subtitle">Deliberações</span>
-                                        </div>
-                                    </a>
-                                    <a href="#ata" class="wizard-step" data-bs-toggle="tab">
-                                        <span class="wizard-step-number"><i class="bi bi-file-text"></i></span>
-                                        <div class="wizard-step-info">
-                                            <span class="wizard-step-title">Ata</span>
-                                            <span class="wizard-step-subtitle">Documento</span>
-                                        </div>
-                                    </a>
+                                <!-- Tabs Pós-Agendamento (separadas visualmente) -->
+                                <div class="d-flex align-items-center mt-3 pt-3 border-top">
+                                    <span class="text-muted small me-3"><i class="bi bi-clock-history me-1"></i>Durante/Após a reunião:</span>
+                                    <div class="wizard-header" style="gap: 0.5rem;">
+                                        <a href="#votacoes" class="wizard-step" data-bs-toggle="tab">
+                                            <span class="wizard-step-number"><i class="bi bi-hand-thumbs-up"></i></span>
+                                            <div class="wizard-step-info">
+                                                <span class="wizard-step-title">Votações</span>
+                                                <span class="wizard-step-subtitle">Deliberações</span>
+                                            </div>
+                                        </a>
+                                        <a href="#ata" class="wizard-step" data-bs-toggle="tab">
+                                            <span class="wizard-step-number"><i class="bi bi-file-text"></i></span>
+                                            <div class="wizard-step-info">
+                                                <span class="wizard-step-title">Ata</span>
+                                                <span class="wizard-step-subtitle">Documento</span>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                                 
                                 <div class="wizard-content tab-content">

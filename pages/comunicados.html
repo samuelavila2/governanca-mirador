@@ -440,7 +440,7 @@
                         
                         <div class="mb-3">
                             <label class="form-label">Destinatários <span class="text-danger">*</span></label>
-                            <select class="form-select" required>
+                            <select class="form-select" id="destinatarios" required>
                                 <option value="">Selecione para quem enviar</option>
                                 <optgroup label="Grupos">
                                     <option value="todos">Todos os usuários</option>
@@ -507,11 +507,21 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">
-                        <i class="bi bi-check-lg me-1"></i>Salvar
-                    </button>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div>
+                        <button type="button" class="btn btn-outline-secondary" id="btnPreview">
+                            <i class="bi bi-eye me-1"></i>Pré-visualizar
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-outline-primary me-2" id="btnSalvarRascunho">
+                            <i class="bi bi-save me-1"></i>Salvar Rascunho
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btnEnviar">
+                            <i class="bi bi-send me-1"></i>Enviar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -528,23 +538,41 @@
     
     <script>
         // Toggle exibir seletor individual
-        document.querySelector('select[required]').addEventListener('change', function() {
-            const seletor = document.getElementById('seletorIndividual');
-            if (this.value === 'individual') {
-                seletor.style.display = 'block';
-            } else {
-                seletor.style.display = 'none';
-            }
-        });
+        const selectDestinatarios = document.getElementById('selectDestinatarios');
+        if (selectDestinatarios) {
+            selectDestinatarios.addEventListener('change', function() {
+                const seletor = document.getElementById('seletorIndividual');
+                if (this.value === 'individual') {
+                    seletor.style.display = 'block';
+                } else {
+                    seletor.style.display = 'none';
+                }
+            });
+        }
         
         // Toggle exibir campos de agendamento
-        document.getElementById('momentoEnvio').addEventListener('change', function() {
-            const campos = document.getElementById('agendamentoFields');
-            if (this.value === 'agendar') {
-                campos.style.display = 'flex';
-            } else {
-                campos.style.display = 'none';
-            }
+        const momentoEnvio = document.getElementById('momentoEnvio');
+        if (momentoEnvio) {
+            momentoEnvio.addEventListener('change', function() {
+                const campos = document.getElementById('agendamentoFields');
+                const btnEnviar = document.getElementById('btnEnviar');
+                
+                if (this.value === 'agendar') {
+                    campos.style.display = 'flex';
+                    btnEnviar.innerHTML = '<i class="bi bi-calendar-check me-1"></i>Agendar';
+                } else if (this.value === 'rascunho') {
+                    campos.style.display = 'none';
+                    btnEnviar.innerHTML = '<i class="bi bi-save me-1"></i>Salvar';
+                } else {
+                    campos.style.display = 'none';
+                    btnEnviar.innerHTML = '<i class="bi bi-send me-1"></i>Enviar Agora';
+                }
+            });
+        }
+        
+        // Feedback visual ao pré-visualizar
+        document.getElementById('btnPreview')?.addEventListener('click', function() {
+            alert('Pré-visualização do comunicado (funcionalidade será implementada no backend)');
         });
     </script>
 </body>

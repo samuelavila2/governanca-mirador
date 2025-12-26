@@ -11,42 +11,32 @@ const SidebarComponent = {
      */
     permissions: {
         admin: {
-            // Admin tem acesso a tudo
             menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
                    'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'relatorios', 'configuracoes'],
             userName: 'Admin Master',
             userRole: 'Administrador',
-            avatarBg: '7C3AED' // Roxo
+            avatarBg: '7C3AED'
         },
         secretaria: {
-            // Secretária: sem Relatórios avançados, Configurações limitadas
             menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
                    'obrigacoes', 'biblioteca', 'membros', 'mensagens', 'configuracoes'],
             userName: 'Maria Silva',
             userRole: 'Secretária Executiva',
-            avatarBg: '059669' // Verde
+            avatarBg: '059669'
         },
         conselheiro: {
-            // Conselheiro: acesso consultivo, sem Relatórios e Configurações
             menu: ['dashboard', 'calendario-consolidado', 'reunioes', 'atas', 'acoes', 'documentos', 
                    'obrigacoes', 'biblioteca', 'membros', 'mensagens'],
             userName: 'João Conselheiro',
             userRole: 'Conselheiro Deliberativo',
-            avatarBg: '2563EB' // Azul
+            avatarBg: '2563EB'
         }
     },
 
-    /**
-     * Retorna o perfil atual
-     */
     getCurrentProfile: function() {
         return localStorage.getItem('miraboard_user_profile') || 'admin';
     },
 
-    /**
-     * Inicializa o sidebar na página
-     * @param {string} activePage - Nome da página ativa (ex: 'dashboard', 'reunioes')
-     */
     init: function(activePage) {
         const sidebarContainer = document.getElementById('sidebar');
         if (!sidebarContainer) {
@@ -59,61 +49,44 @@ const SidebarComponent = {
         this.applyPermissions();
     },
     
-    /**
-     * Renderiza o HTML do sidebar
-     * @param {string} activePage - Página ativa
-     * @returns {string} HTML do sidebar
-     */
     render: function(activePage) {
         const profile = this.getCurrentProfile();
         const permissions = this.permissions[profile] || this.permissions.admin;
         const menuItems = this.getMenuItems(profile);
         
-        return \`
-            <div class="sidebar-header">
-                <a href="dashboard.html" class="sidebar-brand">
-                    <img src="../assets/img/logo-miraboard.png" alt="MiraBoard" class="sidebar-logo-img">
-                </a>
-                <button class="sidebar-toggle d-lg-none" id="sidebarClose">
-                    <i class="bi bi-x-lg"></i>
-                </button>
-            </div>
-            
-            <nav class="sidebar-menu">
-                \${this.renderMenuSection(menuItems.main, activePage)}
-                
-                <div class="sidebar-divider"></div>
-                
-                <div class="sidebar-section-title" style="color: #9ca3af; font-size: 0.7rem; text-transform: uppercase; padding: 0 16px; margin-bottom: 8px;">Compliance EFPC</div>
-                
-                \${this.renderMenuSection(menuItems.compliance, activePage)}
-                
-                <div class="sidebar-divider"></div>
-                
-                \${this.renderMenuSection(menuItems.settings, activePage)}
-            </nav>
-            
-            <div class="sidebar-footer">
-                <div class="sidebar-user">
-                    <div class="avatar avatar-md">
-                        <img src="https://ui-avatars.com/api/?name=\${encodeURIComponent(permissions.userName)}&background=\${permissions.avatarBg}&color=fff" alt="\${permissions.userName}">
-                    </div>
-                    <div class="sidebar-user-info">
-                        <span class="sidebar-user-name">\${permissions.userName}</span>
-                        <span class="sidebar-user-role">\${permissions.userRole}</span>
-                    </div>
-                </div>
-            </div>
-        \`;
+        return '<div class="sidebar-header">' +
+            '<a href="dashboard.html" class="sidebar-brand">' +
+                '<img src="../assets/img/logo-miraboard.png" alt="MiraBoard" class="sidebar-logo-img">' +
+            '</a>' +
+            '<button class="sidebar-toggle d-lg-none" id="sidebarClose">' +
+                '<i class="bi bi-x-lg"></i>' +
+            '</button>' +
+        '</div>' +
+        '<nav class="sidebar-menu">' +
+            this.renderMenuSection(menuItems.main, activePage) +
+            '<div class="sidebar-divider"></div>' +
+            '<div class="sidebar-section-title" style="color: #9ca3af; font-size: 0.7rem; text-transform: uppercase; padding: 0 16px; margin-bottom: 8px;">Compliance EFPC</div>' +
+            this.renderMenuSection(menuItems.compliance, activePage) +
+            '<div class="sidebar-divider"></div>' +
+            this.renderMenuSection(menuItems.settings, activePage) +
+        '</nav>' +
+        '<div class="sidebar-footer">' +
+            '<div class="sidebar-user">' +
+                '<div class="avatar avatar-md">' +
+                    '<img src="https://ui-avatars.com/api/?name=' + encodeURIComponent(permissions.userName) + '&background=' + permissions.avatarBg + '&color=fff" alt="' + permissions.userName + '">' +
+                '</div>' +
+                '<div class="sidebar-user-info">' +
+                    '<span class="sidebar-user-name">' + permissions.userName + '</span>' +
+                    '<span class="sidebar-user-role">' + permissions.userRole + '</span>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
     },
     
-    /**
-     * Retorna a estrutura do menu baseado no perfil
-     */
     getMenuItems: function(profile) {
-        const allowedMenus = this.permissions[profile]?.menu || this.permissions.admin.menu;
+        var allowedMenus = this.permissions[profile] ? this.permissions[profile].menu : this.permissions.admin.menu;
         
-        const allItems = {
+        var allItems = {
             main: [
                 { id: 'dashboard', href: 'dashboard.html', icon: 'bi-speedometer2', label: 'Dashboard' },
                 { id: 'calendario-consolidado', href: 'calendario-consolidado.html', icon: 'bi-calendar3', label: 'Calendário' },
@@ -134,147 +107,101 @@ const SidebarComponent = {
             ]
         };
         
-        // Filtrar itens baseado nas permissões
         return {
-            main: allItems.main.filter(item => allowedMenus.includes(item.id)),
-            compliance: allItems.compliance.filter(item => allowedMenus.includes(item.id)),
-            settings: allItems.settings.filter(item => allowedMenus.includes(item.id))
+            main: allItems.main.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
+            compliance: allItems.compliance.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
+            settings: allItems.settings.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; })
         };
     },
     
-    /**
-     * Renderiza uma seção do menu
-     */
     renderMenuSection: function(items, activePage) {
         if (items.length === 0) return '';
         
-        let html = '<ul class="sidebar-nav">';
+        var html = '<ul class="sidebar-nav">';
         
-        items.forEach(item => {
-            const isActive = item.id === activePage;
-            const activeClass = isActive ? ' active' : '';
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var isActive = item.id === activePage;
+            var activeClass = isActive ? ' active' : '';
             
-            let badgeHtml = '';
+            var badgeHtml = '';
             if (item.badge) {
-                const badgeStyle = item.badgeType === 'danger' ? 'style="background: #dc3545;"' : 
-                                   item.badgeType === 'warning' ? 'class="sidebar-badge warning"' : 
-                                   'class="sidebar-badge"';
-                badgeHtml = \`<span \${badgeStyle}>\${item.badge}</span>\`;
-                
-                // Corrigir para badges com style
+                var badgeStyle = '';
                 if (item.badgeType === 'danger') {
-                    badgeHtml = \`<span class="sidebar-badge" style="background: #dc3545;">\${item.badge}</span>\`;
+                    badgeStyle = ' style="background: #dc3545;"';
+                } else if (item.badgeType === 'warning') {
+                    badgeStyle = ' style="background: #f59e0b;"';
                 }
+                badgeHtml = '<span class="sidebar-badge"' + badgeStyle + '>' + item.badge + '</span>';
             }
             
-            html += \`
-                <li class="sidebar-nav-item">
-                    <a href="\${item.href}" class="sidebar-nav-link\${activeClass}">
-                        <i class="bi \${item.icon}"></i>
-                        <span>\${item.label}</span>
-                        \${badgeHtml}
-                    </a>
-                </li>
-            \`;
-        });
+            html += '<li class="sidebar-nav-item">' +
+                '<a href="' + item.href + '" class="sidebar-nav-link' + activeClass + '">' +
+                    '<i class="bi ' + item.icon + '"></i>' +
+                    '<span>' + item.label + '</span>' +
+                    badgeHtml +
+                '</a>' +
+            '</li>';
+        }
         
         html += '</ul>';
         return html;
     },
     
-    /**
-     * Aplica permissões de visibilidade de elementos na página
-     */
     applyPermissions: function() {
-        const profile = this.getCurrentProfile();
+        var profile = this.getCurrentProfile();
         
-        // Elementos que devem ser ocultados por perfil
-        // Usa atributos data-permission="admin" ou data-permission="admin,secretaria"
-        document.querySelectorAll('[data-permission]').forEach(el => {
-            const allowedProfiles = el.dataset.permission.split(',').map(p => p.trim());
-            if (!allowedProfiles.includes(profile)) {
+        document.querySelectorAll('[data-permission]').forEach(function(el) {
+            var allowedProfiles = el.dataset.permission.split(' ');
+            if (allowedProfiles.indexOf(profile) === -1) {
                 el.style.display = 'none';
             }
         });
         
-        // Elementos que devem ser ocultados para perfil específico
-        // Usa atributo data-hide-for="conselheiro" ou data-hide-for="conselheiro,secretaria"
-        document.querySelectorAll('[data-hide-for]').forEach(el => {
-            const hiddenProfiles = el.dataset.hideFor.split(',').map(p => p.trim());
-            if (hiddenProfiles.includes(profile)) {
+        document.querySelectorAll('[data-hide-for]').forEach(function(el) {
+            var hiddenProfiles = el.dataset.hideFor.split(' ');
+            if (hiddenProfiles.indexOf(profile) !== -1) {
                 el.style.display = 'none';
             }
         });
-
-        // Elementos read-only para conselheiro
-        if (profile === 'conselheiro') {
-            document.querySelectorAll('[data-readonly-for="conselheiro"]').forEach(el => {
-                if (el.tagName === 'BUTTON' || el.tagName === 'A') {
-                    el.classList.add('disabled');
-                    el.style.pointerEvents = 'none';
-                    el.style.opacity = '0.5';
-                }
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
-                    el.disabled = true;
-                }
-            });
-        }
+        
+        document.querySelectorAll('[data-readonly-for]').forEach(function(el) {
+            var readonlyProfiles = el.dataset.readonlyFor.split(' ');
+            if (readonlyProfiles.indexOf(profile) !== -1) {
+                el.disabled = true;
+                el.classList.add('disabled');
+                el.style.pointerEvents = 'none';
+                el.style.opacity = '0.6';
+            }
+        });
     },
     
-    /**
-     * Vincula eventos do sidebar
-     */
     bindEvents: function() {
-        // Toggle sidebar em mobile
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarClose = document.getElementById('sidebarClose');
-        const sidebar = document.getElementById('sidebar');
+        var self = this;
         
-        if (sidebarToggle) {
-            sidebarToggle.addEventListener('click', function() {
-                sidebar.classList.toggle('show');
-            });
-        }
-        
+        var sidebarClose = document.getElementById('sidebarClose');
         if (sidebarClose) {
             sidebarClose.addEventListener('click', function() {
-                sidebar.classList.remove('show');
+                document.querySelector('.sidebar').classList.remove('active');
+                document.body.classList.remove('sidebar-open');
             });
         }
         
-        // Fechar sidebar ao clicar fora (mobile)
-        document.addEventListener('click', function(e) {
-            if (window.innerWidth < 1024) {
-                if (!sidebar.contains(e.target) && !sidebarToggle?.contains(e.target)) {
-                    sidebar.classList.remove('show');
-                }
-            }
-        });
-    },
-
-    /**
-     * Helpers de verificação de perfil
-     */
-    isAdmin: function() {
-        return this.getCurrentProfile() === 'admin';
-    },
-    
-    isSecretaria: function() {
-        return this.getCurrentProfile() === 'secretaria';
-    },
-    
-    isConselheiro: function() {
-        return this.getCurrentProfile() === 'conselheiro';
+        var sidebarToggle = document.getElementById('sidebarToggle');
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', function() {
+                document.querySelector('.sidebar').classList.toggle('active');
+                document.body.classList.toggle('sidebar-open');
+            });
+        }
     }
 };
 
-// Auto-detectar página ativa baseado na URL
 function getActivePageFromURL() {
-    const path = window.location.pathname;
-    const filename = path.substring(path.lastIndexOf('/') + 1);
+    var path = window.location.pathname;
+    var filename = path.substring(path.lastIndexOf('/') + 1);
     
-    // Mapear filename para ID da página
-    const pageMap = {
+    var pageMap = {
         'dashboard.html': 'dashboard',
         'calendario.html': 'calendario',
         'reunioes.html': 'reunioes',
@@ -295,8 +222,7 @@ function getActivePageFromURL() {
     return pageMap[filename] || 'dashboard';
 }
 
-// Inicializar automaticamente quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', function() {
-    const activePage = getActivePageFromURL();
+    var activePage = getActivePageFromURL();
     SidebarComponent.init(activePage);
 });

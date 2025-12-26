@@ -262,6 +262,9 @@ const ProfileBarComponent = {
             '</button>';
         
         document.body.appendChild(bar);
+        
+        // Adiciona classe ao body para que outros elementos (como biblioteca) se ajustem
+        document.body.classList.add('has-quick-actions');
     },
     
     /**

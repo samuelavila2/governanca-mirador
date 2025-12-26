@@ -2251,7 +2251,7 @@ body.modo-apresentacao .apresentacao-controls {
 .biblioteca-flutuante {
     position: fixed;
     right: var(--spacing-4);
-    bottom: var(--spacing-4);
+    bottom: 100px; /* Acima dos FABs */
     width: 380px;
     max-height: 500px;
     background: var(--color-white);
@@ -2262,6 +2262,11 @@ body.modo-apresentacao .apresentacao-controls {
     flex-direction: column;
     transition: all var(--transition-base);
     border: 1px solid var(--color-gray-200);
+}
+
+/* Quando não há FABs, biblioteca fica embaixo */
+body:not(.has-quick-actions) .biblioteca-flutuante {
+    bottom: var(--spacing-4);
 }
 
 .biblioteca-flutuante.minimizada {
@@ -2471,7 +2476,7 @@ body.modo-apresentacao .apresentacao-controls {
 .btn-biblioteca-toggle {
     position: fixed;
     right: var(--spacing-4);
-    bottom: var(--spacing-4);
+    bottom: 100px; /* Acima dos FABs da secretária */
     width: 56px;
     height: 56px;
     background: linear-gradient(135deg, #7C3AED, #8B5CF6);
@@ -2486,6 +2491,11 @@ body.modo-apresentacao .apresentacao-controls {
     box-shadow: var(--shadow-lg);
     transition: all var(--transition-fast);
     z-index: 1040;
+}
+
+/* Quando não há FABs (conselheiro), botão fica embaixo */
+body:not(.has-quick-actions) .btn-biblioteca-toggle {
+    bottom: var(--spacing-4);
 }
 
 .btn-biblioteca-toggle:hover {

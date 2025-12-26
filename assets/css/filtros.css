@@ -1,0 +1,116 @@
+/* ============================================
+   FILTROS AVANÇADOS - CSS
+   MiraBoard - Estilos para componentes de filtro
+   ============================================ */
+
+/* Container de filtros */
+.filtros-avancados {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+}
+
+.filtros-label {
+    font-weight: 600;
+    color: #4b5563;
+    font-size: 0.9rem;
+}
+
+.filtros-label i {
+    color: #E8681A;
+}
+
+/* Dropdowns de filtro */
+.filtro-item {
+    position: relative;
+}
+
+.filtro-select {
+    min-width: 140px;
+    border-radius: 8px;
+    border-color: #e5e7eb;
+    font-size: 0.85rem;
+    padding: 6px 30px 6px 12px;
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+.filtro-select:focus {
+    border-color: #E8681A;
+    box-shadow: 0 0 0 3px rgba(232, 104, 26, 0.15);
+}
+
+.filtro-select:hover {
+    border-color: #d1d5db;
+}
+
+/* Botão limpar */
+.filtros-avancados .btn-outline-secondary {
+    border-radius: 8px;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+}
+
+.filtros-avancados .btn-outline-secondary:hover {
+    background: #f1f5f9;
+}
+
+/* Contador de resultados */
+.filtro-counter {
+    font-size: 0.85rem;
+    color: #6b7280;
+    padding: 4px 10px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+}
+
+/* ============================================
+   TOAST CONTAINER
+   ============================================ */
+#toast-container {
+    z-index: 1100 !important;
+}
+
+#toast-container .toast {
+    border-radius: 12px;
+    min-width: 280px;
+}
+
+/* ============================================
+   EXPORT BUTTONS
+   ============================================ */
+.dropdown-menu .dropdown-item i {
+    font-size: 1.1rem;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: #f8fafc;
+}
+
+/* ============================================
+   RESPONSIVO
+   ============================================ */
+@media (max-width: 768px) {
+    .filtros-avancados {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    
+    .filtros-avancados > * {
+        width: 100%;
+    }
+    
+    .filtro-item {
+        width: 100%;
+    }
+    
+    .filtro-select {
+        width: 100%;
+    }
+    
+    .filtros-label {
+        margin-bottom: 8px;
+    }
+}

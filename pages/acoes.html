@@ -19,6 +19,14 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/filtros.css">
+    
+    <!-- jsPDF + autoTable (Export PDF) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- SheetJS (Export Excel) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
     <div class="app-layout">
@@ -173,9 +181,23 @@
                             <p class="page-subtitle">Acompanhe todas as ações e decisões das reuniões</p>
                         </div>
                         <div class="page-actions">
-                            <button class="btn btn-outline-secondary">
-                                <i class="bi bi-download me-2"></i>Exportar
-                            </button>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="bi bi-download me-2"></i>Exportar
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="ExportPDF.exportTable('acoesTable', 'acoes-miraboard', { title: 'Ações e Decisões - MiraBoard' })">
+                                            <i class="bi bi-file-earmark-pdf me-2 text-danger"></i>Exportar PDF
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="ExportExcel.exportTable('acoesTable', 'acoes-miraboard', { sheetName: 'Ações' })">
+                                            <i class="bi bi-file-earmark-excel me-2 text-success"></i>Exportar Excel
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novaAcaoModal">
                                 <i class="bi bi-plus-lg me-2"></i>Nova Ação
                             </button>
@@ -257,10 +279,13 @@
                     <div class="tab-content" id="acoesTabContent">
                         <!-- Tab Todas -->
                         <div class="tab-pane fade show active" id="todas" role="tabpanel">
+                            <!-- Filtros Avançados -->
+                            <div id="acoesTable-filters" class="mb-3"></div>
+                            
                             <div class="card">
                                 <div class="card-body p-0">
                                     <div class="table-responsive">
-                                        <table class="table table-hover mb-0">
+                                        <table class="table table-hover mb-0" id="acoesTable">
                                             <thead>
                                                 <tr>
                                                     <th style="width: 40px;">
@@ -738,6 +763,7 @@
     
     <!-- Custom JS -->
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/miraboard-utils.js"></script>
     
     <script>
         // Sidebar Toggle
@@ -747,6 +773,18 @@
         
         document.getElementById('sidebarClose')?.addEventListener('click', function() {
             document.querySelector('.sidebar').classList.remove('show');
+        });
+        
+        // Inicializar Filtros Avançados
+        document.addEventListener('DOMContentLoaded', function() {
+            FiltrosAvancados.init('acoesTable', {
+                searchInput: null,
+                filters: [
+                    { label: 'Responsável', column: 3 },
+                    { label: 'Prioridade', column: 5 },
+                    { label: 'Status', column: 6 }
+                ]
+            });
         });
     </script>
 </body>

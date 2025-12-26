@@ -20,6 +20,9 @@ const FakeActions = {
         this.bindQuickActions();
         this.bindDocumentActions();
         this.bindExportActions();
+        this.bindIconButtons();
+        this.bindDropdownActions();
+        this.bindSpecificButtons();
         console.log('FakeActions initialized');
     },
 
@@ -533,6 +536,406 @@ const FakeActions = {
                 this.showToast('Removido dos favoritos', 'info');
             }
         }
+    },
+
+    // ========== BOTÕES COM ÍCONES (LÁPIS, LIXEIRA, ETC) ==========
+    bindIconButtons: function() {
+        const self = this;
+
+        // Botões com ícone de lápis (editar)
+        document.querySelectorAll('button').forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (!icon) return;
+            if (btn.onclick || btn.hasAttribute('data-bs-toggle')) return;
+
+            // Botões de EDITAR (lápis)
+            if (icon.classList.contains('bi-pencil') || icon.classList.contains('bi-pencil-fill') || icon.classList.contains('bi-pencil-square')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    self.showEditModal();
+                });
+            }
+
+            // Botões de EXCLUIR (lixeira)
+            if (icon.classList.contains('bi-trash') || icon.classList.contains('bi-trash3') || icon.classList.contains('bi-trash-fill')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const row = this.closest('tr');
+                    const card = this.closest('.card, .item, .list-group-item');
+                    self.showConfirm('Confirmar Exclusão', 'Tem certeza que deseja excluir este item? Esta ação não pode ser desfeita.', () => {
+                        if (row) {
+                            row.style.transition = 'opacity 0.3s, transform 0.3s';
+                            row.style.opacity = '0';
+                            row.style.transform = 'translateX(-20px)';
+                            setTimeout(() => row.remove(), 300);
+                        } else if (card) {
+                            card.style.transition = 'opacity 0.3s, transform 0.3s';
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.95)';
+                            setTimeout(() => card.remove(), 300);
+                        }
+                        self.showToast('Item excluído com sucesso!', 'success');
+                    });
+                });
+            }
+
+            // Botões de VISUALIZAR (olho)
+            if (icon.classList.contains('bi-eye') || icon.classList.contains('bi-eye-fill')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.showToast('Abrindo visualização...', 'info');
+                });
+            }
+
+            // Botões de DOWNLOAD
+            if (icon.classList.contains('bi-download') || icon.classList.contains('bi-cloud-download')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.simulateDownload('arquivo');
+                });
+            }
+
+            // Botões de ENVIAR/EMAIL
+            if (icon.classList.contains('bi-envelope') || icon.classList.contains('bi-send')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.showToast('Mensagem enviada com sucesso!', 'success');
+                });
+            }
+
+            // Botões de REFRESH/ATUALIZAR
+            if (icon.classList.contains('bi-arrow-clockwise') || icon.classList.contains('bi-arrow-repeat')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.showLoading('Atualizando...');
+                    setTimeout(() => {
+                        self.hideLoading();
+                        self.showToast('Dados atualizados!', 'success');
+                    }, 1500);
+                });
+            }
+
+            // Botões de ADICIONAR
+            if (icon.classList.contains('bi-plus') || icon.classList.contains('bi-plus-lg') || icon.classList.contains('bi-plus-circle')) {
+                if (!btn.hasAttribute('data-bs-toggle')) {
+                    btn.addEventListener('click', function(e) {
+                        if (!this.hasAttribute('data-bs-target')) {
+                            e.preventDefault();
+                            self.showToast('Abrindo formulário de criação...', 'info');
+                        }
+                    });
+                }
+            }
+
+            // Botões de COMPARTILHAR
+            if (icon.classList.contains('bi-share') || icon.classList.contains('bi-share-fill')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.showToast('Link copiado para a área de transferência!', 'success');
+                });
+            }
+
+            // Botões de IMPRIMIR
+            if (icon.classList.contains('bi-printer') || icon.classList.contains('bi-printer-fill')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.showToast('Preparando impressão...', 'info');
+                    setTimeout(() => window.print(), 500);
+                });
+            }
+
+            // Botões de COPIAR
+            if (icon.classList.contains('bi-clipboard') || icon.classList.contains('bi-copy') || icon.classList.contains('bi-files')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    self.showToast('Copiado para a área de transferência!', 'success');
+                });
+            }
+        });
+    },
+
+    // ========== AÇÕES EM DROPDOWNS ==========
+    bindDropdownActions: function() {
+        const self = this;
+
+        // Links dentro de dropdowns
+        document.querySelectorAll('.dropdown-menu .dropdown-item').forEach(item => {
+            if (item.getAttribute('href') === '#' && !item.onclick) {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const icon = this.querySelector('i');
+                    const text = this.textContent.trim().toLowerCase();
+
+                    // Editar
+                    if (text.includes('editar') || (icon && icon.classList.contains('bi-pencil'))) {
+                        self.showEditModal();
+                    }
+                    // Excluir
+                    else if (text.includes('excluir') || text.includes('remover') || (icon && (icon.classList.contains('bi-trash') || icon.classList.contains('bi-trash3')))) {
+                        const dropdown = this.closest('.dropdown');
+                        const row = dropdown ? dropdown.closest('tr') : null;
+                        const card = dropdown ? dropdown.closest('.card, .item') : null;
+                        
+                        self.showConfirm('Confirmar Exclusão', 'Tem certeza que deseja excluir?', () => {
+                            if (row) {
+                                row.style.transition = 'opacity 0.3s';
+                                row.style.opacity = '0';
+                                setTimeout(() => row.remove(), 300);
+                            } else if (card) {
+                                card.style.transition = 'opacity 0.3s';
+                                card.style.opacity = '0';
+                                setTimeout(() => card.remove(), 300);
+                            }
+                            self.showToast('Excluído com sucesso!', 'success');
+                        });
+                    }
+                    // Duplicar
+                    else if (text.includes('duplicar') || text.includes('copiar')) {
+                        self.showToast('Item duplicado com sucesso!', 'success');
+                    }
+                    // Arquivar
+                    else if (text.includes('arquivar')) {
+                        self.showToast('Item arquivado com sucesso!', 'success');
+                    }
+                    // Baixar/Download
+                    else if (text.includes('baixar') || text.includes('download') || text.includes('exportar')) {
+                        self.simulateDownload('arquivo');
+                    }
+                    // Compartilhar
+                    else if (text.includes('compartilhar')) {
+                        self.showToast('Link copiado!', 'success');
+                    }
+                    // Enviar
+                    else if (text.includes('enviar') || text.includes('reenviar')) {
+                        self.showToast('Enviado com sucesso!', 'success');
+                    }
+                    // Marcar como lido
+                    else if (text.includes('marcar como lid')) {
+                        self.showToast('Marcado como lido!', 'success');
+                    }
+                    // Favoritar
+                    else if (text.includes('favorit')) {
+                        self.showToast('Adicionado aos favoritos!', 'success');
+                    }
+                    // Imprimir
+                    else if (text.includes('imprimir')) {
+                        window.print();
+                    }
+                    // Ação genérica
+                    else {
+                        self.showToast('Ação executada!', 'success');
+                    }
+                });
+            }
+        });
+    },
+
+    // ========== BOTÕES ESPECÍFICOS POR CLASSE/CONTEXTO ==========
+    bindSpecificButtons: function() {
+        const self = this;
+
+        // Botões btn-warning (geralmente ações secundárias)
+        document.querySelectorAll('.btn-warning, .btn-outline-warning').forEach(btn => {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+                const text = btn.textContent.trim().toLowerCase();
+                
+                btn.addEventListener('click', function(e) {
+                    if (text.includes('renovar') || text.includes('renovação')) {
+                        e.preventDefault();
+                        self.showToast('Processo de renovação iniciado!', 'info');
+                    } else if (text.includes('backup')) {
+                        e.preventDefault();
+                        self.showLoading('Criando backup...');
+                        setTimeout(() => {
+                            self.hideLoading();
+                            self.showToast('Backup criado com sucesso!', 'success');
+                        }, 2000);
+                    } else if (text.includes('ver detalhe') || text.includes('detalhes')) {
+                        e.preventDefault();
+                        self.showToast('Carregando detalhes...', 'info');
+                    } else if (text.includes('planejar')) {
+                        e.preventDefault();
+                        self.showToast('Abrindo planejamento...', 'info');
+                    } else if (text.includes('edição') || text.includes('editar')) {
+                        e.preventDefault();
+                        self.showToast('Modo de edição ativado!', 'info');
+                    }
+                });
+            }
+        });
+
+        // Botões btn-danger (ações críticas)
+        document.querySelectorAll('.btn-danger, .btn-outline-danger').forEach(btn => {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+                const text = btn.textContent.trim().toLowerCase();
+                const icon = btn.querySelector('i');
+                
+                btn.addEventListener('click', function(e) {
+                    if (text.includes('excluir') || text.includes('remover') || text.includes('deletar') || (icon && icon.classList.contains('bi-trash'))) {
+                        e.preventDefault();
+                        self.showConfirm('Confirmar Exclusão', 'Esta ação é irreversível. Deseja continuar?', () => {
+                            self.showToast('Excluído com sucesso!', 'success');
+                        });
+                    } else if (text.includes('renovar')) {
+                        e.preventDefault();
+                        self.showToast('Solicitação de renovação enviada!', 'success');
+                    } else if (text.includes('cancelar')) {
+                        e.preventDefault();
+                        self.showConfirm('Confirmar Cancelamento', 'Deseja realmente cancelar?', () => {
+                            self.showToast('Cancelado com sucesso!', 'success');
+                        });
+                    } else if (text.includes('limpar cache')) {
+                        e.preventDefault();
+                        self.showLoading('Limpando cache...');
+                        setTimeout(() => {
+                            self.hideLoading();
+                            self.showToast('Cache limpo com sucesso!', 'success');
+                        }, 1500);
+                    } else if (text.includes('registrar')) {
+                        // Não prevenir - pode ter modal
+                    }
+                });
+            }
+        });
+
+        // Botões btn-info
+        document.querySelectorAll('.btn-info, .btn-outline-info').forEach(btn => {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+                const text = btn.textContent.trim().toLowerCase();
+                
+                btn.addEventListener('click', function(e) {
+                    if (text.includes('verificar') || text.includes('atualiza')) {
+                        e.preventDefault();
+                        self.showLoading('Verificando...');
+                        setTimeout(() => {
+                            self.hideLoading();
+                            self.showToast('Sistema está atualizado!', 'success');
+                        }, 2000);
+                    } else if (text.includes('ver') || text.includes('visualizar')) {
+                        e.preventDefault();
+                        self.showToast('Carregando...', 'info');
+                    }
+                });
+            }
+        });
+
+        // Botões btn-success
+        document.querySelectorAll('.btn-success, .btn-outline-success').forEach(btn => {
+            if (!btn.onclick && !btn.hasAttribute('data-bs-toggle')) {
+                const text = btn.textContent.trim().toLowerCase();
+                const icon = btn.querySelector('i');
+                
+                btn.addEventListener('click', function(e) {
+                    if (text.includes('salvar') || text.includes('confirmar') || text.includes('aprovar')) {
+                        e.preventDefault();
+                        self.showToast('Salvo com sucesso!', 'success');
+                    } else if (text.includes('enviar')) {
+                        e.preventDefault();
+                        self.showToast('Enviado com sucesso!', 'success');
+                    } else if (icon && icon.classList.contains('bi-check')) {
+                        e.preventDefault();
+                        self.showToast('Confirmado!', 'success');
+                    }
+                });
+            }
+        });
+
+        // Botões com classe específica para ações
+        document.querySelectorAll('.btn-ghost').forEach(btn => {
+            if (!btn.onclick) {
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        if (icon.classList.contains('bi-pencil') || icon.classList.contains('bi-pencil-fill')) {
+                            self.showEditModal();
+                        } else if (icon.classList.contains('bi-trash') || icon.classList.contains('bi-trash3')) {
+                            const row = this.closest('tr, .item, .list-item');
+                            self.showConfirm('Confirmar Exclusão', 'Deseja excluir este item?', () => {
+                                if (row) {
+                                    row.style.opacity = '0';
+                                    setTimeout(() => row.remove(), 300);
+                                }
+                                self.showToast('Excluído!', 'success');
+                            });
+                        } else if (icon.classList.contains('bi-eye')) {
+                            self.showToast('Abrindo...', 'info');
+                        } else if (icon.classList.contains('bi-three-dots') || icon.classList.contains('bi-three-dots-vertical')) {
+                            // Menu dropdown - não fazer nada
+                        } else {
+                            self.showToast('Ação executada!', 'success');
+                        }
+                    });
+                }
+            }
+        });
+    },
+
+    // ========== MODAL DE EDIÇÃO SIMULADO ==========
+    showEditModal: function() {
+        const self = this;
+        
+        const modal = document.createElement('div');
+        modal.className = 'fake-edit-modal';
+        modal.innerHTML = `
+            <div class="edit-backdrop"></div>
+            <div class="edit-dialog">
+                <div class="edit-header">
+                    <h5><i class="bi bi-pencil-square me-2"></i>Editar Item</h5>
+                    <button class="btn-close-modal"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="edit-body">
+                    <div class="form-group mb-3">
+                        <label class="form-label">Nome</label>
+                        <input type="text" class="form-control" value="Item de exemplo" />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Descrição</label>
+                        <textarea class="form-control" rows="3">Descrição do item...</textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-select">
+                            <option>Ativo</option>
+                            <option>Pendente</option>
+                            <option>Concluído</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="edit-footer">
+                    <button class="btn btn-outline-secondary btn-cancel">Cancelar</button>
+                    <button class="btn btn-primary btn-save"><i class="bi bi-check-lg me-2"></i>Salvar</button>
+                </div>
+            </div>
+        `;
+        
+        // Estilos
+        modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;align-items:center;justify-content:center;';
+        modal.querySelector('.edit-backdrop').style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);';
+        modal.querySelector('.edit-dialog').style.cssText = 'background:#fff;border-radius:12px;max-width:500px;width:90%;position:relative;z-index:1;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1);overflow:hidden;';
+        modal.querySelector('.edit-header').style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #e5e7eb;';
+        modal.querySelector('.edit-header h5').style.cssText = 'margin:0;color:#111827;font-size:1.1rem;';
+        modal.querySelector('.btn-close-modal').style.cssText = 'background:none;border:none;font-size:1.2rem;cursor:pointer;color:#6b7280;';
+        modal.querySelector('.edit-body').style.cssText = 'padding:20px;';
+        modal.querySelector('.form-label').style.cssText = 'color:#374151;font-weight:500;margin-bottom:6px;display:block;';
+        modal.querySelector('.edit-footer').style.cssText = 'display:flex;gap:12px;justify-content:flex-end;padding:16px 20px;border-top:1px solid #e5e7eb;background:#f9fafb;';
+
+        document.body.appendChild(modal);
+
+        // Event listeners
+        const closeModal = () => modal.remove();
+        modal.querySelector('.edit-backdrop').onclick = closeModal;
+        modal.querySelector('.btn-close-modal').onclick = closeModal;
+        modal.querySelector('.btn-cancel').onclick = closeModal;
+        modal.querySelector('.btn-save').onclick = () => {
+            closeModal();
+            self.showToast('Alterações salvas com sucesso!', 'success');
+        };
     }
 };
 
@@ -552,6 +955,12 @@ fakeActionsStyle.textContent = `
     }
     .notification-item.unread {
         background-color: rgba(232, 104, 26, 0.05);
+    }
+    .btn-ghost {
+        transition: all 0.2s ease;
+    }
+    .btn-ghost:hover {
+        background: rgba(0,0,0,0.05);
     }
 `;
 document.head.appendChild(fakeActionsStyle);

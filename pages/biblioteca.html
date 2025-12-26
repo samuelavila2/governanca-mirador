@@ -122,7 +122,7 @@
                             </div>
                             <div class="stat-content">
                                 <span class="stat-label">Total de Documentos</span>
-                                <div class="stat-value">73</div>
+                                <div class="stat-value">87</div>
                             </div>
                         </div>
                         
@@ -132,7 +132,7 @@
                             </div>
                             <div class="stat-content">
                                 <span class="stat-label">Atualizados</span>
-                                <div class="stat-value">62</div>
+                                <div class="stat-value">84</div>
                             </div>
                         </div>
                         
@@ -142,7 +142,7 @@
                             </div>
                             <div class="stat-content">
                                 <span class="stat-label">Revisão Necessária</span>
-                                <div class="stat-value">6</div>
+                                <div class="stat-value">2</div>
                             </div>
                         </div>
                         
@@ -152,7 +152,7 @@
                             </div>
                             <div class="stat-content">
                                 <span class="stat-label">Vencidos</span>
-                                <div class="stat-value">3</div>
+                                <div class="stat-value">1</div>
                             </div>
                         </div>
                     </div>
@@ -171,7 +171,7 @@
                                         <a href="#" class="biblioteca-nav-item active" data-category="all">
                                             <i class="bi bi-grid"></i>
                                             <span>Todos os Documentos</span>
-                                            <span class="badge bg-secondary ms-auto">73</span>
+                                            <span class="badge bg-secondary ms-auto">87</span>
                                         </a>
                                         
                                         <div class="biblioteca-nav-divider"></div>
@@ -287,7 +287,7 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb mb-0">
                                         <li class="breadcrumb-item"><a href="#">Biblioteca</a></li>
-                                        <li class="breadcrumb-item active">Todos os Documentos</li>
+                                        <li class="breadcrumb-item active" id="breadcrumb-categoria">Todos os Documentos</li>
                                     </ol>
                                 </nav>
                                 <div class="d-flex gap-2">
@@ -308,395 +308,9 @@
                                 </div>
                             </div>
                             
-                            <!-- Categoria: Políticas de Investimento (Com Alerta) -->
-                            <div class="categoria-section mb-5" id="cat-investimentos">
-                                <div class="categoria-header">
-                                    <div class="categoria-info">
-                                        <span class="categoria-numero-lg">04</span>
-                                        <div>
-                                            <h5 class="categoria-title">Políticas de Investimento</h5>
-                                            <span class="categoria-count">4 documentos</span>
-                                        </div>
-                                    </div>
-                                    <div class="categoria-alert">
-                                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
-                                        <span class="text-danger">2 documentos precisam de revisão</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="documentos-grid">
-                                    <!-- Documento com Alerta -->
-                                    <div class="documento-card status-danger">
-                                        <div class="documento-status">
-                                            <span class="badge bg-danger">
-                                                <i class="bi bi-exclamation-circle me-1"></i>Vencido
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Política de Investimentos 2024</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Atualizado há 14 meses</span>
-                                                <span><i class="bi bi-file-earmark"></i> v3.2</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-revisao">
-                                            <i class="bi bi-arrow-repeat"></i>
-                                            <span>Revisão obrigatória anual</span>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-danger">
-                                                <i class="bi bi-arrow-repeat me-1"></i>Atualizar
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Documento com Alerta Warning -->
-                                    <div class="documento-card status-warning">
-                                        <div class="documento-status">
-                                            <span class="badge bg-warning text-dark">
-                                                <i class="bi bi-clock me-1"></i>Revisão em 30 dias
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Política de Gestão de Riscos</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Atualizado há 11 meses</span>
-                                                <span><i class="bi bi-file-earmark"></i> v2.1</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-revisao">
-                                            <i class="bi bi-arrow-repeat"></i>
-                                            <span>Revisão obrigatória anual</span>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-warning">
-                                                <i class="bi bi-calendar-check me-1"></i>Agendar
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Documento OK -->
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Política de Derivativos</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Atualizado há 3 meses</span>
-                                                <span><i class="bi bi-file-earmark"></i> v1.5</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-revisao">
-                                            <i class="bi bi-arrow-repeat"></i>
-                                            <span>Próxima revisão: Set/2026</span>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-three-dots"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Documento OK -->
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Política de ALM</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Atualizado há 2 meses</span>
-                                                <span><i class="bi bi-file-earmark"></i> v2.0</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-revisao">
-                                            <i class="bi bi-arrow-repeat"></i>
-                                            <span>Próxima revisão: Out/2026</span>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-three-dots"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Categoria: Atos Societários -->
-                            <div class="categoria-section mb-5" id="cat-atos">
-                                <div class="categoria-header">
-                                    <div class="categoria-info">
-                                        <span class="categoria-numero-lg">01</span>
-                                        <div>
-                                            <h5 class="categoria-title">Atos Societários</h5>
-                                            <span class="categoria-count">8 documentos</span>
-                                        </div>
-                                    </div>
-                                    <div class="categoria-status-ok">
-                                        <i class="bi bi-check-circle-fill text-success"></i>
-                                        <span class="text-success">Todos atualizados</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="documentos-grid">
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Estatuto Social Consolidado</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Mar/2025</span>
-                                                <span><i class="bi bi-file-earmark"></i> v12.0</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-clock-history"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Regulamento do Plano BD</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Jan/2025</span>
-                                                <span><i class="bi bi-file-earmark"></i> v8.3</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-clock-history"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Regulamento do Plano CD</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Jan/2025</span>
-                                                <span><i class="bi bi-file-earmark"></i> v5.1</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-clock-history"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Convênio de Adesão</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Set/2024</span>
-                                                <span><i class="bi bi-file-earmark"></i> v3.0</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-clock-history"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="text-center mt-3">
-                                    <button class="btn btn-sm btn-link">Ver todos os 8 documentos →</button>
-                                </div>
-                            </div>
-                            
-                            <!-- Categoria: Regimentos -->
-                            <div class="categoria-section mb-5" id="cat-regimentos">
-                                <div class="categoria-header">
-                                    <div class="categoria-info">
-                                        <span class="categoria-numero-lg">02</span>
-                                        <div>
-                                            <h5 class="categoria-title">Regimentos</h5>
-                                            <span class="categoria-count">5 documentos</span>
-                                        </div>
-                                    </div>
-                                    <div class="categoria-status-ok">
-                                        <i class="bi bi-check-circle-fill text-success"></i>
-                                        <span class="text-success">Todos atualizados</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="documentos-grid">
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Regimento Interno CD</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Fev/2025</span>
-                                                <span><i class="bi bi-file-earmark"></i> v4.0</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Regimento Interno CF</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Fev/2025</span>
-                                                <span><i class="bi bi-file-earmark"></i> v3.2</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="documento-card status-success">
-                                        <div class="documento-status">
-                                            <span class="badge bg-success">
-                                                <i class="bi bi-check-circle me-1"></i>Atualizado
-                                            </span>
-                                        </div>
-                                        <div class="documento-icon">
-                                            <i class="bi bi-file-earmark-pdf text-danger"></i>
-                                        </div>
-                                        <div class="documento-info">
-                                            <h6 class="documento-title">Regimento Comitê de Investimentos</h6>
-                                            <div class="documento-meta">
-                                                <span><i class="bi bi-calendar"></i> Jan/2025</span>
-                                                <span><i class="bi bi-file-earmark"></i> v2.5</span>
-                                            </div>
-                                        </div>
-                                        <div class="documento-actions">
-                                            <button class="btn btn-sm btn-outline-primary">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-outline-secondary">
-                                                <i class="bi bi-download"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <!-- Container de Documentos Filtrados -->
+                            <div id="documentos-container">
+                                <!-- Documentos serão inseridos aqui via JavaScript -->
                             </div>
                             
                         </div>
@@ -790,7 +404,292 @@
     <script src="../assets/js/profile-bar.js"></script>
     
     <script>
-        // Navegação de Categorias
+        // Banco de dados fake de documentos por categoria
+        const documentosDB = {
+            atos: {
+                numero: '01',
+                nome: 'Atos Societários',
+                icon: 'bi-building',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Estatuto Social Consolidado', data: 'Mar/2025', versao: 'v12.0', status: 'success' },
+                    { titulo: 'Regulamento do Plano BD', data: 'Jan/2025', versao: 'v8.3', status: 'success' },
+                    { titulo: 'Regulamento do Plano CD', data: 'Jan/2025', versao: 'v5.1', status: 'success' },
+                    { titulo: 'Convênio de Adesão - Patrocinadora A', data: 'Set/2024', versao: 'v3.0', status: 'success' },
+                    { titulo: 'Convênio de Adesão - Patrocinadora B', data: 'Ago/2024', versao: 'v2.1', status: 'success' },
+                    { titulo: 'Termo de Instituição do Plano', data: 'Dez/2023', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Alteração Estatutária 2024', data: 'Mar/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Certidão de Registro CNPB', data: 'Jan/2020', versao: 'v1.0', status: 'success' }
+                ]
+            },
+            regimentos: {
+                numero: '02',
+                nome: 'Regimentos',
+                icon: 'bi-journal-bookmark',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Regimento Interno do Conselho Deliberativo', data: 'Fev/2025', versao: 'v4.0', status: 'success' },
+                    { titulo: 'Regimento Interno do Conselho Fiscal', data: 'Fev/2025', versao: 'v3.2', status: 'success' },
+                    { titulo: 'Regimento do Comitê de Investimentos', data: 'Jan/2025', versao: 'v2.5', status: 'success' },
+                    { titulo: 'Regimento do Comitê de Riscos', data: 'Nov/2024', versao: 'v2.0', status: 'success' },
+                    { titulo: 'Regimento do Comitê de Ética', data: 'Out/2024', versao: 'v1.5', status: 'success' }
+                ]
+            },
+            apolices: {
+                numero: '03',
+                nome: 'Apólices de Seguro',
+                icon: 'bi-shield-check',
+                alertas: 1,
+                documentos: [
+                    { titulo: 'Apólice D&O - Diretores e Conselheiros', data: 'Atualizado há 11 meses', versao: 'v2025', status: 'warning', revisao: 'Vence em 30 dias' },
+                    { titulo: 'Apólice E&O - Erros e Omissões', data: 'Jun/2025', versao: 'v2025', status: 'success' },
+                    { titulo: 'Apólice de Responsabilidade Civil', data: 'Mai/2025', versao: 'v2025', status: 'success' }
+                ]
+            },
+            investimentos: {
+                numero: '04',
+                nome: 'Políticas de Investimento',
+                icon: 'bi-graph-up-arrow',
+                alertas: 2,
+                documentos: [
+                    { titulo: 'Política de Investimentos 2024', data: 'Atualizado há 14 meses', versao: 'v3.2', status: 'danger', revisao: 'Revisão obrigatória anual' },
+                    { titulo: 'Política de Gestão de Riscos', data: 'Atualizado há 11 meses', versao: 'v2.1', status: 'warning', revisao: 'Revisão em 30 dias' },
+                    { titulo: 'Política de Derivativos', data: 'Set/2025', versao: 'v1.5', status: 'success' },
+                    { titulo: 'Política de ALM', data: 'Out/2025', versao: 'v2.0', status: 'success' }
+                ]
+            },
+            atuarial: {
+                numero: '05',
+                nome: 'Pareceres Atuariais',
+                icon: 'bi-calculator',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Parecer Atuarial 2024 - Plano BD', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Parecer Atuarial 2024 - Plano CD', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Demonstrações Atuariais 2024', data: 'Fev/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Nota Técnica Atuarial - Plano BD', data: 'Jan/2025', versao: 'v5.2', status: 'success' },
+                    { titulo: 'Nota Técnica Atuarial - Plano CD', data: 'Jan/2025', versao: 'v3.1', status: 'success' },
+                    { titulo: 'Estudo de Solvência 2024', data: 'Dez/2024', versao: 'v1.0', status: 'success' }
+                ]
+            },
+            auditoria: {
+                numero: '06',
+                nome: 'Relatórios de Auditoria',
+                icon: 'bi-search',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Relatório Auditoria Independente 2024', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Parecer dos Auditores 2024', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Relatório de Controles Internos', data: 'Fev/2025', versao: 'v2.0', status: 'success' },
+                    { titulo: 'Carta de Recomendações 2024', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Relatório Auditoria Independente 2023', data: 'Mar/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Parecer dos Auditores 2023', data: 'Mar/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Relatório Auditoria Independente 2022', data: 'Mar/2023', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Parecer dos Auditores 2022', data: 'Mar/2023', versao: 'v1.0', status: 'success' }
+                ]
+            },
+            previc: {
+                numero: '07',
+                nome: 'Protocolos PREVIC',
+                icon: 'bi-bank',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Ofício PREVIC nº 123/2025 - Resposta', data: 'Nov/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Ofício PREVIC nº 089/2025', data: 'Set/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Termo de Ajuste de Conduta 2024', data: 'Jun/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Comunicação DIACE nº 456/2025', data: 'Mai/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Protocolo Alteração Estatutária', data: 'Abr/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Comunicação de Déficit Técnico', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Ofício PREVIC nº 234/2024', data: 'Dez/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Comunicação DIACE nº 321/2024', data: 'Out/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Protocolo Plano de Equacionamento', data: 'Set/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Ofício PREVIC nº 178/2024', data: 'Ago/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Comunicação CGPC nº 567/2024', data: 'Jul/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Termo de Compromisso 2024', data: 'Jun/2024', versao: 'v1.0', status: 'success' }
+                ]
+            },
+            atas: {
+                numero: '08',
+                nome: 'Atas Assinadas',
+                icon: 'bi-file-text',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Ata CD nº 145/2025 - Ordinária', data: 'Dez/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CF nº 089/2025 - Ordinária', data: 'Dez/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CD nº 144/2025 - Extraordinária', data: 'Nov/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CD nº 143/2025 - Ordinária', data: 'Nov/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CF nº 088/2025 - Ordinária', data: 'Nov/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CD nº 142/2025 - Ordinária', data: 'Out/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CF nº 087/2025 - Ordinária', data: 'Out/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata Comitê Investimentos nº 034/2025', data: 'Out/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CD nº 141/2025 - Ordinária', data: 'Set/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CF nº 086/2025 - Ordinária', data: 'Set/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata Comitê Investimentos nº 033/2025', data: 'Set/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CD nº 140/2025 - Extraordinária', data: 'Ago/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CF nº 085/2025 - Ordinária', data: 'Ago/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata Comitê Investimentos nº 032/2025', data: 'Ago/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'Ata CD nº 139/2025 - Ordinária', data: 'Jul/2025', versao: 'Assinada', status: 'success' }
+                ]
+            },
+            contratos: {
+                numero: '09',
+                nome: 'Contratos',
+                icon: 'bi-file-earmark-text',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Contrato de Gestão de Recursos - Gestor A', data: 'Jan/2025', versao: 'v3.0', status: 'success' },
+                    { titulo: 'Contrato de Gestão de Recursos - Gestor B', data: 'Jan/2025', versao: 'v2.0', status: 'success' },
+                    { titulo: 'Contrato de Custódia', data: 'Fev/2025', versao: 'v4.1', status: 'success' },
+                    { titulo: 'Contrato de Auditoria Independente', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'Contrato de Assessoria Jurídica', data: 'Jan/2025', versao: 'v2.0', status: 'success' },
+                    { titulo: 'Contrato de Consultoria Atuarial', data: 'Jan/2025', versao: 'v5.0', status: 'success' },
+                    { titulo: 'Contrato de Sistema de Gestão', data: 'Jul/2024', versao: 'v3.0', status: 'success' },
+                    { titulo: 'Contrato de Seguro D&O', data: 'Jun/2025', versao: 'v2025', status: 'success' }
+                ]
+            },
+            assembleias: {
+                numero: '10',
+                nome: 'Assembleias',
+                icon: 'bi-people',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'AGO 2025 - Ata da Assembleia', data: 'Abr/2025', versao: 'Assinada', status: 'success' },
+                    { titulo: 'AGO 2025 - Lista de Presença', data: 'Abr/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'AGO 2025 - Edital de Convocação', data: 'Mar/2025', versao: 'v1.0', status: 'success' },
+                    { titulo: 'AGE 2024 - Ata Alteração Estatutária', data: 'Dez/2024', versao: 'Assinada', status: 'success' },
+                    { titulo: 'AGE 2024 - Lista de Presença', data: 'Dez/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'AGE 2024 - Edital de Convocação', data: 'Nov/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'AGO 2024 - Ata da Assembleia', data: 'Abr/2024', versao: 'Assinada', status: 'success' },
+                    { titulo: 'AGO 2024 - Lista de Presença', data: 'Abr/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'AGO 2024 - Edital de Convocação', data: 'Mar/2024', versao: 'v1.0', status: 'success' },
+                    { titulo: 'AGO 2023 - Ata da Assembleia', data: 'Abr/2023', versao: 'Assinada', status: 'success' },
+                    { titulo: 'AGO 2023 - Lista de Presença', data: 'Abr/2023', versao: 'v1.0', status: 'success' },
+                    { titulo: 'AGO 2023 - Edital de Convocação', data: 'Mar/2023', versao: 'v1.0', status: 'success' }
+                ]
+            },
+            compliance: {
+                numero: '11',
+                nome: 'Compliance',
+                icon: 'bi-clipboard-check',
+                alertas: 0,
+                documentos: [
+                    { titulo: 'Código de Ética e Conduta', data: 'Jan/2025', versao: 'v3.0', status: 'success' },
+                    { titulo: 'Política de Prevenção a Lavagem de Dinheiro', data: 'Jan/2025', versao: 'v2.5', status: 'success' },
+                    { titulo: 'Manual de Controles Internos', data: 'Fev/2025', versao: 'v4.0', status: 'success' },
+                    { titulo: 'Política de Conflito de Interesses', data: 'Jan/2025', versao: 'v2.0', status: 'success' },
+                    { titulo: 'Matriz de Riscos Operacionais', data: 'Nov/2024', versao: 'v3.1', status: 'success' },
+                    { titulo: 'Relatório Anual de Compliance 2024', data: 'Mar/2025', versao: 'v1.0', status: 'success' }
+                ]
+            }
+        };
+
+        // Função para gerar HTML de um documento
+        function renderDocumento(doc) {
+            const statusBadge = {
+                'success': '<span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Atualizado</span>',
+                'warning': '<span class="badge bg-warning text-dark"><i class="bi bi-clock me-1"></i>Revisão em 30 dias</span>',
+                'danger': '<span class="badge bg-danger"><i class="bi bi-exclamation-circle me-1"></i>Vencido</span>'
+            };
+
+            const actionButton = {
+                'success': '<button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>',
+                'warning': '<button class="btn btn-sm btn-warning"><i class="bi bi-calendar-check me-1"></i>Agendar</button>',
+                'danger': '<button class="btn btn-sm btn-danger"><i class="bi bi-arrow-repeat me-1"></i>Atualizar</button>'
+            };
+
+            let revisaoHtml = '';
+            if (doc.revisao) {
+                revisaoHtml = `
+                    <div class="documento-revisao">
+                        <i class="bi bi-arrow-repeat"></i>
+                        <span>${doc.revisao}</span>
+                    </div>`;
+            }
+
+            return `
+                <div class="documento-card status-${doc.status}">
+                    <div class="documento-status">
+                        ${statusBadge[doc.status]}
+                    </div>
+                    <div class="documento-icon">
+                        <i class="bi bi-file-earmark-pdf text-danger"></i>
+                    </div>
+                    <div class="documento-info">
+                        <h6 class="documento-title">${doc.titulo}</h6>
+                        <div class="documento-meta">
+                            <span><i class="bi bi-calendar"></i> ${doc.data}</span>
+                            <span><i class="bi bi-file-earmark"></i> ${doc.versao}</span>
+                        </div>
+                    </div>
+                    ${revisaoHtml}
+                    <div class="documento-actions">
+                        <button class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-download"></i>
+                        </button>
+                        ${actionButton[doc.status]}
+                    </div>
+                </div>`;
+        }
+
+        // Função para gerar HTML de uma categoria
+        function renderCategoria(key, cat) {
+            const alertHtml = cat.alertas > 0 
+                ? `<div class="categoria-alert">
+                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                        <span class="text-danger">${cat.alertas} documento${cat.alertas > 1 ? 's precisam' : ' precisa'} de revisão</span>
+                   </div>`
+                : `<div class="categoria-status-ok">
+                        <i class="bi bi-check-circle-fill text-success"></i>
+                        <span class="text-success">Todos atualizados</span>
+                   </div>`;
+
+            const docsHtml = cat.documentos.map(doc => renderDocumento(doc)).join('');
+
+            return `
+                <div class="categoria-section mb-5" id="cat-${key}">
+                    <div class="categoria-header">
+                        <div class="categoria-info">
+                            <span class="categoria-numero-lg">${cat.numero}</span>
+                            <div>
+                                <h5 class="categoria-title">${cat.nome}</h5>
+                                <span class="categoria-count">${cat.documentos.length} documentos</span>
+                            </div>
+                        </div>
+                        ${alertHtml}
+                    </div>
+                    <div class="documentos-grid">
+                        ${docsHtml}
+                    </div>
+                </div>`;
+        }
+
+        // Função para filtrar e exibir documentos
+        function filterDocumentos(category) {
+            const container = document.getElementById('documentos-container');
+            const breadcrumb = document.getElementById('breadcrumb-categoria');
+            
+            if (category === 'all') {
+                // Mostra todas as categorias
+                breadcrumb.textContent = 'Todos os Documentos';
+                let html = '';
+                Object.keys(documentosDB).forEach(key => {
+                    html += renderCategoria(key, documentosDB[key]);
+                });
+                container.innerHTML = html;
+            } else {
+                // Mostra apenas a categoria selecionada
+                const cat = documentosDB[category];
+                if (cat) {
+                    breadcrumb.textContent = cat.nome;
+                    container.innerHTML = renderCategoria(category, cat);
+                }
+            }
+        }
+
+        // Event listeners para navegação de categorias
         document.querySelectorAll('.biblioteca-nav-item').forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -801,10 +700,15 @@
                 // Adiciona active no clicado
                 this.classList.add('active');
                 
-                // Atualiza breadcrumb
-                const categoryName = this.querySelector('span:not(.categoria-numero):not(.badge)').textContent;
-                document.querySelector('.breadcrumb-item.active').textContent = categoryName;
+                // Filtra documentos pela categoria
+                const category = this.getAttribute('data-category');
+                filterDocumentos(category);
             });
+        });
+
+        // Carrega todos os documentos ao iniciar
+        document.addEventListener('DOMContentLoaded', function() {
+            filterDocumentos('all');
         });
     </script>
     <!-- Fake Actions -->

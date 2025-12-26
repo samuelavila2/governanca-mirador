@@ -1530,25 +1530,38 @@
 
 .calendar-tooltip {
     position: absolute;
-    bottom: calc(100% + 8px);
+    bottom: calc(100% + 6px);
     left: 50%;
     transform: translateX(-50%) scale(0.95);
     background: #fff;
     border: 1px solid var(--border-color, #E5E7EB);
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    padding: 8px 10px;
-    min-width: 180px;
-    max-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 6px 8px;
+    width: max-content;
+    min-width: 140px;
+    max-width: 200px;
     opacity: 0;
     visibility: hidden;
     transition: all 0.15s ease;
     z-index: 100;
     text-align: left;
     pointer-events: none;
+    white-space: normal;
 }
 
 .calendar-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
+}
+
+.calendar-tooltip::after {
     content: '';
     position: absolute;
     bottom: -6px;
@@ -1556,18 +1569,7 @@
     transform: translateX(-50%);
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 6px solid #fff;
-}
-
-.calendar-tooltip::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 7px solid var(--border-color, #E5E7EB);
+    border-top: 6px solid var(--border-color, #E5E7EB);
     z-index: -1;
 }
 
@@ -1578,39 +1580,41 @@
 }
 
 .tooltip-header {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 600;
     color: var(--text-secondary, #6B7280);
-    margin-bottom: 6px;
-    padding-bottom: 6px;
+    margin-bottom: 4px;
+    padding-bottom: 4px;
     border-bottom: 1px solid var(--border-color, #E5E7EB);
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .tooltip-header i {
-    margin-right: 4px;
     color: var(--color-primary, #F97316);
+    font-size: 0.7rem;
 }
 
 .tooltip-event {
     display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    font-size: 0.75rem;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
     color: var(--text-primary);
-    margin-bottom: 4px;
-    line-height: 1.3;
+    padding: 2px 0;
+    line-height: 1.25;
 }
 
 .tooltip-event:last-child {
-    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .event-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     flex-shrink: 0;
-    margin-top: 4px;
 }
 
 .event-dot.reuniao {

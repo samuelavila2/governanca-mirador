@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/reuniao.css">
     <link rel="stylesheet" href="../assets/css/ux-enhancements.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css">
 </head>
 <body>
     <div class="app-layout">
@@ -189,7 +190,140 @@
                         </div>
                     </div>
                     
-                    <!-- Painel Conselheiro: Ações Rápidas -->
+                    <!-- ========== PAINEL ADMIN: Health Check ========== -->
+                    <div class="card mb-4" data-permission="admin" id="painelAdminHealth">
+                        <div class="card-header" style="background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); color: white;">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-heart-pulse me-2"></i>Status do Sistema
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <div class="d-flex align-items-center p-3 bg-success-subtle rounded-3 h-100">
+                                        <div class="me-3">
+                                            <i class="bi bi-check-circle-fill text-success fs-2"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-success fs-5">OK</div>
+                                            <small class="text-muted">Certificações em dia</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex align-items-center p-3 bg-warning-subtle rounded-3 h-100">
+                                        <div class="me-3">
+                                            <i class="bi bi-exclamation-triangle-fill text-warning fs-2"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-warning fs-5">2 Alertas</div>
+                                            <small class="text-muted">Prazos próximos</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex align-items-center p-3 bg-danger-subtle rounded-3 h-100">
+                                        <div class="me-3">
+                                            <i class="bi bi-pen-fill text-danger fs-2"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-danger fs-5">4 Pendentes</div>
+                                            <small class="text-muted">Assinaturas</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="d-flex align-items-center p-3 bg-info-subtle rounded-3 h-100">
+                                        <div class="me-3">
+                                            <i class="bi bi-people-fill text-info fs-2"></i>
+                                        </div>
+                                        <div>
+                                            <div class="fw-bold text-info fs-5">12 Ativos</div>
+                                            <small class="text-muted">Usuários</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 p-3 bg-light rounded-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="bi bi-clock-history text-muted me-2"></i>
+                                        <span class="text-muted">Última atividade: <strong>Hoje 14:32</strong> - Maria Silva criou nova reunião</span>
+                                    </div>
+                                    <a href="relatorios.html" class="btn btn-outline-primary btn-sm">Ver Auditoria</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ========== PAINEL SECRETÁRIA: Tarefas de Hoje ========== -->
+                    <div class="card mb-4" data-permission="secretaria" id="painelSecretariaHoje">
+                        <div class="card-header" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white;">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-calendar-day me-2"></i>Suas Tarefas de Hoje
+                            </h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" style="width: 1.25rem; height: 1.25rem;">
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold">Preparar pauta da reunião do CD</div>
+                                            <small class="text-muted"><i class="bi bi-clock me-1"></i>Até 12:00</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-warning">Urgente</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" style="width: 1.25rem; height: 1.25rem;">
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold">Enviar convocação - Conselho Fiscal</div>
+                                            <small class="text-muted"><i class="bi bi-clock me-1"></i>Até 14:00</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-primary">Reunião</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" checked style="width: 1.25rem; height: 1.25rem;">
+                                        </div>
+                                        <div class="text-decoration-line-through text-muted">
+                                            <div class="fw-semibold">Upload ata assinada - RO 142</div>
+                                            <small><i class="bi bi-check-circle text-success me-1"></i>Concluído às 09:15</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-success">Feito</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" style="width: 1.25rem; height: 1.25rem;">
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold">Cobrar assinaturas pendentes</div>
+                                            <small class="text-muted"><i class="bi bi-people me-1"></i>3 conselheiros</small>
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-danger">Atrasado</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-success btn-sm"><i class="bi bi-plus-lg me-1"></i>Nova Tarefa</button>
+                                <a href="acoes.html" class="btn btn-outline-secondary btn-sm">Ver Todas as Ações</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ========== PAINEL CONSELHEIRO: Ações Rápidas ========== -->
                     <div class="card mb-4" data-permission="conselheiro" id="painelConselheiroAcoes">
                         <div class="card-header" style="background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: white;">
                             <h5 class="card-title mb-0">
@@ -233,6 +367,40 @@
                                         </div>
                                         <a href="reunioes.html" class="btn btn-info btn-sm ms-auto">Detalhes</a>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ========== PAINEL CONSELHEIRO: Última Reunião ========== -->
+                    <div class="card mb-4" data-permission="conselheiro" id="painelUltimaReuniao">
+                        <div class="card-header bg-light">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-clock-history me-2 text-muted"></i>Sua Última Reunião
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-start gap-4">
+                                <div class="text-center" style="min-width: 70px;">
+                                    <div class="rounded-3 p-3" style="background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%); color: white;">
+                                        <div class="fs-3 fw-bold">15</div>
+                                        <div class="small">DEZ</div>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">142ª Reunião Ordinária do Conselho Deliberativo</h5>
+                                    <p class="text-muted mb-2">
+                                        <i class="bi bi-clock me-1"></i>14:00 - 16:30 &nbsp;|&nbsp;
+                                        <i class="bi bi-geo-alt me-1"></i>Sala de Reuniões Principal
+                                    </p>
+                                    <div class="d-flex gap-2 flex-wrap">
+                                        <span class="badge bg-success"><i class="bi bi-check me-1"></i>Você participou</span>
+                                        <span class="badge bg-warning text-dark"><i class="bi bi-pen me-1"></i>Ata aguardando assinatura</span>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column gap-2">
+                                    <a href="ata-detalhe.html" class="btn btn-warning"><i class="bi bi-pen me-1"></i>Assinar Ata</a>
+                                    <a href="reuniao-detalhe.html" class="btn btn-outline-secondary btn-sm">Ver Detalhes</a>
                                 </div>
                             </div>
                         </div>

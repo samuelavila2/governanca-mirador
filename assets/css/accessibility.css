@@ -1,0 +1,286 @@
+/**
+ * MiraBoard - Melhorias de Acessibilidade (45+)
+ * Fontes maiores, botões mais espaçosos, melhor contraste
+ */
+
+/* ========== BASE TYPOGRAPHY - LARGER ========== */
+body {
+    font-size: 16px !important;
+    line-height: 1.6;
+}
+
+/* Textos gerais mais legíveis */
+.page-subtitle,
+.card-text,
+.text-muted,
+p {
+    font-size: 0.95rem;
+    color: #4B5563; /* Mais escuro que o cinza padrão */
+}
+
+/* Labels de formulário mais visíveis */
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+/* Inputs maiores */
+.form-control,
+.form-select {
+    font-size: 1rem;
+    padding: 0.625rem 0.875rem;
+    min-height: 44px; /* Área de toque mínima recomendada */
+}
+
+/* ========== BOTÕES MAIORES ========== */
+.btn {
+    font-size: 0.95rem;
+    padding: 0.625rem 1.25rem;
+    min-height: 44px;
+    font-weight: 500;
+}
+
+.btn-sm {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    min-height: 38px;
+}
+
+.btn-lg {
+    font-size: 1.1rem;
+    padding: 0.875rem 1.75rem;
+    min-height: 52px;
+}
+
+/* Botões de ação com mais destaque */
+.btn-primary {
+    box-shadow: 0 2px 4px rgba(232, 104, 26, 0.3);
+}
+
+.btn-success {
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.btn-danger {
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3);
+}
+
+/* ========== CARDS MAIS ESPAÇOSOS ========== */
+.card {
+    border-radius: 12px;
+}
+
+.card-header {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* ========== TABELAS MAIS LEGÍVEIS ========== */
+.table {
+    font-size: 0.95rem;
+}
+
+.table th {
+    font-weight: 600;
+    color: #374151;
+    padding: 1rem 0.75rem;
+}
+
+.table td {
+    padding: 1rem 0.75rem;
+    vertical-align: middle;
+}
+
+/* ========== BADGES MAIORES ========== */
+.badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.7em;
+    font-weight: 500;
+}
+
+/* ========== ÍCONES MAIORES ========== */
+.bi {
+    font-size: 1.1em;
+}
+
+.stat-icon i {
+    font-size: 1.5rem;
+}
+
+/* ========== LINKS MAIS VISÍVEIS ========== */
+a {
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ========== FOCO VISÍVEL ========== */
+:focus-visible {
+    outline: 3px solid #E8681A;
+    outline-offset: 2px;
+}
+
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+    box-shadow: 0 0 0 3px rgba(232, 104, 26, 0.25);
+}
+
+/* ========== CONTRASTE MELHORADO ========== */
+.text-muted {
+    color: #6B7280 !important; /* Mais escuro */
+}
+
+.text-secondary {
+    color: #4B5563 !important;
+}
+
+/* Placeholder mais visível */
+::placeholder {
+    color: #9CA3AF;
+    opacity: 1;
+}
+
+/* ========== NOTIFICAÇÕES MAIORES ========== */
+.notification-item {
+    padding: 1rem !important;
+}
+
+.notification-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.notification-time {
+    font-size: 0.85rem;
+}
+
+/* ========== STAT CARDS MELHORADOS ========== */
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #4B5563;
+}
+
+.stat-change {
+    font-size: 0.85rem;
+}
+
+/* ========== SIDEBAR MAIS LEGÍVEL ========== */
+.sidebar-nav-link {
+    font-size: 0.95rem;
+    padding: 0.875rem 1rem !important;
+}
+
+.sidebar-nav-link i {
+    font-size: 1.25rem;
+}
+
+.sidebar-badge {
+    font-size: 0.75rem;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+}
+
+/* ========== DROPDOWN MENUS ========== */
+.dropdown-item {
+    font-size: 0.95rem;
+    padding: 0.625rem 1rem;
+}
+
+/* ========== MODAIS ========== */
+.modal-title {
+    font-size: 1.25rem;
+}
+
+.modal-body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ========== ALERTAS E TOASTS ========== */
+.alert {
+    font-size: 0.95rem;
+    padding: 1rem 1.25rem;
+}
+
+/* ========== LISTAS ========== */
+.list-group-item {
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
+}
+
+/* ========== MURAL DE AVISOS ========== */
+.mural-item-content {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.mural-item-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+}
+
+/* ========== PAGE HEADER ========== */
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: #4B5563;
+}
+
+/* ========== MELHORIAS ESPECÍFICAS MOBILE ========== */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px !important;
+    }
+    
+    .btn {
+        min-height: 48px;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+    
+    .page-actions .btn {
+        width: auto;
+    }
+    
+    .stat-value {
+        font-size: 1.75rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+}
+
+/* ========== ANIMAÇÕES REDUZIDAS ========== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

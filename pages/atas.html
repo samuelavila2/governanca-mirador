@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../assets/css/layout.css">
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/ux-enhancements.css">
+    <link rel="stylesheet" href="../assets/css/accessibility.css">
 </head>
 <body>
     <div class="app-layout">
@@ -166,6 +167,113 @@
                         </div>
                     </div>
                     
+                    <!-- Kanban View para Secretária -->
+                    <div class="card mb-4" data-permission="admin secretaria" id="kanbanAtasView">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">
+                                <i class="bi bi-kanban me-2"></i>Visão Rápida por Status
+                            </h5>
+                            <small class="text-muted">Arraste as atas entre colunas</small>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <!-- Coluna Rascunho -->
+                                <div class="col-md-4">
+                                    <div class="bg-light rounded-3 p-3 h-100">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <span class="badge bg-secondary me-2">2</span>
+                                            <h6 class="mb-0">Em Rascunho</h6>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2">
+                                            <div class="bg-white border rounded-3 p-3 shadow-sm">
+                                                <div class="fw-semibold mb-1">Comitê de Auditoria</div>
+                                                <small class="text-muted">18/01/2025</small>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-outline-primary w-100">
+                                                        <i class="bi bi-pencil me-1"></i>Editar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white border rounded-3 p-3 shadow-sm">
+                                                <div class="fw-semibold mb-1">Reunião Extraordinária</div>
+                                                <small class="text-muted">22/01/2025</small>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-outline-primary w-100">
+                                                        <i class="bi bi-pencil me-1"></i>Editar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Coluna Aguardando -->
+                                <div class="col-md-4">
+                                    <div class="bg-warning-subtle rounded-3 p-3 h-100">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <span class="badge bg-warning text-dark me-2">4</span>
+                                            <h6 class="mb-0">Aguardando Assinaturas</h6>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2">
+                                            <div class="bg-white border border-warning rounded-3 p-3 shadow-sm">
+                                                <div class="fw-semibold mb-1">RO do Conselho</div>
+                                                <small class="text-muted">20/01/2025</small>
+                                                <div class="progress mt-2" style="height: 4px;">
+                                                    <div class="progress-bar bg-warning" style="width: 40%"></div>
+                                                </div>
+                                                <small class="text-warning">2/5 assinaturas</small>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-warning w-100">
+                                                        <i class="bi bi-bell me-1"></i>Lembrar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white border border-warning rounded-3 p-3 shadow-sm">
+                                                <div class="fw-semibold mb-1">Comitê Investimentos</div>
+                                                <small class="text-muted">15/01/2025</small>
+                                                <div class="progress mt-2" style="height: 4px;">
+                                                    <div class="progress-bar bg-warning" style="width: 80%"></div>
+                                                </div>
+                                                <small class="text-warning">4/5 assinaturas</small>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-warning w-100">
+                                                        <i class="bi bi-bell me-1"></i>Lembrar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Coluna Aprovadas -->
+                                <div class="col-md-4">
+                                    <div class="bg-success-subtle rounded-3 p-3 h-100">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <span class="badge bg-success me-2">42</span>
+                                            <h6 class="mb-0">Aprovadas</h6>
+                                        </div>
+                                        <div class="d-flex flex-column gap-2">
+                                            <div class="bg-white border border-success rounded-3 p-3 shadow-sm">
+                                                <div class="fw-semibold mb-1">Comitê de Riscos</div>
+                                                <small class="text-muted">15/01/2025</small>
+                                                <div class="d-flex align-items-center gap-1 mt-1">
+                                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                                    <small class="text-success">5/5 assinaturas</small>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <button class="btn btn-sm btn-outline-success w-100">
+                                                        <i class="bi bi-download me-1"></i>PDF
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="text-center py-2">
+                                                <a href="#" class="text-success small">Ver mais 41 atas aprovadas →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <!-- Filters -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -292,9 +400,17 @@
                                     <small class="text-muted">2 de 5 assinaturas</small>
                                 </div>
                                 <div class="card-footer bg-transparent border-top">
-                                    <button class="btn btn-sm btn-outline-primary w-100">
+                                    <!-- Botão Assinar para Conselheiro -->
+                                    <button class="btn btn-warning w-100 mb-2" data-permission="conselheiro" data-bs-toggle="modal" data-bs-target="#modalAssinarAta">
+                                        <i class="bi bi-pen me-2"></i>Assinar Ata
+                                    </button>
+                                    <!-- Botão Ver Detalhes para Admin/Secretária -->
+                                    <button class="btn btn-sm btn-outline-primary w-100" data-hide-for="conselheiro">
                                         <i class="bi bi-eye me-2"></i>Ver Detalhes
                                     </button>
+                                    <a href="ata-detalhe.html" class="btn btn-sm btn-outline-secondary w-100" data-permission="conselheiro">
+                                        <i class="bi bi-eye me-2"></i>Ver Detalhes
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -487,6 +603,56 @@
                     </div>
                 </div>
             </main>
+        </div>
+    </div>
+    
+    <!-- Modal Assinatura Rápida -->
+    <div class="modal fade" id="modalAssinarAta" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-warning-subtle">
+                    <h5 class="modal-title">
+                        <i class="bi bi-pen me-2"></i>Assinar Ata
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div class="bg-light rounded-3 p-4 mb-3">
+                            <h5 class="mb-1">Reunião Ordinária do Conselho</h5>
+                            <p class="text-muted mb-0">20 de Janeiro de 2025</p>
+                        </div>
+                        
+                        <div class="alert alert-info text-start">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>Antes de assinar:</strong> Confirme que você leu e concorda com o conteúdo da ata.
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Sua Assinatura Digital</label>
+                        <div class="border rounded-3 p-4 text-center bg-light" style="min-height: 100px;">
+                            <span class="text-muted">
+                                <i class="bi bi-pen fs-3 d-block mb-2"></i>
+                                Assinatura: <strong>João Conselheiro</strong>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmLeitura" style="width: 1.25rem; height: 1.25rem;">
+                        <label class="form-check-label ms-2" for="confirmLeitura">
+                            Declaro que li e concordo com o conteúdo desta ata
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning btn-lg" onclick="alert('Ata assinada com sucesso!'); bootstrap.Modal.getInstance(document.getElementById('modalAssinarAta')).hide();">
+                        <i class="bi bi-check2-circle me-2"></i>Confirmar Assinatura
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 

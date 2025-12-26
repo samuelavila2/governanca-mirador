@@ -117,6 +117,81 @@ const ProfileBarComponent = {
                     padding: 4px 10px;
                 }
             }
+            
+            /* ========== Quick Actions Bar - Secretária ========== */
+            .quick-actions-bar {
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                display: flex;
+                gap: 8px;
+                z-index: 1040;
+            }
+            
+            .quick-action-btn {
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.25rem;
+                color: white;
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                transition: all 0.2s;
+            }
+            
+            .quick-action-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            }
+            
+            .quick-action-btn.btn-reuniao {
+                background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            }
+            
+            .quick-action-btn.btn-ata {
+                background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            }
+            
+            .quick-action-btn.btn-documento {
+                background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+            }
+            
+            .quick-action-btn .btn-tooltip {
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #1F2937;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.2s;
+                margin-bottom: 8px;
+            }
+            
+            .quick-action-btn:hover .btn-tooltip {
+                opacity: 1;
+            }
+            
+            @media (max-width: 768px) {
+                .quick-actions-bar {
+                    bottom: 16px;
+                    right: 16px;
+                }
+                .quick-action-btn {
+                    width: 48px;
+                    height: 48px;
+                    font-size: 1.1rem;
+                }
+            }
         `;
         document.head.appendChild(styles);
     },
@@ -154,6 +229,39 @@ const ProfileBarComponent = {
         // Adiciona a linha no topo e o badge
         document.body.insertBefore(line, document.body.firstChild);
         document.body.appendChild(content);
+        
+        // Renderiza Quick Actions para secretária
+        if (profileKey === 'secretaria') {
+            this.renderQuickActions();
+        }
+    },
+    
+    /**
+     * Renderiza barra de ações rápidas para secretária
+     */
+    renderQuickActions: function() {
+        // Remove se já existir
+        var existing = document.querySelector('.quick-actions-bar');
+        if (existing) existing.remove();
+        
+        var bar = document.createElement('div');
+        bar.className = 'quick-actions-bar';
+        
+        bar.innerHTML = 
+            '<button class="quick-action-btn btn-reuniao" onclick="window.location.href=\'reunioes.html\'" title="Nova Reunião">' +
+                '<span class="btn-tooltip">Nova Reunião</span>' +
+                '<i class="bi bi-calendar-plus"></i>' +
+            '</button>' +
+            '<button class="quick-action-btn btn-ata" onclick="window.location.href=\'atas.html\'" title="Nova Ata">' +
+                '<span class="btn-tooltip">Nova Ata</span>' +
+                '<i class="bi bi-file-earmark-plus"></i>' +
+            '</button>' +
+            '<button class="quick-action-btn btn-documento" onclick="window.location.href=\'documentos.html\'" title="Novo Documento">' +
+                '<span class="btn-tooltip">Upload Documento</span>' +
+                '<i class="bi bi-upload"></i>' +
+            '</button>';
+        
+        document.body.appendChild(bar);
     },
 
     /**
@@ -197,13 +305,13 @@ const ProfileBarComponent = {
      * Conselheiro vê notificações de participação
      */
     customizeNotifications: function() {
-        const profile = this.getCurrentProfile();
-        const notificationBadge = document.getElementById('notificationCount');
+        var profile = this.getCurrentProfile();
+        var notificationBadge = document.getElementById('notificationCount');
         
         // Aplica visibilidade das notificações baseado no perfil
-        document.querySelectorAll('.notification-item[data-permission]').forEach(item => {
-            const allowedProfiles = item.getAttribute('data-permission').split(' ');
-            if (!allowedProfiles.includes(profile)) {
+        document.querySelectorAll('.notification-item[data-permission]').forEach(function(item) {
+            var allowedProfiles = item.getAttribute('data-permission').split(' ');
+            if (allowedProfiles.indexOf(profile) === -1) {
                 item.style.display = 'none';
             } else {
                 item.style.display = 'flex';
@@ -211,11 +319,10 @@ const ProfileBarComponent = {
         });
         
         // Conta notificações visíveis não lidas
-        const visibleUnread = document.querySelectorAll('.notification-item.unread:not([style*="display: none"])').length;
+        var visibleUnread = document.querySelectorAll('.notification-item.unread:not([style*="display: none"])').length;
         
         if (notificationBadge) {
             notificationBadge.textContent = visibleUnread;
-            // Esconde badge se não há notificações
             notificationBadge.style.display = visibleUnread > 0 ? 'flex' : 'none';
         }
     }
@@ -224,8 +331,7 @@ const ProfileBarComponent = {
 // Inicializa automaticamente quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', function() {
     ProfileBarComponent.init();
-    // Aguarda um pouco para garantir que o sidebar processou as permissões
-    setTimeout(() => {
+    setTimeout(function() {
         ProfileBarComponent.customizeNotifications();
     }, 100);
 });

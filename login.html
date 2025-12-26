@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MiraBoard</title>
+    <link rel="icon" type="image/png" href="assets/img/ico-miraboard.png">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #F5F7FA 0%, #E5E7EB 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: var(--spacing-4);
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-card {
+            background: var(--color-white);
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-2xl);
+            padding: var(--spacing-12) var(--spacing-8);
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: var(--spacing-8);
+        }
+
+        .login-logo-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo {
+            font-size: var(--font-size-4xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-3);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: var(--font-size-2xl);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-mirador {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-extrabold);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-primary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .login-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .login-subtitle {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-8);
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-label {
+            color: var(--color-primary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .form-control {
+            padding: var(--spacing-4);
+            font-size: var(--font-size-base);
+            border: 2px solid var(--border-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-primary);
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-6);
+        }
+
+        .form-check {
+            margin-bottom: 0;
+        }
+
+        .forgot-password {
+            color: var(--color-primary);
+            font-size: var(--font-size-sm);
+            text-decoration: none;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            background: var(--gradient-primary);
+            color: var(--color-white);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-semibold);
+            padding: var(--spacing-4) var(--spacing-6);
+            width: 100%;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-login:hover {
+            background: var(--gradient-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .login-footer {
+            margin-top: var(--spacing-6);
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+
+        .login-footer a {
+            color: var(--color-primary);
+            font-weight: var(--font-weight-semibold);
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Background decoration */
+        .bg-decoration {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: var(--border-radius-full);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .bg-decoration-1 {
+            background: var(--color-primary);
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-decoration-2 {
+            background: var(--color-primary-dark);
+            bottom: -150px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Decorations -->
+    <div class="bg-decoration bg-decoration-1"></div>
+    <div class="bg-decoration bg-decoration-2"></div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo -->
+            <div class="logo-container">
+                <img src="assets/img/preto_logo-miraboard.png" alt="MiraBoard" class="login-logo-img">
+            </div>
+
+            <!-- Login Title -->
+            <h1 class="login-title">LOGIN</h1>
+            <p class="login-subtitle">Credenciais via painel Mirador</p>
+
+            <!-- Login Form -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email / usuário</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="email" 
+                        placeholder="Digite seu email ou usuário"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input 
+                        type="password" 
+                        class="form-control" 
+                        id="senha" 
+                        placeholder="Digite sua senha"
+                        required
+                    >
+                </div>
+
+                <div class="form-footer">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="lembrar">
+                        <label class="form-check-label" for="lembrar">
+                            Lembrar
+                        </label>
+                    </div>
+                    <a href="#" class="forgot-password">Recuperar senha</a>
+                </div>
+
+                <button type="submit" class="btn btn-login">
+                    Login
+                </button>
+            </form>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                Ainda não possui login? <a href="#">Entre em contato</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui o PHP irá fazer a validação
+            // Por enquanto, redireciona para seleção de perfil (mockup)
+            window.location.href = 'pages/selecao-perfil.html';
+        });
+    </script>
+</body>
+</html>

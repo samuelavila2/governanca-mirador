@@ -71,9 +71,7 @@
     color: var(--color-white);
 }
 
-.wizard-step.completed .wizard-step-number::before {
-    content: '✓';
-}
+/* O ícone de check já vem do HTML (bi-check-lg) */
 
 .wizard-step-info {
     display: flex;

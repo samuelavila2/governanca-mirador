@@ -7,8 +7,9 @@
     /* ========== CORES PRIMÁRIAS ========== */
     --color-primary: #E8681A;
     --color-primary-dark: #D35710;
-    --color-primary-light: #FF8A3D;
+    --color-primary-light: rgba(232, 104, 26, 0.1);  /* Versão clara para backgrounds */
     --color-primary-lighter: #FFE5D9;
+    --color-primary-hover: #FF8A3D;  /* Versão para hover */
     
     /* ========== CORES SECUNDÁRIAS ========== */
     --color-secondary: #1F2937;

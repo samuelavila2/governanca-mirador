@@ -80,7 +80,8 @@
         }
 
         .navbar-logo img {
-            height: 40px;
+            height: 50px;
+            width: auto;
         }
 
         .navbar-logo-text {
@@ -88,6 +89,7 @@
             font-weight: 800;
             color: var(--white);
             transition: color 0.3s;
+            display: none; /* Oculta texto pois logo já contém */
         }
 
         .navbar.scrolled .navbar-logo-text {
@@ -510,7 +512,7 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-container">
             <a href="#" class="navbar-logo">
-                <img src="assets/img/ico-miraboard.png" alt="MiraBoard" onerror="this.style.display='none'">
+                <img src="assets/img/logo-miraboard.png" alt="MiraBoard - Plataforma de Governança">
                 <span class="navbar-logo-text">MiraBoard</span>
             </a>
             <a href="login.html" class="btn-demo">

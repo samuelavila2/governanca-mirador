@@ -1583,31 +1583,38 @@
     font-size: 0.65rem;
     font-weight: 600;
     color: var(--text-secondary, #6B7280);
-    margin-bottom: 4px;
-    padding-bottom: 4px;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
     border-bottom: 1px solid var(--border-color, #E5E7EB);
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
+    white-space: nowrap;
 }
 
 .tooltip-header i {
     color: var(--color-primary, #F97316);
-    font-size: 0.7rem;
+    font-size: 0.65rem;
 }
 
 .tooltip-event {
     display: flex;
     align-items: center;
-    gap: 5px;
-    font-size: 0.7rem;
+    gap: 4px;
+    font-size: 0.68rem;
     color: var(--text-primary);
-    padding: 2px 0;
-    line-height: 1.25;
+    padding: 1px 0;
+    line-height: 1.2;
+    margin: 0;
 }
 
 .tooltip-event:last-child {
     padding-bottom: 0;
+}
+
+.tooltip-event span {
+    margin: 0;
+    padding: 0;
 }
 
 .event-dot {

@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário - MiraBoard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Calendar Specific Styles */
+        .calendar-container {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+        
+        .calendar-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-4) var(--spacing-5);
+            border-bottom: 1px solid var(--color-gray-200);
+            flex-wrap: wrap;
+            gap: var(--spacing-3);
+        }
+        
+        .calendar-toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+        }
+        
+        .calendar-toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+        
+        .calendar-title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-gray-900);
+        }
+        
+        .calendar-nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--color-gray-300);
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            color: var(--color-gray-600);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .calendar-nav-btn:hover {
+            background: var(--color-gray-100);
+            color: var(--color-gray-900);
+        }
+        
+        .calendar-view-btns {
+            display: flex;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        .calendar-view-btn {
+            padding: var(--spacing-2) var(--spacing-3);
+            border: none;
+            background: var(--color-white);
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .calendar-view-btn:not(:last-child) {
+            border-right: 1px solid var(--color-gray-300);
+        }
+        
+        .calendar-view-btn:hover {
+            background: var(--color-gray-100);
+        }
+        
+        .calendar-view-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        /* Calendar Grid */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+        
+        .calendar-day-header {
+            padding: var(--spacing-3);
+            text-align: center;
+            font-weight: var(--font-semibold);
+            font-size: var(--text-sm);
+            color: var(--color-gray-500);
+            background: var(--color-gray-50);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .calendar-day {
+            min-height: 120px;
+            padding: var(--spacing-2);
+            border-right: 1px solid var(--color-gray-200);
+            border-bottom: 1px solid var(--color-gray-200);
+            background: var(--color-white);
+            transition: background var(--transition-fast);
+        }
+        
+        .calendar-day:nth-child(7n) {
+            border-right: none;
+        }
+        
+        .calendar-day:hover {
+            background: var(--color-gray-50);
+        }
+        
+        .calendar-day.other-month {
+            background: var(--color-gray-50);
+        }
+        
+        .calendar-day.other-month .day-number {
+            color: var(--color-gray-400);
+        }
+        
+        .calendar-day.today {
+            background: var(--color-primary-light);
+        }
+        
+        .calendar-day.today .day-number {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .day-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: var(--radius-full);
+            font-weight: var(--font-medium);
+            font-size: var(--text-sm);
+            color: var(--color-gray-700);
+            margin-bottom: var(--spacing-2);
+        }
+        
+        .calendar-events {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .calendar-event {
+            display: block;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: var(--font-medium);
+            border-radius: var(--radius-sm);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .calendar-event:hover {
+            transform: translateX(2px);
+        }
+        
+        .calendar-event.ordinaria {
+            background: rgba(99, 102, 241, 0.15);
+            color: #4F46E5;
+            border-left: 3px solid #4F46E5;
+        }
+        
+        .calendar-event.extraordinaria {
+            background: rgba(245, 158, 11, 0.15);
+            color: #D97706;
+            border-left: 3px solid #D97706;
+        }
+        
+        .calendar-event.comite {
+            background: rgba(16, 185, 129, 0.15);
+            color: #059669;
+            border-left: 3px solid #059669;
+        }
+        
+        .calendar-event.assembleia {
+            background: rgba(239, 68, 68, 0.15);
+            color: #DC2626;
+            border-left: 3px solid #DC2626;
+        }
+        
+        .event-more {
+            font-size: 11px;
+            color: var(--color-gray-500);
+            padding: 2px 6px;
+            cursor: pointer;
+        }
+        
+        .event-more:hover {
+            color: var(--color-primary);
+        }
+        
+        /* Sidebar Events */
+        .events-sidebar {
+            background: var(--color-white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .events-sidebar-header {
+            padding: var(--spacing-4) var(--spacing-5);
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+        
+        .events-sidebar-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-900);
+        }
+        
+        .events-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .event-item {
+            display: flex;
+            gap: var(--spacing-3);
+            padding: var(--spacing-4) var(--spacing-5);
+            border-bottom: 1px solid var(--color-gray-100);
+            text-decoration: none;
+            transition: background var(--transition-fast);
+        }
+        
+        .event-item:hover {
+            background: var(--color-gray-50);
+        }
+        
+        .event-date-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-lg);
+            background: var(--color-gray-100);
+            flex-shrink: 0;
+        }
+        
+        .event-date-badge .day {
+            font-size: var(--text-lg);
+            font-weight: var(--font-bold);
+            color: var(--color-gray-900);
+            line-height: 1;
+        }
+        
+        .event-date-badge .month {
+            font-size: 10px;
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-500);
+            text-transform: uppercase;
+        }
+        
+        .event-date-badge.today {
+            background: var(--color-primary);
+        }
+        
+        .event-date-badge.today .day,
+        .event-date-badge.today .month {
+            color: var(--color-white);
+        }
+        
+        .event-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .event-title {
+            font-weight: var(--font-semibold);
+            color: var(--color-gray-900);
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .event-time {
+            font-size: var(--text-sm);
+            color: var(--color-gray-500);
+        }
+        
+        .event-type-badge {
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-weight: var(--font-semibold);
+        }
+        
+        /* Legend */
+        .calendar-legend {
+            display: flex;
+            gap: var(--spacing-4);
+            padding: var(--spacing-3) var(--spacing-5);
+            background: var(--color-gray-50);
+            border-top: 1px solid var(--color-gray-200);
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: var(--radius-sm);
+        }
+        
+        .legend-dot.ordinaria { background: #4F46E5; }
+        .legend-dot.extraordinaria { background: #D97706; }
+        .legend-dot.comite { background: #059669; }
+        .legend-dot.assembleia { background: #DC2626; }
+        
+        @media (max-width: 992px) {
+            .calendar-day {
+                min-height: 80px;
+            }
+            
+            .calendar-event {
+                font-size: 10px;
+                padding: 1px 4px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .calendar-day {
+                min-height: 60px;
+            }
+            
+            .calendar-events {
+                display: none;
+            }
+            
+            .calendar-day.has-event .day-number {
+                position: relative;
+            }
+            
+            .calendar-day.has-event .day-number::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--color-primary);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-brand">
+                    <div class="sidebar-logo">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </div>
+                    <span class="sidebar-brand-text">MiraBoard</span>
+                </a>
+                <button class="sidebar-toggle d-lg-none" id="sidebarClose">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="dashboard.html" class="sidebar-nav-link">
+                            <i class="bi bi-speedometer2"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="calendario.html" class="sidebar-nav-link active">
+                            <i class="bi bi-calendar3"></i>
+                            <span>Calendário</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="reunioes.html" class="sidebar-nav-link">
+                            <i class="bi bi-people"></i>
+                            <span>Reuniões</span>
+                            <span class="sidebar-badge">3</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="atas.html" class="sidebar-nav-link">
+                            <i class="bi bi-file-text"></i>
+                            <span>Atas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="acoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-check2-square"></i>
+                            <span>Ações</span>
+                            <span class="sidebar-badge warning">5</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="documentos.html" class="sidebar-nav-link">
+                            <i class="bi bi-folder2-open"></i>
+                            <span>Documentos</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-divider"></div>
+                
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="mensagens.html" class="sidebar-nav-link">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>Mensagens</span>
+                            <span class="sidebar-badge">12</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="relatorios.html" class="sidebar-nav-link">
+                            <i class="bi bi-graph-up"></i>
+                            <span>Relatórios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="configuracoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-gear"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-md">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                    </div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Admin User</span>
+                        <span class="sidebar-user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <h1 class="page-title mb-0 d-none d-md-block" style="font-size: var(--text-lg);">Calendário</h1>
+                </div>
+                
+                <div class="header-right">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novaReuniaoModal">
+                        <i class="bi bi-plus-lg me-2"></i>Nova Reunião
+                    </button>
+                    
+                    <div class="dropdown">
+                        <button class="header-user-btn" data-bs-toggle="dropdown">
+                            <div class="avatar avatar-sm">
+                                <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                            </div>
+                            <span class="d-none d-md-inline">Admin</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="../index.html"><i class="bi bi-box-arrow-right me-2"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <div class="row g-4">
+                        <!-- Calendar -->
+                        <div class="col-lg-9">
+                            <div class="calendar-container">
+                                <div class="calendar-toolbar">
+                                    <div class="calendar-toolbar-left">
+                                        <button class="calendar-nav-btn" id="prevMonth">
+                                            <i class="bi bi-chevron-left"></i>
+                                        </button>
+                                        <button class="calendar-nav-btn" id="nextMonth">
+                                            <i class="bi bi-chevron-right"></i>
+                                        </button>
+                                        <h2 class="calendar-title">Janeiro 2025</h2>
+                                        <button class="btn btn-sm btn-outline-secondary" id="todayBtn">Hoje</button>
+                                    </div>
+                                    <div class="calendar-toolbar-right">
+                                        <div class="calendar-view-btns">
+                                            <button class="calendar-view-btn active">Mês</button>
+                                            <button class="calendar-view-btn">Semana</button>
+                                            <button class="calendar-view-btn">Dia</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="calendar-grid">
+                                    <!-- Header -->
+                                    <div class="calendar-day-header">Dom</div>
+                                    <div class="calendar-day-header">Seg</div>
+                                    <div class="calendar-day-header">Ter</div>
+                                    <div class="calendar-day-header">Qua</div>
+                                    <div class="calendar-day-header">Qui</div>
+                                    <div class="calendar-day-header">Sex</div>
+                                    <div class="calendar-day-header">Sáb</div>
+                                    
+                                    <!-- Week 1 -->
+                                    <div class="calendar-day other-month">
+                                        <span class="day-number">29</span>
+                                    </div>
+                                    <div class="calendar-day other-month">
+                                        <span class="day-number">30</span>
+                                    </div>
+                                    <div class="calendar-day other-month">
+                                        <span class="day-number">31</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">1</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">2</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">3</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">4</span>
+                                    </div>
+                                    
+                                    <!-- Week 2 -->
+                                    <div class="calendar-day has-event">
+                                        <span class="day-number">5</span>
+                                        <div class="calendar-events">
+                                            <a href="reuniao-detalhe.html" class="calendar-event ordinaria">Reunião Ordinária</a>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">6</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">7</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">8</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">9</span>
+                                    </div>
+                                    <div class="calendar-day has-event">
+                                        <span class="day-number">10</span>
+                                        <div class="calendar-events">
+                                            <a href="reuniao-detalhe.html" class="calendar-event extraordinaria">Reunião Extra</a>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">11</span>
+                                    </div>
+                                    
+                                    <!-- Week 3 -->
+                                    <div class="calendar-day">
+                                        <span class="day-number">12</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">13</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">14</span>
+                                    </div>
+                                    <div class="calendar-day has-event">
+                                        <span class="day-number">15</span>
+                                        <div class="calendar-events">
+                                            <a href="reuniao-detalhe.html" class="calendar-event comite">Comitê Riscos</a>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">16</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">17</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">18</span>
+                                    </div>
+                                    
+                                    <!-- Week 4 -->
+                                    <div class="calendar-day">
+                                        <span class="day-number">19</span>
+                                    </div>
+                                    <div class="calendar-day has-event">
+                                        <span class="day-number">20</span>
+                                        <div class="calendar-events">
+                                            <a href="reuniao-detalhe.html" class="calendar-event ordinaria">Reunião Ordinária</a>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">21</span>
+                                    </div>
+                                    <div class="calendar-day has-event">
+                                        <span class="day-number">22</span>
+                                        <div class="calendar-events">
+                                            <a href="reuniao-detalhe.html" class="calendar-event comite">Comitê Auditoria</a>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">23</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">24</span>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">25</span>
+                                    </div>
+                                    
+                                    <!-- Week 5 -->
+                                    <div class="calendar-day">
+                                        <span class="day-number">26</span>
+                                    </div>
+                                    <div class="calendar-day today">
+                                        <span class="day-number">27</span>
+                                    </div>
+                                    <div class="calendar-day has-event">
+                                        <span class="day-number">28</span>
+                                        <div class="calendar-events">
+                                            <a href="reuniao-detalhe.html" class="calendar-event ordinaria">Reunião Conselho</a>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">29</span>
+                                    </div>
+                                    <div class="calendar-day has-event">
+                                        <span class="day-number">30</span>
+                                        <div class="calendar-events">
+                                            <a href="reuniao-detalhe.html" class="calendar-event comite">Comitê Auditoria</a>
+                                        </div>
+                                    </div>
+                                    <div class="calendar-day">
+                                        <span class="day-number">31</span>
+                                    </div>
+                                    <div class="calendar-day other-month">
+                                        <span class="day-number">1</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="calendar-legend">
+                                    <div class="legend-item">
+                                        <span class="legend-dot ordinaria"></span>
+                                        <span>Reunião Ordinária</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-dot extraordinaria"></span>
+                                        <span>Reunião Extraordinária</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-dot comite"></span>
+                                        <span>Comitê</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <span class="legend-dot assembleia"></span>
+                                        <span>Assembleia</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Events Sidebar -->
+                        <div class="col-lg-3">
+                            <div class="events-sidebar">
+                                <div class="events-sidebar-header">
+                                    <h3 class="events-sidebar-title">Próximos Eventos</h3>
+                                </div>
+                                <div class="events-list">
+                                    <a href="reuniao-detalhe.html" class="event-item">
+                                        <div class="event-date-badge today">
+                                            <span class="day">27</span>
+                                            <span class="month">Jan</span>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title">Hoje</h4>
+                                            <p class="event-time text-muted">Nenhum evento</p>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="reuniao-detalhe.html" class="event-item">
+                                        <div class="event-date-badge">
+                                            <span class="day">28</span>
+                                            <span class="month">Jan</span>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title">Reunião Ordinária do Conselho</h4>
+                                            <p class="event-time">
+                                                <i class="bi bi-clock me-1"></i>14:00 - 16:00
+                                            </p>
+                                            <span class="event-type-badge" style="background: rgba(99, 102, 241, 0.15); color: #4F46E5;">Ordinária</span>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="reuniao-detalhe.html" class="event-item">
+                                        <div class="event-date-badge">
+                                            <span class="day">30</span>
+                                            <span class="month">Jan</span>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title">Comitê de Auditoria</h4>
+                                            <p class="event-time">
+                                                <i class="bi bi-clock me-1"></i>10:00 - 12:00
+                                            </p>
+                                            <span class="event-type-badge" style="background: rgba(16, 185, 129, 0.15); color: #059669;">Comitê</span>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="reuniao-detalhe.html" class="event-item">
+                                        <div class="event-date-badge">
+                                            <span class="day">05</span>
+                                            <span class="month">Fev</span>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title">Assembleia Geral Ordinária</h4>
+                                            <p class="event-time">
+                                                <i class="bi bi-clock me-1"></i>09:00 - 12:00
+                                            </p>
+                                            <span class="event-type-badge" style="background: rgba(239, 68, 68, 0.15); color: #DC2626;">Assembleia</span>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="reuniao-detalhe.html" class="event-item">
+                                        <div class="event-date-badge">
+                                            <span class="day">10</span>
+                                            <span class="month">Fev</span>
+                                        </div>
+                                        <div class="event-info">
+                                            <h4 class="event-title">Reunião Extraordinária</h4>
+                                            <p class="event-time">
+                                                <i class="bi bi-clock me-1"></i>15:00 - 17:00
+                                            </p>
+                                            <span class="event-type-badge" style="background: rgba(245, 158, 11, 0.15); color: #D97706;">Extraordinária</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Modal Nova Reunião (mesmo das outras páginas) -->
+    <div class="modal fade" id="novaReuniaoModal" tabindex="-1" aria-labelledby="novaReuniaoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novaReuniaoModalLabel">
+                        <i class="bi bi-plus-circle me-2"></i>Nova Reunião
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="tipoReuniao" class="form-label">Tipo de Reunião</label>
+                                <select class="form-select" id="tipoReuniao">
+                                    <option selected>Selecione o tipo...</option>
+                                    <option value="ordinaria">Reunião Ordinária</option>
+                                    <option value="extraordinaria">Reunião Extraordinária</option>
+                                    <option value="comite">Comitê</option>
+                                    <option value="assembleia">Assembleia</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="tituloReuniao" class="form-label">Título da Reunião</label>
+                                <input type="text" class="form-control" id="tituloReuniao" placeholder="Ex: Reunião Ordinária do Conselho">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dataReuniao" class="form-label">Data</label>
+                                <input type="date" class="form-control" id="dataReuniao">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="horaInicio" class="form-label">Hora Início</label>
+                                <input type="time" class="form-control" id="horaInicio">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="horaFim" class="form-label">Hora Fim</label>
+                                <input type="time" class="form-control" id="horaFim">
+                            </div>
+                            <div class="col-12">
+                                <label for="localReuniao" class="form-label">Local / Link</label>
+                                <input type="text" class="form-control" id="localReuniao" placeholder="Sala de reuniões ou link de videoconferência">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="bi bi-check-lg me-2"></i>Criar Reunião
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        // Sidebar Toggle
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('show');
+        });
+        
+        document.getElementById('sidebarClose')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('show');
+        });
+    </script>
+</body>
+</html>

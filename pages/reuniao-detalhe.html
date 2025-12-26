@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reunião Ordinária do Conselho - MiraBoard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS 5.3.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/reuniao.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="dashboard.html" class="sidebar-brand">
+                    <div class="sidebar-logo">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </div>
+                    <span class="sidebar-brand-text">MiraBoard</span>
+                </a>
+                <button class="sidebar-toggle d-lg-none" id="sidebarClose">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="dashboard.html" class="sidebar-nav-link">
+                            <i class="bi bi-speedometer2"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="calendario.html" class="sidebar-nav-link">
+                            <i class="bi bi-calendar3"></i>
+                            <span>Calendário</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="reunioes.html" class="sidebar-nav-link active">
+                            <i class="bi bi-people"></i>
+                            <span>Reuniões</span>
+                            <span class="sidebar-badge">3</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="atas.html" class="sidebar-nav-link">
+                            <i class="bi bi-file-text"></i>
+                            <span>Atas</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="acoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-check2-square"></i>
+                            <span>Ações</span>
+                            <span class="sidebar-badge warning">5</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="documentos.html" class="sidebar-nav-link">
+                            <i class="bi bi-folder2-open"></i>
+                            <span>Documentos</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <div class="sidebar-divider"></div>
+                
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav-item">
+                        <a href="mensagens.html" class="sidebar-nav-link">
+                            <i class="bi bi-chat-dots"></i>
+                            <span>Mensagens</span>
+                            <span class="sidebar-badge">12</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="relatorios.html" class="sidebar-nav-link">
+                            <i class="bi bi-graph-up"></i>
+                            <span>Relatórios</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item">
+                        <a href="configuracoes.html" class="sidebar-nav-link">
+                            <i class="bi bi-gear"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="avatar avatar-md">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                    </div>
+                    <div class="sidebar-user-info">
+                        <span class="sidebar-user-name">Admin User</span>
+                        <span class="sidebar-user-role">Administrador</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Header -->
+            <header class="app-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="reunioes.html">Reuniões</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Reunião Ordinária</li>
+                        </ol>
+                    </nav>
+                </div>
+                
+                <div class="header-right">
+                    <div class="dropdown">
+                        <button class="header-action-btn" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                            <div class="dropdown-header">
+                                <h6>Notificações</h6>
+                                <a href="#">Marcar todas como lidas</a>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item notification-item unread" href="#">
+                                <div class="notification-icon bg-primary-subtle">
+                                    <i class="bi bi-calendar-event text-primary"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p>Reunião começa em 30 minutos</p>
+                                    <span class="notification-time">Agora</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="dropdown">
+                        <button class="header-user-btn" data-bs-toggle="dropdown">
+                            <div class="avatar avatar-sm">
+                                <img src="https://ui-avatars.com/api/?name=Admin+User&background=E8681A&color=fff" alt="Admin">
+                            </div>
+                            <span class="d-none d-md-inline">Admin</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Meu Perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="../index.html"><i class="bi bi-box-arrow-right me-2"></i>Sair</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <!-- Main Column -->
+                        <div class="col-lg-8">
+                            <!-- Reunião Header -->
+                            <div class="reuniao-header">
+                                <div class="reuniao-header-info">
+                                    <span class="reuniao-tipo">
+                                        <i class="bi bi-calendar-event"></i>
+                                        Reunião Ordinária
+                                    </span>
+                                    <h1 class="reuniao-titulo">Reunião Ordinária do Conselho</h1>
+                                    <div class="reuniao-meta-info">
+                                        <span class="reuniao-meta-item">
+                                            <i class="bi bi-calendar3"></i>
+                                            28 de Janeiro, 2025
+                                        </span>
+                                        <span class="reuniao-meta-item">
+                                            <i class="bi bi-clock"></i>
+                                            14:00 - 16:00
+                                        </span>
+                                        <span class="reuniao-meta-item">
+                                            <i class="bi bi-geo-alt"></i>
+                                            Sala de Reuniões Principal
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="reuniao-header-actions">
+                                    <button class="btn btn-outline-secondary">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Wizard Navigation -->
+                            <div class="reuniao-wizard">
+                                <div class="wizard-header">
+                                    <a href="#pauta" class="wizard-step active" data-bs-toggle="tab">
+                                        <span class="wizard-step-number">1</span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Pauta</span>
+                                            <span class="wizard-step-subtitle">Itens da reunião</span>
+                                        </div>
+                                    </a>
+                                    <a href="#convocacao" class="wizard-step completed" data-bs-toggle="tab">
+                                        <span class="wizard-step-number"></span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Convocação</span>
+                                            <span class="wizard-step-subtitle">Participantes</span>
+                                        </div>
+                                    </a>
+                                    <a href="#votacoes" class="wizard-step" data-bs-toggle="tab">
+                                        <span class="wizard-step-number">3</span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Votações</span>
+                                            <span class="wizard-step-subtitle">Deliberações</span>
+                                        </div>
+                                    </a>
+                                    <a href="#ata" class="wizard-step" data-bs-toggle="tab">
+                                        <span class="wizard-step-number">4</span>
+                                        <div class="wizard-step-info">
+                                            <span class="wizard-step-title">Ata</span>
+                                            <span class="wizard-step-subtitle">Documento final</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                
+                                <div class="wizard-content tab-content">
+                                    <!-- Tab 1: Pauta -->
+                                    <div class="tab-pane fade show active" id="pauta">
+                                        <div class="pauta-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Itens da Pauta</h4>
+                                                <button class="btn btn-sm btn-primary">
+                                                    <i class="bi bi-plus-lg me-1"></i>Adicionar Item
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="pauta-list">
+                                                <!-- Item 1 -->
+                                                <div class="pauta-item" draggable="true">
+                                                    <div class="pauta-item-header">
+                                                        <span class="pauta-item-number">1</span>
+                                                        <div class="pauta-item-content">
+                                                            <h5 class="pauta-item-title">Abertura e Verificação de Quórum</h5>
+                                                            <p class="pauta-item-desc">Verificação da presença dos conselheiros e confirmação do quórum necessário para deliberação.</p>
+                                                            <div class="pauta-item-meta">
+                                                                <span><i class="bi bi-clock"></i> 10 min</span>
+                                                                <span><i class="bi bi-person"></i> Presidente</span>
+                                                                <span><i class="bi bi-paperclip"></i> 0 anexos</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pauta-item-actions">
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-trash"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-grip-vertical"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Item 2 -->
+                                                <div class="pauta-item" draggable="true">
+                                                    <div class="pauta-item-header">
+                                                        <span class="pauta-item-number">2</span>
+                                                        <div class="pauta-item-content">
+                                                            <h5 class="pauta-item-title">Aprovação da Ata da Reunião Anterior</h5>
+                                                            <p class="pauta-item-desc">Leitura e aprovação da ata da reunião realizada em 15/01/2025.</p>
+                                                            <div class="pauta-item-meta">
+                                                                <span><i class="bi bi-clock"></i> 15 min</span>
+                                                                <span><i class="bi bi-person"></i> Secretário</span>
+                                                                <span><i class="bi bi-paperclip"></i> 1 anexo</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pauta-item-actions">
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-trash"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-grip-vertical"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Item 3 -->
+                                                <div class="pauta-item" draggable="true">
+                                                    <div class="pauta-item-header">
+                                                        <span class="pauta-item-number">3</span>
+                                                        <div class="pauta-item-content">
+                                                            <h5 class="pauta-item-title">Apresentação do Relatório Financeiro Q4/2024</h5>
+                                                            <p class="pauta-item-desc">Análise detalhada dos resultados financeiros do último trimestre e projeções para 2025.</p>
+                                                            <div class="pauta-item-meta">
+                                                                <span><i class="bi bi-clock"></i> 30 min</span>
+                                                                <span><i class="bi bi-person"></i> Diretor Financeiro</span>
+                                                                <span><i class="bi bi-paperclip"></i> 3 anexos</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pauta-item-actions">
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-trash"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-grip-vertical"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Item 4 -->
+                                                <div class="pauta-item" draggable="true">
+                                                    <div class="pauta-item-header">
+                                                        <span class="pauta-item-number">4</span>
+                                                        <div class="pauta-item-content">
+                                                            <h5 class="pauta-item-title">Votação: Aprovação do Orçamento 2025</h5>
+                                                            <p class="pauta-item-desc">Deliberação sobre a proposta orçamentária para o exercício de 2025.</p>
+                                                            <div class="pauta-item-meta">
+                                                                <span><i class="bi bi-clock"></i> 20 min</span>
+                                                                <span><i class="bi bi-hand-thumbs-up"></i> Requer votação</span>
+                                                                <span><i class="bi bi-paperclip"></i> 2 anexos</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pauta-item-actions">
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-trash"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-grip-vertical"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Item 5 -->
+                                                <div class="pauta-item" draggable="true">
+                                                    <div class="pauta-item-header">
+                                                        <span class="pauta-item-number">5</span>
+                                                        <div class="pauta-item-content">
+                                                            <h5 class="pauta-item-title">Informes Gerais e Encerramento</h5>
+                                                            <p class="pauta-item-desc">Espaço para informes diversos e encerramento da reunião.</p>
+                                                            <div class="pauta-item-meta">
+                                                                <span><i class="bi bi-clock"></i> 15 min</span>
+                                                                <span><i class="bi bi-person"></i> Todos</span>
+                                                                <span><i class="bi bi-paperclip"></i> 0 anexos</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="pauta-item-actions">
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-pencil"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-trash"></i></button>
+                                                            <button class="btn btn-sm btn-ghost"><i class="bi bi-grip-vertical"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Add Button -->
+                                                <button class="pauta-add-btn">
+                                                    <i class="bi bi-plus-circle"></i>
+                                                    Adicionar novo item à pauta
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab 2: Convocação -->
+                                    <div class="tab-pane fade" id="convocacao">
+                                        <div class="convocacao-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Participantes Convocados</h4>
+                                                <button class="btn btn-sm btn-primary">
+                                                    <i class="bi bi-person-plus me-1"></i>Convidar
+                                                </button>
+                                            </div>
+                                            
+                                            <div class="participantes-grid">
+                                                <div class="participante-card">
+                                                    <div class="avatar avatar-md">
+                                                        <img src="https://ui-avatars.com/api/?name=Maria+Silva&background=6366F1&color=fff" alt="Maria Silva">
+                                                    </div>
+                                                    <div class="participante-info">
+                                                        <h6 class="participante-nome">Maria Silva</h6>
+                                                        <span class="participante-cargo">Presidente do Conselho</span>
+                                                    </div>
+                                                    <div class="participante-status">
+                                                        <span class="status-presenca confirmado">Confirmado</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="participante-card">
+                                                    <div class="avatar avatar-md">
+                                                        <img src="https://ui-avatars.com/api/?name=João+Santos&background=10B981&color=fff" alt="João Santos">
+                                                    </div>
+                                                    <div class="participante-info">
+                                                        <h6 class="participante-nome">João Santos</h6>
+                                                        <span class="participante-cargo">Vice-Presidente</span>
+                                                    </div>
+                                                    <div class="participante-status">
+                                                        <span class="status-presenca confirmado">Confirmado</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="participante-card">
+                                                    <div class="avatar avatar-md">
+                                                        <img src="https://ui-avatars.com/api/?name=Ana+Costa&background=F59E0B&color=fff" alt="Ana Costa">
+                                                    </div>
+                                                    <div class="participante-info">
+                                                        <h6 class="participante-nome">Ana Costa</h6>
+                                                        <span class="participante-cargo">Secretária</span>
+                                                    </div>
+                                                    <div class="participante-status">
+                                                        <span class="status-presenca confirmado">Confirmado</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="participante-card">
+                                                    <div class="avatar avatar-md">
+                                                        <img src="https://ui-avatars.com/api/?name=Pedro+Lima&background=EF4444&color=fff" alt="Pedro Lima">
+                                                    </div>
+                                                    <div class="participante-info">
+                                                        <h6 class="participante-nome">Pedro Lima</h6>
+                                                        <span class="participante-cargo">Conselheiro</span>
+                                                    </div>
+                                                    <div class="participante-status">
+                                                        <span class="status-presenca pendente">Pendente</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="participante-card">
+                                                    <div class="avatar avatar-md">
+                                                        <img src="https://ui-avatars.com/api/?name=Clara+Mendes&background=8B5CF6&color=fff" alt="Clara Mendes">
+                                                    </div>
+                                                    <div class="participante-info">
+                                                        <h6 class="participante-nome">Clara Mendes</h6>
+                                                        <span class="participante-cargo">Conselheira</span>
+                                                    </div>
+                                                    <div class="participante-status">
+                                                        <span class="status-presenca confirmado">Confirmado</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="participante-card">
+                                                    <div class="avatar avatar-md">
+                                                        <img src="https://ui-avatars.com/api/?name=Roberto+Alves&background=06B6D4&color=fff" alt="Roberto Alves">
+                                                    </div>
+                                                    <div class="participante-info">
+                                                        <h6 class="participante-nome">Roberto Alves</h6>
+                                                        <span class="participante-cargo">Conselheiro</span>
+                                                    </div>
+                                                    <div class="participante-status">
+                                                        <span class="status-presenca ausente">Ausente</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="convocacao-actions">
+                                                <button class="btn btn-primary">
+                                                    <i class="bi bi-envelope me-2"></i>Enviar Convocação
+                                                </button>
+                                                <button class="btn btn-outline-secondary">
+                                                    <i class="bi bi-bell me-2"></i>Enviar Lembrete
+                                                </button>
+                                                <button class="btn btn-outline-secondary">
+                                                    <i class="bi bi-download me-2"></i>Exportar Lista
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab 3: Votações -->
+                                    <div class="tab-pane fade" id="votacoes">
+                                        <div class="pauta-header">
+                                            <h4 class="pauta-title">Votações da Reunião</h4>
+                                            <button class="btn btn-sm btn-primary">
+                                                <i class="bi bi-plus-lg me-1"></i>Nova Votação
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Votação 1 - Em aberto -->
+                                        <div class="votacao-card">
+                                            <div class="votacao-header">
+                                                <div>
+                                                    <h5 class="votacao-titulo">Aprovação do Orçamento 2025</h5>
+                                                    <span class="votacao-tipo"><i class="bi bi-eye me-1"></i>Votação Nominal</span>
+                                                </div>
+                                                <span class="votacao-status aberta">Aberta</span>
+                                            </div>
+                                            <div class="votacao-body">
+                                                <p class="votacao-descricao">
+                                                    Deliberar sobre a aprovação da proposta orçamentária para o exercício de 2025, 
+                                                    conforme apresentação do Diretor Financeiro e documentação anexa.
+                                                </p>
+                                                <div class="votacao-opcoes">
+                                                    <label class="votacao-opcao">
+                                                        <span class="votacao-opcao-radio"></span>
+                                                        <span class="votacao-opcao-label">A Favor</span>
+                                                    </label>
+                                                    <label class="votacao-opcao">
+                                                        <span class="votacao-opcao-radio"></span>
+                                                        <span class="votacao-opcao-label">Contra</span>
+                                                    </label>
+                                                    <label class="votacao-opcao">
+                                                        <span class="votacao-opcao-radio"></span>
+                                                        <span class="votacao-opcao-label">Abstenção</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-2">
+                                                <button class="btn btn-primary flex-grow-1">
+                                                    <i class="bi bi-check-lg me-2"></i>Registrar Voto
+                                                </button>
+                                                <button class="btn btn-outline-secondary">
+                                                    <i class="bi bi-stop-circle"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Votação 2 - Encerrada -->
+                                        <div class="votacao-card">
+                                            <div class="votacao-header">
+                                                <div>
+                                                    <h5 class="votacao-titulo">Aprovação da Ata Anterior</h5>
+                                                    <span class="votacao-tipo"><i class="bi bi-eye-slash me-1"></i>Votação Secreta</span>
+                                                </div>
+                                                <span class="votacao-status encerrada">Encerrada</span>
+                                            </div>
+                                            <div class="votacao-body">
+                                                <p class="votacao-descricao">
+                                                    Votação para aprovação da ata da reunião ordinária realizada em 15/01/2025.
+                                                </p>
+                                                <div class="votacao-resultado">
+                                                    <div class="resultado-bar">
+                                                        <span class="resultado-label">A Favor</span>
+                                                        <div class="resultado-progress">
+                                                            <div class="resultado-progress-bar favor" style="width: 83%"></div>
+                                                        </div>
+                                                        <span class="resultado-value">5 (83%)</span>
+                                                    </div>
+                                                    <div class="resultado-bar">
+                                                        <span class="resultado-label">Contra</span>
+                                                        <div class="resultado-progress">
+                                                            <div class="resultado-progress-bar contra" style="width: 0%"></div>
+                                                        </div>
+                                                        <span class="resultado-value">0 (0%)</span>
+                                                    </div>
+                                                    <div class="resultado-bar">
+                                                        <span class="resultado-label">Abstenção</span>
+                                                        <div class="resultado-progress">
+                                                            <div class="resultado-progress-bar abstencao" style="width: 17%"></div>
+                                                        </div>
+                                                        <span class="resultado-value">1 (17%)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
+                                                <span class="badge badge-success fs-6">
+                                                    <i class="bi bi-check-circle me-1"></i>Aprovada
+                                                </span>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="bi bi-file-text me-1"></i>Ver Detalhes
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tab 4: Ata -->
+                                    <div class="tab-pane fade" id="ata">
+                                        <div class="ata-section">
+                                            <div class="pauta-header">
+                                                <h4 class="pauta-title">Ata da Reunião</h4>
+                                                <div class="d-flex gap-2">
+                                                    <button class="btn btn-sm btn-outline-secondary">
+                                                        <i class="bi bi-magic me-1"></i>Gerar com IA
+                                                    </button>
+                                                    <button class="btn btn-sm btn-primary">
+                                                        <i class="bi bi-save me-1"></i>Salvar Rascunho
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="ata-editor">
+                                                <div class="ata-toolbar">
+                                                    <button class="ata-toolbar-btn" title="Negrito"><i class="bi bi-type-bold"></i></button>
+                                                    <button class="ata-toolbar-btn" title="Itálico"><i class="bi bi-type-italic"></i></button>
+                                                    <button class="ata-toolbar-btn" title="Sublinhado"><i class="bi bi-type-underline"></i></button>
+                                                    <span class="ata-toolbar-divider"></span>
+                                                    <button class="ata-toolbar-btn" title="Lista"><i class="bi bi-list-ul"></i></button>
+                                                    <button class="ata-toolbar-btn" title="Lista Numerada"><i class="bi bi-list-ol"></i></button>
+                                                    <span class="ata-toolbar-divider"></span>
+                                                    <button class="ata-toolbar-btn" title="Título"><i class="bi bi-type-h2"></i></button>
+                                                    <button class="ata-toolbar-btn" title="Citação"><i class="bi bi-quote"></i></button>
+                                                    <span class="ata-toolbar-divider"></span>
+                                                    <button class="ata-toolbar-btn" title="Link"><i class="bi bi-link-45deg"></i></button>
+                                                    <button class="ata-toolbar-btn" title="Imagem"><i class="bi bi-image"></i></button>
+                                                    <button class="ata-toolbar-btn" title="Tabela"><i class="bi bi-table"></i></button>
+                                                </div>
+                                                
+                                                <div class="ata-content" contenteditable="true">
+                                                    <h3>ATA DA REUNIÃO ORDINÁRIA DO CONSELHO DE ADMINISTRAÇÃO</h3>
+                                                    
+                                                    <p><strong>Data:</strong> 28 de janeiro de 2025<br>
+                                                    <strong>Horário:</strong> 14h00 às 16h00<br>
+                                                    <strong>Local:</strong> Sala de Reuniões Principal</p>
+                                                    
+                                                    <h3>1. ABERTURA E VERIFICAÇÃO DE QUÓRUM</h3>
+                                                    <p>Aos vinte e oito dias do mês de janeiro de dois mil e vinte e cinco, às quatorze horas, reuniram-se os membros do Conselho de Administração para a reunião ordinária mensal. Verificou-se a presença de 5 (cinco) dos 6 (seis) conselheiros, constituindo quórum suficiente para deliberação.</p>
+                                                    
+                                                    <h3>2. APROVAÇÃO DA ATA ANTERIOR</h3>
+                                                    <p>Foi submetida à votação a ata da reunião anterior, realizada em 15 de janeiro de 2025, sendo aprovada por unanimidade, sem ressalvas.</p>
+                                                    
+                                                    <h3>3. APRESENTAÇÃO DO RELATÓRIO FINANCEIRO</h3>
+                                                    <p>O Diretor Financeiro apresentou o relatório do quarto trimestre de 2024...</p>
+                                                </div>
+                                                
+                                                <div class="ata-footer">
+                                                    <div class="ata-meta">
+                                                        <span><i class="bi bi-clock me-1"></i>Última edição: há 5 minutos</span>
+                                                        <span><i class="bi bi-person me-1"></i>Por: Ana Costa</span>
+                                                    </div>
+                                                    <div class="ata-actions">
+                                                        <button class="btn btn-sm btn-outline-secondary">
+                                                            <i class="bi bi-eye me-1"></i>Visualizar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-secondary">
+                                                            <i class="bi bi-download me-1"></i>Exportar PDF
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Assinaturas -->
+                                            <div class="assinaturas-section">
+                                                <h5 class="pauta-title mb-4">Assinaturas</h5>
+                                                <div class="assinaturas-grid">
+                                                    <div class="assinatura-card">
+                                                        <div class="assinatura-status assinado">
+                                                            <i class="bi bi-check-lg"></i>
+                                                        </div>
+                                                        <div class="assinatura-info">
+                                                            <span class="assinatura-nome">Maria Silva</span>
+                                                            <span class="assinatura-data">Assinado em 28/01/2025 16:45</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="assinatura-card">
+                                                        <div class="assinatura-status assinado">
+                                                            <i class="bi bi-check-lg"></i>
+                                                        </div>
+                                                        <div class="assinatura-info">
+                                                            <span class="assinatura-nome">João Santos</span>
+                                                            <span class="assinatura-data">Assinado em 28/01/2025 17:02</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="assinatura-card">
+                                                        <div class="assinatura-status pendente">
+                                                            <i class="bi bi-hourglass-split"></i>
+                                                        </div>
+                                                        <div class="assinatura-info">
+                                                            <span class="assinatura-nome">Ana Costa</span>
+                                                            <span class="assinatura-data">Aguardando assinatura</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="assinatura-card">
+                                                        <div class="assinatura-status pendente">
+                                                            <i class="bi bi-hourglass-split"></i>
+                                                        </div>
+                                                        <div class="assinatura-info">
+                                                            <span class="assinatura-nome">Clara Mendes</span>
+                                                            <span class="assinatura-data">Aguardando assinatura</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mt-4">
+                                                    <button class="btn btn-primary">
+                                                        <i class="bi bi-send me-2"></i>Solicitar Assinaturas
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sidebar Column -->
+                        <div class="col-lg-4">
+                            <div class="reuniao-sidebar">
+                                <!-- Informações -->
+                                <div class="sidebar-card">
+                                    <h6 class="sidebar-card-title">Informações</h6>
+                                    <div class="sidebar-info-list">
+                                        <div class="sidebar-info-item">
+                                            <div class="sidebar-info-icon">
+                                                <i class="bi bi-calendar3"></i>
+                                            </div>
+                                            <div class="sidebar-info-content">
+                                                <span class="sidebar-info-label">Data</span>
+                                                <span class="sidebar-info-value">28 de Janeiro, 2025</span>
+                                            </div>
+                                        </div>
+                                        <div class="sidebar-info-item">
+                                            <div class="sidebar-info-icon">
+                                                <i class="bi bi-clock"></i>
+                                            </div>
+                                            <div class="sidebar-info-content">
+                                                <span class="sidebar-info-label">Horário</span>
+                                                <span class="sidebar-info-value">14:00 - 16:00</span>
+                                            </div>
+                                        </div>
+                                        <div class="sidebar-info-item">
+                                            <div class="sidebar-info-icon">
+                                                <i class="bi bi-geo-alt"></i>
+                                            </div>
+                                            <div class="sidebar-info-content">
+                                                <span class="sidebar-info-label">Local</span>
+                                                <span class="sidebar-info-value">Sala de Reuniões Principal</span>
+                                            </div>
+                                        </div>
+                                        <div class="sidebar-info-item">
+                                            <div class="sidebar-info-icon">
+                                                <i class="bi bi-people"></i>
+                                            </div>
+                                            <div class="sidebar-info-content">
+                                                <span class="sidebar-info-label">Participantes</span>
+                                                <span class="sidebar-info-value">6 convocados</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Status -->
+                                <div class="sidebar-card">
+                                    <h6 class="sidebar-card-title">Status</h6>
+                                    <div class="d-flex flex-column gap-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-muted">Pauta</span>
+                                            <span class="badge badge-success">Completa</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-muted">Convocação</span>
+                                            <span class="badge badge-success">Enviada</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-muted">Confirmações</span>
+                                            <span class="badge badge-warning">5/6</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-muted">Ata</span>
+                                            <span class="badge badge-info">Rascunho</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Ações Rápidas -->
+                                <div class="sidebar-card">
+                                    <h6 class="sidebar-card-title">Ações Rápidas</h6>
+                                    <div class="quick-actions">
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="bi bi-camera-video"></i>
+                                            <span>Iniciar Videoconferência</span>
+                                        </a>
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="bi bi-envelope"></i>
+                                            <span>Enviar Lembrete</span>
+                                        </a>
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="bi bi-file-earmark-pdf"></i>
+                                            <span>Exportar Documentos</span>
+                                        </a>
+                                        <a href="#" class="quick-action-btn">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span>Abrir Chat</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <!-- Documentos -->
+                                <div class="sidebar-card">
+                                    <h6 class="sidebar-card-title">Documentos Anexos</h6>
+                                    <div class="d-flex flex-column gap-2">
+                                        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none p-2 rounded hover-bg">
+                                            <i class="bi bi-file-earmark-pdf text-danger fs-5"></i>
+                                            <div class="flex-grow-1">
+                                                <div class="fw-medium text-dark">Relatório Q4-2024.pdf</div>
+                                                <small class="text-muted">2.4 MB</small>
+                                            </div>
+                                            <i class="bi bi-download text-muted"></i>
+                                        </a>
+                                        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none p-2 rounded hover-bg">
+                                            <i class="bi bi-file-earmark-excel text-success fs-5"></i>
+                                            <div class="flex-grow-1">
+                                                <div class="fw-medium text-dark">Orçamento 2025.xlsx</div>
+                                                <small class="text-muted">856 KB</small>
+                                            </div>
+                                            <i class="bi bi-download text-muted"></i>
+                                        </a>
+                                        <a href="#" class="d-flex align-items-center gap-2 text-decoration-none p-2 rounded hover-bg">
+                                            <i class="bi bi-file-earmark-word text-primary fs-5"></i>
+                                            <div class="flex-grow-1">
+                                                <div class="fw-medium text-dark">Ata Anterior.docx</div>
+                                                <small class="text-muted">124 KB</small>
+                                            </div>
+                                            <i class="bi bi-download text-muted"></i>
+                                        </a>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary w-100 mt-3">
+                                        <i class="bi bi-upload me-2"></i>Anexar Documento
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    
+    <script>
+        // Sidebar Toggle
+        document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('show');
+        });
+        
+        document.getElementById('sidebarClose')?.addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.remove('show');
+        });
+        
+        // Wizard Tab Navigation
+        document.querySelectorAll('.wizard-step').forEach(step => {
+            step.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active from all steps
+                document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+                
+                // Add active to clicked step
+                this.classList.add('active');
+                
+                // Show corresponding tab
+                const target = this.getAttribute('href');
+                document.querySelectorAll('.tab-pane').forEach(pane => {
+                    pane.classList.remove('show', 'active');
+                });
+                document.querySelector(target).classList.add('show', 'active');
+            });
+        });
+        
+        // Votação Option Selection
+        document.querySelectorAll('.votacao-opcao').forEach(opcao => {
+            opcao.addEventListener('click', function() {
+                // Remove selected from siblings
+                this.closest('.votacao-opcoes').querySelectorAll('.votacao-opcao').forEach(o => {
+                    o.classList.remove('selected');
+                });
+                // Add selected to clicked
+                this.classList.add('selected');
+            });
+        });
+        
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
+</body>
+</html>

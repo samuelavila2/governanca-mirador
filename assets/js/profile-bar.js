@@ -248,7 +248,7 @@ const ProfileBarComponent = {
         bar.className = 'quick-actions-bar';
         
         bar.innerHTML = 
-            '<button class="fab-action-btn btn-reuniao" onclick="window.location.href=\'reunioes.html\'" title="Nova Reunião">' +
+            '<button class="fab-action-btn btn-reuniao" onclick="ProfileBar.abrirModalNovaReuniao()" title="Nova Reunião">' +
                 '<span class="btn-tooltip">Nova Reunião</span>' +
                 '<i class="bi bi-calendar-plus"></i>' +
             '</button>' +
@@ -262,6 +262,20 @@ const ProfileBarComponent = {
             '</button>';
         
         document.body.appendChild(bar);
+    },
+    
+    /**
+     * Abre a modal de nova reunião
+     */
+    abrirModalNovaReuniao: function() {
+        var modal = document.getElementById('novaReuniaoModal');
+        if (modal) {
+            var bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+        } else {
+            // Se não há modal na página, redireciona para reuniões
+            window.location.href = 'reunioes.html';
+        }
     },
 
     /**

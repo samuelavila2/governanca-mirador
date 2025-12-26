@@ -72,7 +72,6 @@ const SidebarComponent = {
             this.renderMenuSection(menuItems.compliance, activePage) +
             '<div class="sidebar-divider"></div>' +
             this.renderMenuSection(menuItems.settings, activePage) +
-            (profile === 'admin' ? '<div class="sidebar-divider"></div>' + this.renderMenuSection(menuItems.admin, activePage) : '') +
         '</nav>' +
         '<div class="sidebar-footer">' +
             '<div class="sidebar-user">' +
@@ -93,6 +92,7 @@ const SidebarComponent = {
         var allItems = {
             main: [
                 { id: 'dashboard', href: 'dashboard.html', icon: 'bi-speedometer2', label: 'Dashboard' },
+                { id: 'administracao', href: 'administracao.html', icon: 'bi-sliders', label: 'Administração' },
                 { id: 'calendario-consolidado', href: 'calendario-consolidado.html', icon: 'bi-calendar3', label: 'Calendário' },
                 { id: 'reunioes', href: 'reunioes.html', icon: 'bi-people', label: 'Reuniões', badge: '3' },
                 { id: 'atas', href: 'atas.html', icon: 'bi-file-text', label: 'Atas' },
@@ -108,17 +108,13 @@ const SidebarComponent = {
                 { id: 'comunicados', href: 'comunicados.html', icon: 'bi-megaphone', label: 'Comunicados', badge: '2', badgeType: 'warning' },
                 { id: 'relatorios', href: 'relatorios.html', icon: 'bi-graph-up', label: 'Relatórios' },
                 { id: 'configuracoes', href: 'configuracoes.html', icon: 'bi-gear', label: 'Configurações' }
-            ],
-            admin: [
-                { id: 'administracao', href: 'administracao.html', icon: 'bi-sliders', label: 'Administração' }
             ]
         };
         
         return {
             main: allItems.main.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
             compliance: allItems.compliance.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
-            settings: allItems.settings.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; }),
-            admin: allItems.admin.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; })
+            settings: allItems.settings.filter(function(item) { return allowedMenus.indexOf(item.id) !== -1; })
         };
     },
     
